@@ -1,13 +1,12 @@
 # Danish messages for nano.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Keld Simonsen <keld@dkuug.dk>, 2001
-# $Id$
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano 1.0.4\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-03-26 12:57-0500\n"
-"PO-Revision-Date: 2001-09-03 22:27+0200\n"
+"PO-Revision-Date: 2002-07-07 22:27+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -408,8 +407,7 @@ msgstr "Sidste linje"
 msgid "Case Sens"
 msgstr "Versalfølsom"
 
-#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415
-#: global.c:418 winio.c:1056
+#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415 global.c:418 winio.c:1056
 msgid "Cancel"
 msgstr "Afbryd"
 
@@ -451,38 +449,16 @@ msgstr "Tasten ugyldig i VISNINGstilstand"
 msgid ""
 " nano help text\n"
 "\n"
-" The nano editor is designed to emulate the functionality and ease-of-use of "
-"the UW Pico text editor.  There are four main sections of the editor: The "
-"top line shows the program version, the current filename being edited, and "
-"whether or not the file has been modified.  Next is the main editor window "
-"showing the file being edited.  The status line is the third line from the "
-"bottom and shows important messages. The bottom two lines show the most "
-"commonly used shortcuts in the editor.\n"
+" The nano editor is designed to emulate the functionality and ease-of-use of the UW Pico text editor.  There are four main sections of the editor: The top line shows the program version, the current filename being edited, and whether or not the file has been modified.  Next is the main editor window showing the file being edited.  The status line is the third line from the bottom and shows important messages. The bottom two lines show the most commonly used shortcuts in the editor.\n"
 "\n"
-" The notation for shortcuts is as follows: Control-key sequences are notated "
-"with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-"
-"key sequences are notated with the Meta (M) symbol and can be entered using "
-"either the Esc, Alt or Meta key depending on your keyboard setup.  The "
-"following keystrokes are available in the main editor window. Optional keys "
-"are shown in parentheses:\n"
+" The notation for shortcuts is as follows: Control-key sequences are notated with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-key sequences are notated with the Meta (M) symbol and can be entered using either the Esc, Alt or Meta key depending on your keyboard setup.  The following keystrokes are available in the main editor window. Optional keys are shown in parentheses:\n"
 "\n"
 msgstr ""
 " hjælpetekst for nano\n"
 "\n"
-" Tekstredigereren nano er skabt for at efterligne funktionaliteten og "
-"letanvendeligheden hos tekstredigereren UW Pico. Det findes fire hoveddele i "
-"redigereren: Øverste linje viser programmets versionsnummer, navnet på filen "
-"som redigeres, og om filen er ændret. Efter dette findes hovedvinduet som "
-"viser filen som redigeres. Statuslinjen er tredje linje fra underkanten og "
-"viser vigtige meddelelser. De nederste to linjer viser de almindeligste "
-"kommandoer som bruges i tekstredigereren.\n"
+" Tekstredigereren nano er skabt for at efterligne funktionaliteten og letanvendeligheden hos tekstredigereren UW Pico. Det findes fire hoveddele i redigereren: Øverste linje viser programmets versionsnummer, navnet på filen som redigeres, og om filen er ændret. Efter dette findes hovedvinduet som viser filen som redigeres. Statuslinjen er tredje linje fra underkanten og viser vigtige meddelelser. De nederste to linjer viser de almindeligste kommandoer som bruges i tekstredigereren.\n"
 "\n"
-" Notationen for kommandoer er som følger: Sekvenser med Control-tast skrives "
-"med en cirkumfleks (^) og trykkes samtidigt med Control-tasten (Ctrl). "
-"Escape-sekvenser skrives med metategnet (M) og angives enten med Esc-, Alt- "
-"eller Meta-tasten afhængig af dine tastaturindstillinger. Følgende "
-"tastekombinationer er tilgængelige i redigererens hovedvindue. Alternative "
-"taster vises inden i parentes:\n"
+" Notationen for kommandoer er som følger: Sekvenser med Control-tast skrives med en cirkumfleks (^) og trykkes samtidigt med Control-tasten (Ctrl). Escape-sekvenser skrives med metategnet (M) og angives enten med Esc-, Alt- eller Meta-tasten afhængig af dine tastaturindstillinger. Følgende tastekombinationer er tilgængelige i redigererens hovedvindue. Alternative taster vises inden i parentes:\n"
 "\n"
 
 #: nano.c:298
@@ -507,8 +483,7 @@ msgstr "Flag\t\tLangt flag\t\tBetydning\n"
 
 #: nano.c:363
 msgid " -T [num]\t--tabsize=[num]\t\tSet width of a tab to num\n"
-msgstr ""
-" -T [tal]\t--tabsize=[tal]\t\tSæt bredden på et tabulatortegn til tal\n"
+msgstr " -T [tal]\t--tabsize=[tal]\t\tSæt bredden på et tabulatortegn til tal\n"
 
 #: nano.c:366
 msgid " -R\t\t--regexp\t\tUse regular expressions for search\n"
@@ -532,8 +507,7 @@ msgstr " -i \t\t--autoindent\t\tIndryk automatisk nye linjer\n"
 
 #: nano.c:379
 msgid " -k \t\t--cut\t\t\tLet ^K cut from cursor to end of line\n"
-msgstr ""
-" -k \t\t--cut\t\t\tLad ^K klippe ud fra markøren til slutningen på linjen\n"
+msgstr " -k \t\t--cut\t\t\tLad ^K klippe ud fra markøren til slutningen på linjen\n"
 
 #: nano.c:382
 msgid " -l \t\t--nofollow\t\tDon't follow symbolic links, overwrite\n"
@@ -548,8 +522,7 @@ msgid " -p\t \t--pico\t\t\tEmulate Pico as closely as possible\n"
 msgstr " -p\t \t--pico\t\t\tEfterlign Pico så tæt som muligt\n"
 
 #: nano.c:392
-msgid ""
-" -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
+msgid " -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
 msgstr " -r [tegn] \t--fill=[#tegn]\t\tBryd linjer efter antal tegn\n"
 
 #: nano.c:395
@@ -1017,7 +990,7 @@ msgstr "Free Software Foundation"
 
 #: winio.c:1415
 msgid "For ncurses:"
-msgstr ""
+msgstr "For ncurses:"
 
 #: winio.c:1416
 msgid "and anyone else we forgot..."
@@ -1026,6 +999,3 @@ msgstr "og alle andre som vi har glemt..."
 #: winio.c:1417
 msgid "Thank you for using nano!\n"
 msgstr "Tak for at du bruger nano!\n"
-
-#~ msgid "Pavel Curtis, Zeyd Ben-Halim and Eric S. Raymond for ncurses"
-#~ msgstr "Pavel Curtis, Zeyd Ben-Halim og Eric S. Raymond for ncurses"

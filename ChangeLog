@@ -18,6 +18,8 @@ CVS Code -
 - po/ms.po:
 	- New Bahasa Melayu translation (Sharuzzaman Ahmat Raslan
 	  <sharuzzaman@excite.com>).
+- po/da.po:
+	- Danish translation updates (Keld Simonsen).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
