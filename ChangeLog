@@ -23,6 +23,8 @@ CVS Code -
 - po/pt_BR:
 	- New Brazilian Portuguese translation (Claudio Neves
 	  <cneves@nextis.com>).
+- po/tr.po:
+	- New Turkish translation (A. Murat EREN <meren@comu.edu.tr>).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
