@@ -25,6 +25,8 @@ CVS Code -
 	  <cneves@nextis.com>).
 - po/tr.po:
 	- New Turkish translation (A. Murat EREN <meren@comu.edu.tr>).
+- po/ro.po:
+	- New Romanian translation (Laurentiu Buzdugan <buzdugan@voyager.net>).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
