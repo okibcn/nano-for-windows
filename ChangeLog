@@ -1,4 +1,8 @@
 CVS Code -
+- po/sv.po:
+	- Swedish translation updates (Christian Rose).
+- po/fr.po:
+	- French translation updates (Jean-Philippe Guérard).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:

@@ -3,13 +3,13 @@
 # Pierre Tane <tanep@bigfoot.com>, 2000.
 # Clement Laforet <sheep.killer@free.fr>, 2000.
 # Michel Robitaille <robitail@IRO.UMontreal.CA>, 2001.
-# Jean-Philippe Guérard <jean-philippe.guerard@laposte.net>, 2001.
+# Jean-Philippe Guérard <jean-philippe.guerard@laposte.net>, 2001-2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano_1_0 1.0.8\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-03-26 12:57-0500\n"
-"PO-Revision-Date: 2002-01-25 22:30+0100\n"
+"PO-Revision-Date: 2002-04-13 02:00+0100\n"
 "Last-Translator: Jean-Philippe Guérard <jean-philippe.guerard@laposte.net>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -53,8 +53,7 @@ msgstr "Le fichier « %s » est un répertoire"
 #: files.c:250
 #, c-format
 msgid "File \"%s\" is a device file"
-msgstr ""
-"Le fichier « %s » est un fichier spécial correspondant à un périphérique"
+msgstr "Le fichier « %s » est un fichier spécial correspondant à un périphérique"
 
 #: files.c:257
 msgid "Reading File"
@@ -152,7 +151,7 @@ msgstr "Utilisation de la souris"
 
 #: global.c:138
 msgid "Cut to end"
-msgstr "Couper jusqu'à la fin"
+msgstr "Couper jusqu'en fin de ligne"
 
 #: global.c:140
 msgid "Regular expressions"
@@ -412,8 +411,7 @@ msgstr "Dern. Lig."
 msgid "Case Sens"
 msgstr "Resp.casse"
 
-#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415
-#: global.c:418 winio.c:1056
+#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415 global.c:418 winio.c:1056
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -456,40 +454,16 @@ msgstr "Touche illégale en mode VISUALISATION"
 msgid ""
 " nano help text\n"
 "\n"
-" The nano editor is designed to emulate the functionality and ease-of-use of "
-"the UW Pico text editor.  There are four main sections of the editor: The "
-"top line shows the program version, the current filename being edited, and "
-"whether or not the file has been modified.  Next is the main editor window "
-"showing the file being edited.  The status line is the third line from the "
-"bottom and shows important messages. The bottom two lines show the most "
-"commonly used shortcuts in the editor.\n"
+" The nano editor is designed to emulate the functionality and ease-of-use of the UW Pico text editor.  There are four main sections of the editor: The top line shows the program version, the current filename being edited, and whether or not the file has been modified.  Next is the main editor window showing the file being edited.  The status line is the third line from the bottom and shows important messages. The bottom two lines show the most commonly used shortcuts in the editor.\n"
 "\n"
-" The notation for shortcuts is as follows: Control-key sequences are notated "
-"with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-"
-"key sequences are notated with the Meta (M) symbol and can be entered using "
-"either the Esc, Alt or Meta key depending on your keyboard setup.  The "
-"following keystrokes are available in the main editor window. Optional keys "
-"are shown in parentheses:\n"
+" The notation for shortcuts is as follows: Control-key sequences are notated with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-key sequences are notated with the Meta (M) symbol and can be entered using either the Esc, Alt or Meta key depending on your keyboard setup.  The following keystrokes are available in the main editor window. Optional keys are shown in parentheses:\n"
 "\n"
 msgstr ""
 " Message d'aide de nano\n"
 "\n"
-" L'éditeur nano est conçu pour émuler les fonctions et la facilité "
-"d'utilisation de l'éditeur Pico de l'UW.  Il y a quatre sections principales "
-"dans cet éditeur : la ligne du haut affiche la version du programme, le "
-"fichier actuellement en cours d'édition, et s'il a été modifié ou non. "
-"Ensuite il y a la fenêtre principale d'édition qui affiche le fichier en "
-"cours de modification. La ligne d'état est la troisième en partant du bas, "
-"elle affiche les messages importants. Les deux dernières sont consacrées aux "
-"raccourcis les plus couramment utilisés :\n"
+" L'éditeur nano est conçu pour émuler les fonctions et la facilité d'utilisation de l'éditeur Pico de l'UW.  Il y a quatre sections principales dans cet éditeur : la ligne du haut affiche la version du programme, le fichier actuellement en cours d'édition, et s'il a été modifié ou non. Ensuite il y a la fenêtre principale d'édition qui affiche le fichier en cours de modification. La ligne d'état est la troisième en partant du bas, elle affiche les messages importants. Les deux dernières sont consacrées aux raccourcis les plus couramment utilisés :\n"
 "\n"
-" Les raccourcis sont représentés de la façon suivante : la touche « Contrôle "
-"» est notée par l'accent circonflexe (^). Les séquences d'échappement sont "
-"représentées par le symbole « méta » (M) et peuvent être entrées via les "
-"touches « Échap. », « Alt » ou « Méta » selon la configuration de votre "
-"clavier. Les combinaisons suivantes sont disponibles dans la fenêtre "
-"principale de l'éditeur. Les touches optionnelles sont affichées entre "
-"parenthèses :\n"
+" Les raccourcis sont représentés de la façon suivante : la touche « Contrôle » est notée par l'accent circonflexe (^). Les séquences d'échappement sont représentées par le symbole « méta » (M) et peuvent être entrées via les touches « Échap. », « Alt » ou « Méta » selon la configuration de votre clavier. Les combinaisons suivantes sont disponibles dans la fenêtre principale de l'éditeur. Les touches optionnelles sont affichées entre parenthèses :\n"
 "\n"
 
 #: nano.c:298
@@ -540,7 +514,7 @@ msgstr " -i \t\t--autoindent\t\tIndentation automatique\n"
 
 #: nano.c:379
 msgid " -k \t\t--cut\t\t\tLet ^K cut from cursor to end of line\n"
-msgstr " -k \t\t--cut\t\t\t^K pour couper jusqu'en fin de ligne\n"
+msgstr " -k \t\t--cut\t\t\t^K coupe du curseur à la fin de ligne\n"
 
 #: nano.c:382
 msgid " -l \t\t--nofollow\t\tDon't follow symbolic links, overwrite\n"
@@ -555,8 +529,7 @@ msgid " -p\t \t--pico\t\t\tEmulate Pico as closely as possible\n"
 msgstr " -p\t \t--pico\t\t\tImiter Pico du mieux possible\n"
 
 #: nano.c:392
-msgid ""
-" -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
+msgid " -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
 msgstr " -r [nb_col] \t--fill=[nb_col]\t\tColonne max. pour la coupure auto.\n"
 
 #: nano.c:395
@@ -625,7 +598,7 @@ msgstr " -i \t\tIndentation automatique des nouvelles lignes\n"
 
 #: nano.c:421
 msgid " -k \t\tLet ^K cut from cursor to end of line\n"
-msgstr " -k \t\t^K pour couper jusqu'en fin de ligne\n"
+msgstr " -k \t\t^K coupe du curseur à la fin de ligne\n"
 
 #: nano.c:424
 msgid " -l \t\tDon't follow symbolic links, overwrite\n"
@@ -722,9 +695,7 @@ msgstr "Impossible de créer le nom de fichier temporaire: %s"
 
 #: nano.c:1565
 msgid "Spell checking failed: unable to write temp file!"
-msgstr ""
-"Échec de la correction orthographique : impossible d'écrire dans un fichier "
-"temporaire !"
+msgstr "Échec de la correction orthographique : impossible d'écrire dans un fichier temporaire !"
 
 #: nano.c:1577
 msgid "Finished checking spelling"
@@ -785,9 +756,7 @@ msgstr "désactivé"
 
 #: nano.c:2278
 msgid "NumLock glitch detected.  Keypad will malfunction with NumLock off"
-msgstr ""
-"Problème lié à VerrNum détecté.  Le pavé numérique fonctionnera mal si "
-"VerrNum est désactivé"
+msgstr "Problème lié à VerrNum détecté.  Le pavé numérique fonctionnera mal si VerrNum est désactivé"
 
 #: nano.c:2508
 msgid "Main: set up windows\n"
@@ -1027,7 +996,7 @@ msgstr "La Free Software Foundation"
 
 #: winio.c:1415
 msgid "For ncurses:"
-msgstr ""
+msgstr "Pour ncurses :"
 
 #: winio.c:1416
 msgid "and anyone else we forgot..."
@@ -1036,6 +1005,3 @@ msgstr "et toute autre personne que nous ayons oublié..."
 #: winio.c:1417
 msgid "Thank you for using nano!\n"
 msgstr "Merci d'utiliser nano !\n"
-
-#~ msgid "Pavel Curtis, Zeyd Ben-Halim and Eric S. Raymond for ncurses"
-#~ msgstr "Pavel Curtis, Zeyd Ben-Halim et Eric S. Raymond pour ncurses"
