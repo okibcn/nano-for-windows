@@ -7,6 +7,10 @@ CVS Code -
 	- Catalan and Spanish translation updates (Jordi).
 - po/gl.po:
 	- Galician translation updates (Jacobo Tarrío).
+- po/it.po:
+	- Italian translation updates (Marco Colombo).
+- po/pl.po:
+	- Polish translation updates (Wojciech Kotwica).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
