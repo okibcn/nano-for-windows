@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano 1.0.9\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-03-26 12:57-0500\n"
 "PO-Revision-Date: 2002-06-22 19:32GMT+8\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@excite.com>\n"
