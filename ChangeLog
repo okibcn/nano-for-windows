@@ -20,6 +20,9 @@ CVS Code -
 	  <sharuzzaman@excite.com>).
 - po/da.po:
 	- Danish translation updates (Keld Simonsen).
+- po/pt_BR:
+	- New Brazilian Portuguese translation (Claudio Neves
+	  <cneves@nextis.com>).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:

@@ -3,7 +3,7 @@ dnl Process this file with autoconf to produce a configure script.
 AC_INIT(nano.c)
 AM_INIT_AUTOMAKE(nano, 1.0.9-cvs)
 AM_CONFIG_HEADER(config.h:config.h.in)
-ALL_LINGUAS="es de fr it id fi hu ca cs gl uk ru sv nn nl da pl nb ms"
+ALL_LINGUAS="es de fr it id fi hu ca cs gl uk ru sv nn nl da pl nb ms pt_BR"
 
 dnl Checks for programs.
 AC_PROG_CC

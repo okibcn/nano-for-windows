@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano 1.0.9\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-07-26 14:00-0300\n"
 "PO-Revision-Date: 2002-07-26 16:00-0300\n"
 "Last-Translator: Claudio Neves <cneves@nextis.com>\n"
