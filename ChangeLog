@@ -13,6 +13,8 @@ CVS Code -
 	- Polish translation updates (Wojciech Kotwica).
 - po/de.po:
 	- German translation updates (Michael Piefel).
+- po/ru.po, po/uk.po:
+	- Russian and Ukrainian translation updates (Sergey A. Ribalchenko).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
