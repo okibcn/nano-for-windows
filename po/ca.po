@@ -1,14 +1,14 @@
 # Catalan messages for the GNU nano editor.
-# Copyright (C) 2000, 2001 Free Software Foundation, Inc.
-# Jordi Mallach <jordi@sindominio.net>, 2000, 2001.
+# Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc.
+# Jordi Mallach <jordi@sindominio.net>, 2000, 2001, 2002.
 # Miquel Vidal <miquel@sindominio.net>, 2001.
 # $Id$
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano_1_0 1.0.7\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-03-26 12:57-0500\n"
-"PO-Revision-Date: 2001-12-27 17:05+0100\n"
+"PO-Revision-Date: 2002-04-13 02:45+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
 "MIME-Version: 1.0\n"
@@ -424,21 +424,13 @@ msgstr "A Fitxers"
 
 #: nano.c:141
 #, c-format
-msgid ""
-"\n"
-"Buffer written to %s\n"
-msgstr ""
-"\n"
-"Buffer escrit a %s\n"
+msgid "\nBuffer written to %s\n"
+msgstr "\nBuffer escrit a %s\n"
 
 #: nano.c:143
 #, c-format
-msgid ""
-"\n"
-"No %s written (file exists?)\n"
-msgstr ""
-"\n"
-"No s'ha escrit %s (existeix el fitxer?)\n"
+msgid "\nNo %s written (file exists?)\n"
+msgstr "\nNo s'ha escrit %s (existeix el fitxer?)\n"
 
 #: nano.c:152
 msgid "Window size is too small for Nano..."
@@ -452,39 +444,16 @@ msgstr "Tecla il·legal en mode VISUALITZACIÓ"
 msgid ""
 " nano help text\n"
 "\n"
-" The nano editor is designed to emulate the functionality and ease-of-use of "
-"the UW Pico text editor.  There are four main sections of the editor: The "
-"top line shows the program version, the current filename being edited, and "
-"whether or not the file has been modified.  Next is the main editor window "
-"showing the file being edited.  The status line is the third line from the "
-"bottom and shows important messages. The bottom two lines show the most "
-"commonly used shortcuts in the editor.\n"
+" The nano editor is designed to emulate the functionality and ease-of-use of the UW Pico text editor.  There are four main sections of the editor: The top line shows the program version, the current filename being edited, and whether or not the file has been modified.  Next is the main editor window showing the file being edited.  The status line is the third line from the bottom and shows important messages. The bottom two lines show the most commonly used shortcuts in the editor.\n"
 "\n"
-" The notation for shortcuts is as follows: Control-key sequences are notated "
-"with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-"
-"key sequences are notated with the Meta (M) symbol and can be entered using "
-"either the Esc, Alt or Meta key depending on your keyboard setup.  The "
-"following keystrokes are available in the main editor window. Optional keys "
-"are shown in parentheses:\n"
+" The notation for shortcuts is as follows: Control-key sequences are notated with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-key sequences are notated with the Meta (M) symbol and can be entered using either the Esc, Alt or Meta key depending on your keyboard setup.  The following keystrokes are available in the main editor window. Optional keys are shown in parentheses:\n"
 "\n"
 msgstr ""
 " texte d'ajuda de nano\n"
 "\n"
-" L'editor nano està dissenyat per a emular la funcionalitat i la facilitat "
-"d'ús de Pico, l'editor de text de la UW. Hi ha quatre seccions a l'editor: "
-"la línia superior mostra la versió del programa, el nom del fitxer editat i "
-"si el fitxer ha estat o no modificat. També tenim la finestra principal de "
-"edició, que mostra el fitxer que s'està editant. La línia d'estat és la "
-"tercera des de baix i mostra missatges importants. Les últimes dues línies "
-"mostren les dreceres més utilitzades a l'editor.\n"
+" L'editor nano està dissenyat per a emular la funcionalitat i la facilitat d'ús de Pico, l'editor de text de la UW. Hi ha quatre seccions a l'editor: la línia superior mostra la versió del programa, el nom del fitxer editat i si el fitxer ha estat o no modificat. També tenim la finestra principal de edició, que mostra el fitxer que s'està editant. La línia d'estat és la tercera des de baix i mostra missatges importants. Les últimes dues línies mostren les dreceres més utilitzades a l'editor.\n"
 "\n"
-" La notació de les dreceres és la següent: les sequències amb la tecla "
-"Control estan anotades amb el símbol circunflex (^) i són accedides "
-"mitjançant la tecla Control. Les seqüències amb tecles d'escapada estan "
-"anotades amb el símbol Meta (M) i s'hi pot accedir mitjançant les tecles "
-"Esc, Alt o Meta, tot depenent de la configuració del teu teclat. Les "
-"següents combinacions estan disponibles a la finestra principal. Les tecles "
-"opcionals estan representades entre parèntesi:\n"
+" La notació de les dreceres és la següent: les sequències amb la tecla Control estan anotades amb el símbol circunflex (^) i són accedides mitjançant la tecla Control. Les seqüències amb tecles d'escapada estan anotades amb el símbol Meta (M) i s'hi pot accedir mitjançant les tecles Esc, Alt o Meta, tot depenent de la configuració del teu teclat. Les següents combinacions estan disponibles a la finestra principal. Les tecles opcionals estan representades entre parèntesi:\n"
 "\n"
 
 #: nano.c:298
@@ -496,12 +465,8 @@ msgid "delete_node(): free'd last node.\n"
 msgstr "delete_node(): alliberat l'últim node.\n"
 
 #: nano.c:360
-msgid ""
-"Usage: nano [GNU long option] [option] +LINE <file>\n"
-"\n"
-msgstr ""
-"Sintaxi: nano [opció llarga GNU] [opció] +LÍNIA <fitxer>\n"
-"\n"
+msgid "Usage: nano [GNU long option] [option] +LINE <file>\n\n"
+msgstr "Sintaxi: nano [opció llarga GNU] [opció] +LÍNIA <fitxer>\n\n"
 
 #: nano.c:361
 msgid "Option\t\tLong option\t\tMeaning\n"
@@ -548,14 +513,12 @@ msgid " -p\t \t--pico\t\t\tEmulate Pico as closely as possible\n"
 msgstr " -p\t \t--pico\t\t\tEmular a Pico tant com sigui possible\n"
 
 #: nano.c:392
-msgid ""
-" -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
+msgid " -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
 msgstr " -r [#cols] \t--fill=[#cols]\t\tReplenar columnes (ajustar en) #cols\n"
 
 #: nano.c:395
 msgid " -s [prog] \t--speller=[prog]\tEnable alternate speller\n"
-msgstr ""
-" -s [prog] \t--speller=[prog]\tHabilitar corrector ortogràfic alternatiu\n"
+msgstr " -s [prog] \t--speller=[prog]\tHabilitar corrector ortogràfic alternatiu\n"
 
 #: nano.c:398
 msgid " -t \t\t--tempfile\t\tAuto save on exit, don't prompt\n"
@@ -582,12 +545,8 @@ msgid " +LINE\t\t\t\t\tStart at line number LINE\n"
 msgstr " +LINE\t\t\t\t\tIniciar a la línia número LÍNIA\n"
 
 #: nano.c:412
-msgid ""
-"Usage: nano [option] +LINE <file>\n"
-"\n"
-msgstr ""
-"Sintaxi: nano [opció] +LÍNIA <fitxer>\n"
-"\n"
+msgid "Usage: nano [option] +LINE <file>\n\n"
+msgstr "Sintaxi: nano [opció] +LÍNIA <fitxer>\n\n"
 
 #: nano.c:413
 msgid "Option\t\tMeaning\n"
@@ -675,12 +634,8 @@ msgid " Email: nano@nano-editor.org\tWeb: http://www.nano-editor.org"
 msgstr " Correu-e: nano@nano-editor.org\tWeb: http://www.nano-editor.org"
 
 #: nano.c:453
-msgid ""
-"\n"
-" Compiled options:"
-msgstr ""
-"\n"
-" Opcions compilades:"
+msgid "\n Compiled options:"
+msgstr "\n Opcions compilades:"
 
 #: nano.c:524
 msgid "Mark Set"
@@ -777,8 +732,7 @@ msgstr "inhabilitat"
 
 #: nano.c:2278
 msgid "NumLock glitch detected.  Keypad will malfunction with NumLock off"
-msgstr ""
-"Detectat NumLock trencat.  El tecl. numèric funcionarà amb NumLock activat"
+msgstr "Detectat NumLock trencat.  El tecl. numèric funcionarà amb NumLock activat"
 
 #: nano.c:2508
 msgid "Main: set up windows\n"
@@ -1018,7 +972,7 @@ msgstr "La Fundació per al Software Lliure (FSF)"
 
 #: winio.c:1415
 msgid "For ncurses:"
-msgstr ""
+msgstr "Per ncurseS:"
 
 #: winio.c:1416
 msgid "and anyone else we forgot..."

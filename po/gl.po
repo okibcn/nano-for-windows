@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano_1_0 1.0.8\n"
+"Project-Id-Version: nano_1_0 1.0.9\n"
 "POT-Creation-Date: 2002-03-26 12:57-0500\n"
-"PO-Revision-Date: 2002-03-18 17:01+0100\n"
+"PO-Revision-Date: 2002-04-13 02:38+0200\n"
 "Last-Translator: Jacobo Tarrio <jtarrio@iname.com>\n"
 "Language-Team: Galician <gpul-traduccion@ceu.fi.udc.es>\n"
 "MIME-Version: 1.0\n"
@@ -406,8 +406,7 @@ msgstr "Der. Liña"
 msgid "Case Sens"
 msgstr "Maiú./Min."
 
-#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415
-#: global.c:418 winio.c:1056
+#: global.c:353 global.c:373 global.c:384 global.c:394 global.c:415 global.c:418 winio.c:1056
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -449,38 +448,16 @@ msgstr "Tecla non válida no modo VER"
 msgid ""
 " nano help text\n"
 "\n"
-" The nano editor is designed to emulate the functionality and ease-of-use of "
-"the UW Pico text editor.  There are four main sections of the editor: The "
-"top line shows the program version, the current filename being edited, and "
-"whether or not the file has been modified.  Next is the main editor window "
-"showing the file being edited.  The status line is the third line from the "
-"bottom and shows important messages. The bottom two lines show the most "
-"commonly used shortcuts in the editor.\n"
+" The nano editor is designed to emulate the functionality and ease-of-use of the UW Pico text editor.  There are four main sections of the editor: The top line shows the program version, the current filename being edited, and whether or not the file has been modified.  Next is the main editor window showing the file being edited.  The status line is the third line from the bottom and shows important messages. The bottom two lines show the most commonly used shortcuts in the editor.\n"
 "\n"
-" The notation for shortcuts is as follows: Control-key sequences are notated "
-"with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-"
-"key sequences are notated with the Meta (M) symbol and can be entered using "
-"either the Esc, Alt or Meta key depending on your keyboard setup.  The "
-"following keystrokes are available in the main editor window. Optional keys "
-"are shown in parentheses:\n"
+" The notation for shortcuts is as follows: Control-key sequences are notated with a caret (^) symbol and are entered with the Control (Ctrl) key.  Escape-key sequences are notated with the Meta (M) symbol and can be entered using either the Esc, Alt or Meta key depending on your keyboard setup.  The following keystrokes are available in the main editor window. Optional keys are shown in parentheses:\n"
 "\n"
 msgstr ""
 " axuda de nano\n"
 "\n"
-" O editor nano está deseñado para emula-la funcionalidade e facilidade de "
-"uso o editor de texto UW Pico. Hai catro seccións principais no editor; a "
-"liña superior amosa a versión do programa, o nome do ficheiro que se está a "
-"editar, e se o ficheiro está modificado ou non. A seguinte sección é a "
-"fiestra principal do editor, que amosa o ficheiro que se edita. A liña de "
-"estado é a terceira liña dende o fondo e amosa as mensaxes importantes. As "
-"dúas derradeiras liñas amosan os atallos de teclado que máis se usan no "
-"editor.\n"
+" O editor nano está deseñado para emula-la funcionalidade e facilidade de uso o editor de texto UW Pico. Hai catro seccións principais no editor; a liña superior amosa a versión do programa, o nome do ficheiro que se está a editar, e se o ficheiro está modificado ou non. A seguinte sección é a fiestra principal do editor, que amosa o ficheiro que se edita. A liña de estado é a terceira liña dende o fondo e amosa as mensaxes importantes. As dúas derradeiras liñas amosan os atallos de teclado que máis se usan no editor.\n"
 "\n"
-" A notación dos atallos é así: as secuencias Control-tecla denótanse cun "
-"circunflexo (^) e introdúcense coa tecla Control (Ctrl). As secuencias "
-"Escape-tecla denótanse co símbolo Meta (M) e introdúcense coa tecla Esc, Alt "
-"ou Meta, dependendo do teclado. As seguintes pulsacións están dispoñibles na "
-"fiestra principal do editor. As teclas opcionais aparecen entre parénteses:\n"
+" A notación dos atallos é así: as secuencias Control-tecla denótanse cun circunflexo (^) e introdúcense coa tecla Control (Ctrl). As secuencias Escape-tecla denótanse co símbolo Meta (M) e introdúcense coa tecla Esc, Alt ou Meta, dependendo do teclado. As seguintes pulsacións están dispoñibles na fiestra principal do editor. As teclas opcionais aparecen entre parénteses:\n"
 "\n"
 
 #: nano.c:298
@@ -544,8 +521,7 @@ msgid " -p\t \t--pico\t\t\tEmulate Pico as closely as possible\n"
 msgstr " -p\t \t--pico\t\t\tEmular Pico o máis fielmente posible\n"
 
 #: nano.c:392
-msgid ""
-" -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
+msgid " -r [#cols] \t--fill=[#cols]\t\tSet fill cols to (wrap lines at) #cols\n"
 msgstr " -r [col] \t--fill=[col]\t\tCorta-las liñas na columna col\n"
 
 #: nano.c:395
@@ -711,8 +687,7 @@ msgstr "Non se puido crear un ficheiro temporal: %s"
 
 #: nano.c:1565
 msgid "Spell checking failed: unable to write temp file!"
-msgstr ""
-"Fallou a corrección ortográfica: non se puido grava-lo ficheiro temporal"
+msgstr "Fallou a corrección ortográfica: non se puido grava-lo ficheiro temporal"
 
 #: nano.c:1577
 msgid "Finished checking spelling"
@@ -724,8 +699,7 @@ msgstr "Fallou a corrección ortográfica"
 
 #: nano.c:1599
 msgid "Save modified buffer (ANSWERING \"No\" WILL DESTROY CHANGES) ? "
-msgstr ""
-"¿Grava-lo buffer modificado (SE RESPOSTA \"Non\" HANSE PERDE-LOS CAMBIOS)? "
+msgstr "¿Grava-lo buffer modificado (SE RESPOSTA \"Non\" HANSE PERDE-LOS CAMBIOS)? "
 
 #: nano.c:1695
 msgid "Received SIGHUP"
@@ -1014,7 +988,7 @@ msgstr "A Free Software Foundation"
 
 #: winio.c:1415
 msgid "For ncurses:"
-msgstr ""
+msgstr "Por ncurses:"
 
 #: winio.c:1416
 msgid "and anyone else we forgot..."

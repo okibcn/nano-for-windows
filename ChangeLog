@@ -3,6 +3,10 @@ CVS Code -
 	- Swedish translation updates (Christian Rose).
 - po/fr.po:
 	- French translation updates (Jean-Philippe Guérard).
+- po/ca.po, po/es.po:
+	- Catalan and Spanish translation updates (Jordi).
+- po/gl.po:
+	- Galician translation updates (Jacobo Tarrío).
 
 GNU nano 1.0.9 - 04/10/2002
 - General:
