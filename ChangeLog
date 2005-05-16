@@ -1,3 +1,5 @@
+CVS code -
+
 GNU nano 1.2.5 - 2005.05.15
 - files.c:
   open_prevfile(), open_nextfile()
