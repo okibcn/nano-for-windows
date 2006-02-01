@@ -10,6 +10,8 @@ CVS code -
 	  This fixes problems with nano's erroneously hanging up while
 	  e.g. resizing or unsuspending in a chroot. (DLR, found by Mike
 	  Frysinger)
+  do_credits()
+	- Add DLR as new copyright holder.
 
 GNU nano 1.2.5 - 2005.05.15
 - files.c:

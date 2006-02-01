@@ -1791,7 +1791,7 @@ void dump_buffer_reverse(void) {
 #endif /* DEBUG */
 
 #ifdef NANO_EXTRA
-#define CREDIT_LEN 53
+#define CREDIT_LEN 54
 #define XLCREDIT_LEN 8
 
 void do_credits(void)
@@ -1846,7 +1846,8 @@ void do_credits(void)
 	"6",				/* "and anyone else we forgot..." */
 	"7",				/* "Thank you for using nano!\n" */
 	"", "", "", "",
-	"(c) 1999-2003 Chris Allegretta",
+        "(c) 1999-2004 Chris Allegretta",
+        "(c) 2005 David Lawrence Ramsey",
 	"", "", "", "",
 	"http://www.nano-editor.org/"
     };
