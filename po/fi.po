@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.1.99pre3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2003-02-17 22:32+0200\n"
 "Last-Translator: Kalle Olavi Niemitalo <kon@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -109,7 +109,7 @@ msgstr "Ei muita avoimia tiedostoja"
 msgid "Switched to %s"
 msgstr "Vaihdoin tiedostoon %s"
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Uusi teksti"
 
@@ -595,7 +595,7 @@ msgstr "Sijainti"
 msgid "To Spell"
 msgstr "Oikolue"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Ylös"
 
@@ -685,7 +685,7 @@ msgstr "Seuraava tiedosto"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Peru"
 
@@ -1546,93 +1546,93 @@ msgstr "Ei vastaavaa suljetta"
 msgid "nano is out of memory!"
 msgstr "Nanolta loppui muisti!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Tiedosto: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "   HAKEMISTO: ..."
 
-#: winio.c:619
+#: winio.c:622
 msgid "File: "
 msgstr "Tiedosto: "
 
-#: winio.c:622
+#: winio.c:625
 msgid " DIR: "
 msgstr " HAKEMISTO: "
 
-#: winio.c:627
+#: winio.c:630
 msgid " Modified "
 msgstr " Muokattu "
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr " Näkymä "
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr "En hyväksy 0-pituista säännöllisen lausekkeen osumaa"
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "KkYy"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "EeNn"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "aA"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Kyllä"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Kaikki"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Ei"
 
-#: winio.c:1511
+#: winio.c:1514
 #, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "rivi %ld/%ld (%d%%), sarake %lu/%lu (%d%%), merkki %lu/%ld (%d%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "Nano-editori"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "versio "
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Tehneet:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Erikoiskiitokset:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "Free Software Foundation"
 
 # Special thanks to: (nimiä) For ncurses: (nimiä)
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr "Ncursesista:"
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "ja kaikille muille, jotka unohdimme..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Kiitos Nanon käyttämisestä!\n"
 

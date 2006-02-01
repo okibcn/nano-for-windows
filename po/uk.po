@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.1.99pre3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2003-02-17 10:51+0300\n"
 "Last-Translator: Sergey A. Ribalchenko <fisher@obu.ck.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -107,7 +107,7 @@ msgstr "Б╕льш нема в╕дкритих файл╕в"
 msgid "Switched to %s"
 msgstr "Перемкнуто до %s"
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Новий Буфер"
 
@@ -559,7 +559,7 @@ msgstr "Позиц╕я"
 msgid "To Spell"
 msgstr "Правопис"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Вгору"
 
@@ -645,7 +645,7 @@ msgstr "Наступний файл"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -1499,92 +1499,92 @@ msgstr "Нема в╕дпов╕дно╖ дужки"
 msgid "nano is out of memory!"
 msgstr "невистача╓ в╕льно╖ пам'ят╕ для nano!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Файл: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "   Дир: ..."
 
-#: winio.c:619
+#: winio.c:622
 msgid "File: "
 msgstr "Файл: "
 
-#: winio.c:622
+#: winio.c:625
 msgid " DIR: "
 msgstr " Дир: "
 
-#: winio.c:627
+#: winio.c:630
 msgid " Modified "
 msgstr " Зм╕нено "
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr " Перегляд "
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr "В╕дкида╓мо сп╕впад╕ння формального виразу довжиною 0"
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "YyТт"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "NnНн"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "AaВв"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Так"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Все"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Н╕"
 
-#: winio.c:1511
+#: winio.c:1514
 #, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "рядок %ld/%ld (%d%%), стовпчик %lu/%lu (%d%%, л╕тера %lu/%ld (%d%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "Текстовий редактор nano"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "верс╕я "
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Створено для Вас:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Особлива подяка:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "The Free Software Foundation (Фонд В╕льного Програмного забезпечення)"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr "Для ncurses:"
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "та ╕ншим кого ми забули..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Дяку╓мо Вам за те, що обрали nano!\n"
 

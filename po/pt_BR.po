@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2002-07-26 16:00-0300\n"
 "Last-Translator: Claudio Neves <cneves@nextis.com>\n"
 "Language-Team: pt_BR <ldp-br@bazar.conectiva.com.br>\n"
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Switched to %s"
 msgstr ""
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Novo Buffer"
 
@@ -570,7 +570,7 @@ msgstr "Posição"
 msgid "To Spell"
 msgstr "Corretor"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Subir"
 
@@ -660,7 +660,7 @@ msgstr "Novo Arquivo"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1453,95 +1453,95 @@ msgstr ""
 msgid "nano is out of memory!"
 msgstr ""
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Arquivo: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "   DIR: ..."
 
-#: winio.c:619
+#: winio.c:622
 #, fuzzy
 msgid "File: "
 msgstr "  Arquivo: ..."
 
-#: winio.c:622
+#: winio.c:625
 #, fuzzy
 msgid " DIR: "
 msgstr "   DIR: ..."
 
-#: winio.c:627
+#: winio.c:630
 #, fuzzy
 msgid " Modified "
 msgstr "Modificado"
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr ""
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr ""
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "SsYy"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "Nn"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "TtAa"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Sim"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Todos"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Não"
 
-#: winio.c:1511
+#: winio.c:1514
 #, fuzzy, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "linha %d de %d (%.0f%%), caracter %d de %d (%.0f%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "Editor de textos nano"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "versão"
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Um oferecimento de:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Agradecimentos especiais para:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "A Free Software Foundation"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr "Para o ncurses:"
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "e qualquer um que tenhamos esquecido..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Obrigado por usar o nano!\n"
 

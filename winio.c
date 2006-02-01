@@ -25,6 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <ctype.h>
 #include <assert.h>
 #include "proto.h"
@@ -36,12 +37,14 @@ static int statblank = 0;	/* Number of keystrokes left after
 
 int blocking_wgetch(WINDOW *win)
 {
-    int retval = wgetch(win);
+    int retval;
 
-    /* If we get ERR when using blocking input, it means that the input
-     * source that we were using is gone, so die gracefully. */
-    if (retval == ERR)
-	handle_hupterm(0);
+    while ((retval = wgetch(win)) == ERR) {
+	/* If errno is EIO, it means that the input source that we were
+	 * using is gone, so die gracefully. */
+	if (errno == EIO)
+	    handle_hupterm(0);
+    }
 
     return retval;
 }

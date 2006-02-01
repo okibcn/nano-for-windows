@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.1.2pre2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2002-12-22 18:19+0100\n"
 "Last-Translator: Peio Ziarsolo <peio@sindominio.net>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -105,7 +105,7 @@ msgstr "Ez dago artxibo gehiago irekirik"
 msgid "Switched to %s"
 msgstr ""
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Bufer berria"
 
@@ -568,7 +568,7 @@ msgstr "Uneko posizioa"
 msgid "To Spell"
 msgstr "Ortografia"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Goian"
 
@@ -658,7 +658,7 @@ msgstr "Artxibo berria"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Bertan behera utzi"
 
@@ -1458,95 +1458,95 @@ msgstr "Ez dago giltz egokirik"
 msgid "nano is out of memory!"
 msgstr "nano: malloc: memoria falta!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr " Artxiboa:..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "DIR: ..."
 
-#: winio.c:619
+#: winio.c:622
 #, fuzzy
 msgid "File: "
 msgstr " Artxiboa:..."
 
-#: winio.c:622
+#: winio.c:625
 #, fuzzy
 msgid " DIR: "
 msgstr "DIR: ..."
 
-#: winio.c:627
+#: winio.c:630
 #, fuzzy
 msgid " Modified "
 msgstr "Aldatua"
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr ""
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr ""
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "Bb"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "Ee"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "Dd"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Bai"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Denak"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Ez"
 
-#: winio.c:1511
+#: winio.c:1514
 #, fuzzy, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "%1$d (%3$.0f%%)-tik %2$d lerroa, %4$d (%6$.0f%%)-tik %5$d karakterea"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "Nano textu editorea"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "bertsioa"
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Zuretzako hauek egina:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Esker bereziak:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "Free software fundation"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr ""
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "and anyone else we forgot..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Eskerrikasko nano erabiltzeagatik\n"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2003-02-22 16:31:14+0100\n"
 "Last-Translator: Guus Sliepen <guus@sliepen.warande.net>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -103,7 +103,7 @@ msgstr "Geen open bestanden over"
 msgid "Switched to %s"
 msgstr "Omgeschakeld naar %s"
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Nieuwe buffer"
 
@@ -554,7 +554,7 @@ msgstr "Positie"
 msgid "To Spell"
 msgstr "Spelling"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Op"
 
@@ -640,7 +640,7 @@ msgstr "Volgend bestand"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Afbreken"
 
@@ -1500,92 +1500,92 @@ msgstr "Geen overeenkomende rechte haak"
 msgid "nano is out of memory!"
 msgstr "nano heeft geen geheugen meer!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Bestand: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "   Map: ..."
 
-#: winio.c:619
+#: winio.c:622
 msgid "File: "
 msgstr "Bestand: "
 
-#: winio.c:622
+#: winio.c:625
 msgid " DIR: "
 msgstr " Map: "
 
-#: winio.c:627
+#: winio.c:630
 msgid " Modified "
 msgstr " Veranderd "
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr " Toon "
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr "Weigering regex overeenkomst van lengte 0"
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "Jj"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "Nn"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "Aa"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Ja"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Alle"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Nee"
 
-#: winio.c:1511
+#: winio.c:1514
 #, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "regel %ld/%ld (%d%%), kolom %lu/%lu (%d%%), karakter %lu/%ld (%d%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "De nano tekst editor"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "versie "
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "U gebracht door:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Speciale dank aan:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "De Free Software Foundation"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr "Voor ncurses:"
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "en iedereen die we vergeten zijn..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Dank u voor het gebruiken van nano!\n"
 

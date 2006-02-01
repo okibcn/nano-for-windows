@@ -1,4 +1,12 @@
 CVS code -
+- winio.c:
+  blocking_wgetch()
+	- Only save all open buffers and hang up when a blocking
+	  wgetch() returns ERR and errno is set to EIO (input/output
+	  error).  If errno is set to something else, recover properly.
+	  This fixes problems with nano's erroneously hanging up while
+	  e.g. resizing or unsuspending in a chroot. (DLR, found by Mike
+	  Frysinger)
 
 GNU nano 1.2.5 - 2005.05.15
 - files.c:

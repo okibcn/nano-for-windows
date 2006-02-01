@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.1.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2002-02-06 18:42+0200\n"
 "Last-Translator: Gergely Nagy <algernon@debian.org>\n"
 "Language-Team: Hungarian <magyar@lists.linux.hu>\n"
@@ -105,7 +105,7 @@ msgstr "Nincs több nyitott állomány"
 msgid "Switched to %s"
 msgstr ""
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Új buffer"
 
@@ -571,7 +571,7 @@ msgstr "Pozíció"
 msgid "To Spell"
 msgstr "Helyes-e?"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Fel"
 
@@ -661,7 +661,7 @@ msgstr "Új Állomány"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -1556,93 +1556,93 @@ msgstr "Nincs illeszkedõ zárójel"
 msgid "nano is out of memory!"
 msgstr "nano: malloc: elfogyott a memória!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Állomány: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr " Könyvtár: ..."
 
-#: winio.c:619
+#: winio.c:622
 msgid "File: "
 msgstr "Állomány: "
 
-#: winio.c:622
+#: winio.c:625
 msgid " DIR: "
 msgstr " Könyvtár: "
 
-#: winio.c:627
+#: winio.c:630
 #, fuzzy
 msgid " Modified "
 msgstr "Módosítva"
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr ""
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr ""
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "Ii"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "Nn"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "Mm"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Igen"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Mindet"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "Nem"
 
-#: winio.c:1511
+#: winio.c:1514
 #, fuzzy, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "%d(/%d). sor (%.0f%%) és %ld(/%ld). karakter (%.0f%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "A nano szövegszerkesztõ"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "verzió "
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Fejlesztõk:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Külön köszönet:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "A Free Software Foundation"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr ""
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "és mindenkinek, akit kifelejtettünk volna..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Köszönjük, hogy a nano-t választottad!\n"
 

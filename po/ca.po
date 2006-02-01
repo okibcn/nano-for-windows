@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-14 22:47-0400\n"
+"POT-Creation-Date: 2006-02-01 01:23-0500\n"
 "PO-Revision-Date: 2003-10-18 12:48+0200\n"
 "Last-Translator: Jordi Mallach <jordi@gnu.org>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -104,7 +104,7 @@ msgstr "No hi ha més fitxers oberts"
 msgid "Switched to %s"
 msgstr "S'ha canviat a %s"
 
-#: files.c:914 files.c:977 global.c:768 winio.c:608
+#: files.c:914 files.c:977 global.c:768 winio.c:611
 msgid "New Buffer"
 msgstr "Nou búfer"
 
@@ -558,7 +558,7 @@ msgstr "Pos Act"
 msgid "To Spell"
 msgstr "Ortografia"
 
-#: global.c:499 nano.c:428 winio.c:667
+#: global.c:499 nano.c:428 winio.c:670
 msgid "Up"
 msgstr "Amunt"
 
@@ -644,7 +644,7 @@ msgstr "Següent fitxer"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1335
+#: winio.c:1338
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -1498,92 +1498,92 @@ msgstr "No hi ha clau corresponent"
 msgid "nano is out of memory!"
 msgstr "nano s'ha quedat sense memòria!"
 
-#: winio.c:612
+#: winio.c:615
 msgid "  File: ..."
 msgstr "  Fitxer: ..."
 
-#: winio.c:614
+#: winio.c:617
 msgid "   DIR: ..."
 msgstr "   DIR: ..."
 
-#: winio.c:619
+#: winio.c:622
 msgid "File: "
 msgstr "Fitxer: "
 
-#: winio.c:622
+#: winio.c:625
 msgid " DIR: "
 msgstr " DIR: "
 
-#: winio.c:627
+#: winio.c:630
 msgid " Modified "
 msgstr " Modificat "
 
-#: winio.c:629
+#: winio.c:632
 msgid " View "
 msgstr " Visualitza "
 
-#: winio.c:815
+#: winio.c:818
 msgid "Refusing 0 length regex match"
 msgstr "S'ha rebutjat una coincidència d'expreg de mida 0"
 
-#: winio.c:1309
+#: winio.c:1312
 msgid "Yy"
 msgstr "Ss"
 
-#: winio.c:1310
+#: winio.c:1313
 msgid "Nn"
 msgstr "Nn"
 
-#: winio.c:1311
+#: winio.c:1314
 msgid "Aa"
 msgstr "Tt"
 
-#: winio.c:1322
+#: winio.c:1325
 msgid "Yes"
 msgstr "Sí"
 
-#: winio.c:1327
+#: winio.c:1330
 msgid "All"
 msgstr "Totes"
 
-#: winio.c:1332
+#: winio.c:1335
 msgid "No"
 msgstr "No"
 
-#: winio.c:1511
+#: winio.c:1514
 #, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "línia %ld/%ld (%d%%), col %lu/%lu (%d%%), car %lu/%ld(%d%%)"
 
-#: winio.c:1850
+#: winio.c:1853
 msgid "The nano text editor"
 msgstr "L'editor de text GNU nano"
 
-#: winio.c:1851
+#: winio.c:1854
 msgid "version "
 msgstr "versió "
 
-#: winio.c:1852
+#: winio.c:1855
 msgid "Brought to you by:"
 msgstr "Per cortesia de:"
 
-#: winio.c:1853
+#: winio.c:1856
 msgid "Special thanks to:"
 msgstr "Agraïments especials per a:"
 
-#: winio.c:1854
+#: winio.c:1857
 msgid "The Free Software Foundation"
 msgstr "La Fundació per al Software Lliure (FSF)"
 
-#: winio.c:1855
+#: winio.c:1858
 msgid "For ncurses:"
 msgstr "Per ncurses:"
 
-#: winio.c:1856
+#: winio.c:1859
 msgid "and anyone else we forgot..."
 msgstr "i per qualsevol dels qui ens hem oblidat esmentar..."
 
-#: winio.c:1857
+#: winio.c:1860
 msgid "Thank you for using nano!\n"
 msgstr "Gràcies per fer servir nano!\n"
 
