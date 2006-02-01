@@ -1,4 +1,7 @@
 CVS code -
+- General
+	- Update copyright notice on all source files to reflect new 
+	  holder.
 - winio.c:
   blocking_wgetch()
 	- Only save all open buffers and hang up when a blocking
