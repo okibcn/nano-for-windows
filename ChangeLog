@@ -26,6 +26,9 @@ CVS code -
 - faq.html:
 	- Update the Free Translation Project's address, and remove
 	  broken links to contributed RedHat nano packages. (DLR)
+- nano.texi:
+	- Change license to GPL as it is heavily based on the source
+	  code which is licensed GPL (DLR)
 
 GNU nano 1.2.5 - 2005.05.15
 - files.c:
