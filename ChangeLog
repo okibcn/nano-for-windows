@@ -2,16 +2,30 @@ CVS code -
 - General
 	- Update copyright notice on all source files to reflect new 
 	  holder.
+- nano.c:
+  main()
+	- Refer to KEY_SUSPEND instead of 407. (DLR)
 - winio.c:
   blocking_wgetch()
 	- Only save all open buffers and hang up when a blocking
-	  wgetch() returns ERR and errno is set to EIO (input/output
-	  error).  If errno is set to something else, recover properly.
-	  This fixes problems with nano's erroneously hanging up while
-	  e.g. resizing or unsuspending in a chroot. (DLR, found by Mike
-	  Frysinger)
+	  wgetch() returns ERR 128 times in a row, regardless of the
+	  value of errno, since that most likely means that the input
+	  source we were using is gone.  This fixes problems with
+	  nano's erroneously hanging up while e.g. resizing or
+	  unsuspending in a chroot, and with its not hanging up when
+	  it's run via su in an xterm and the xterm window is closed.
+	  (DLR, found by Mike Frysinger and John <acocaracha@gmail.com>)
+  nanogetstr()
+	- Refer to KEY_ENTER instead of 343, and handle all of PDCurses'
+	  Shift, Control, and Alt key values by name instead of
+	  referring to 541-545, which leaves out one key value. (DLR)
   do_credits()
 	- Add DLR as new copyright holder.
+- README.CVS:
+	- Update the given cvs commands so that they work again. (DLR)
+- faq.html:
+	- Update the Free Translation Project's address, and remove
+	  broken links to contributed RedHat nano packages. (DLR)
 
 GNU nano 1.2.5 - 2005.05.15
 - files.c:

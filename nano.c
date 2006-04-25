@@ -3776,8 +3776,13 @@ int main(int argc, char *argv[])
 	    keyhandled = 1;
 
 	/* Catch ^Z by hand when triggered also
-	   407 == ^Z in Linux console when keypad() is used? */
-	if (kbinput == 26 || kbinput == 407) {
+	   KEY_SUSPEND == ^Z in Linux console when keypad() is used and
+	   nano is built with ncurses? */
+#ifdef KEY_SUSPEND
+	if (kbinput == 26 || kbinput == KEY_SUSPEND) {
+#else
+	if (kbinput == 26) {
+#endif
 	    if (ISSET(SUSPEND))
 		do_suspend(0);
 	    keyhandled = 1;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-01 01:23-0500\n"
+"POT-Creation-Date: 2006-04-25 00:21-0400\n"
 "PO-Revision-Date: 2003-06-02 10:03:56+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -17,238 +17,238 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: files.c:321
+#: files.c:322
 #, c-format
 msgid "Read %d line (Converted from Mac format)"
 msgid_plural "Read %d lines (Converted from Mac format)"
 msgstr[0] "%d Zeile gelesen (aus Mac-Format konvertiert)"
 msgstr[1] "%d Zeilen gelesen (aus Mac-Format konvertiert)"
 
-#: files.c:325
+#: files.c:326
 #, c-format
 msgid "Read %d line (Converted from DOS format)"
 msgid_plural "Read %d lines (Converted from DOS format)"
 msgstr[0] "%d Zeile gelesen (aus DOS-Format konvertiert)"
 msgstr[1] "%d Zeilen gelesen (aus DOS-Format konvertiert)"
 
-#: files.c:330
+#: files.c:331
 #, c-format
 msgid "Read %d line"
 msgid_plural "Read %d lines"
 msgstr[0] "%d Zeile gelesen"
 msgstr[1] "%d Zeilen gelesen"
 
-#: files.c:356 search.c:58
+#: files.c:357 search.c:59
 #, c-format
 msgid "\"%s\" not found"
 msgstr "»%s« nicht gefunden"
 
-#: files.c:360
+#: files.c:361
 msgid "New File"
 msgstr "Neue Datei"
 
-#: files.c:366
+#: files.c:367
 #, c-format
 msgid "\"%s\" is a directory"
 msgstr "»%s« ist ein Verzeichnis"
 
-#: files.c:367
+#: files.c:368
 #, c-format
 msgid "File \"%s\" is a device file"
 msgstr "Datei »%s« ist eine Gerätedatei"
 
-#: files.c:385
+#: files.c:386
 msgid "Reading File"
 msgstr "Lese Datei"
 
-#: files.c:461
+#: files.c:462
 #, c-format
 msgid "File to insert into new buffer [from %s] "
 msgstr "in neuen Puffer einzufügende Datei [von %s] "
 
-#: files.c:469
+#: files.c:470
 #, c-format
 msgid "File to insert [from %s] "
 msgstr "einzufügende Datei [von %s] "
 
-#: files.c:480
+#: files.c:481
 msgid "File to insert into new buffer [from ./] "
 msgstr "in neuen Puffer einzufügende Datei [von ./] "
 
-#: files.c:487
+#: files.c:488
 msgid "File to insert [from ./] "
 msgstr "einzufügende Datei [von ./] "
 
-#: files.c:508
+#: files.c:509
 msgid "Command to execute"
 msgstr "Auszuführender Befehl"
 
-#: files.c:510 files.c:622 files.c:1353 files.c:1797 nano.c:2752
+#: files.c:511 files.c:623 files.c:1354 files.c:1798 nano.c:2753
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
-#: files.c:531
+#: files.c:532
 #, c-format
 msgid "Can't insert file from outside of %s"
 msgstr "Kann Datei von außerhalb %s nicht einfügen"
 
-#: files.c:645
+#: files.c:646
 msgid "Key illegal in non-multibuffer mode"
 msgstr "Unzulässige Taste wenn nicht im Multibuffer-Modus"
 
-#: files.c:886 files.c:949
+#: files.c:887 files.c:950
 msgid "No more open files"
 msgstr "Keine weiteren offenen Dateien"
 
-#: files.c:913 files.c:976
+#: files.c:914 files.c:977
 #, c-format
 msgid "Switched to %s"
 msgstr "Umgeschaltet zu %s"
 
-#: files.c:914 files.c:977 global.c:768 winio.c:611
+#: files.c:915 files.c:978 global.c:768 winio.c:617
 msgid "New Buffer"
 msgstr "Neuer Puffer"
 
-#: files.c:1367
+#: files.c:1368
 #, c-format
 msgid "Can't write outside of %s"
 msgstr "Kann nicht außerhalb von %s schreiben"
 
-#: files.c:1398
+#: files.c:1399
 #, c-format
 msgid "Could not read %s for backup: %s"
 msgstr "Konnte %s nicht für die Sicherungskopie lesen: %s"
 
-#: files.c:1409
+#: files.c:1410
 #, c-format
 msgid "Couldn't write backup: %s"
 msgstr "Konnte Sicherungskopie nicht schreiben: %s"
 
-#: files.c:1427
+#: files.c:1428
 #, c-format
 msgid "Could not set permissions %o on backup %s: %s"
 msgstr "Konnte Rechte %o für Sicherungskopie %s nicht setzen: %s"
 
-#: files.c:1433
+#: files.c:1434
 #, c-format
 msgid "Could not set owner %d/group %d on backup %s: %s"
 msgstr "Konnte Besitzer %d/Gruppe %d für Sicherungskopie %s nicht setzen: %s"
 
-#: files.c:1438
+#: files.c:1439
 #, c-format
 msgid "Could not set access/modification time on backup %s: %s"
 msgstr "Konnte Zugriffs-/Änderungszeit für Sicherungskopie %s nicht setzen: %s"
 
-#: files.c:1473 files.c:1489 files.c:1504 files.c:1526 files.c:1559
-#: files.c:1566 files.c:1578
+#: files.c:1474 files.c:1490 files.c:1505 files.c:1527 files.c:1560
+#: files.c:1567 files.c:1579
 #, c-format
 msgid "Could not open file for writing: %s"
 msgstr "Konnte nicht in Datei schreiben: %s"
 
-#: files.c:1589
+#: files.c:1590
 #, c-format
 msgid "Could not close %s: %s"
 msgstr "Konnte %s nicht schließen: %s"
 
-#: files.c:1601 files.c:1606 files.c:1634
+#: files.c:1602 files.c:1607 files.c:1635
 #, c-format
 msgid "Could not reopen %s: %s"
 msgstr "Konnte %s nicht erneut öffnen: %s"
 
-#: files.c:1611 files.c:1617 files.c:1626
+#: files.c:1612 files.c:1618 files.c:1627
 #, c-format
 msgid "Could not open %s for prepend: %s"
 msgstr "Konnte %s nicht zum vorn Anfügen öffnen: %s"
 
-#: files.c:1664 files.c:1673 files.c:1678
+#: files.c:1665 files.c:1674 files.c:1679
 #, c-format
 msgid "Could not open %s for writing: %s"
 msgstr "Konnte %s nicht zum Schreiben öffnen: %s"
 
-#: files.c:1685
+#: files.c:1686
 #, c-format
 msgid "Could not set permissions %o on %s: %s"
 msgstr "Konnte Rechte %o für %s nicht setzen: %s"
 
-#: files.c:1701
+#: files.c:1702
 #, c-format
 msgid "Wrote %d line"
 msgid_plural "Wrote %d lines"
 msgstr[0] "%d Zeile geschrieben"
 msgstr[1] "%d Zeilen geschrieben"
 
-#: files.c:1751
+#: files.c:1752
 msgid " [Mac Format]"
 msgstr " [Mac-Format]"
 
-#: files.c:1753
+#: files.c:1754
 msgid " [DOS Format]"
 msgstr " [DOS-Format]"
 
-#: files.c:1758
+#: files.c:1759
 msgid " [Backup]"
 msgstr " [Sicherungskopie]"
 
-#: files.c:1766
+#: files.c:1767
 msgid "Prepend Selection to File"
 msgstr "Auswahl vorne an Datei anfügen"
 
-#: files.c:1769
+#: files.c:1770
 msgid "Append Selection to File"
 msgstr "Auswahl an Datei anhängen"
 
-#: files.c:1772
+#: files.c:1773
 msgid "Write Selection to File"
 msgstr "Auswahl in Datei schreiben"
 
-#: files.c:1776 files.c:1787
+#: files.c:1777 files.c:1788
 msgid "File Name to Prepend to"
 msgstr "Dateiname zum vorn Anfügen"
 
-#: files.c:1779 files.c:1790
+#: files.c:1780 files.c:1791
 msgid "File Name to Append to"
 msgstr "Dateiname zum Anhängen"
 
-#: files.c:1782 files.c:1793
+#: files.c:1783 files.c:1794
 msgid "File Name to Write"
 msgstr "Dateiname zum Speichern"
 
-#: files.c:1851
+#: files.c:1852
 msgid "File exists, OVERWRITE ?"
 msgstr "Datei exisitiert, ÜBERSCHREIBEN ?"
 
-#: files.c:2340
+#: files.c:2341
 msgid "(more)"
 msgstr "(mehr)"
 
-#: files.c:2640
+#: files.c:2641
 msgid "Can't move up a directory"
 msgstr "Konnte nicht ins übergeordnete Verzeichnis wechseln"
 
-#: files.c:2651 files.c:2724
+#: files.c:2652 files.c:2725
 #, c-format
 msgid "Can't go outside of %s in restricted mode"
 msgstr "Kann im eingeschränkten Modus nicht nach außerhalb von %s gehen"
 
-#: files.c:2658 files.c:2685 files.c:2732
+#: files.c:2659 files.c:2686 files.c:2733
 #, c-format
 msgid "Can't open \"%s\": %s"
 msgstr "Konnte »%s« nicht öffnen: %s"
 
-#: files.c:2706
+#: files.c:2707
 msgid "Goto Directory"
 msgstr "Gehe zu Verzeichnis"
 
-#: files.c:2711
+#: files.c:2712
 msgid "Goto Cancelled"
 msgstr "»Gehe zu« abgebrochen"
 
-#: files.c:2912
+#: files.c:2913
 #, c-format
 msgid "Unable to open ~/.nano_history file, %s"
 msgstr "Kann Datei ~/.nano_history nicht öffnen, %s"
 
-#: files.c:2962 files.c:2971 files.c:2976 files.c:2983
+#: files.c:2963 files.c:2972 files.c:2977 files.c:2984
 #, c-format
 msgid "Unable to write ~/.nano_history file, %s"
 msgstr "Kann Datei ~/.nano_history nicht öffnen, %s"
@@ -293,7 +293,7 @@ msgstr "Im Mac-Format schreiben"
 msgid "Backing up file"
 msgstr "Lege Sicherungskopie der Datei an"
 
-#: global.c:259 nano.c:664
+#: global.c:259 nano.c:665
 msgid "Smooth scrolling"
 msgstr "Sanftes Rollen"
 
@@ -556,7 +556,7 @@ msgstr "Cursor"
 msgid "To Spell"
 msgstr "Rechtschr."
 
-#: global.c:499 nano.c:428 winio.c:670
+#: global.c:499 nano.c:429 winio.c:676
 msgid "Up"
 msgstr "Hoch"
 
@@ -642,7 +642,7 @@ msgstr "Nächste Datei"
 
 #: global.c:583 global.c:631 global.c:668 global.c:687 global.c:717
 #: global.c:755 global.c:779 global.c:789 global.c:799 global.c:820
-#: winio.c:1338
+#: winio.c:1344
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -706,7 +706,7 @@ msgstr "Befehl ausführen"
 msgid "Go To Dir"
 msgstr "Gehe zu Verzeichnis"
 
-#: nano.c:173
+#: nano.c:174
 #, c-format
 msgid ""
 "\n"
@@ -715,7 +715,7 @@ msgstr ""
 "\n"
 "Puffer in %s geschrieben\n"
 
-#: nano.c:175
+#: nano.c:176
 #, c-format
 msgid ""
 "\n"
@@ -724,15 +724,15 @@ msgstr ""
 "\n"
 "%s nicht geschrieben (Zu viele Sicherungskopien?)\n"
 
-#: nano.c:184
+#: nano.c:185
 msgid "Window size is too small for nano...\n"
 msgstr "Fenstergröße ist zu klein für Nano...\n"
 
-#: nano.c:189
+#: nano.c:190
 msgid "Key illegal in VIEW mode"
 msgstr "Unzulässige Taste im View Modus"
 
-#: nano.c:287
+#: nano.c:288
 msgid ""
 "Search Command Help Text\n"
 "\n"
@@ -761,7 +761,7 @@ msgstr ""
 " Die folgenden Funktionstasten sind im Suchmodus verfügbar:\n"
 "\n"
 
-#: nano.c:297
+#: nano.c:298
 msgid ""
 "Go To Line Help Text\n"
 "\n"
@@ -781,7 +781,7 @@ msgstr ""
 " Die folgenden Funktionstasten sind im Zu-Zeile-Modus verfügbar:\n"
 "\n"
 
-#: nano.c:304
+#: nano.c:305
 msgid ""
 "Insert File Help Text\n"
 "\n"
@@ -818,7 +818,7 @@ msgstr ""
 " Die folgenden Funktionstasten sind im Datei-Einfügen-Modus verfügbar:\n"
 "\n"
 
-#: nano.c:318
+#: nano.c:319
 msgid ""
 "Write File Help Text\n"
 "\n"
@@ -847,7 +847,7 @@ msgstr ""
 " Die folgenden Funktionstasten sind im Datei-Schreiben-Modus verfügbar:\n"
 "\n"
 
-#: nano.c:329
+#: nano.c:330
 msgid ""
 "File Browser Help Text\n"
 "\n"
@@ -872,7 +872,7 @@ msgstr ""
 " Die folgenden Funktionstasten sind im Dateiwähler verfügbar:\n"
 "\n"
 
-#: nano.c:340
+#: nano.c:341
 msgid ""
 "Browser Go To Directory Help Text\n"
 "\n"
@@ -896,7 +896,7 @@ msgstr ""
 "Dateiwählers verfügbar:\n"
 "\n"
 
-#: nano.c:349
+#: nano.c:350
 msgid ""
 "Spell Check Help Text\n"
 "\n"
@@ -920,7 +920,7 @@ msgstr ""
 "verfügbar:\n"
 "\n"
 
-#: nano.c:360
+#: nano.c:361
 msgid ""
 "External Command Help Text\n"
 "\n"
@@ -938,7 +938,7 @@ msgstr ""
 "verfügbar:\n"
 "\n"
 
-#: nano.c:367
+#: nano.c:368
 msgid ""
 " nano help text\n"
 "\n"
@@ -975,15 +975,15 @@ msgstr ""
 "Hauptfenster verfügbar. Alternative Tasten sind in Klammern:\n"
 "\n"
 
-#: nano.c:396 nano.c:466
+#: nano.c:397 nano.c:467
 msgid "enable/disable"
 msgstr "aktivieren/deaktivieren"
 
-#: nano.c:423 nano.c:426
+#: nano.c:424 nano.c:427
 msgid "Space"
 msgstr "Space"
 
-#: nano.c:630
+#: nano.c:631
 #, c-format
 msgid ""
 "Usage: nano [+LINE] [GNU long option] [option] [file]\n"
@@ -992,12 +992,12 @@ msgstr ""
 "Aufruf: nano [+ZEILE] [lange GNU-Option] [Option] [Datei]\n"
 "\n"
 
-#: nano.c:631
+#: nano.c:632
 #, c-format
 msgid "Option\t\tLong option\t\tMeaning\n"
 msgstr "Option\t\tlange Option\t\tBedeutung\n"
 
-#: nano.c:633
+#: nano.c:634
 #, c-format
 msgid ""
 "Usage: nano [+LINE] [option] [file]\n"
@@ -1006,194 +1006,194 @@ msgstr ""
 "Aufruf: nano [+ZEILE] [Option] [Datei]\n"
 "\n"
 
-#: nano.c:634
+#: nano.c:635
 #, c-format
 msgid "Option\t\tMeaning\n"
 msgstr "Option\t\tBedeutung\n"
 
-#: nano.c:637
+#: nano.c:638
 msgid "Show this message"
 msgstr "Diese Meldung anzeigen"
 
-#: nano.c:638
+#: nano.c:639
 msgid "+LINE"
 msgstr "+ZEILE"
 
-#: nano.c:638
+#: nano.c:639
 msgid "Start at line number LINE"
 msgstr "Bei Zeile ZEILE beginnen"
 
-#: nano.c:640
+#: nano.c:641
 msgid "Backup existing files on save"
 msgstr "Existierende Dateien beim Speichern sichern"
 
-#: nano.c:641
+#: nano.c:642
 msgid "Write file in DOS format"
 msgstr "Datei im DOS-Format schreiben"
 
-#: nano.c:644
+#: nano.c:645
 msgid "Enable multiple file buffers"
 msgstr "Benutzung mehrerer Dateipuffer aktivieren"
 
-#: nano.c:648
+#: nano.c:649
 msgid "Log & read search/replace string history"
 msgstr "Geschichte der Suchen-/Ersetzen-Begriffe mitschreiben und lesen"
 
-#: nano.c:650
+#: nano.c:651
 msgid "Don't look at nanorc files"
 msgstr "Die nanorc-Dateien ignorieren"
 
-#: nano.c:652
+#: nano.c:653
 msgid "Use alternate keypad routines"
 msgstr "Alternative Routinen für Nummernblock benutzen"
 
-#: nano.c:654
+#: nano.c:655
 msgid "Write file in Mac format"
 msgstr "Datei im Mac-Format schreiben"
 
-#: nano.c:655
+#: nano.c:656
 msgid "Don't convert files from DOS/Mac format"
 msgstr "Keine Umwandlung aus DOS/Mac-Format"
 
-#: nano.c:658
+#: nano.c:659
 msgid "-Q [str]"
 msgstr "-Q [zkette]"
 
-#: nano.c:658
+#: nano.c:659
 msgid "--quotestr=[str]"
 msgstr "--quotestr=[zkette]"
 
-#: nano.c:658
+#: nano.c:659
 msgid "Quoting string, default \"> \""
 msgstr "Zitatzeichen, Voreinstellung »> «"
 
-#: nano.c:661
+#: nano.c:662
 msgid "Do regular expression searches"
 msgstr "Suche mit regulären Ausdrücken durchführen"
 
-#: nano.c:666
+#: nano.c:667
 msgid "-T [num]"
 msgstr "-T [anzahl]"
 
-#: nano.c:666
+#: nano.c:667
 msgid "--tabsize=[num]"
 msgstr "--tabsize=[anzahl]"
 
-#: nano.c:666
+#: nano.c:667
 msgid "Set width of a tab to num"
 msgstr "Tabulator-Größe auf Anzahl setzen"
 
-#: nano.c:667
+#: nano.c:668
 msgid "Print version information and exit"
 msgstr "Versionsinfo ausgeben und beenden"
 
-#: nano.c:669
+#: nano.c:670
 msgid "-Y [str]"
 msgstr "-Y [zkette]"
 
-#: nano.c:669
+#: nano.c:670
 msgid "--syntax [str]"
 msgstr "--syntax [zkette]"
 
-#: nano.c:669
+#: nano.c:670
 msgid "Syntax definition to use"
 msgstr "zu benutzende Syntaxdefinition"
 
-#: nano.c:671
+#: nano.c:672
 msgid "Constantly show cursor position"
 msgstr "Cursorposition ständig anzeigen"
 
-#: nano.c:673
+#: nano.c:674
 msgid "Automatically indent new lines"
 msgstr "Neue Zeilen automatisch einrücken"
 
-#: nano.c:674
+#: nano.c:675
 msgid "Let ^K cut from cursor to end of line"
 msgstr "^K schneidet vom Cursor bis zum Zeilenende aus"
 
-#: nano.c:676
+#: nano.c:677
 msgid "Don't follow symbolic links, overwrite"
 msgstr "Symbolischen Links nicht folgen, sondern überschreiben"
 
-#: nano.c:678
+#: nano.c:679
 msgid "Enable mouse"
 msgstr "Maus aktivieren"
 
-#: nano.c:681
+#: nano.c:682
 msgid "-o [dir]"
 msgstr "-o [verz]"
 
-#: nano.c:681
+#: nano.c:682
 msgid "--operatingdir=[dir]"
 msgstr "--operatingdir=[verz]"
 
-#: nano.c:681
+#: nano.c:682
 msgid "Set operating directory"
 msgstr "Arbeitsverzeichnis setzen"
 
-#: nano.c:683
+#: nano.c:684
 msgid "Preserve XON (^Q) and XOFF (^S) keys"
 msgstr "Tasten XON (^Q) und XOFF (^S) beibehalten"
 
-#: nano.c:685
+#: nano.c:686
 msgid "-r [#cols]"
 msgstr "-r [#spalten]"
 
-#: nano.c:685
+#: nano.c:686
 msgid "--fill=[#cols]"
 msgstr "--fill=[#spalten]"
 
-#: nano.c:685
+#: nano.c:686
 msgid "Set fill cols to (wrap lines at) #cols"
 msgstr "Spalten auffüllen (Zeilenumbruch bei) #Spalten"
 
-#: nano.c:688
+#: nano.c:689
 msgid "-s [prog]"
 msgstr "-s [prog]"
 
-#: nano.c:688
+#: nano.c:689
 msgid "--speller=[prog]"
 msgstr "--speller=[prog]"
 
-#: nano.c:688
+#: nano.c:689
 msgid "Enable alternate speller"
 msgstr "Alternatives Rechtschreibprüfungsprogramm"
 
-#: nano.c:690
+#: nano.c:691
 msgid "Auto save on exit, don't prompt"
 msgstr "Beim Beenden ohne Rückfrage speichern"
 
-#: nano.c:691
+#: nano.c:692
 msgid "View (read only) mode"
 msgstr "Nur zum Lesen öffnen (keine Veränderungen möglich)"
 
-#: nano.c:693
+#: nano.c:694
 msgid "Don't wrap long lines"
 msgstr "Lange Zeilen nicht in neue Zeilen umbrechen"
 
-#: nano.c:695
+#: nano.c:696
 msgid "Don't show help window"
 msgstr "Hilfe-Fenster nicht anzeigen"
 
-#: nano.c:696
+#: nano.c:697
 msgid "Enable suspend"
 msgstr "Suspend (anhalten und zurück zur Shell) aktivieren"
 
-#: nano.c:699
+#: nano.c:700
 msgid "(ignored, for Pico compatibility)"
 msgstr "(ignoriert, für Kompatibilität zu Pico)"
 
-#: nano.c:706
+#: nano.c:707
 #, c-format
 msgid " GNU nano version %s (compiled %s, %s)\n"
 msgstr " GNU nano Version %s (compiliert um %s, %s)\n"
 
-#: nano.c:709
+#: nano.c:710
 #, c-format
 msgid " Email: nano@nano-editor.org\tWeb: http://www.nano-editor.org/"
 msgstr " Email: nano@nano-editor.org\tWWW: http://www.nano-editor.org/"
 
-#: nano.c:710
+#: nano.c:711
 #, c-format
 msgid ""
 "\n"
@@ -1202,132 +1202,132 @@ msgstr ""
 "\n"
 " Kompilierte Optionen:"
 
-#: nano.c:782
+#: nano.c:783
 msgid "Sorry, support for this function has been disabled"
 msgstr "Tut mir leid, diese Funktion wird nicht unterstützt"
 
-#: nano.c:816
+#: nano.c:817
 msgid "Could not pipe"
 msgstr "Konnte kein Pipe durchführen"
 
-#: nano.c:838 nano.c:1804 nano.c:1937
+#: nano.c:839 nano.c:1805 nano.c:1938
 msgid "Could not fork"
 msgstr "Konnte kein Fork durchführen "
 
-#: nano.c:1375
+#: nano.c:1376
 msgid "Mark Set"
 msgstr "Markierung gesetzt"
 
-#: nano.c:1380
+#: nano.c:1381
 msgid "Mark UNset"
 msgstr "Markierung gelöscht"
 
-#: nano.c:1653
+#: nano.c:1654
 msgid "Edit a replacement"
 msgstr "Ersetzung editieren"
 
-#: nano.c:1712
+#: nano.c:1713
 msgid "Could not create pipe"
 msgstr "Konnte keine Pipe erstellen"
 
-#: nano.c:1714
+#: nano.c:1715
 msgid "Creating misspelled word list, please wait..."
 msgstr "Erstelle Liste falsch geschriebener Wörter, bitte warten..."
 
-#: nano.c:1810
+#: nano.c:1811
 msgid "Could not get size of pipe buffer"
 msgstr "Konnte Größe des Pipe-Puffers nicht bestimmen"
 
-#: nano.c:1862
+#: nano.c:1863
 msgid "Error invoking \"spell\""
 msgstr "Fehler beim Aufruf von »spell«"
 
-#: nano.c:1865
+#: nano.c:1866
 msgid "Error invoking \"sort -f\""
 msgstr "Fehler beim Aufruf von »sort -f«"
 
-#: nano.c:1868
+#: nano.c:1869
 msgid "Error invoking \"uniq\""
 msgstr "Fehler beim Aufruf von »uniq«"
 
-#: nano.c:1944
+#: nano.c:1945
 #, c-format
 msgid "Could not invoke \"%s\""
 msgstr "Konnte »%s« nicht aufrufen"
 
-#: nano.c:1987
+#: nano.c:1988
 #, c-format
 msgid "Could not create a temporary filename: %s"
 msgstr "Konnte keine temporäre Datei erzeugen: %s"
 
-#: nano.c:1993
+#: nano.c:1994
 msgid "Spell checking failed: unable to write temp file!"
 msgstr ""
 "Rechtschreibprüfung fehlgeschlagen: konnte nicht in temporäre Datei schreiben"
 
-#: nano.c:2012
+#: nano.c:2013
 #, c-format
 msgid "Spell checking failed: %s"
 msgstr "Rechtschreibprüfung fehlgeschlagen: %s"
 
-#: nano.c:2016
+#: nano.c:2017
 msgid "Finished checking spelling"
 msgstr "Rechtschreibprüfung abgeschlossen"
 
-#: nano.c:2359
+#: nano.c:2360
 #, c-format
 msgid "Bad quote string %s: %s"
 msgstr "Ungültiges Zitatzeichen %s: %s"
 
-#: nano.c:2626
+#: nano.c:2627
 msgid "Can now UnJustify!"
 msgstr "Kann Absatzausrichtung jetzt rückgängig machen"
 
-#: nano.c:2722
+#: nano.c:2723
 msgid "Save modified buffer (ANSWERING \"No\" WILL DESTROY CHANGES) ? "
 msgstr "Veränderten Puffer speichern (»Nein« VERWIRFT DIE ÄNDERUNGEN) ? "
 
-#: nano.c:2822
+#: nano.c:2823
 msgid "Received SIGHUP or SIGTERM\n"
 msgstr "SIGHUP oder SIGTERM empfangen\n"
 
-#: nano.c:2829
+#: nano.c:2830
 msgid "Use \"fg\" to return to nano"
 msgstr "Benutzen Sie »fg«, um zu nano zurückzukehren."
 
-#: nano.c:2957
+#: nano.c:2958
 msgid "NumLock glitch detected.  Keypad will malfunction with NumLock off"
 msgstr ""
 "NumLock-Problem entdeckt. Tastenblock funktioniert bei ausgeschaltetem "
 "NumLock nicht"
 
-#: nano.c:3006
+#: nano.c:3007
 msgid "enabled"
 msgstr "aktiviert"
 
-#: nano.c:3006
+#: nano.c:3007
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: nano.c:3202
+#: nano.c:3203
 #, c-format
 msgid "Tab size is too small for nano...\n"
 msgstr "Tabulatorweite ist zu klein für Nano...\n"
 
-#: nano.c:3768
+#: nano.c:3769
 msgid "XOFF ignored, mumble mumble."
 msgstr "XOFF ignoriert, murmel murmel."
 
-#: nano.c:3770
+#: nano.c:3771
 msgid "XON ignored, mumble mumble."
 msgstr "XON ignoriert, murmel murmel."
 
-#: rcfile.c:105
+#: rcfile.c:106
 #, c-format
 msgid "Error in %s on line %d: "
 msgstr "Fehler in %s in Zeile %d: "
 
-#: rcfile.c:110
+#: rcfile.c:111
 #, c-format
 msgid ""
 "\n"
@@ -1336,12 +1336,12 @@ msgstr ""
 "\n"
 "Drücken Sie die Eingabetaste um mit dem Starten von nano fortzufahren\n"
 
-#: rcfile.c:175
+#: rcfile.c:176
 #, c-format
 msgid "argument %s has unterminated \""
 msgstr "Argument %s hat nicht beendetes \""
 
-#: rcfile.c:217
+#: rcfile.c:218
 #, c-format
 msgid ""
 "color %s not understood.\n"
@@ -1354,240 +1354,240 @@ msgstr ""
 "»white« (weiß), »yellow« (gelb), »cyan« (zyanblau), »magenta« (magentarot)\n"
 "und »black« (schwarz), mit dem optionalen Präfix »bright« (hell).\n"
 
-#: rcfile.c:256
+#: rcfile.c:257
 #, c-format
 msgid "Bad regex \"%s\": %s"
 msgstr "Ungültiger regulärer Ausdruck »%s«: %s"
 
-#: rcfile.c:276 rcfile.c:400 rcfile.c:447
+#: rcfile.c:277 rcfile.c:401 rcfile.c:448
 msgid "regex strings must begin and end with a \" character\n"
 msgstr ""
 "Zeichenketten für reguläre Ausdrücke müssen mit \" anfangen und enden\n"
 
-#: rcfile.c:285
+#: rcfile.c:286
 msgid "Missing syntax name"
 msgstr "Fehlender Syntaxname"
 
-#: rcfile.c:354
+#: rcfile.c:355
 msgid "Missing color name"
 msgstr "Fehlender Farbname"
 
-#: rcfile.c:371
+#: rcfile.c:372
 msgid "Cannot add a color directive without a syntax line"
 msgstr "Kann keine Farbdirektive hinzufügen, ohne eine Syntaxzeile zu haben"
 
-#: rcfile.c:439
+#: rcfile.c:440
 msgid "\"start=\" requires a corresponding \"end=\""
 msgstr "»start=« erfordert ein entsprechendes »end=«"
 
-#: rcfile.c:511
+#: rcfile.c:512
 #, c-format
 msgid "command %s not understood"
 msgstr "Befehl %s nicht verstanden"
 
-#: rcfile.c:543
+#: rcfile.c:544
 #, c-format
 msgid "option %s requires an argument"
 msgstr "Option %s erfordert ein Argument"
 
-#: rcfile.c:568
+#: rcfile.c:569
 #, c-format
 msgid "requested fill size %d invalid"
 msgstr "Angeforderte Füllgröße %d ungültig"
 
-#: rcfile.c:592
+#: rcfile.c:593
 #, c-format
 msgid "requested tab size %d invalid"
 msgstr "Angeforderte Tabulatorweite %d ungültig"
 
-#: rcfile.c:616
+#: rcfile.c:617
 msgid "Errors found in .nanorc file"
 msgstr "Fehler in .nanorc-Datei gefunden"
 
-#: rcfile.c:652
+#: rcfile.c:653
 msgid "I can't find my home directory!  Wah!"
 msgstr "Kann mein Heimatverzeichnis nicht finden!  Autsch!"
 
-#: rcfile.c:672
+#: rcfile.c:673
 #, c-format
 msgid "Unable to open ~/.nanorc file, %s"
 msgstr "Kann Datei ~/.nanorc nicht öffnen, %s"
 
-#: search.c:63
+#: search.c:64
 #, c-format
 msgid "\"%s...\" not found"
 msgstr "»%s...« nicht gefunden"
 
-#: search.c:105
+#: search.c:106
 #, c-format
 msgid "Invalid regex \"%s\""
 msgstr "Ungültiger regulärer Ausdrücke »%s«"
 
-#: search.c:133
+#: search.c:134
 msgid "Search"
 msgstr "Suche"
 
-#: search.c:137
+#: search.c:138
 msgid " [Case Sensitive]"
 msgstr " [GROSZ/klein]"
 
-#: search.c:141
+#: search.c:142
 msgid " [Regexp]"
 msgstr " [reg. Ausdruck]"
 
-#: search.c:145
+#: search.c:146
 msgid " [Backwards]"
 msgstr " [Rückwärts]"
 
-#: search.c:147
+#: search.c:148
 msgid " (to replace)"
 msgstr " (zu ersetzen)"
 
-#: search.c:155
+#: search.c:156
 msgid "Search Cancelled"
 msgstr "Suche abgebrochen"
 
-#: search.c:300 search.c:357
+#: search.c:301 search.c:358
 msgid "Search Wrapped"
 msgstr "Suche wieder von vorn"
 
-#: search.c:432
+#: search.c:433
 msgid "This is the only occurrence"
 msgstr "Das ist das einzige Auftreten"
 
-#: search.c:585 search.c:751
+#: search.c:586 search.c:752
 msgid "Replace Cancelled"
 msgstr "Ersetzung abgebrochen"
 
-#: search.c:661
+#: search.c:662
 msgid "Replace this instance?"
 msgstr "Fundstelle ersetzen?"
 
-#: search.c:686
+#: search.c:687
 msgid "Replace failed: unknown subexpression!"
 msgstr "Ersetzung gescheitert: unbekannter Unterausdruck"
 
-#: search.c:788
+#: search.c:789
 msgid "Replace with"
 msgstr "Ersetzen mit"
 
-#: search.c:808
+#: search.c:809
 #, c-format
 msgid "Replaced %d occurrence"
 msgid_plural "Replaced %d occurrences"
 msgstr[0] "%d Ersetzung vorgenommen"
 msgstr[1] "%d Ersetzungen vorgenommen"
 
-#: search.c:829
+#: search.c:830
 msgid "Enter line number"
 msgstr "Zeilennummer eingeben"
 
-#: search.c:833
+#: search.c:834
 msgid "Aborted"
 msgstr "Abgebrochen"
 
-#: search.c:843
+#: search.c:844
 msgid "Come on, be reasonable"
 msgstr "Komm schon, sei vernünftig"
 
-#: search.c:903
+#: search.c:904
 msgid "Not a bracket"
 msgstr "Keine Klammer"
 
-#: search.c:954
+#: search.c:955
 msgid "No matching bracket"
 msgstr "Keine passende Klammer"
 
-#: utils.c:257 utils.c:267
+#: utils.c:258 utils.c:268
 msgid "nano is out of memory!"
 msgstr "nano hat keinen Speicher mehr!"
 
-#: winio.c:615
+#: winio.c:621
 msgid "  File: ..."
 msgstr "  Datei: ..."
 
-#: winio.c:617
+#: winio.c:623
 msgid "   DIR: ..."
 msgstr "   Verz.: ..."
 
-#: winio.c:622
+#: winio.c:628
 msgid "File: "
 msgstr "Datei: "
 
-#: winio.c:625
+#: winio.c:631
 msgid " DIR: "
 msgstr "Verz.: "
 
-#: winio.c:630
+#: winio.c:636
 msgid " Modified "
 msgstr "Verändert "
 
-#: winio.c:632
+#: winio.c:638
 msgid " View "
 msgstr "Ansehen "
 
-#: winio.c:818
+#: winio.c:824
 msgid "Refusing 0 length regex match"
 msgstr "Treffer mit Länge 0 bei regulärem Ausdruck nicht akzeptiert"
 
-#: winio.c:1312
+#: winio.c:1318
 msgid "Yy"
 msgstr "JjYy"
 
-#: winio.c:1313
+#: winio.c:1319
 msgid "Nn"
 msgstr "Nn"
 
-#: winio.c:1314
+#: winio.c:1320
 msgid "Aa"
 msgstr "Aa"
 
-#: winio.c:1325
+#: winio.c:1331
 msgid "Yes"
 msgstr "Ja"
 
-#: winio.c:1330
+#: winio.c:1336
 msgid "All"
 msgstr "Alle"
 
-#: winio.c:1335
+#: winio.c:1341
 msgid "No"
 msgstr "Nein"
 
-#: winio.c:1514
+#: winio.c:1520
 #, c-format
 msgid "line %ld/%ld (%d%%), col %lu/%lu (%d%%), char %lu/%ld (%d%%)"
 msgstr "Zeile %ld/%ld (%d%%), Spalte %lu/%lu (%d%%), Zeichen %lu/%ld (%d%%)"
 
-#: winio.c:1853
+#: winio.c:1860
 msgid "The nano text editor"
 msgstr "Der nano-Text-Editor"
 
-#: winio.c:1854
+#: winio.c:1861
 msgid "version "
 msgstr "Version "
 
-#: winio.c:1855
+#: winio.c:1862
 msgid "Brought to you by:"
 msgstr "Entwickelt von:"
 
-#: winio.c:1856
+#: winio.c:1863
 msgid "Special thanks to:"
 msgstr "Speziellen Dank an:"
 
-#: winio.c:1857
+#: winio.c:1864
 msgid "The Free Software Foundation"
 msgstr "The Free Software Foundation"
 
-#: winio.c:1858
+#: winio.c:1865
 msgid "For ncurses:"
 msgstr "Für ncurses:"
 
-#: winio.c:1859
+#: winio.c:1866
 msgid "and anyone else we forgot..."
 msgstr "und alle Nichtgenannten..."
 
-#: winio.c:1860
+#: winio.c:1867
 msgid "Thank you for using nano!\n"
 msgstr "Danke für die Benutzung von nano!\n"
 

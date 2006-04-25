@@ -21,10 +21,10 @@ To download the CVS tree, execute the following command:
 $ cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/nano login
 and press enter at the password prompt.
 Then, do
-$ cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/nano checkout nano
+$ cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/nano checkout nano
 and the nano tree will download.
 If you want to checkout the stable CVS branch, append -r nano_1_0_branch:
-$ cvs -z3 -d:pserver:anonymous@subversions.gnu.org:/cvsroot/nano checkout -r nano_1_0_branch nano
+$ cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/nano checkout -r nano_1_2_branch nano
 
 Once you have the sources in the "nano" directory, cd into it, and
 execute the "autogen.sh" script in the top dir. This will setup a

@@ -26,7 +26,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
 #include <ctype.h>
 #include <assert.h>
 #include "proto.h"
@@ -38,12 +37,17 @@ static int statblank = 0;	/* Number of keystrokes left after
 
 int blocking_wgetch(WINDOW *win)
 {
-    int retval;
+    int retval, errcount = 0;
 
     while ((retval = wgetch(win)) == ERR) {
-	/* If errno is EIO, it means that the input source that we were
-	 * using is gone, so die gracefully. */
-	if (errno == EIO)
+	errcount++;
+
+	/* If we've failed to get a character 128 times in a row, assume
+	 * that the input source we were using is gone and die
+	 * gracefully.  We could check if errno is set to EIO
+	 * ("Input/output error") and die gracefully in that case, but
+	 * it's not always set properly.  Argh. */
+	if (errcount == 128)
 	    handle_hupterm(0);
     }
 
@@ -291,16 +295,17 @@ int nanogetstr(int allowtabs, const char *buf, const char *def,
 	switch (kbinput) {
 
 	    /* Stuff we want to equate with <enter>, ASCII 13 */
-	case 343:
+	case KEY_ENTER:
 	    ungetch(13);	/* Enter on iris-ansi $TERM, sometimes */
 	    break;
 	    /* Stuff we want to ignore */
 #ifdef PDCURSES
-	case 541:
-	case 542:
-	case 543:		/* Right ctrl again */
-	case 544:
-	case 545:		/* Right alt again */
+	case KEY_SHIFT_L:
+	case KEY_SHIFT_R:
+	case KEY_CONTROL_L:
+	case KEY_CONTROL_R:
+	case KEY_ALT_L:
+	case KEY_ALT_R:
 	    break;
 #endif
 #if !defined(DISABLE_MOUSE) && defined(NCURSES_MOUSE_VERSION)
