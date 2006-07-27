@@ -77,10 +77,10 @@ internationalization support, and filename tab completion.
 
 The original goal for @code{nano} was a complete bug-for-bug compatible
 emulation of Pico, but nano's main goal is to be as compatible as
-possible while offering a superset of Pico's functionality.
-Also see @xref{Pico Compatibility}, for other differences.
+possible while offering a superset of Pico's functionality.  Also see
+@xref{Pico Compatibility}, for other differences.
 
-Email bug reports to @email{nano@@nano-editor.org}. 
+Email bug reports to @email{nano@@nano-editor.org}.
 
 @node Command Line Options, , Overview, Introduction
 @section Command Line Options
@@ -98,6 +98,10 @@ Write file in DOS format.
 
 @item -F, --multibuffer
 Enable multiple file buffers, if available.
+
+@item -H, --historylog
+Log search and replace strings to ~/.nano_history, so they can be
+retrieved in later sessions, if nanorc support is available.
 
 @item -I, --ignorercfiles
 Don't look at $SYSCONFDIR/nanorc or ~/.nanorc, if nanorc support is
@@ -133,7 +137,7 @@ Enable smooth scrolling.
 @item -T [num], --tabsize=[num]
 Set the displayed tab length to [num] columns.
 
-@item -V, --version 
+@item -V, --version
 Print the version number and copyright and quit.
 
 @item -Y, --syntax=[str]
@@ -167,10 +171,10 @@ Set operating directory. Makes @code{nano} set up something similar to a
 chroot.
 
 @item -p, --preserve
-Preserve the ^Q (XON) and ^S (XOFF) sequences so data being sent to the editor
-can be can be stopped and started.
+Preserve the ^Q (XON) and ^S (XOFF) sequences so data being sent to the
+editor can be can be stopped and started.
 
-@item -r [#cols], --fill=[#cols].
+@item -r [#cols], --fill=[#cols]
 Wrap lines at column #cols.  By default this is the width of the screen,
 less eight. If this value is negative, wrapping will occur at #cols from
 the right of the screen, allowing it to vary along with the screen width
@@ -186,23 +190,23 @@ Do not ask whether or not to save the current contents of the file when
 exiting, assume yes.  This is most useful when using @code{nano} as the
 composer of a mailer program.
 
-@anchor{Expert Mode}
-@item -x, --nohelp
-In Expert Mode, the Shortcut Lists will not appear at the bottom of the 
-screen.  This affects the location of the statusbar as well, as in Expert
-Mode it is located at the very bottom of the editor.
-
-Note: When accessing the help system, Expert Mode is temporarily disabled
-to display the help system navigation keys.
-
 @item -v, --view
 Do not allow the contents of the file to be altered.  Note that this
-flag should NOT be used in place of correct file permissions to implement
-a read-only file.
+flag should NOT be used in place of correct file permissions to
+implement a read-only file.
 
 @item -w, --nowrap
-Do not wrap long lines at any length. This option overrides any value for
--r.
+Do not wrap long lines at any length. This option overrides any value
+for -r.
+
+@anchor{Expert Mode}
+@item -x, --nohelp
+In Expert Mode, the Shortcut Lists will not appear at the bottom of the
+screen.  This affects the location of the statusbar as well, as in
+Expert Mode it is located at the very bottom of the editor.
+
+Note: When accessing the help system, Expert Mode is temporarily
+disabled to display the help system navigation keys.
 
 @item -z, --suspend
 Enable suspend ability of @code{nano} using the system's suspend
@@ -231,27 +235,27 @@ Start at line number LINE instead of the default of line 1.
 All key sequences in @code{nano} are entered using the keyboard.
 @code{nano} is a ``modeless'' editor.  All keys with the exception of
 Control and Meta key sequences will enter text into the file being
-edited.  
+edited.
 
 @node Special Functions, The Titlebar, Entering Text, Editor Basics
 @section Special Functions
 
 Special functions use the Control key (displayed in the help and
 shortcut lists as ^) or the Meta key (displayed as M).
-     
+
 @itemize @bullet
-     
+
 @item
 Control key sequences are entered by holding down the Control key and
-pressing the desired letter.  
+pressing the desired letter.
 @item
-Meta key sequences can be entered in a number of
-possible ways: Pressing the Escape key, then releasing it and pressing
-the desired key, or holding down the Alt key while pressing the desired 
-key.  This varies from keyboard to keyboard, and certain commercial
-operating systems ``swallow'' the Alt key so that it never reaches the
-application. If your operating system does this, you should use the
-Escape key to generate Meta key sequences.
+Meta key sequences can be entered in a number of possible ways: Pressing
+the Escape key, then releasing it and pressing the desired key, or
+holding down the Alt key while pressing the desired key.  This varies
+from keyboard to keyboard, and certain commercial operating systems
+``swallow'' the Alt key so that it never reaches the application.  If
+your operating system does this, you should use the Escape key to
+generate Meta key sequences.
 @end itemize
 
 @node The Titlebar, The Statusbar, Special Functions, Editor Basics
@@ -284,24 +288,24 @@ the statusbar.
 @section Shortcut Lists
 
 The Shortcut Lists are the two lines at the bottom of the screen which
-show some of the more commonly used functions in the editor. 
+show some of the more commonly used functions in the editor.
 
 @node Online Help, Feature Toggles, Editor Basics, Top
 @chapter Online Help
 
-The online help system in @code{nano} is available by pressing ^G.
-It is fairly self explanatory, documenting the various parts of the 
-editor and available keystrokes.  Navigation is via the ^Y (Page Up)
-and ^V (Page Down) keys.  ^X exits the help system.
+The online help system in @code{nano} is available by pressing ^G. It is
+fairly self explanatory, documenting the various parts of the editor and
+available keystrokes.  Navigation is via the ^Y (Page Up) and ^V (Page
+Down) keys.  ^X exits the help system.
 
 
 @node Feature Toggles, The File Browser, Online Help, Top
 @chapter Feature Toggles
 
-Toggles allow you to change certain aspects of the editor that
-would normally be done via command line flags. They are invoked via
-certain Meta key sequences. @xref{Special Functions}, for more info.
-The following global toggles are available:
+Toggles allow you to change certain aspects of the editor that would
+normally be done via command line flags.  They are invoked via certain
+Meta key sequences. @xref{Special Functions}, for more info.  The
+following global toggles are available:
 
 @table @code
 
@@ -357,7 +361,7 @@ find the desired file.
 Basic movement in the file browser is accomplished with the arrow keys
 and page up/down.  The behavior of the enter (or `s') key varies by what
 is currently selected.  If the currently selected object is a directory,
-the file browser will enter and display the contents of the directory. 
+the file browser will enter and display the contents of the directory.
 If the object is a file, this filename and path are copied to the
 statusbar and the file browser is exited.
 
@@ -370,15 +374,15 @@ are certain differences between the editors:
 @table @code
 @item Search and Replace History
 As of version 1.2.5 of @code{nano}, text entered as search or replace
-strings will be stored and can be accessed with the up/down
-arrow keys.  Previously, @code{nano} offered a more consistent, but incompatible
-with Pico, method for entering search and replace strings.  In the old
-method, previous entries would be displayed by default as editable text 
-in front of the cursor, as opposed to being bracketed and uneditable as 
-it is in Pico.  The old behavior could be made compatible with Pico via the
-@code{-p} flag, but recent versions of Pico use the @code{-p} flag 
-to preserve the XON and XOFF sequences within the editor.  Since with the new 
-method search and replace strings can still be edited by simply 
+strings will be stored and can be accessed with the up/down arrow keys.
+Previously, @code{nano} offered a more consistent, but incompatible with
+Pico, method for entering search and replace strings.  In the old
+method, previous entries would be displayed by default as editable text
+in front of the cursor, as opposed to being bracketed and uneditable as
+it is in Pico.  The old behavior could be made compatible with Pico via
+the @code{-p} flag, but recent versions of Pico use the @code{-p} flag
+to preserve the XON and XOFF sequences within the editor.  Since with
+the new method search and replace strings can still be edited by simply
 hitting the up arrow key once, the old method was removed completely.
 
 
@@ -387,13 +391,12 @@ Text selected using the Control-Caret (^^) key can be written out or
 appended to a new or existing file using the Writeout key (^O).
 
 @item Toggles
-Many options which alter the functionality of the program can be 
-"toggled" on or off using Meta key sequences, meaning the program does 
-not have to be restarted to turn a particular feature of the editor 
-on or off.  Please see the internal help function (^G) for a list of 
-what functions can be toggled for a particular version of 
-@code{nano}.  Also see @xref{Feature Toggles}, though this may be out
-of date.
+Many options which alter the functionality of the program can be
+"toggled" on or off using Meta key sequences, meaning the program does
+not have to be restarted to turn a particular feature of the editor on
+or off.  Please see the internal help function (^G) for a list of what
+functions can be toggled for a particular version of @code{nano}.  Also
+see @xref{Feature Toggles}, though this may be out of date.
 
 @item Cursor Position Display
 The output of the "Display Cursor Position" in @code{nano} displays
@@ -402,21 +405,21 @@ position of the cursor.
 
 @item Interactive Replace and Spell Checker
 It is worth noting that the @code{nano} replace function is interactive,
-i.e. it does not stop after one search string is found and automatically 
+i.e. it does not stop after one search string is found and automatically
 replace it.  The @code{nano} implementation will stop at each search
-string found and query whether to replace this instance or not.  The 
-internal spell checker operates similarly.  Note that these is no way 
-to force these functions to behave in the Pico fashion.  As of 
-version 1.2.5, misspelled words are sorted and trimmed for 
-uniqueness in the internal spell checker such that the words 'apple' 
-and 'Apple' will be prompted for correction separately.  
+string found and query whether to replace this instance or not.  The
+internal spell checker operates similarly.  Note that these is no way
+to force these functions to behave in the Pico fashion.  As of
+version 1.2.5, misspelled words are sorted and trimmed for
+uniqueness in the internal spell checker such that the words 'apple'
+and 'Apple' will be prompted for correction separately.
 @end table
 
 @node Building and Configure Options, , Pico Compatibility, Top
 @chapter Building and Configure Options
 
-Building @code{nano} from source is fairly straightforward if you are familiar
-with compiling programs with autoconf support:
+Building @code{nano} from source is fairly straightforward if you are
+familiar with compiling programs with autoconf support:
 
 @itemize @bullet
 @item tar xvfz nano-x.y.z.tar.gz (where x.y.z is the version of nano)

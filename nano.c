@@ -2918,7 +2918,7 @@ void handle_sigwinch(int s)
     /* Do the equivalent of what Minimum Profit does: Leave and
      * immediately reenter curses mode. */
     endwin();
-    refresh();
+    doupdate();
 #endif
  
     /* Do the equivalent of what both mutt and Minimum Profit do:
@@ -2930,14 +2930,10 @@ void handle_sigwinch(int s)
 
     if (current_y > editwinrows - 1)
 	edit_update(editbot, CENTER);
-    erase();
 
-    /* Do these b/c width may have changed... */
-    refresh();
-    titlebar(NULL);
-    edit_refresh();
-    display_main_list();
+    /* Redraw the contents of the windows that need it. */
     blank_statusbar();
+    display_main_list();
     total_refresh();
 
     /* Turn cursor back on for sure */

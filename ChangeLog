@@ -2,9 +2,26 @@ CVS code -
 - General
 	- Update copyright notice on all source files to reflect new 
 	  holder.
+- files.c:
+  browser_init()
+	- Fix off-by-one error when calculating longest that kept the
+	  rightmost column of the screen from being used. (DLR)
+  do_browser()
+	- Fix potential crash when strlen(tail(filelist[j])) is greater
+	  than (longest + 8). (DLR)
+	- If we click off the edge of the screen, and the file selected
+	  is the same one that was selected before, read it in, as Pico
+	  does. (DLR)
+	- Fix problem where width wouldn't be properly initialized if
+	  the file list took up one line or less. (DLR)
 - nano.c:
+  handle_sigwinch()
+	- Simplify and remove unneeded erase() call. (DLR)
   main()
 	- Refer to KEY_SUSPEND instead of 407. (DLR)
+- utils.c:
+  num_of_digits()
+	- Return the proper number of digits when n is exactly 10. (DLR)
 - winio.c:
   blocking_wgetch()
 	- Only save all open buffers and hang up when a blocking
@@ -19,6 +36,13 @@ CVS code -
 	- Refer to KEY_ENTER instead of 343, and handle all of PDCurses'
 	  Shift, Control, and Alt key values by name instead of
 	  referring to 541-545, which leaves out one key value. (DLR)
+  edit_add()
+	- Properly ignore zero-length regexes in multi-line regexes as
+	  well as single-line ones.  This avoids a segfault when trying
+	  to color e.g. "start="$" end="$"". (DLR, found by Trevor
+	  Caira)
+  total_refresh()
+	- Simplify. (DLR)
   do_credits()
 	- Add DLR as new copyright holder.
 - README.CVS:
@@ -28,7 +52,12 @@ CVS code -
 	  broken links to contributed RedHat nano packages. (DLR)
 - nano.texi:
 	- Change license to GPL as it is heavily based on the source
-	  code which is licensed GPL (DLR)
+	  code which is licensed GPL. (DLR)
+	- Add missing description of -H/--historylog, and move
+	  -x/--nohelp down so that all the command line options are in
+	  alphabetical order. (Benno Schulenberg)
+	- Wrap lines at 72 characters when possible, and remove unneeded
+	  whitespace at the ends of lines. (DLR)
 
 GNU nano 1.2.5 - 2005.05.15
 - files.c:

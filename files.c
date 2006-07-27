@@ -2487,8 +2487,8 @@ char **browser_init(const char *path, int *longest, int *numents)
     }
     closedir(dir);
 
-    if (*longest > COLS - 1)
-	*longest = COLS - 1;
+    if (*longest > COLS)
+	*longest = COLS;
 
     return filelist;
 }
@@ -2583,7 +2583,7 @@ char *do_browser(const char *inpath)
 		   If we clicked where we did last time, select this name! */
 		if (selected > numents - 1)
 		    selected = numents - 1;
-		else if (selectedbackup == selected)
+		if (selectedbackup == selected)
 		    ungetch('s');	/* Unget the 'select' key */
 	    } else	/* Must be clicking a shortcut */
 		do_mouse();
@@ -2766,7 +2766,7 @@ char *do_browser(const char *inpath)
 	for (j = i; j < numents && editline <= editwinrows - 1; j++) {
 	    filecols++;
 
-	    strncpy(foo, tail(filelist[j]), strlen(tail(filelist[j])) + 1);
+	    snprintf(foo, longest + 1, "%s", tail(filelist[j]));
 	    while (strlen(foo) < longest)
 		strcat(foo, " ");
 	    col += strlen(foo);
@@ -2822,6 +2822,10 @@ char *do_browser(const char *inpath)
 		    width = filecols;
 	    }
 	}
+
+	if (width == 0)
+	    width = COLS % longest;
+
  	wrefresh(edit);
     } while ((kbinput = blocking_wgetch(edit)) != NANO_EXIT_KEY);
     curs_set(1);
