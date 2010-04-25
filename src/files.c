@@ -1392,14 +1392,22 @@ bool write_file(const char *name, FILE *f_open, bool tmp, append_type
     realexists = (stat(realname, &st) != -1);
 
 #ifndef NANO_TINY
+    /* if we have not stat()d this file before (say, the user just
+     * specified it interactively), stat and save the value
+     * or else we will chase null pointers when we do
+     * modtime checks, preserve file times, etc. during backup */
+    if (openfile->current_stat == NULL && !tmp && realexists)
+	stat(realname, openfile->current_stat);
+
     /* We backup only if the backup toggle is set, the file isn't
      * temporary, and the file already exists.  Furthermore, if we
      * aren't appending, prepending, or writing a selection, we backup
      * only if the file has not been modified by someone else since nano
      * opened it. */
     if (ISSET(BACKUP_FILE) && !tmp && realexists && ((append !=
-	OVERWRITE || openfile->mark_set) ||
-	openfile->current_stat->st_mtime == st.st_mtime)) {
+	OVERWRITE || openfile->mark_set) || (openfile->current_stat &&
+	openfile->current_stat->st_mtime == st.st_mtime))) {
+	int backup_fd;
 	FILE *backup_file;
 	char *backupname;
 	struct utimbuf filetime;
@@ -1472,18 +1480,36 @@ bool write_file(const char *name, FILE *f_open, bool tmp, append_type
 	    sprintf(backupname, "%s~", realname);
 	}
 
-	/* Open the destination backup file.  Before we write to it, we
-	 * set its permissions, so no unauthorized person can read it as
-	 * we write. */
-	backup_file = fopen(backupname, "wb");
+	/* First, unlink any existing backups.  Next, open the backup
+	   file with O_CREAT and O_EXCL.  If it succeeds, we
+	   have a file descriptor to a new backup file. */
+	if (unlink(backupname) < 0 && errno != ENOENT) {
+	    statusbar(_("Error writing backup file %s: %s"), backupname,
+			strerror(errno));
+	    free(backupname);
+	    goto cleanup_and_exit;
+	}
 
-	if (backup_file == NULL || chmod(backupname,
-		openfile->current_stat->st_mode) == -1) {
+	backup_fd = open(backupname, O_WRONLY | O_CREAT | O_EXCL | O_APPEND,
+		S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+	/* Now we've got a safe file stream.  If the previous open()
+	   call failed, this will return NULL. */
+	backup_file = fdopen(backup_fd, "wb");
+
+	if (backup_fd < 0 || backup_file == NULL) {
+	    statusbar(_("Error writing backup file %s: %s"), backupname,
+			strerror(errno));
+	    free(backupname);
+	    goto cleanup_and_exit;
+	}
+
+	if (fchmod(backup_fd, openfile->current_stat->st_mode) == -1 ||
+	    fchown(backup_fd, openfile->current_stat->st_uid,
+		   openfile->current_stat->st_gid) == -1 ) {
 	    statusbar(_("Error writing %s: %s"), backupname,
 		strerror(errno));
 	    free(backupname);
-	    if (backup_file != NULL)
-		fclose(backup_file);
+	    fclose(backup_file);
 	    /* If we can't write to the backup, go on, since only saving
 	     * the original file is better than saving nothing. */
 	    goto skip_backup;
@@ -1497,10 +1523,7 @@ bool write_file(const char *name, FILE *f_open, bool tmp, append_type
 	copy_status = copy_file(f, backup_file);
 
 	/* And set its metadata. */
-	if (copy_status != 0 || chown(backupname,
-		openfile->current_stat->st_uid,
-		openfile->current_stat->st_gid) == -1 ||
-		utime(backupname, &filetime) == -1) {
+	if (copy_status != 0  || utime(backupname, &filetime) == -1) {
 	    if (copy_status == -1) {
 		statusbar(_("Error reading %s: %s"), realname,
 			strerror(errno));
@@ -1999,6 +2022,18 @@ bool do_writeout(bool exiting)
 			    continue;
 		    }
 		}
+#ifndef NANO_TINY
+		/* Complain if the file exists, the name hasn't changed, and the
+		    stat information we had before does not match what we have now */
+		else if (name_exists && openfile->current_stat && (openfile->current_stat->st_mtime < st.st_mtime ||
+                    openfile->current_stat->st_dev != st.st_dev || openfile->current_stat->st_ino != st.st_ino)) {
+		    i = do_yesno_prompt(FALSE,
+			_("File was modified since you opened it, continue saving ? "));
+		    if (i == 0 || i == -1)
+			continue;
+		}
+#endif
+
 	    }
 
 	    /* Convert newlines to nulls, just before we save the
