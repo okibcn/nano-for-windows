@@ -1,3 +1,7 @@
+2010-07-07 Adrian Bunk <bunk via Savannah>
+	* nano.c (main) - Allow --fill and --nowrap to override nanorc entries and each other
+	  on the command line.  Backported from 2.2 at request of Benno Schulenberg.
+
 2010-04-25 Chris Allegretta <chrisa@asty.org>
        * files.c (do_writeout): Merge in 2.1/2.2 branch modification check and security fixes
 	 (in particular revs 4424 4467 4474 4490 4491 4494 4495 4496 4497 and 4500).  Addresses

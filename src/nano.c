@@ -1963,6 +1963,11 @@ int main(int argc, char **argv)
 #ifndef DISABLE_WRAPPING
 	    case 'w':
 		SET(NO_WRAP);
+
+		/* If both --fill and --nowrap are given on the command line,
+		   the last option wins, */
+		fill_used = FALSE;
+
 		break;
 #endif
 	    case 'x':
@@ -2069,6 +2074,11 @@ int main(int argc, char **argv)
 	SET(NO_WRAP);
 #endif
 #endif /* ENABLE_NANORC */
+
+    /* Overwrite an rcfile "set nowrap" or --disable-wrapping-as-root
+       if a --fill option was given on the command line. */ 
+    if (fill_used)
+	UNSET(NO_WRAP);
 
     /* If we're using bold text instead of reverse video text, set it up
      * now. */
