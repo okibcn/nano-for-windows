@@ -878,6 +878,11 @@ text.  (The color of the stripe can be changed with @code{set stripecolor}.)
 Save the last hundred search strings and replacement strings and
 executed commands, so they can be easily reused in later sessions.
 
+@item set indicator
+Display a "scrollbar" on the righthand side of the edit window.
+It shows the position of the viewport in the buffer
+and how much of the buffer is covered by the viewport.
+
 @item set jumpyscrolling
 Scroll the buffer contents per half-screen instead of per line.
 
@@ -950,11 +955,6 @@ The cursor position is remembered for the 200 most-recently edited files.
 
 @item set preserve
 Preserve the XON and XOFF keys (@kbd{^Q} and @kbd{^S}).
-
-@item set indicator
-Display a "scrollbar" on the righthand side of the edit window.
-It shows the position of the viewport in the buffer
-and how much of the buffer is covered by the viewport.
 
 @item set punct "@var{characters}"
 Set the characters treated as closing punctuation when justifying
