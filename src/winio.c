@@ -2034,7 +2034,7 @@ void titlebar(const char *path)
 #ifndef NANO_TINY
 	/* When requested, show on the title bar the state of three options and
 	 * the state of the mark and whether a macro is being recorded. */
-	if (ISSET(STATEFLAGS) && !ISSET(VIEW_MODE)) {
+	if (*state && ISSET(STATEFLAGS) && !ISSET(VIEW_MODE)) {
 		if (openfile->modified && COLS > 1)
 			waddstr(topwin, " *");
 		if (statelen < COLS) {
