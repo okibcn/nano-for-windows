@@ -1354,9 +1354,11 @@ int do_mouse(void)
 #ifndef NANO_TINY
 		/* Clicking where the cursor is toggles the mark, as does clicking
 		 * beyond the line length with the cursor at the end of the line. */
-		if (sameline && openfile->current_x == current_x_save)
+		if (sameline && openfile->current_x == current_x_save) {
 			do_mark();
-		else
+			if (ISSET(STATEFLAGS))
+				titlebar(NULL);
+		} else
 #endif
 			/* The cursor moved; clean the cutbuffer on the next cut. */
 			keep_cutbuffer = FALSE;
