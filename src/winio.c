@@ -1518,14 +1518,16 @@ char *get_verbatim_kbinput(WINDOW *win, size_t *count)
 int get_mouseinput(int *mouse_y, int *mouse_x, bool allow_shortcuts)
 {
 	MEVENT mevent;
-	bool in_bottomwin;
+	bool in_editwin, in_bottomwin;
 
 	/* First, get the actual mouse event. */
 	if (getmouse(&mevent) == ERR)
 		return -1;
 
+	in_editwin = wenclose(edit, mevent.y, mevent.x);
+
 	/* Save the screen coordinates where the mouse event took place. */
-	*mouse_x = mevent.x - margin;
+	*mouse_x = mevent.x - (in_editwin ? margin : 0);
 	*mouse_y = mevent.y;
 
 	in_bottomwin = wenclose(bottomwin, *mouse_y, *mouse_x);
@@ -1551,7 +1553,7 @@ int get_mouseinput(int *mouse_y, int *mouse_x, bool allow_shortcuts)
 			/* Clicks on the status bar are handled elsewhere, so
 			 * restore the untranslated mouse-event coordinates. */
 			if (*mouse_y == 0) {
-				*mouse_x = mevent.x - margin;
+				*mouse_x = mevent.x;
 				*mouse_y = mevent.y;
 				return 0;
 			}
