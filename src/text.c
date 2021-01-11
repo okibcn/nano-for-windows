@@ -2535,7 +2535,7 @@ void do_spell(void)
 
 	blank_bottombars();
 
-	if (alt_speller)
+	if (alt_speller && *alt_speller)
 		treat(temp_name, alt_speller, TRUE);
 	else
 		do_int_speller(temp_name);
