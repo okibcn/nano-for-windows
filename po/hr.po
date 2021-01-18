@@ -585,7 +585,7 @@ msgstr "zamijeni tekst ili regularni izraz (regex)"
 # redak, stupac su brojevi
 #: src/global.c:591
 msgid "Go to line and column number"
-msgstr "kursor skoči u dȃni redak (i stupac ako je dȃn)"
+msgstr "kursor skoči u taj redak (i stupac ako je dan)"
 
 #: src/global.c:593
 msgid "Mark text starting from the cursor position"
@@ -1694,11 +1694,11 @@ msgstr ""
 "===  Upute za uporabu  ===\n"
 "\n"
 " Nano je zamišljen tako da imitira funkcionalnost i lakoću upotrebe "
-"uređivača teksta UW Pico.  Ima četiri djela. Traka na vrhu lijevo pokazuje "
-"nano inačicu, zatim u sredini ime datoteke koju trenutno uređujete, te na "
-"desnom kraju upozorenje ako je datoteka izmijenjena.  Ispod toga je glavni "
-"prozor u kojem je prikazan tekst datoteke koju uređujete.  U trećem retku "
-"iznad dna je traka stanja u kojoj vam nano javlja važne poruke.  "
+"uređivača teksta UW Pico.  Ima četiri djela. Na vrhu, traka s informacijama "
+"prikaže inačicu nano-a, zatim ime datoteke koju trenutno uređujete i na "
+"kraju znak „*” ako je datoteka izmijenjena.  Ispod toga je glavni prozor u "
+"kojem je prikazan tekst datoteke koju uređujete.  U trećem retku iznad dna "
+"je traka stanja u kojoj vam nano javlja važne poruke.  "
 
 #: src/help.c:195
 msgid ""
@@ -1709,8 +1709,8 @@ msgid ""
 "twice.  Meta-key sequences are notated with 'M-' and can be entered using "
 "either the Alt, Cmd, or Esc key, depending on your keyboard setup.  "
 msgstr ""
-"U posljednjim dvama redcima prikazane su najčešće upotrebljavane kombinacije "
-"tipaka, prečaca ili funkcija uređivača.  Termini tipka, funkcija, prečac su "
+"U zadnja dva retka prikazane su najčešće upotrebljavane kombinacije tipaka, "
+"prečaca ili funkcija uređivača.  Termini tipka, funkcija, prečac su "
 "zamjenjivi i koriste se ovisno o kontekstu.\n"
 "\n"
 " Notacija prečaca jest: prečaci s tipkom Control započinju sa simbolom "
@@ -1731,9 +1731,9 @@ msgstr ""
 "Dva uzastopna pritiska tipke Esc i nakon toga unos troznamenkastog "
 "decimalnog broja od 000 do 255 unijet će znak koji odgovara tom broju.\n"
 "\n"
-" Svojstva uređivača možete podesiti privremeno s opcijama na startu, trajno "
-"putem datoteke nanorc, a neka svojstva možete prema potrebi isključiti ili "
-"uključiti u tijeku uređivanja s odgovarajućim prečacem.\n"
+" Svojstva i sučelje uređivača možete podesiti privremeno s opcijama na "
+"startu, trajno pomoću datoteke „nanorc”, a neka svojstva možete prema "
+"potrebi isključiti ili uključiti u tijeku uređivanja.\n"
 "\n"
 " Sljedeći prečaci su vam na raspolaganju u glavnom prozoru uređivača. "
 "Alternative su navedene u zagradama:\n"
@@ -2152,7 +2152,7 @@ msgstr "omogući obustavu (suspension)"
 
 #: src/nano.c:645
 msgid "Show some states on the title bar"
-msgstr "prikaže neka stanja u naslovnoj traci"
+msgstr "prikazuje neka stanja u naslovnoj traci"
 
 #: src/nano.c:648
 msgid "Also try magic to determine syntax"
@@ -2750,7 +2750,7 @@ msgstr "Program „%s“ se požalio"
 
 #: src/text.c:2158
 msgid "Nothing changed"
-msgstr "Ništa nije izmijenjeno "
+msgstr "Ništa nije izmijenjeno"
 
 #. TRANSLATORS: The next two go with Undid/Redid messages.
 #: src/text.c:2187

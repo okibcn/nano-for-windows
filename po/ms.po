@@ -2465,7 +2465,7 @@ msgstr "Ganti dengan"
 #, c-format
 msgid "Replaced %zd occurrence"
 msgid_plural "Replaced %zd occurrences"
-msgstr[0] ""
+msgstr[0] "%zd tempat telah diganti"
 
 #. TRANSLATORS: This is a prompt.
 #: src/search.c:780
@@ -2486,7 +2486,7 @@ msgstr ""
 
 #: src/search.c:1009
 msgid "Removed anchor"
-msgstr ""
+msgstr "Sauh dibuang"
 
 #: src/search.c:1021
 msgid "Jumped to anchor"
@@ -2494,7 +2494,7 @@ msgstr ""
 
 #: src/search.c:1023
 msgid "This is the only anchor"
-msgstr ""
+msgstr "Ini adalah satu-satunya sauh"
 
 #: src/search.c:1025
 msgid "There are no anchors"
@@ -2510,7 +2510,7 @@ msgstr "Nyahtetap Tanda"
 
 #: src/text.c:390
 msgid "Commenting is not supported for this file type"
-msgstr ""
+msgstr "Mengulas tidak disokong untuk jenis fail ini"
 
 #: src/text.c:400
 msgid "Cannot comment past end of file"
@@ -2518,7 +2518,7 @@ msgstr ""
 
 #: src/text.c:522
 msgid "Nothing to undo"
-msgstr ""
+msgstr "Tiada apa yang perlu dinyahbuat"
 
 #. TRANSLATORS: The next thirteen strings describe actions
 #. * that are undone or redone.  They are all nouns, not verbs.
@@ -2528,7 +2528,7 @@ msgstr ""
 
 #: src/text.c:541 src/text.c:724
 msgid "line break"
-msgstr ""
+msgstr "pemisah baris"
 
 #: src/text.c:557 src/text.c:736
 msgid "deletion"
@@ -2730,17 +2730,17 @@ msgstr "Dalam Pilihan:  "
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
+msgstr[0] "baris"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
+msgstr[0] "perkataan"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
+msgstr[0] "aksara"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006

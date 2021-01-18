@@ -1672,7 +1672,7 @@ msgstr "기능 켬/기능 끔"
 
 #: src/help.c:570 src/nano.c:1610
 msgid "^W = Ctrl+W    M-W = Alt+W"
-msgstr ""
+msgstr "^W = Ctrl+W    M-W = Alt+W"
 
 #: src/history.c:266
 #, c-format
@@ -2072,11 +2072,11 @@ msgstr "잠시 멈춤 기능을 사용합니다"
 
 #: src/nano.c:645
 msgid "Show some states on the title bar"
-msgstr ""
+msgstr "제목 표시줄에 일부 상태를 보여줍니다"
 
 #: src/nano.c:648
 msgid "Also try magic to determine syntax"
-msgstr ""
+msgstr "또한 문법을 판단하는 마술을 부려봅니다"
 
 #: src/nano.c:659
 #, c-format
@@ -2091,7 +2091,7 @@ msgstr " (C) 2014-%s the contributors to nano\n"
 #: src/nano.c:665
 #, c-format
 msgid " Compiled options:"
-msgstr ""
+msgstr " 컴파일한 옵션:"
 
 #: src/nano.c:817
 msgid "Could not reconnect stdin to keyboard\n"
@@ -2214,7 +2214,7 @@ msgstr "잘못된 행, 열 번호"
 
 #: src/nano.c:2523
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "하나의 파일만 열 수 있습니다\n"
 
 #: src/nano.c:2536
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
@@ -2763,7 +2763,7 @@ msgstr "이 파일 형식에 맞는 형식 도구를 지정하지 않았습니�
 #: src/text.c:2991
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:2992
 msgid "In Selection:  "
@@ -2772,17 +2772,17 @@ msgstr "선택 범위:  "
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
+msgstr[0] "행"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
+msgstr[0] "단어"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
+msgstr[0] "문자"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006

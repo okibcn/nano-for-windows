@@ -62,7 +62,7 @@ msgstr "Cancel·lat"
 
 #: src/browser.c:376 src/search.c:359
 msgid "No current search pattern"
-msgstr "No hi ha cap patró de recerca actual"
+msgstr "No hi ha cap patró de cerca actual"
 
 #: src/browser.c:419
 #, c-format
@@ -1369,9 +1369,9 @@ msgstr ""
 "s'actualitzarà al lloc on està la coincidència més propera de la cadena "
 "cercada.\n"
 "\n"
-" La cadena de la recerca anterior es mostrarà entre claudàtors després de "
-"l'indicatiu de recerca. Prémer Retorn sense introduir cap text durà a terme "
-"l'anterior recerca. "
+" La cadena de la cerca anterior es mostrarà entre claudàtors després de "
+"l'indicatiu de cerca. Prémer Retorn sense introduir cap text durà a terme "
+"l'anterior cerca. "
 
 #: src/help.c:63
 msgid ""
@@ -1381,8 +1381,8 @@ msgid ""
 " The following function keys are available in Search mode:\n"
 "\n"
 msgstr ""
-" Si heu seleccionat text amb la marca i després feu una recerca amb "
-"reemplaç, només les coincidències al text seleccionat seran reemplaçades.\n"
+" Si heu seleccionat text amb la marca i després feu una cerca amb reemplaç, "
+"només les coincidències al text seleccionat seran reemplaçades.\n"
 "\n"
 " Les següents tecles de funció estan disponibles en el mode Cerca:\n"
 "\n"
@@ -1518,9 +1518,9 @@ msgstr ""
 "s'actualitzarà al lloc on està la coincidència més propera de la cadena "
 "cercada.\n"
 "\n"
-" La cadena de la recerca anterior es mostrarà entre claudàtors després de "
-"l'indicatiu de recerca. Prémer Retorn sense introduir cap text durà a terme "
-"l'anterior recerca.\n"
+" La cadena de la cerca anterior es mostrarà entre claudàtors després de "
+"l'indicatiu de cerca. Prémer Retorn sense introduir cap text durà a terme "
+"l'anterior cerca.\n"
 "\n"
 
 #: src/help.c:129

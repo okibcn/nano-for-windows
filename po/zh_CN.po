@@ -2193,7 +2193,7 @@ msgstr "无效的列号或行号"
 
 #: src/nano.c:2523
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "无法只打开一个文件\n"
 
 #: src/nano.c:2536
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
@@ -2735,7 +2735,7 @@ msgstr "没有为该类型文件而定义的代码语法检查器"
 #: src/text.c:2991
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:2992
 msgid "In Selection:  "
@@ -2744,17 +2744,17 @@ msgstr "于选择部分："
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
+msgstr[0] "行"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
+msgstr[0] "词"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
+msgstr[0] "字符"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006

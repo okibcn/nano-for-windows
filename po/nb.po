@@ -2653,7 +2653,7 @@ msgstr "Blokkjuster fil"
 
 #: src/text.c:2007
 msgid "Justified paragraph"
-msgstr "Blokkjustert paragraf"
+msgstr "Blokkjustert avsnitt"
 
 #: src/text.c:2112
 msgid "Buffer is empty"

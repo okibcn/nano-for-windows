@@ -1,17 +1,17 @@
 # Swedish messages for nano.
-# Copyright © 2001 - 2020 Free Software Foundation, Inc.
+# Copyright © 2001 - 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nano package.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004.
 # Daniel Nylander <po@danielnylander.se>, 2006.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
-# Josef Andersson <l10nl18nsweja@gmail.com>, 2014, 2016, 2017, 2019, 2020
+# Josef Andersson <l10nl18nsweja@gmail.com>, 2014, 2016, 2017, 2019, 2020, 2021
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nano 4.9-pre1\n"
+"Project-Id-Version: nano 5.4-pre1\n"
 "Report-Msgid-Bugs-To: nano-devel@gnu.org\n"
 "POT-Creation-Date: 2020-12-02 11:46+0100\n"
-"PO-Revision-Date: 2020-05-15 14:00+0200\n"
+"PO-Revision-Date: 2021-01-05 17:20+0100\n"
 "Last-Translator: Josef Andersson <l10nl18nsweja@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -119,7 +119,7 @@ msgstr "Inget klipptes ut"
 
 #: src/cut.c:610 src/cut.c:656
 msgid "Copied nothing"
-msgstr ""
+msgstr "Kopierade inget"
 
 #: src/cut.c:715
 msgid "Cutbuffer is empty"
@@ -214,7 +214,7 @@ msgstr "\"%s\" är en FIFO-kö"
 #: src/files.c:404
 #, c-format
 msgid "%s is meant to be read-only"
-msgstr ""
+msgstr "%s är avsedd att vara skrivskyddad"
 
 #. TRANSLATORS: First %s is file name, second %s is file format.
 #: src/files.c:506
@@ -297,12 +297,12 @@ msgstr "Läser..."
 #: src/files.c:954 src/text.c:2330 src/text.c:2597
 #, c-format
 msgid "Could not create pipe: %s"
-msgstr ""
+msgstr "Det gick inte att skapa rör: %s"
 
 #: src/files.c:993 src/text.c:2146 src/text.c:2410 src/text.c:2630
 #, c-format
 msgid "Could not fork: %s"
-msgstr ""
+msgstr "Det gick inte att grena: %s"
 
 #: src/files.c:998
 msgid "Executing..."
@@ -359,38 +359,39 @@ msgstr "Ogiltig katalog för säkerhetskopia: %s\n"
 
 #: src/files.c:1572
 msgid "Making backup..."
-msgstr ""
+msgstr "Skapar säkerhetskopia..."
 
 #: src/files.c:1604
 msgid "Too many existing backup files"
-msgstr ""
+msgstr "För många säkerhetskopierade filer"
 
 #: src/files.c:1649
 msgid "Cannot read original file"
-msgstr ""
+msgstr "Det går inte att läsa originalfilen"
 
 #: src/files.c:1681
 msgid "Cannot make regular backup"
-msgstr ""
+msgstr "Det går inte att skapa vanlig säkerhetskopia"
 
 #: src/files.c:1682
 msgid "Trying again in your home directory"
-msgstr ""
+msgstr "Prova igen i din hemkatalog"
 
 #: src/files.c:1694
 msgid "Cannot make backup"
-msgstr ""
+msgstr "Det går inte att skapa säkerhetskopia"
 
 #. TRANSLATORS: Try to keep this message at most 76 characters.
 #: src/files.c:1705
 msgid "Cannot make backup; continue and save actual file? "
 msgstr ""
+"Det går inte att skapa säkerhetskopia; fortsätta och spara aktuell fil?"
 
 #. TRANSLATORS: The %s is the reason of failure.
 #: src/files.c:1710
 #, c-format
 msgid "Cannot make backup: %s"
-msgstr ""
+msgstr "Det går inte att skapa säkerhetskopia: %s"
 
 #: src/files.c:1746
 #, c-format
@@ -675,7 +676,7 @@ msgstr "Rulla ned en rad utan att flytta markören"
 
 #: src/global.c:630
 msgid "Center the line where the cursor is"
-msgstr ""
+msgstr "Centrera raden under markören"
 
 #: src/global.c:633
 msgid "Switch to the previous file buffer"
@@ -768,15 +769,15 @@ msgstr "Kör det senast inspelade makrot"
 
 #: src/global.c:673
 msgid "Place or remove an anchor at the current line"
-msgstr ""
+msgstr "Lägg till eller ta bort en fästpunkt på aktuell rad"
 
 #: src/global.c:674
 msgid "Jump backward to the nearest anchor"
-msgstr ""
+msgstr "Hoppa bak till närmsta fästpunkt"
 
 #: src/global.c:675
 msgid "Jump forward to the nearest anchor"
-msgstr ""
+msgstr "Hoppa fram till närmsta fästpunkt"
 
 #: src/global.c:677
 msgid "Toggle the case sensitivity of the search"
@@ -820,7 +821,7 @@ msgstr "Växla säkerhetskopiering av originalfilen"
 
 #: src/global.c:690
 msgid "Execute a function or an external command"
-msgstr ""
+msgstr "Kör en funktion eller ett externt kommando"
 
 #: src/global.c:692
 msgid "Pipe the current buffer (or marked region) to the command"
@@ -913,7 +914,7 @@ msgstr "Starta ett program för att formatera/modifiera bufferten"
 #. TRANSLATORS: Try to keep the next thirteen strings at most 10 characters.
 #: src/global.c:736
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: src/global.c:740 src/prompt.c:684
 msgid "Cancel"
@@ -959,20 +960,20 @@ msgstr "Nästa"
 
 #: src/global.c:804
 msgid "Cut"
-msgstr ""
+msgstr "Klipp ut"
 
 #: src/global.c:807
 msgid "Paste"
-msgstr ""
+msgstr "Klistra in"
 
 #: src/global.c:812
 msgid "Execute"
-msgstr ""
+msgstr "Kör"
 
 #. TRANSLATORS: This refers to the position of the cursor.
 #: src/global.c:822
 msgid "Location"
-msgstr ""
+msgstr "Plats"
 
 #: src/global.c:828 src/global.c:865 src/global.c:975
 msgid "Go To Line"
@@ -989,11 +990,11 @@ msgstr "Gör om"
 
 #: src/global.c:839
 msgid "Set Mark"
-msgstr ""
+msgstr "Ange markering"
 
 #: src/global.c:841
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #: src/global.c:845
 msgid "Case Sens"
@@ -1001,7 +1002,7 @@ msgstr "Skiftkänsl"
 
 #: src/global.c:847
 msgid "Reg.exp."
-msgstr ""
+msgstr "Reg.utr."
 
 #: src/global.c:849
 msgid "Backwards"
@@ -1081,11 +1082,11 @@ msgstr "Nästa block"
 #. TRANSLATORS: Try to keep these two strings at most 15 characters.
 #: src/global.c:950
 msgid "Begin of Paragr."
-msgstr ""
+msgstr "Börj på parag."
 
 #: src/global.c:952
 msgid "End of Paragraph"
-msgstr ""
+msgstr "Slut på paragraf"
 
 #. TRANSLATORS: Try to keep the next six strings at most 12 characters.
 #: src/global.c:957 src/global.c:1160
@@ -1140,11 +1141,12 @@ msgstr "Klipp höger"
 
 #: src/global.c:1002 src/global.c:1145
 msgid "Cut Till End"
-msgstr ""
+msgstr "Klipp till slut"
 
+# Osäker
 #: src/global.c:1007 src/global.c:1104
 msgid "Full Justify"
-msgstr ""
+msgstr "Heljustera"
 
 #: src/global.c:1012
 msgid "Word Count"
@@ -1184,28 +1186,28 @@ msgstr "Kör makro"
 
 #: src/global.c:1048
 msgid "Anchor"
-msgstr ""
+msgstr "Fästpunkt"
 
 #: src/global.c:1050
 msgid "Up to anchor"
-msgstr ""
+msgstr "Upp till fästpunkt"
 
 #: src/global.c:1052
 msgid "Down to anchor"
-msgstr ""
+msgstr "Ned till fästpunkt"
 
 #. TRANSLATORS: This *deletes* a line or marked region.
 #: src/global.c:1056
 msgid "Zap"
-msgstr ""
+msgstr "Zap"
 
 #: src/global.c:1061 src/global.c:1096
 msgid "Spell Check"
-msgstr ""
+msgstr "Stavningskontroll"
 
 #: src/global.c:1065 src/global.c:1100
 msgid "Linter"
-msgstr ""
+msgstr "Felkontrollverktyg"
 
 #: src/global.c:1067 src/global.c:1108
 msgid "Formatter"
@@ -1213,7 +1215,7 @@ msgstr "Formaterare"
 
 #: src/global.c:1079
 msgid "Center"
-msgstr ""
+msgstr "Centrera"
 
 #: src/global.c:1082
 msgid "Save"
@@ -1258,7 +1260,7 @@ msgstr "Kör kommando"
 #. TRANSLATORS: This invokes the file browser.
 #: src/global.c:1157
 msgid "Browse"
-msgstr ""
+msgstr "Bläddra"
 
 #: src/global.c:1165
 msgid "First File"
@@ -1291,11 +1293,11 @@ msgstr "Kasta buffert"
 #. TRANSLATORS: The next two strings may be up to 37 characters each.
 #: src/global.c:1187
 msgid "Previous Linter message"
-msgstr ""
+msgstr "Tidigare felkontrollmed"
 
 #: src/global.c:1189
 msgid "Next Linter message"
-msgstr ""
+msgstr "Nästa felkontrollmed"
 
 #. TRANSLATORS: The next thirteen strings are toggle descriptions;
 #. * they are best kept shorter than 40 characters, but may be longer.
@@ -1600,6 +1602,11 @@ msgid ""
 "put the editor to sleep.\n"
 "\n"
 msgstr ""
+"Om du behöver en till tom buffert, ange inget kommando.\n"
+"\n"
+" Du kan också välja ett av fyra verktyg, eller att klippa ut en större del "
+"av bufferten, eller sätta redigeraren i viloläge.\n"
+"\n"
 
 #: src/help.c:170
 msgid ""
@@ -1691,7 +1698,7 @@ msgstr "aktivera/inaktivera"
 
 #: src/help.c:570 src/nano.c:1610
 msgid "^W = Ctrl+W    M-W = Alt+W"
-msgstr ""
+msgstr "^W = Ctrl+W    M-W = Alt+W"
 
 #: src/history.c:266
 #, c-format
@@ -1751,6 +1758,8 @@ msgid ""
 "\n"
 "Too many .save files"
 msgstr ""
+"\n"
+"För många .save-filer"
 
 #: src/nano.c:487
 #, c-format
@@ -1870,7 +1879,7 @@ msgstr "Konvertera inte filer från DOS/Mac-format"
 
 #: src/nano.c:545
 msgid "Leading whitespace means new paragraph"
-msgstr ""
+msgstr "Inledande blanktecken betyder ny paragraf"
 
 #: src/nano.c:550
 msgid "Log & read location of cursor position"
@@ -1900,15 +1909,15 @@ msgstr "Visa långa linjer på flera rader"
 
 #: src/nano.c:562
 msgid "-T <number>"
-msgstr ""
+msgstr "-T <tal>"
 
 #: src/nano.c:562
 msgid "--tabsize=<number>"
-msgstr ""
+msgstr "--tabsize=<tal>"
 
 #: src/nano.c:563
 msgid "Make a tab this number of columns wide"
-msgstr ""
+msgstr "Skapa en flik detta antal kolumner bred"
 
 #: src/nano.c:565
 msgid "Wipe status bar upon next keystroke"
@@ -1924,11 +1933,11 @@ msgstr "Identifiera ordgränsen mer noggrant"
 
 #: src/nano.c:570
 msgid "-X <string>"
-msgstr ""
+msgstr "-X <sträng>"
 
 #: src/nano.c:570
 msgid "--wordchars=<string>"
-msgstr ""
+msgstr "--wordchars=<sträng>"
 
 #: src/nano.c:571
 msgid "Which other characters are word parts"
@@ -2032,15 +2041,15 @@ msgstr "Bevara XON (^Q)- och XOFF (^S)-tangenter"
 
 #: src/nano.c:619
 msgid "Show a position+portion indicator"
-msgstr ""
+msgstr "Visa position+positionsindikering"
 
 #: src/nano.c:622
 msgid "-r <number>"
-msgstr ""
+msgstr "-r <tal>"
 
 #: src/nano.c:622
 msgid "--fill=<number>"
-msgstr ""
+msgstr "-fill=<tal>"
 
 #: src/nano.c:623
 msgid "Set width for hard-wrap and justify"
@@ -2048,19 +2057,19 @@ msgstr "Ange bredd för fast radbrytning och justering"
 
 #: src/nano.c:627
 msgid "-s <program>"
-msgstr ""
+msgstr "-s <program>"
 
 #: src/nano.c:627
 msgid "--speller=<program>"
-msgstr ""
+msgstr "--speller=<program>"
 
 #: src/nano.c:628
 msgid "Use this alternative spell checker"
-msgstr ""
+msgstr "Använd alternativ stavningskontroll"
 
 #: src/nano.c:630
 msgid "Save changes on exit, don't prompt"
-msgstr ""
+msgstr "Spara automatiskt vid avslut, fråga inte"
 
 #: src/nano.c:632
 msgid "Save a file by default in Unix format"
@@ -2088,11 +2097,11 @@ msgstr "Använd vänteläge"
 
 #: src/nano.c:645
 msgid "Show some states on the title bar"
-msgstr ""
+msgstr "Visa en del tillstånd på titelraden"
 
 #: src/nano.c:648
 msgid "Also try magic to determine syntax"
-msgstr ""
+msgstr "Prova också magic för att avgöra syntax"
 
 #: src/nano.c:659
 #, c-format
@@ -2107,7 +2116,7 @@ msgstr " (C) 2014-%s nanos skapare\n"
 #: src/nano.c:665
 #, c-format
 msgid " Compiled options:"
-msgstr ""
+msgstr " Kompileringsflaggor:"
 
 #: src/nano.c:817
 msgid "Could not reconnect stdin to keyboard\n"
@@ -2228,7 +2237,7 @@ msgstr "Ogiltigt rad- eller kolumnnummer"
 
 #: src/nano.c:2523
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "Det går inte att öppna bara en fil\n"
 
 #: src/nano.c:2536
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
@@ -2365,7 +2374,7 @@ msgstr "Fel vid utökning av %s: %s"
 #: src/rcfile.c:1039
 #, c-format
 msgid "Color '%s' takes no prefix"
-msgstr ""
+msgstr "Färgen ”%s” tar inte prefix"
 
 #: src/rcfile.c:1047
 #, c-format
@@ -2374,7 +2383,7 @@ msgstr "Förstår inte färgen \"%s\""
 
 #: src/rcfile.c:1063 src/rcfile.c:1074
 msgid "An attribute requires a subsequent comma"
-msgstr ""
+msgstr "Ett attribut kräver ett efterföljande komma"
 
 #: src/rcfile.c:1118
 msgid "Missing color name"
@@ -2534,23 +2543,23 @@ msgstr "Ingen matchande klammer"
 
 #: src/search.c:1007
 msgid "Placed anchor"
-msgstr ""
+msgstr "Lade till fästpunkt"
 
 #: src/search.c:1009
 msgid "Removed anchor"
-msgstr ""
+msgstr "Tog bort fästpunkt"
 
 #: src/search.c:1021
 msgid "Jumped to anchor"
-msgstr ""
+msgstr "Hoppade till fästpunkt"
 
 #: src/search.c:1023
 msgid "This is the only anchor"
-msgstr ""
+msgstr "Detta är enda fästpunkten"
 
 #: src/search.c:1025
 msgid "There are no anchors"
-msgstr ""
+msgstr "Det finns inga fästpunkter"
 
 #: src/text.c:53
 msgid "Mark Set"
@@ -2664,7 +2673,7 @@ msgstr "Justerade stycket"
 
 #: src/text.c:2112
 msgid "Buffer is empty"
-msgstr ""
+msgstr "Bufferten är tom"
 
 #: src/text.c:2149 src/text.c:2731
 #, c-format
@@ -2714,7 +2723,7 @@ msgstr "Nästa ord…"
 
 #: src/text.c:2334
 msgid "Invoking spell checker..."
-msgstr ""
+msgstr "Startar stavningskontroll..."
 
 #: src/text.c:2419 src/text.c:2639
 msgid "Could not get size of pipe buffer"
@@ -2742,7 +2751,7 @@ msgstr "Spara ändrad buffert före felkontroll?"
 
 #: src/text.c:2603
 msgid "Invoking linter..."
-msgstr ""
+msgstr "Startar felkontroll..."
 
 #: src/text.c:2736
 #, c-format
@@ -2773,7 +2782,7 @@ msgstr "Ingen formaterare definierad för denna typ av fil"
 #: src/text.c:2991
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:2992
 msgid "In Selection:  "
@@ -2782,20 +2791,20 @@ msgstr "I markering:  "
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "rad"
+msgstr[1] "rader"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ord"
+msgstr[1] "ord"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "tecken"
+msgstr[1] "tecken"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006
@@ -2805,7 +2814,7 @@ msgstr "Ordagrann inmatning"
 #. TRANSLATORS: An invalid verbatim Unicode code was typed.
 #: src/text.c:3024
 msgid "Invalid code"
-msgstr ""
+msgstr "Ogiltig kod"
 
 #. TRANSLATORS: Shown when no text is directly left of the cursor.
 #: src/text.c:3100

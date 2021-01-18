@@ -2250,7 +2250,7 @@ msgstr "Linha ou número de coluna inválido"
 
 #: src/nano.c:2523
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "É possível abrir apenas um arquivo\n"
 
 #: src/nano.c:2536
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
@@ -2794,10 +2794,11 @@ msgstr "Na última mensagem"
 msgid "No formatter is defined for this type of file"
 msgstr "Nenhum formatador definido para este tipo de arquivo"
 
+# Número de linha, palavras e caracteres, respectivamente -- Rafael
 #: src/text.c:2991
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:2992
 msgid "In Selection:  "
@@ -2806,20 +2807,20 @@ msgstr "Na seleção:  "
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "linha"
+msgstr[1] "linhas"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "palavra"
+msgstr[1] "palavras"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "caractere"
+msgstr[1] "caracteres"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006

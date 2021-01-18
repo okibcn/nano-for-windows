@@ -1436,7 +1436,7 @@ msgid ""
 "\n"
 msgstr ""
 "Уколико вам треба још једна празна међумеморија, немојте унети назив "
-"датотеке, или укуцајте назив непостојеће датотеке и притисните Унеси.\n"
+"датотеке, или упишите назив непостојеће датотеке и притисните Унеси.\n"
 "\n"
 " Следећи тастери су доступни у режиму уметања датотеке:\n"
 "\n"
@@ -2119,7 +2119,7 @@ msgstr "Не могу поново да повежем стандардни ул
 #: src/nano.c:835
 #, c-format
 msgid "Reading data from keyboard; type ^D or ^D^D to finish.\n"
-msgstr "Читам податке са тастатуре; укуцајте ^D или ^D^D да завршите.\n"
+msgstr "Читам податке са тастатуре; упишите „^D“ или „^D^D“ да завршите.\n"
 
 #: src/nano.c:845
 #, c-format
@@ -2231,7 +2231,7 @@ msgstr "Неисправан број реда или ступца"
 
 #: src/nano.c:2523
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "Могу да отворим само једну датотеку\n"
 
 #: src/nano.c:2536
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
@@ -2780,7 +2780,7 @@ msgstr "Форматар није одређен за ову врсту дато
 #: src/text.c:2991
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:2992
 msgid "In Selection:  "
@@ -2789,23 +2789,23 @@ msgstr "У избору:  "
 #: src/text.c:2993
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "ред"
+msgstr[1] "реда"
+msgstr[2] "редова"
 
 #: src/text.c:2994
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "реч"
+msgstr[1] "речи"
+msgstr[2] "речи"
 
 #: src/text.c:2995
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "знак"
+msgstr[1] "знака"
+msgstr[2] "знакова"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3006

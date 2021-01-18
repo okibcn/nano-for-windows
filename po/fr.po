@@ -1805,8 +1805,7 @@ msgid ""
 "When a filename is '-', nano reads data from standard input.\n"
 "\n"
 msgstr ""
-"Lorsque le fichier est « - », nano lit le texte sur l'entrée\n"
-"standard.\n"
+"Lorsque le fichier est « - », nano lit le texte sur l'entrée standard.\n"
 "\n"
 
 #. TRANSLATORS: The next three are column headers of the --help output.
@@ -1858,11 +1857,11 @@ msgstr "Lire les fichiers dans un nouvel espace"
 
 #: src/nano.c:515
 msgid "Use (vim-style) lock files"
-msgstr "Util. des fichiers verrou (type vim)"
+msgstr "Utiliser des fichiers verrou (type vim)"
 
 #: src/nano.c:520
 msgid "Log & read search/replace string history"
-msgstr "Mémorise les recherches & remplacements"
+msgstr "Mémoriser les recherches & remplacements"
 
 #: src/nano.c:523
 msgid "Don't look at nanorc files"
@@ -1878,7 +1877,7 @@ msgstr "--guidestripe=<nombre>"
 
 #: src/nano.c:527
 msgid "Show a guiding bar at this column"
-msgstr "Afficher un guide cette colonne"
+msgstr "Afficher un guide à cette colonne"
 
 #: src/nano.c:531
 msgid "Fix numeric keypad key confusion problem"

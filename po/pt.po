@@ -381,7 +381,7 @@ msgstr "Impossível fazer segurança"
 #. TRANSLATORS: Try to keep this message at most 76 characters.
 #: src/files.c:1705
 msgid "Cannot make backup; continue and save actual file? "
-msgstr "Impossível fazer segurança; continuar e gravar o ficheiro actual?"
+msgstr "Impossível fazer salvaguarda; continuar e gravar o ficheiro actual?"
 
 #. TRANSLATORS: The %s is the reason of failure.
 #: src/files.c:1710
@@ -1075,7 +1075,7 @@ msgstr "In. do parág."
 
 #: src/global.c:952
 msgid "End of Paragraph"
-msgstr "Fim do parág."
+msgstr "Fim do parágrafo"
 
 #. TRANSLATORS: Try to keep the next six strings at most 12 characters.
 #: src/global.c:957 src/global.c:1160
@@ -1291,39 +1291,39 @@ msgstr "Mensagem de limpeza seguinte"
 #. * they are best kept shorter than 40 characters, but may be longer.
 #: src/global.c:1537
 msgid "Help mode"
-msgstr "Modo da ajuda                     "
+msgstr "Modo da ajuda"
 
 #: src/global.c:1539
 msgid "Constant cursor position display"
-msgstr "Posição do cursor constante       "
+msgstr "Posição do cursor constante"
 
 #: src/global.c:1541
 msgid "Soft wrapping of overlong lines"
-msgstr "Ajuste suave de linhas compridas  "
+msgstr "Ajuste suave de linhas compridas"
 
 #: src/global.c:1543
 msgid "Whitespace display"
-msgstr "Espaços vazios visíveis           "
+msgstr "Espaços vazios visíveis"
 
 #: src/global.c:1545
 msgid "Color syntax highlighting"
-msgstr "Realce de sintaxe por cor         "
+msgstr "Realce de sintaxe por cor"
 
 #: src/global.c:1547
 msgid "Smart home key"
-msgstr "Tecla Home inteligente            "
+msgstr "Tecla Home inteligente"
 
 #: src/global.c:1549
 msgid "Auto indent"
-msgstr "Indentação automática             "
+msgstr "Indentação automática"
 
 #: src/global.c:1551
 msgid "Cut to end"
-msgstr "Cortar até ao fim                 "
+msgstr "Cortar até ao fim"
 
 #: src/global.c:1553
 msgid "Hard wrapping of overlong lines"
-msgstr "Ajuste rígido de linhas compridas "
+msgstr "Ajuste rígido de linhas compridas"
 
 #: src/global.c:1555
 msgid "Conversion of typed tabs to spaces"
@@ -1331,15 +1331,15 @@ msgstr "Conversão de tabulações em espaços"
 
 #: src/global.c:1557
 msgid "Mouse support"
-msgstr "Suporte ao rato                   "
+msgstr "Suporte ao rato"
 
 #: src/global.c:1559
 msgid "Suspension"
-msgstr "Suspensão                         "
+msgstr "Suspensão"
 
 #: src/global.c:1561
 msgid "Line numbering"
-msgstr "Números de linha                  "
+msgstr "Números de linha"
 
 #: src/help.c:54
 msgid ""
@@ -1572,7 +1572,7 @@ msgstr ""
 "\n"
 " Este modo permite-lhe inserir a saída de um comando executado no terminal "
 "no buffer actual (ou num novo buffer). Se o comando é precedido de \"|\", o "
-"conteúdo actual do buffer (ou região marcada) será enviado ao comando."
+"conteúdo actual do buffer (ou região marcada) será enviado ao comando. "
 
 #: src/help.c:167
 msgid ""
@@ -1673,7 +1673,7 @@ msgstr ""
 
 #: src/help.c:234 src/help.c:306
 msgid "enable/disable"
-msgstr " | activar/desactivar"
+msgstr "activar/desactivar"
 
 #: src/help.c:570 src/nano.c:1610
 msgid "^W = Ctrl+W    M-W = Alt+W"
@@ -1713,7 +1713,7 @@ msgstr "Sem nome de ficheiro"
 
 #: src/nano.c:305
 msgid "Save modified buffer? "
-msgstr "Gravar buffer modificado?"
+msgstr "Gravar buffer modificado? "
 
 #: src/nano.c:331
 #, c-format
