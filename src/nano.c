@@ -104,6 +104,9 @@ void splice_node(linestruct *afterthis, linestruct *newnode)
 /* Free the data structures in the given node. */
 void delete_node(linestruct *line)
 {
+	/* If the first line on the screen gets deleted, step one back. */
+	if (line == openfile->edittop)
+		openfile->edittop = line->prev;
 #ifdef ENABLE_WRAPPING
 	/* If the spill-over line for hard-wrapping is deleted... */
 	if (line == openfile->spillage_line)
