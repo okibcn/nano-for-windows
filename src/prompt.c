@@ -424,7 +424,7 @@ void draw_the_promptbar(void)
 void add_or_remove_pipe_symbol_from_answer(void)
 {
 	if (answer[0] == '|') {
-		memmove(answer, answer + 1, strlen(answer) + 1);
+		memmove(answer, answer + 1, strlen(answer));
 		if (typing_x > 0)
 			typing_x--;
 	} else {
