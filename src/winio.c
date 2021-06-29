@@ -197,11 +197,11 @@ void read_keys_from(WINDOW *win)
 			input = KEY_WINCH;
 		}
 #endif
-		/* When we've failed to get a keycode over a hundred times in a row,
+		/* When we've failed to get a keycode millions of times in a row,
 		 * assume our input source is gone and die gracefully.  We could
 		 * check if errno is set to EIO ("Input/output error") and die in
 		 * that case, but it's not always set properly.  Argh. */
-		if (input == ERR && ++errcount == 123)
+		if (input == ERR && ++errcount == 12345678)
 			die(_("Too many errors from stdin\n"));
 	}
 
