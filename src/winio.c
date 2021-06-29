@@ -2076,8 +2076,9 @@ void statusline(message_type importance, const char *msg, ...)
 
 	UNSET(WHITESPACE_DISPLAY);
 
+	/* When not in curses mode, there is no status bar to display anything on. */
 	if (isendwin())
-		die("Out of curses -- please report a bug\n");
+		return;
 #endif
 
 	/* Ignore a message with an importance that is lower than the last one. */
