@@ -357,6 +357,11 @@ void die(const char *msg, ...)
 {
 	va_list ap;
 	openfilestruct *firstone = openfile;
+	static int stabs = 0;
+
+	/* When dying for a second time, just give up. */
+	if (++stabs > 1)
+		exit(11);
 
 	restore_terminal();
 
