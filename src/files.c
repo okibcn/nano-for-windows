@@ -1447,12 +1447,14 @@ char *safe_tempfile(FILE **stream)
 
 	fd = mkstemp(tempfile_name);
 
-	if (fd == -1) {
+	*stream = (fd > 0) ? fdopen(fd, "r+b") : NULL;
+
+	if (*stream == NULL) {
+		if (fd > 0)
+			close(fd);
 		free(tempfile_name);
 		return NULL;
 	}
-
-	*stream = fdopen(fd, "r+b");
 
 	return tempfile_name;
 }
