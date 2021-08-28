@@ -570,7 +570,7 @@ or @kbd{M-A} and then moving the cursor to the other end of the portion
 to be selected.  The selected portion of text will be highlighted.
 This selection can now be cut or copied in its entirety with a single
 @kbd{^K} or @kbd{M-6}.  Or the selection can be used to limit the scope of
-a search-and-replace (@kbd{^\}) or spell-checking session (@kbd{^T}).
+a search-and-replace (@kbd{^\}) or spell-checking session (@kbd{^T^T}).
 
 On some terminals, text can be selected also by holding down @kbd{Shift}
 while using the cursor keys.  Holding down the @kbd{Ctrl} or @kbd{Alt}
