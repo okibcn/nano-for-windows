@@ -2112,6 +2112,10 @@ int main(int argc, char **argv)
 		}
 	}
 
+	/* Curses needs TERM; if it is unset, try falling back to a VT220. */
+	if (getenv("TERM") == NULL)
+		setenv("TERM", "vt220", 0);
+
 	/* Enter into curses mode.  Abort if this fails. */
 	if (initscr() == NULL)
 		exit(1);
