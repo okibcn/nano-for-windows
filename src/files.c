@@ -1947,8 +1947,10 @@ bool write_file(const char *name, FILE *thefile, bool tmp,
 			if (openfile->lock_filename != NULL) {
 				delete_lockfile(openfile->lock_filename);
 				free(openfile->lock_filename);
-				openfile->lock_filename = do_lockfile(realname, FALSE);
 			}
+
+			if (ISSET(LOCKING))
+				openfile->lock_filename = do_lockfile(realname, FALSE);
 #endif
 			openfile->filename = mallocstrcpy(openfile->filename, realname);
 #ifdef ENABLE_COLOR
