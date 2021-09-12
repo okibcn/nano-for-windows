@@ -838,7 +838,7 @@ Do not use the line below the title bar, leaving it entirely blank.
 
 @item set errorcolor [bold,][italic,]@var{fgcolor},@var{bgcolor}
 Use this color combination for the status bar when an error message is displayed.
-The default value is @t{brightwhite,red}.
+The default value is @t{bold,white,red}.
 @xref{@code{set functioncolor}} for valid color names.
 
 @item set fill @var{number}
