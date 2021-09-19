@@ -1230,7 +1230,11 @@ void shortcut_init(void)
 	add_to_sclist(MEXECUTE, "^O", 0, do_formatter, 0);
 #endif
 	add_to_sclist(MMAIN, "^C", 0, report_cursor_position, 0);
+#ifdef USE_SLANG
+	add_to_sclist(MMAIN, "^-", 0x1F, do_gotolinecolumn_void, 0);
+#else
 	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn_void, 0);
+#endif
 	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn_void, 0);
 	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "^Y", 0, do_page_up, 0);
 	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgUp", KEY_PPAGE, do_page_up, 0);
