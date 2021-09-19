@@ -3213,6 +3213,15 @@ void edit_redraw(linestruct *old_current, update_type manner)
 						(old_current != openfile->current &&
 						get_page_start(openfile->placewewant) > 0))
 		update_line(openfile->current, openfile->current_x);
+
+#ifdef USE_SLANG
+	/* Work around a gaffe of Slang -- https://sv.gnu.org/bugs/?61186. */
+	if (get_page_start(was_pww) > 0 || get_page_start(openfile->placewewant) > 0) {
+		wrefresh(edit);
+		full_refresh();
+	}
+#endif
+
 }
 
 /* Refresh the screen without changing the position of lines.  Use this
