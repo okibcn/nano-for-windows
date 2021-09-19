@@ -2163,6 +2163,10 @@ void statusline(message_type importance, const char *msg, ...)
 #ifdef USE_SLANG
 	/* Work around a shy cursor -- https://sv.gnu.org/bugs/?59091. */
 	bottombars(MGOTODIR);
+
+	/* Mitigate a hiding cursor -- https://sv.gnu.org/bugs/?61189. */
+	if (ISSET(NO_HELP))
+		statusblank = 1;
 #endif
 }
 
