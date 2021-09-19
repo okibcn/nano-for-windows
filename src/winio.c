@@ -1341,6 +1341,9 @@ long assemble_unicode(int symbol)
 		/* TRANSLATORS: This is shown while a six-digit hexadecimal
 		 * Unicode character code (%s) is being typed in. */
 		statusline(HUSH, _("Unicode Input: %s"), partial);
+#ifdef USE_SLANG
+		bottombars(MMAIN);
+#endif
 	}
 
 	/* If we have an end result, reset the Unicode digit counter. */
@@ -1449,6 +1452,8 @@ char *get_verbatim_kbinput(WINDOW *win, size_t *count)
 #ifndef USE_SLANG
 	if (!ISSET(RAW_SEQUENCES))
 		keypad(win, FALSE);
+#else
+	bottombars(MMAIN);
 #endif
 #ifndef NANO_TINY
 	/* Turn bracketed-paste mode off. */
