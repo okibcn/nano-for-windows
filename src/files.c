@@ -1924,14 +1924,15 @@ bool write_file(const char *name, FILE *thefile, bool tmp,
 
 		unlink(tempname);
 	}
-#endif
 
+	if (!is_existing_file || !S_ISFIFO(st.st_mode))
 	/* Ensure the data has reached the disk before reporting it as written. */
 	if (fflush(thefile) != 0 || fsync(fileno(thefile)) != 0) {
 		statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
 		fclose(thefile);
 		goto cleanup_and_exit;
 	}
+#endif
 
 	if (fclose(thefile) != 0) {
 		statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
