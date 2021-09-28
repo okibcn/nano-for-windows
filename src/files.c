@@ -1763,6 +1763,7 @@ bool write_file(const char *name, FILE *thefile, bool tmp,
 	 * isn't temporary AND the file has not been modified by someone else since
 	 * we opened it (or we are appending/prepending or writing a selection). */
 	if (ISSET(MAKE_BACKUP) && is_existing_file && openfile->statinfo &&
+						!S_ISFIFO(st.st_mode) &&
 						(openfile->statinfo->st_mtime == st.st_mtime ||
 						method != OVERWRITE || openfile->mark)) {
 		if (!make_backup_of(realname))
