@@ -190,6 +190,8 @@ typedef void (*functionptrtype)(void);
 #ifdef ENABLE_BROWSER
 void browser_refresh(void);
 char *browse_in(const char *inpath);
+void to_first_file(void);
+void to_last_file(void);
 #endif
 
 /* Most functions in chars.c. */
@@ -642,8 +644,6 @@ void flip_replace(void);
 void flip_goto(void);
 #ifdef ENABLE_BROWSER
 void to_files(void);
-void to_first_file(void);
-void to_last_file(void);
 void goto_dir(void);
 #endif
 #ifndef NANO_TINY

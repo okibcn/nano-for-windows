@@ -359,7 +359,8 @@ void search_filename(bool forwards)
 #endif
 	}
 
-	findfile(last_search, forwards);
+	if (response == 0 || response == -2)
+		findfile(last_search, forwards);
 }
 
 /* Search again without prompting for the last given search string,
@@ -378,6 +379,18 @@ void research_filename(bool forwards)
 		wipe_statusbar();
 		findfile(last_search, forwards);
 	}
+}
+
+/* Select the first file in the list -- called by ^W^Y. */
+void to_first_file(void)
+{
+	selected = 0;
+}
+
+/* Select the last file in the list -- called by ^W^V. */
+void to_last_file(void)
+{
+	selected = list_length - 1;
 }
 
 /* Strip one element from the end of path, and return the stripped path.
