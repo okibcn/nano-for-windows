@@ -1503,7 +1503,7 @@ bool begpar(const linestruct *const line, int depth)
 
 	/* If this is the very first line of the buffer, it counts as a BOP
 	 * even when it contains no text. */
-	if (line == openfile->filetop)
+	if (line->prev == NULL)
 		return TRUE;
 
 	/* If recursion is going too deep, just say it's not a BOP. */
