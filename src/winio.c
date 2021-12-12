@@ -466,8 +466,9 @@ int convert_SS3_sequence(const int *seq, size_t length, int *consumed)
 /* Translate a sequence that began with "Esc [" to its corresponding key code. */
 int convert_CSI_sequence(const int *seq, size_t length, int *consumed)
 {
-	if (seq[0] < '9')
+	if (seq[0] < '9' && length > 1)
 		*consumed = 2;
+
 	switch (seq[0]) {
 		case '1':
 			if (length > 1 && seq[1] == '~')
