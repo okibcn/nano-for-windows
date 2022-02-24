@@ -1200,7 +1200,8 @@ void update_undo(undo_type action)
 		else if (cutbuffer != NULL) {
 			free_lines(u->cutbuffer);
 			u->cutbuffer = copy_buffer(cutbuffer);
-		}
+		} else
+			break;
 		if (!(u->xflags & MARK_WAS_SET)) {
 			linestruct *bottomline = u->cutbuffer;
 			size_t count = 0;
