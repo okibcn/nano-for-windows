@@ -878,7 +878,7 @@ void do_enter(void)
 		if (extra > openfile->current_x)
 			extra = openfile->current_x;
 		else if (extra == openfile->current_x)
-			allblanks = TRUE;
+			allblanks = (indent_length(openfile->current->data) == extra);
 	}
 #endif /* NANO_TINY */
 	newnode->data = nmalloc(strlen(openfile->current->data +
