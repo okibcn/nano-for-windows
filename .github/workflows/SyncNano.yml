@@ -1,6 +1,6 @@
 # Syncs this repo with the GNU Nano editor repo.
 
-name: SYNC_REPO
+name: SyncNano
 
 on:
   schedule:
