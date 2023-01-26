@@ -92,8 +92,6 @@ jobs:
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
         ./autogen.sh
-        mkdir -p _srcback
-        cp -r src/* _srcback
 
 
     - name: "⚙️ Apply Portability Patches"
@@ -105,7 +103,6 @@ jobs:
         ##                        ##
         ##########################
 
-        cp -rf ./_srcback/* ./src
         # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
@@ -322,10 +319,11 @@ jobs:
      
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
+        cp ../* .
         7z a -aoa -mmt"$(nproc)" --  \
           "nano-for_windows_${{ env.NANO_VERSION }}.7z"  \
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
-          .nanorc  || exit 1
+          .nanorc LICENSE README.md || exit 1
         cd ..
 
 
@@ -343,5 +341,5 @@ jobs:
       with:
         tag_name: ${{ env.NANO_VERSION }}
         files: nano/*.7z
-        body: |
-          ${{ env.BODY }}
+        # body: |
+        #   ${{ env.BODY }}
