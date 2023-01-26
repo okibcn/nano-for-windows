@@ -94,10 +94,6 @@ jobs:
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
-        git log -n 1
-        cd curses
-        git log -n 1
-        cd ..
         ./autogen.sh
         mkdir -p _srcback
         cp -r src/* _srcback
@@ -169,7 +165,7 @@ jobs:
         echo "PATCH: More info for exit message."
 
         # Fix browser folder change
-        sed -i's/--selected/selected=0/' src/browser.c
+        sed -i 's/--selected/selected=0/' src/browser.c
         echo "PATCH: Fixed browser folder change."
         
         # Fix for unicode char width detection using GNUlib internal function
