@@ -88,6 +88,7 @@ jobs:
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate 
 
+
     - name: "⏬ Download Sources"
       run: |
         git clone git://git.savannah.gnu.org/nano.git
@@ -100,6 +101,8 @@ jobs:
         mkdir _srcback
         cp -r src/* _srcback
         ./autogen.sh
+        mkdir _srcback
+        cp -r src/* _srcback
 
 
     - name: "⚙️ Apply Portability Patches"
@@ -216,6 +219,8 @@ jobs:
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         sed -i '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
         echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
+        echo -e "GNU nano version Tag: ${NANO_VERSION}\nUsing $CURSES"
+
 
     - name: "⚙️ Build for Windows 64 bits"
       run: |
@@ -257,6 +262,7 @@ jobs:
         make install-strip || exit 1
         cd ../../..
 
+
     - name: "⚙️ Build for Windows 32 bits"
       run: |
         cd nano
@@ -297,6 +303,7 @@ jobs:
         make install-strip || exit 1
         cd ../../..
 
+
     - name: "📦 Create Package"
       run: |
         cd nano
@@ -305,7 +312,6 @@ jobs:
         ##      CREATE PACKAGE      ##
         ##                          ##
         ############################
-
      
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
