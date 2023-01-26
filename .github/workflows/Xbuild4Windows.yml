@@ -15,8 +15,6 @@ on:
         description: 'Run the build with tmate debugging enabled true/false (default: false)'     
         required: false
         default: 'false'
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -332,31 +330,24 @@ jobs:
 
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate 
 
 
     - name: "👍 Upload release"
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v0.1.15
+      # go to https://github.com/OWNER/REPO/settings/actions and 
+      # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.NANO_VERSION }}
         body_path: body.txt
-        # files: nano/*.7z
+        files: nano/*.7z
         body: |
           ${{ env.BODY }}
 
-
-          REPO=$GITHUB_REPOSITORY
-          TAG=$NANO_VERSION
-          NAME=$NANO_VERSION
-          BODY=$BODY
-          file=$(ls nano/*7z)
-          jq --null-input \
-            --arg tag "$TAG" \
-            --arg name "$NAME" \
-            --arg body "$BODY" \
-            '{ tag_name: $tag, name: $name, body: $body }')
           
