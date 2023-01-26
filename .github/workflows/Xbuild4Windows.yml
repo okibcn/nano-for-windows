@@ -15,6 +15,8 @@ on:
         description: 'Run the build with tmate debugging enabled true/false (default: false)'     
         required: false
         default: 'false'
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -95,7 +97,7 @@ jobs:
         ./autogen.sh
 
 
-    - name: "🔧 Apply Portability Patches"
+    - name: "🔧 Apply Windows Portability Patches"
       run: |
         cd nano
         ##########################
@@ -345,3 +347,16 @@ jobs:
         # files: nano/*.7z
         body: |
           ${{ env.BODY }}
+
+
+          REPO=$GITHUB_REPOSITORY
+          TAG=$NANO_VERSION
+          NAME=$NANO_VERSION
+          BODY=$BODY
+          file=$(ls nano/*7z)
+          jq --null-input \
+            --arg tag "$TAG" \
+            --arg name "$NAME" \
+            --arg body "$BODY" \
+            '{ tag_name: $tag, name: $name, body: $body }')
+          
