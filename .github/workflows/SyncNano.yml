@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    # - uses: actions/checkout@v2
-    #   with:
-    #     persist-credentials: false
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
     - name: GitHub Repo Sync
       uses: repo-sync/github-sync@v2
