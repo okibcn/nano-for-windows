@@ -43,15 +43,16 @@ jobs:
         LAST_RELEASE=$( wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        if [[ $LAST_NANO<$LAST_RELEASE ]]; then 
+        if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
           echo "NEW NANO SOURCE!!!!"
           echo "**NANO CHANGES**" > body.txt
           echo >> body.txt
           echo "$CHANGES_NANO" >> body.txt
           echo >> body.txt
           echo >> body.txt
+          cat body.txt
         fi 
-        if [[ $LAST_CURSES<$LAST_RELEASE ]]; then 
+        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then 
           echo "NEW CURSES SOURCE!!!!"
           [ -f body.txt ] && echo >> body.txt
           echo "**PDCursesMod CHANGES**" >> body.txt
@@ -94,7 +95,7 @@ jobs:
         ./autogen.sh
 
 
-    - name: "⚙️ Apply Portability Patches"
+    - name: "🔧 Apply Portability Patches"
       run: |
         cd nano
         ##########################
@@ -335,12 +336,12 @@ jobs:
 
 
     - name: "👍 Upload release"
-      uses: softprops/action-gh-release@v0.1.15
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.NANO_VERSION }}
         body_path: body.txt
-        files: nano/*.7z
-        # body: |
-        #   ${{ env.BODY }}
+        # files: nano/*.7z
+        body: |
+          ${{ env.BODY }}
