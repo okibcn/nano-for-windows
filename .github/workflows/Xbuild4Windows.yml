@@ -322,7 +322,7 @@ jobs:
         ############################
      
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
-        ./upx*/upx ../nano/pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
+        ../upx*/upx pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
         cp ../LICENSE ../README.md -t .
         7z a -aoa -mmt"$(nproc)" --  \
