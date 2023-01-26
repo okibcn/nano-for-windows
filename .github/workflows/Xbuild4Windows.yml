@@ -7,8 +7,8 @@
 name: Xbuild4Windows
 on: 
   schedule:
-    - cron: '57 0 * * *'
-  # runs at 0:57 UTC every day
+    - cron: '52 0 * * *'
+  # runs at 0:52 UTC every day
   workflow_dispatch:
     inputs:
       debug_enabled:
@@ -319,6 +319,9 @@ jobs:
         ############################
      
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
+        UPX=$(wget -q https://api.github.com/repos/upx/upx/releases/latest -O - | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
+        wget -q $UPX -O - | tar -Jxf -
+        ./upx*/upx ../nano/pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
         cp ../LICENSE ../README.md -t .
         7z a -aoa -mmt"$(nproc)" --  \
@@ -347,7 +350,7 @@ jobs:
         tag_name: ${{ env.NANO_VERSION }}
         body_path: body.txt
         files: nano/*.7z
-        body: |
-          ${{ env.BODY }}
+        # body: |
+        #   ${{ env.BODY }}
 
           
