@@ -98,11 +98,10 @@ jobs:
         cd curses
         git log -n 1
         cd ..
-        mkdir _srcback
-        cp -r src/* _srcback
         ./autogen.sh
-        mkdir _srcback
+        mkdir -p _srcback
         cp -r src/* _srcback
+
 
 
     - name: "⚙️ Apply Portability Patches"
@@ -116,35 +115,41 @@ jobs:
 
         cp -rf ./_srcback/* ./src
         # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
-        # 2. Adding windows.h for supporting keypress detection.
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
         echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
         echo "#endif" >> ./src/definitions.h
-
-        # Modify temporal path from linux to windows
-        sed -i 's|TMPDIR|TEMP|g' ./src/files.c
-
-        # Change default terminal to nothing to remove terminal limitations.
-        sed -i 's|vt220||g
-
-          /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
+        echo "PATCH: realpath() workaround applied."
 
         # Fix homedir detection
         sed -i 's|\"HOME\"|"USERPROFILE\"|g' ./src/utils.c
+        echo "PATCH: configuring Windows home folder."
+
+        # Modify temporal path from linux to windows
+        sed -i 's|TMPDIR|TEMP|g' ./src/files.c
+        echo "PATCH: configuring Windows temporal folder."
 
         # Modify path expansion with backslashes
         sed -i "/free(tilded)/a\
           \\\\tfor(tilded = retval; \*tilded; ++tilded) if(\*tilded == '\\\\\\\\') \*tilded = '/';
 
           s|path\[i\] != '/'|path[i] != '/' \&\& path[i] != '\\\\\\\\'|" src/files.c
+        echo "PATCH: Configuring backslashes for folders."
 
         # default open() files in binary mode as linux does
         sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/files.c
         sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
+        echo "PATCH: Forcing file management in binary mode like the Linux version."
+
+        # Change default terminal to nothing to remove terminal limitations.
+        sed -i 's|vt220||g
+
+          /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
+        echo "PATCH: Unlocking terminal features."
 
         # Allow custom colors in terminals with more than 256 colors
         sed -i "/COLORS == 256/ {s/==/>=/}"  src/rcfile.c
+        echo "PATCH: Allow true color."
 
         # Solve window resize crashes
         sed -i -e "/LINES and COLS accordingly/{n;N;d}" src/nano.c # delets 2 next lines
@@ -153,19 +158,24 @@ jobs:
             erase();" src/nano.c
         sed -i -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
         sed -i "/Ignore this keystroke/i\\\\t\\t\\tthe_window_resized = TRUE;" src/winio.c
+        echo "PATCH: Window resize fix... done."
 
         # Solve long delay after unicode 
         sed -i "/halfdelay(ISSET(QUICK_BLANK)/,/disable_kb_interrupt/d"  src/winio.c
+        echo "PATCH: solved deadlock with unicode characters."
 
         # Add (Y/N/^C) to Save modified buffer prompt
         sed -i "s|Save modified buffer|& (Y/N/^C)|"  src/nano.c
+        echo "PATCH: More info for exit message."
 
         # Fix browser folder change
         sed -i's/--selected/selected=0/' src/browser.c
-
+        echo "PATCH: Fixed browser folder change."
+        
         # Fix for unicode char width detection using GNUlib internal function
         sed -i 's|wcwidth(wc)|uc_width(wc, "UTF-8")|g'  src/chars.c
         sed -i '/prototypes.h/a#include "uniwidth.h"'  src/chars.c
+        echo "PATCH: unicode char width detection using GNUlib internal function."
 
         ####
         #### PDCursesMod especific patches
@@ -173,12 +183,14 @@ jobs:
 
         # Solve duplicated definitions ALT-ARROWS already in PDCursesMod
         sed -i "/0x42[1234]/d" src/definitions.h
+        echo "PATCH: remove duplicated definitions."
 
         # PDCurses uses 64bit (chtype) for cell attributes instead of 32bit (int)
         sed -i "/interface_color_pair/ {s/int/chtype/}" src/prototypes.h src/global.c
         sed -i "/int attributes/ {s/int/chtype/}" src/definitions.h
         sed -i "/bool parse_combination/ {s/int/chtype/}" src/rcfile.c
         sed -i "/int attributes/ {s/int/chtype/}" src/rcfile.c
+        echo "PATCH: Improving from 256colors to true color."
 
         # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M
         sed -i "/get_kbinput(midwin, VISIBLE)/a\
@@ -188,15 +200,18 @@ jobs:
             \\t\\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
             \\t\\t}\\n\
             \\t}"  src/nano.c
+        echo "PATCH: Full key modifiers detection implemented."
 
         # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
         sed -i '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
+        echo "PATCH: change to 32 bits wchar_t."
 
         wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
         wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
         wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
         mv -f getch.c curses/pdcurses
         mv -f pdc*.c curses/wincon
+        echo "PATCH: fix for emojis input and output."
 
         # BRANDING and VERSIONING
         LAST_FULLVERSION="$(wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')" || echo "FIRST RELEASE!!!!"
