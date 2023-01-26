@@ -45,7 +45,7 @@ jobs:
 
         if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
           echo "NEW NANO SOURCE!!!!"
-          echo "**NANO CHANGES**" > body.txt
+          echo "# NANO CHANGES" > body.txt
           echo >> body.txt
           echo "$CHANGES_NANO" >> body.txt
           echo >> body.txt
@@ -55,7 +55,7 @@ jobs:
         if [[ $LAST_CURSES>$LAST_RELEASE ]]; then 
           echo "NEW CURSES SOURCE!!!!"
           [ -f body.txt ] && echo >> body.txt
-          echo "**PDCursesMod CHANGES**" >> body.txt
+          echo "# PDCursesMod CHANGES" >> body.txt
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
         fi
