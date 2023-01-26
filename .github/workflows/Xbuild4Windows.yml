@@ -27,6 +27,7 @@ jobs:
     - name: "⏬ Checkout repository"
       uses: actions/checkout@v3
 
+
     - name: "✔️ Pre-build checks"
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -69,9 +70,11 @@ jobs:
           echo "CANCEL=true" >>  $GITHUB_ENV
         fi
 
+
     - name: "👋 Cancelling Actions"
       if:  env.CANCEL == 'true' 
       uses: andymckay/cancel-action@0.2
+
 
     - name: "⏬ Install Toolchain OS Tools"
       run: |
@@ -82,12 +85,6 @@ jobs:
         # sudo -E apt -qq update && sudo apt upgrade -y
         sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
 
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate 
-
 
     - name: "⏬ Download Sources"
       run: |
@@ -97,7 +94,6 @@ jobs:
         ./autogen.sh
         mkdir -p _srcback
         cp -r src/* _srcback
-
 
 
     - name: "⚙️ Apply Portability Patches"
@@ -333,8 +329,15 @@ jobs:
         cd ..
 
 
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate 
+
+
     - name: "👍 Upload release"
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v0.1.15
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
