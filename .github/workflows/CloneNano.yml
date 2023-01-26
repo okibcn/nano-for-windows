@@ -1,0 +1,31 @@
+# Syncs this repo with the GNU Nano editor repo.
+
+name: SYNC_REPO
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+
+    # - uses: actions/checkout@v2
+    #   with:
+    #     persist-credentials: false
+
+    - name: GitHub Repo Sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "git://git.savannah.gnu.org/nano.git"
+        source_branch: "*"
+        destination_branch: "*"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        sync_tags: "true"
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1

@@ -1,4 +1,4 @@
-# Copyright (c) 2022 okibcn
+# Copyright (c) 2023 okibcn
 # This is free software, licensed under the GNU General Public License v3.0
 # See /LICENSE for more information.
 # https://github.com/okibcn/nano-for-windows
@@ -199,9 +199,9 @@ jobs:
         sed -i '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
         echo "PATCH: change to 32 bits wchar_t."
 
-        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
-        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
-        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
+        wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
+        wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
+        wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
         mv -f getch.c curses/pdcurses
         mv -f pdc*.c curses/wincon
         echo "PATCH: fix for emojis input and output."
