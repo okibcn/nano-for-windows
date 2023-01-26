@@ -1,0 +1,327 @@
+# Copyright (c) 2022 okibcn
+# This is free software, licensed under the GNU General Public License v3.0
+# See /LICENSE for more information.
+# https://github.com/okibcn/nano-for-windows
+# Description: Builds nano for Windows
+
+name: Xbuild4Windows
+on: 
+  schedule:
+    - cron: '57 0 * * *'
+  # runs at 0:57 UTC every day
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled true/false (default: false)'     
+        required: false
+        default: 'false'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: "⏬ Checkout repository"
+      uses: actions/checkout@v3
+
+    - name: "✔️ Pre-build checks"
+      run: |
+        git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
+        cd nano
+        LAST_NANO=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
+        CHANGES_NANO="$(git log -1 --pretty=%B)"
+        git clone --depth=1 -n https://github.com/Bill-Gray/PDCursesMod.git curses
+        cd curses
+        LAST_CURSES=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
+        CHANGES_CURSES="$(git log -1 --pretty=%B)"
+        cd ../..
+        rm -rf nano
+        LAST_RELEASE=$( wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
+          || LAST_RELEASE="2000.01.01T00:00:00Z"
+
+        if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
+          echo "NEW NANO SOURCE!!!!"
+          echo "**NANO CHANGES**" > body.txt
+          echo >> body.txt
+          echo "$CHANGES_NANO" >> body.txt
+          echo >> body.txt
+          echo >> body.txt
+        fi 
+        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then 
+          echo "NEW CURSES SOURCE!!!!"
+          [ -f body.txt ] && echo >> body.txt
+          echo "**PDCursesMod CHANGES**" >> body.txt
+          echo >> body.txt
+          echo "$CHANGES_CURSES" >> body.txt
+        fi
+
+        if [ -f body.txt ]; then
+          BODY=$(<body.txt)
+          echo "BODY<<EOF" >> $GITHUB_ENV
+          echo "$BODY" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          echo "CANCEL=false" >>  $GITHUB_ENV
+        else
+          echo "NO NEW SOURCES. CANCELLING ACTION..."
+          echo "CANCEL=true" >>  $GITHUB_ENV
+        fi
+
+    - name: "👋 Cancelling Actions"
+      if:  env.CANCEL == 'true' 
+      uses: andymckay/cancel-action@0.2
+
+    - name: "⏬ Install Toolchain OS Tools"
+      run: |
+        # FAST UBUNTU SERVERS
+        sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
+        sudo -E apt -qq update
+
+        # sudo -E apt -qq update && sudo apt upgrade -y
+        sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate 
+
+    - name: "⏬ Download Sources"
+      run: |
+        git clone git://git.savannah.gnu.org/nano.git
+        cd nano
+        git clone https://github.com/Bill-Gray/PDCursesMod.git curses
+        git log -n 1
+        cd curses
+        git log -n 1
+        cd ..
+        mkdir _srcback
+        cp -r src/* _srcback
+        ./autogen.sh
+
+
+    - name: "⚙️ Apply Portability Patches"
+      run: |
+        cd nano
+        ##########################
+        ##                        ##
+        ##     APPLY PATCHES      ##
+        ##                        ##
+        ##########################
+
+        cp -rf ./_srcback/* ./src
+        # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
+        # 2. Adding windows.h for supporting keypress detection.
+        echo " " >> ./src/definitions.h
+        echo "#ifdef _WIN32" >> ./src/definitions.h
+        echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
+        echo "#endif" >> ./src/definitions.h
+
+        # Modify temporal path from linux to windows
+        sed -i 's|TMPDIR|TEMP|g' ./src/files.c
+
+        # Change default terminal to nothing to remove terminal limitations.
+        sed -i 's|vt220||g
+
+          /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
+
+        # Fix homedir detection
+        sed -i 's|\"HOME\"|"USERPROFILE\"|g' ./src/utils.c
+
+        # Modify path expansion with backslashes
+        sed -i "/free(tilded)/a\
+          \\\\tfor(tilded = retval; \*tilded; ++tilded) if(\*tilded == '\\\\\\\\') \*tilded = '/';
+
+          s|path\[i\] != '/'|path[i] != '/' \&\& path[i] != '\\\\\\\\'|" src/files.c
+
+        # default open() files in binary mode as linux does
+        sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/files.c
+        sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
+
+        # Allow custom colors in terminals with more than 256 colors
+        sed -i "/COLORS == 256/ {s/==/>=/}"  src/rcfile.c
+
+        # Solve window resize crashes
+        sed -i -e "/LINES and COLS accordingly/{n;N;d}" src/nano.c # delets 2 next lines
+        sed -i "/LINES and COLS accordingly/a\
+            \\\\tresize_term(0, 0); \\n\
+            erase();" src/nano.c
+        sed -i -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
+        sed -i "/Ignore this keystroke/i\\\\t\\t\\tthe_window_resized = TRUE;" src/winio.c
+
+        # Solve long delay after unicode 
+        sed -i "/halfdelay(ISSET(QUICK_BLANK)/,/disable_kb_interrupt/d"  src/winio.c
+
+        # Add (Y/N/^C) to Save modified buffer prompt
+        sed -i "s|Save modified buffer|& (Y/N/^C)|"  src/nano.c
+
+        # Fix browser folder change
+        sed -i's/--selected/selected=0/' src/browser.c
+
+        # Fix for unicode char width detection using GNUlib internal function
+        sed -i 's|wcwidth(wc)|uc_width(wc, "UTF-8")|g'  src/chars.c
+        sed -i '/prototypes.h/a#include "uniwidth.h"'  src/chars.c
+
+        ####
+        #### PDCursesMod especific patches
+        ####
+
+        # Solve duplicated definitions ALT-ARROWS already in PDCursesMod
+        sed -i "/0x42[1234]/d" src/definitions.h
+
+        # PDCurses uses 64bit (chtype) for cell attributes instead of 32bit (int)
+        sed -i "/interface_color_pair/ {s/int/chtype/}" src/prototypes.h src/global.c
+        sed -i "/int attributes/ {s/int/chtype/}" src/definitions.h
+        sed -i "/bool parse_combination/ {s/int/chtype/}" src/rcfile.c
+        sed -i "/int attributes/ {s/int/chtype/}" src/rcfile.c
+
+        # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M
+        sed -i "/get_kbinput(midwin, VISIBLE)/a\
+            \\\\tif (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
+            \\t\\tswitch (input) {\\n\
+            \\t\\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
+            \\t\\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
+            \\t\\t}\\n\
+            \\t}"  src/nano.c
+
+        # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
+        sed -i '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
+
+        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
+        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
+        wget https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
+        mv -f getch.c curses/pdcurses
+        mv -f pdc*.c curses/wincon
+
+        # BRANDING and VERSIONING
+        LAST_FULLVERSION="$(wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')" || echo "FIRST RELEASE!!!!"
+        LAST_VERSION="$(echo $LAST_FULLVERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
+        NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")-$(git rev-list --count HEAD)"
+        NANO_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
+        if [ "${NANO_VERSION}" == "${LAST_VERSION}" ]; then
+          # This is a new Windows build based on the same nano build, probably because there is a new curses patch
+          SUBBUILD="$(echo $LAST_FULLVERSION | awk -F .  '{print $3}')"
+          ((SUBBUILD=SUBBUILD+1))
+          NANO_VERSION="${NANO_VERSION}.${SUBBUILD}"
+        fi
+        cd curses
+        CURSES="$(wget -q https://api.github.com/repos/Bill-Gray/PDCursesMod/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')"
+        CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
+        CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
+        cd ..
+
+        sed -i 's/ GNU nano from git,//' src/nano.c
+        sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
+        sed -i '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
+        echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
+
+    - name: "⚙️ Build for Windows 64 bits"
+      run: |
+        cd nano
+        ##########################
+        ##                        ##
+        ##   BUILD FOR x86_64     ##
+        ##                        ##
+        ##########################
+
+        ARCH="x86_64"
+
+        PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
+        BUILD="$(gcc -dumpmachine)"
+        TARGET="${ARCH}-w64-mingw32"
+        OUTDIR="$(pwd)/pkg_${TARGET}"
+        [ "${ARCH}" = "x86_64" ] && BITS="64" || BITS="32"
+
+        export CURSES_DIR="$(pwd)/curses"
+        export CFLAGS="-O0 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDCDEBUG -DPDC_NCMOUSE"
+        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
+        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
+        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
+
+        # cross Build pdcurses for destination host
+        cd "${CURSES_DIR}/${PDTERM}"
+        make clean && make -j$(($(nproc)*2)) WIDE=Y UTF8=Y _w${BITS}=Y
+        cd ../..
+
+        # Build nano
+        sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
+        mkdir -p "$(pwd)/build_${TARGET}/nano"
+        cd "$(pwd)/build_${TARGET}/nano"
+        rm -rf *
+        ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
+          --enable-{utf8,threads=windows} --disable-{nls,speller} \
+          --sysconfdir="C:\\ProgramData"
+        make -j$(($(nproc)*2)) && \
+        make install-strip || exit 1
+        cd ../../..
+
+    - name: "⚙️ Build for Windows 32 bits"
+      run: |
+        cd nano
+        ############################
+        ##                          ##
+        ## BUILD FOR i686 (32 bits) ##
+        ##                          ##
+        ############################
+
+        ARCH="i686"
+
+        PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
+        BUILD="$(gcc -dumpmachine)"
+        TARGET="${ARCH}-w64-mingw32"
+        OUTDIR="$(pwd)/pkg_${TARGET}"
+        [ "${ARCH}" = "x86_64" ] && BITS="64" || BITS="32"
+
+        export CURSES_DIR="$(pwd)/curses"
+        export CFLAGS="-O0 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDCDEBUG -DPDC_NCMOUSE"
+        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
+        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
+        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
+
+        # cross Build pdcurses for destination host
+        cd "${CURSES_DIR}/${PDTERM}"
+        make clean && make -j$(($(nproc)*2)) WIDE=Y UTF8=Y _w${BITS}=Y
+        cd ../..
+
+        # Build nano
+        sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
+        mkdir -p "$(pwd)/build_${TARGET}/nano"
+        cd "$(pwd)/build_${TARGET}/nano"
+        rm -rf *
+        ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
+          --enable-{utf8,threads=windows} --disable-{nls,speller} \
+          --sysconfdir="C:\\ProgramData"
+        make -j$(($(nproc)*2)) && \
+        make install-strip || exit 1
+        cd ../../..
+
+    - name: "📦 Create Package"
+      run: |
+        cd nano
+        ############################
+        ##                          ##
+        ##      CREATE PACKAGE      ##
+        ##                          ##
+        ############################
+
+     
+        strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
+        cp doc/sample.nanorc.in .nanorc
+        7z a -aoa -mmt"$(nproc)" --  \
+          "nano-for_windows_${{ env.NANO_VERSION }}.7z"  \
+          pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
+          .nanorc  || exit 1
+        cd ..
+
+
+    - name: "👍 Upload release"
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.NANO_VERSION }}
+        files: nano/*.7z
+        body: |
+          ${{ env.BODY }}
