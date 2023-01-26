@@ -230,7 +230,7 @@ jobs:
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         sed -i '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
         echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
-        echo -e "GNU nano version Tag: ${NANO_VERSION}\nUsing $CURSES"
+        echo -e "GNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
 
 
     - name: "⚙️ Build for Windows 64 bits"
