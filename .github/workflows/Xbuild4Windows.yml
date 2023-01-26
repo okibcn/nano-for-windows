@@ -85,6 +85,9 @@ jobs:
 
         # sudo -E apt -qq update && sudo apt upgrade -y
         sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
+        UPX=$(wget -q https://api.github.com/repos/upx/upx/releases/latest -O - | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
+        wget -q $UPX -O - | tar -Jxf -
+
 
 
     - name: "⏬ Download Sources"
@@ -319,8 +322,6 @@ jobs:
         ############################
      
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
-        UPX=$(wget -q https://api.github.com/repos/upx/upx/releases/latest -O - | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
-        wget -q $UPX -O - | tar -Jxf -
         ./upx*/upx ../nano/pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
         cp ../LICENSE ../README.md -t .
