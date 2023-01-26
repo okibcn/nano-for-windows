@@ -43,7 +43,7 @@ jobs:
         LAST_RELEASE=$( wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
+        if [[ $LAST_NANO<$LAST_RELEASE ]]; then 
           echo "NEW NANO SOURCE!!!!"
           echo "**NANO CHANGES**" > body.txt
           echo >> body.txt
@@ -51,7 +51,7 @@ jobs:
           echo >> body.txt
           echo >> body.txt
         fi 
-        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then 
+        if [[ $LAST_CURSES<$LAST_RELEASE ]]; then 
           echo "NEW CURSES SOURCE!!!!"
           [ -f body.txt ] && echo >> body.txt
           echo "**PDCursesMod CHANGES**" >> body.txt
