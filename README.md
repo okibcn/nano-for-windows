@@ -32,7 +32,8 @@ The easier way to install nano is by using **[Scoop package manager](https://sco
 ```
 2. Add the nano for windows app directly from its bucket:
 ```pwsh
-> scoop install https://raw.githubusercontent.com/okibcn/Bucket/master/bucket/nano.json
+> scoop bucket add .nano https://github.com/okibcn/Bucket
+> scoop install nano
 ```
 To remove the app just type:
 ```pwsh
