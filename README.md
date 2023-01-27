@@ -15,8 +15,9 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 - UTF-8 encoding support.
 - Supplement Unicode characters support, including all the languages and emojis 😜in the CLI interface.
 - multi-document editor.
-- file browser.
+- Integrated file browser.
 - Mouse support for scroll and cursor location.
+- Normal or regular expression (regex) search and replace.
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
 
 <div align="center"><img width="640" alt="Screenshot 2023-01-26 212422" src="https://user-images.githubusercontent.com/22417711/215018756-09651357-8412-4b2c-a9af-c8dd2f0a20f0.png"></div>
