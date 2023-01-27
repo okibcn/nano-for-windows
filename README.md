@@ -10,8 +10,8 @@ GNU nano is constantly being upgraded, but the original project is limited to pr
 
 Pretty much everything is supported except for Linux-specific functions. We can highlight:
 
-- interface customization: colors, key shortcuts, line numbers, scroll bar...
-- Syntax coloring for 47 different types of documents. It can be upgraded thanks to community support, for instance [here](https://github.com/scopatz/nanorc) or [here](https://github.com/mitchell486/nanorc).
+- Interface customization: colors, key shortcuts, line numbers, infobar, scroll bar...
+- Syntax coloring for 47 different types of documents. It can be upgraded thanks to community support, for instance [here](https://github.com/scopatz/nanorc) or [here](https://github.com/mitchell486/nanorc) you can find additional syntax files for more types of documents.
 - UTF-8 encoding support.
 - Supplement Unicode characters support, including all the languages and emojis 😜in the CLI interface.
 - multi-document editor.
@@ -41,7 +41,8 @@ To remove the app just type:
 ```
 # Usage
 
-This repo handles only the conversion to Windows OS. The original GNU nano **[documentation](https://www.nano-editor.org/docs.php)** covers All the usage instructions. For a quick reference you can just press F1 within nano to open the integrated help.
+This repo handles only the conversion to Windows OS. The original GNU nano **[documentation](https://www.nano-editor.org/docs.php)** covers all the usage instructions. For a quick reference you can just press F1 within nano to open the integrated help.
+
 The interface customization file is located in the user profile and has a fair description of each setting. To edit it, just open a powershell terminal type:
 ```pwsh
 > nano ~/.nanorc
