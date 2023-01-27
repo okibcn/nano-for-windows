@@ -12,9 +12,10 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 
 - interface customization: colors, key shortcuts, line numbers, scroll bar...
 - Syntax coloring for 47 different types of documents. It can be upgraded thanks to community support, for instance [here](https://github.com/scopatz/nanorc) or [here](https://github.com/mitchell486/nanorc).
-- multi-document editor.
 - UTF-8 encoding support.
 - Supplement Unicode characters support, including all the languages and emojis 😜in the CLI interface.
+- multi-document editor.
+- file browser.
 - Mouse support for scroll and cursor location.
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
 
