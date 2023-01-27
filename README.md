@@ -1,6 +1,6 @@
 # NANO FOR WINDOWS
 
-This is the Windows version of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB) based on the pico editor.
+This is the 32/64 bits Windowsversion of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB) based on the pico editor.
 
 GNU nano is constantly being upgraded, but the original project is limited to providing support and functionality only for Linux. This project is meant to bring the latest updates to Windows 64/32.
 
@@ -33,6 +33,17 @@ The easier way to install nano is by using **[Scoop package manager](https://sco
 2. Add the nano for windows app directly from its bucket:
 ```pwsh
 > scoop install https://raw.githubusercontent.com/okibcn/Bucket/master/bucket/nano.json
+```
+To remove the app just type:
+```pwsh
+> scoop uninstall nano
+```
+# Usage
+
+This repo handles only the conversion to Windows OS. The original GNU nano **[documentation](https://www.nano-editor.org/docs.php)** covers All the usage instructions. For a quick reference you can just press F1 within nano to open the integrated help.
+The interface customization file is located in the user profile and has a fair description of each setting. To edit it, just open a powershell terminal type:
+```pwsh
+> nano ~/.nanorc
 ```
 # Known Issues
 
