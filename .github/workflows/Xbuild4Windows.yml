@@ -28,6 +28,15 @@ jobs:
       uses: actions/checkout@v3
 
 
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate 
+
+
     - name: "✔️ Pre-build checks"
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -59,6 +68,8 @@ jobs:
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
         fi
+
+
 
         if [ -f body.txt ]; then
           BODY=$(<body.txt)
@@ -199,6 +210,11 @@ jobs:
         sed -i '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
         echo "PATCH: change to 32 bits wchar_t."
 
+        # Fix ALT+[NUMBER|LETTER] not working with PDCursesMod
+        sed -i "s/char)keystring\[2])/&\+\(\(unsigned char)keystring\[2]>\='9' \? ALT_A-\(int)'a' \: ALT_0-\(int)'0')/" src/global.c
+        echo "PATCH: ALT+[NUMBER|LETTER] not working."
+
+        # Enable double word unicodes.
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
@@ -330,15 +346,6 @@ jobs:
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
           .nanorc LICENSE README.md || exit 1
         cd ..
-
-
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate 
 
 
     - name: "👍 Upload release"
