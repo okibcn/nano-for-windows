@@ -68,8 +68,12 @@ jobs:
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
         fi
-
-
+        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then 
+          echo "NEW WINDOWS PATCHES!!!!"
+          [ -f body.txt ] && echo >> body.txt
+          echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
+          echo >> body.txt
+        fi
 
         if [ -f body.txt ]; then
           BODY=$(<body.txt)
