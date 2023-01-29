@@ -28,15 +28,6 @@ jobs:
       uses: actions/checkout@v3
 
 
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate 
-
-
     - name: "✔️ Pre-build checks"
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -49,7 +40,7 @@ jobs:
         CHANGES_CURSES="$(git log -1 --pretty=%B)"
         cd ../..
         rm -rf nano
-        LAST_RELEASE=$( wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
+        LAST_RELEASE=$( wget -q https://api.github.com/repos/rasa/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
         if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
@@ -67,12 +58,6 @@ jobs:
           echo "# PDCursesMod CHANGES" >> body.txt
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
-        fi
-        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then 
-          echo "NEW WINDOWS PATCHES!!!!"
-          [ -f body.txt ] && echo >> body.txt
-          echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
-          echo >> body.txt
         fi
 
         if [ -f body.txt ]; then
@@ -115,116 +100,160 @@ jobs:
 
     - name: "🔧 Apply Windows Portability Patches"
       run: |
+        function _diff() {
+          # Thanks to @rasa for this function
+          bak=$(find . -type f -name '*.bak' | head -n 1)
+          test -z "${bak}" && return
+          src=${bak/.bak/}
+          n=1
+          while : ; do
+            patch=${src}-${n}.patch
+            test -f "${patch}" || break
+            ((n++))
+          done
+          diff -u -w "${bak}" "${src}" >"${patch}" || true
+          rm -f "${bak}" || true
+          if [[ ! -s "${patch}" ]]; then
+            rm -f "${patch}" || true
+            return 0
+          fi
+          echo "${patch}":
+          cat "${patch}"
+          return 0
+        }
         cd nano
         ##########################
         ##                        ##
         ##     APPLY PATCHES      ##
         ##                        ##
         ##########################
-
+        cp -p ./src/definitions.h{,.bak}
         # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
+        echo -e "\n\nPATCH: realpath() workaround applied."
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
         echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
         echo "#endif" >> ./src/definitions.h
-        echo "PATCH: realpath() workaround applied."
+        _diff
 
         # Fix homedir detection
-        sed -i 's|\"HOME\"|"USERPROFILE\"|g' ./src/utils.c
-        echo "PATCH: configuring Windows home folder."
+        echo -e "\n\nPATCH: configuring Windows home folder."
+        sed -i.bak 's|\"HOME\"|"USERPROFILE\"|g' ./src/utils.c
+        _diff
 
         # Modify temporal path from linux to windows
-        sed -i 's|TMPDIR|TEMP|g' ./src/files.c
-        echo "PATCH: configuring Windows temporal folder."
+        echo -e "\n\nPATCH: configuring Windows temporal folder."
+        sed -i.bak 's|TMPDIR|TEMP|g' ./src/files.c
+        _diff
 
         # Modify path expansion with backslashes
-        sed -i "/free(tilded)/a\
+        echo -e "\n\nPATCH: Configuring backslashes for folders."
+        sed -i.bak "/free(tilded)/a\
           \\\\tfor(tilded = retval; \*tilded; ++tilded) if(\*tilded == '\\\\\\\\') \*tilded = '/';
 
           s|path\[i\] != '/'|path[i] != '/' \&\& path[i] != '\\\\\\\\'|" src/files.c
-        echo "PATCH: Configuring backslashes for folders."
+        _diff
 
         # default open() files in binary mode as linux does
-        sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/files.c
-        sed -i 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
-        echo "PATCH: Forcing file management in binary mode like the Linux version."
+        echo -e "\n\nPATCH: Forcing file management in binary mode like the Linux version."
+        sed -i.bak 's/O_..ONLY/& | _O_BINARY/g' ./src/files.c
+        _diff
+        sed -i.bak 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
+        _diff
 
         # Change default terminal to nothing to remove terminal limitations.
-        sed -i 's|vt220||g
+        echo -e "\n\nPATCH: Unlocking terminal features."
+        sed -i.bak 's|vt220||g
 
           /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
-        echo "PATCH: Unlocking terminal features."
+        _diff
 
         # Allow custom colors in terminals with more than 256 colors
-        sed -i "/COLORS == 256/ {s/==/>=/}"  src/rcfile.c
-        echo "PATCH: Allow true color."
+        echo -e "\n\nPATCH: Allow true color."
+        sed -i.bak "/COLORS == 256/ {s/==/>=/}"  src/rcfile.c
+        _diff
 
         # Solve window resize crashes
-        sed -i -e "/LINES and COLS accordingly/{n;N;d}" src/nano.c # delets 2 next lines
-        sed -i "/LINES and COLS accordingly/a\
+        echo -e "\n\nPATCH: Window resize fix... done."
+        sed -i.bak -e "/LINES and COLS accordingly/{n;N;d}" src/nano.c # delets 2 next lines
+        _diff
+        sed -i.bak "/LINES and COLS accordingly/a\
             \\\\tresize_term(0, 0); \\n\
             erase();" src/nano.c
-        sed -i -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
-        sed -i "/Ignore this keystroke/i\\\\t\\t\\tthe_window_resized = TRUE;" src/winio.c
-        echo "PATCH: Window resize fix... done."
+        _diff
+        sed -i.bak -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
+        _diff
+        sed -i.bak "/Ignore this keystroke/i\\\\t\\t\\tthe_window_resized = TRUE;" src/winio.c
+        _diff
 
         # Solve long delay after unicode 
-        sed -i "/halfdelay(ISSET(QUICK_BLANK)/,/disable_kb_interrupt/d"  src/winio.c
-        echo "PATCH: solved deadlock with unicode characters."
+        echo -e "\n\nPATCH: solved deadlock with unicode characters."
+        sed -i.bak "/halfdelay(ISSET(QUICK_BLANK)/,/disable_kb_interrupt/d"  src/winio.c
+        _diff
 
         # Add (Y/N/^C) to Save modified buffer prompt
-        sed -i "s|Save modified buffer|& (Y/N/^C)|"  src/nano.c
-        echo "PATCH: More info for exit message."
+        echo -e "\n\nPATCH: More info for exit message."
+        sed -i.bak "s|Save modified buffer|& (Y/N/^C)|"  src/nano.c
+        _diff
 
         # Fix browser folder change
-        sed -i 's/--selected/selected=0/' src/browser.c
-        echo "PATCH: Fixed browser folder change."
-        
+        echo -e "\n\nPATCH: Fixed browser folder change."
+        sed -i.bak 's/--selected/selected=0/' src/browser.c
+        _diff
+
         # Fix for unicode char width detection using GNUlib internal function
-        sed -i 's|wcwidth(wc)|uc_width(wc, "UTF-8")|g'  src/chars.c
+        echo -e "\n\nPATCH: unicode char width detection using GNUlib internal function."
+        sed -i.bak 's|wcwidth(wc)|uc_width(wc, "UTF-8")|g'  src/chars.c
         sed -i '/prototypes.h/a#include "uniwidth.h"'  src/chars.c
-        echo "PATCH: unicode char width detection using GNUlib internal function."
+        _diff
 
         ####
         #### PDCursesMod especific patches
         ####
 
         # Solve duplicated definitions ALT-ARROWS already in PDCursesMod
-        sed -i "/0x42[1234]/d" src/definitions.h
-        echo "PATCH: remove duplicated definitions."
+        echo -e "\n\nPATCH: remove duplicated definitions."
+        sed -i.bak "/0x42[1234]/d" src/definitions.h
+        _diff
 
         # PDCurses uses 64bit (chtype) for cell attributes instead of 32bit (int)
-        sed -i "/interface_color_pair/ {s/int/chtype/}" src/prototypes.h src/global.c
-        sed -i "/int attributes/ {s/int/chtype/}" src/definitions.h
-        sed -i "/bool parse_combination/ {s/int/chtype/}" src/rcfile.c
+        echo -e "\n\nPATCH: Improving from 256colors to true color."
+        sed -i.bak "/interface_color_pair/ {s/int/chtype/}" src/prototypes.h src/global.c
+        _diff
+        sed -i.bak "/int attributes/ {s/int/chtype/}" src/definitions.h
+        _diff
+        sed -i.bak "/bool parse_combination/ {s/int/chtype/}" src/rcfile.c
         sed -i "/int attributes/ {s/int/chtype/}" src/rcfile.c
-        echo "PATCH: Improving from 256colors to true color."
+        _diff
 
         # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M
-        sed -i "/get_kbinput(midwin, VISIBLE)/a\
+        echo -e "\n\nPATCH: Full key modifiers detection."
+        sed -i.bak "/get_kbinput(midwin, VISIBLE)/a\
             \\\\tif (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
             \\t\\tswitch (input) {\\n\
             \\t\\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
             \\t\\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
             \\t\\t}\\n\
             \\t}"  src/nano.c
-        echo "PATCH: Full key modifiers detection implemented."
+        _diff
 
         # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
-        sed -i '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
-        echo "PATCH: change to 32 bits wchar_t."
+        echo -e "\n\nPATCH: change to 32 bits wchar_t."
+        sed -i.bak '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
+        _diff
 
-        # Fix ALT+[NUMBER|LETTER] not working with PDCursesMod
-        sed -i "s/char)keystring\[2])/&\+\(\(unsigned char)keystring\[2]>\='9' \? ALT_A-\(int)'a' \: ALT_0-\(int)'0')/" src/global.c
-        echo "PATCH: ALT+[NUMBER|LETTER] not working."
-
-        # Enable double word unicodes.
+        echo -e "\n\nPATCH: fix for emojis input and output."
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
         mv -f getch.c curses/pdcurses
         mv -f pdc*.c curses/wincon
-        echo "PATCH: fix for emojis input and output."
+        _diff
+
+        # Fix ALT+[NUMBER|LETTER] not working with PDCursesMod
+        echo -e "\n\nPATCH: ALT+[NUMBER|LETTER] not working."
+        sed -i "s/char)keystring\[2])/&\+\(\(unsigned char)keystring\[2]>\='9' \? ALT_A-\(int)'a' \: ALT_0-\(int)'0')/" src/global.c
+        _diff
 
         # BRANDING and VERSIONING
         LAST_FULLVERSION="$(wget -q https://api.github.com/repos/okibcn/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')" || echo "FIRST RELEASE!!!!"
@@ -243,12 +272,14 @@ jobs:
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
 
-        sed -i 's/ GNU nano from git,//' src/nano.c
+        sed -i.bak 's/ GNU nano from git,//' src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
-        sed -i '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
-        echo -e "GNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
+        _diff
+        sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
+        _diff
+        echo -e "\n\nGNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
         echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
-        
+
 
     - name: "⚙️ Build for Windows 64 bits"
       run: |
@@ -350,6 +381,15 @@ jobs:
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
           .nanorc LICENSE README.md || exit 1
         cd ..
+
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate 
 
 
     - name: "👍 Upload release"
