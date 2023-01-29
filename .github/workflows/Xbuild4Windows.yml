@@ -59,6 +59,12 @@ jobs:
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
         fi
+        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then 
+          echo "NEW WINDOWS PATCHES!!!!"
+          [ -f body.txt ] && echo >> body.txt
+          echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
+          echo >> body.txt
+        fi
 
         if [ -f body.txt ]; then
           BODY=$(<body.txt)
@@ -127,9 +133,10 @@ jobs:
         ##     APPLY PATCHES      ##
         ##                        ##
         ##########################
-        cp -p ./src/definitions.h{,.bak}
+        
         # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
         echo -e "\n\nPATCH: realpath() workaround applied."
+        cp -p ./src/definitions.h{,.bak}
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
         echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
@@ -241,7 +248,6 @@ jobs:
         echo -e "\n\nPATCH: change to 32 bits wchar_t."
         sed -i.bak '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
         _diff
-
         echo -e "\n\nPATCH: fix for emojis input and output."
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
