@@ -233,15 +233,21 @@ jobs:
         sed -i "/int attributes/ {s/int/chtype/}" src/rcfile.c
         _diff
 
-        # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M
+        # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M and certain CTRL+key combos
         echo -e "\n\nPATCH: Full key modifiers detection."
         sed -i.bak "/get_kbinput(midwin, VISIBLE)/a\
             \\\\tif (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
-            \\t\\tswitch (input) {\\n\
-            \\t\\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
-            \\t\\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
-            \\t\\t}\\n\
-            \\t}"  src/nano.c
+            \\tswitch (input) {\\n\
+            \\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
+            \\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
+            \\t}\\n\
+            }\\n\
+            if (PDC_get_key_modifiers() & PDC_KEY_MODIFIER_CONTROL){\\n\
+            \\tswitch (input) {\\n\
+            \\t\\tcase '/':          input = 31; break;\\n\
+            \\t\\tcase SHIFT_DELETE: input = CONTROL_SHIFT_DELETE; break;\\n\
+            \\t}\\n\
+            }"  src/nano.c
         _diff
 
         # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
