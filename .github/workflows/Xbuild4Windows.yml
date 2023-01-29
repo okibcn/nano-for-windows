@@ -80,7 +80,7 @@ jobs:
 
     - name: "👋 If no new sources are available, then we stop."
       if:  env.CANCEL == 'true' 
-      uses: andymckay/cancel-action@0.2
+      uses: andymckay/cancel-action@0.3
 
 
     - name: "⏬ Install Toolchain OS Tools"
