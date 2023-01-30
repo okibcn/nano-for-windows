@@ -190,7 +190,7 @@ jobs:
         _diff
         sed -i.bak -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
         _diff
-        sed -i.bak "/Ignore this keystroke/i\\\\t\\t\\tthe_window_resized = TRUE;" src/winio.c
+        sed -i.bak 's/the_window_resized/input == KEY_RESIZE/' src/winio.c
         _diff
 
         # Solve long delay after unicode 
