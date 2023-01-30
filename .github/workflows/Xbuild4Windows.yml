@@ -171,7 +171,7 @@ jobs:
         # Change default terminal to nothing to remove terminal limitations.
         echo -e "\n\nPATCH: Unlocking terminal features."
         sed -i.bak 's|vt220||g
-
+          /x1B/d
           /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
         _diff
 
