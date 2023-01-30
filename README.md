@@ -27,19 +27,23 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 
 The easier way to install nano is by using **[Scoop package manager](https://scoop.sh/)**.
 
-1. Open a PowerShell terminal (version 5.1 or later) and run:
+1. To install Scoop utility Open a PowerShell terminal (version 5.1 or later) and run:
 ```pwsh
 > Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 > irm get.scoop.sh | iex
 ```
 2. Add the nano for windows app directly from its bucket:
 ```pwsh
-> scoop bucket add .nano https://github.com/okibcn/Bucket
+> scoop bucket add .oki https://github.com/okibcn/Bucket
 > scoop install nano
 ```
 To remove the app just type:
 ```pwsh
 > scoop uninstall nano
+```
+To update the app just type:
+```pwsh
+> scoop update nano
 ```
 # Usage
 
