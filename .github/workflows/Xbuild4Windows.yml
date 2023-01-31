@@ -16,7 +16,7 @@ on:
         required: false
         default: 'false'
       release:
-        description: 'Type (yes) for release, (no) winn generate an artifact (default: no)'     
+        description: 'Type (yes) for release, (no) will generate an artifact (default: no)'     
         required: false
         default: 'no'
 
