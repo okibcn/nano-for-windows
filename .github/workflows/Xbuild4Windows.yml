@@ -408,6 +408,7 @@ jobs:
           "nano-for-windows_${{ env.NANO_VERSION }}.7z"  \
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
           .nanorc LICENSE README.md || exit 1
+        mv *.7z ..
         cd ..
 
     - name: "👍 Upload Artifact"
@@ -416,7 +417,7 @@ jobs:
       with:
         name: ${{ env.NANO_VERSION }}
         path: |
-          nano/*.7z
+          *.7z
           body.txt
 
     - name: "🎉 Publish a new release"
@@ -429,7 +430,7 @@ jobs:
       with:
         tag_name: ${{ env.NANO_VERSION }}
         body_path: body.txt
-        files: nano/*.7z
+        files: ./*.7z
         # body: |
         #   ${{ env.BODY }}
 
