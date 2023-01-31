@@ -168,6 +168,10 @@ jobs:
         sed -i.bak 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
         _diff
 
+        # See https://github.com/lhmouse/nano-win/compare/vanilla...master#diff-57b320cc7adea8a7d492648179ebdd206bb8090f0b897e8965b0b482d0dbc88bL1615-L1616
+        echo -e "\n\nPATCH: Convert invalid filename characters to ! for backup files."
+        sed -i.bak "s~if (thename\[i\] == '/')~if (strchr(\"<>:\\\\\"/\\\\\\\\|?*\", thename[i]))~g" ./src/files.c
+
         # Change default terminal to nothing to remove terminal limitations.
         echo -e "\n\nPATCH: Unlocking terminal features."
         sed -i.bak 's|vt220||g
