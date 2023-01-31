@@ -299,11 +299,12 @@ jobs:
         CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
+        BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
 
         sed -i.bak 's/ GNU nano from git,//' src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
-        sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${NANO_DATE}"'\\""' src/Makefile.am
+        sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${BUILD_DATE}"'\\""' src/Makefile.am
         _diff
         echo -e "\n\nGNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
         echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
