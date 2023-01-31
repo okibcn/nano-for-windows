@@ -53,7 +53,7 @@ jobs:
         CHANGES_CURSES="$(git log -1 --pretty=%B)"
         cd ../..
         rm -rf nano
-        LAST_RELEASE=$( wget -q https://api.github.com/$GITHUB_REPOSITORY/nano-for-windows/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
+        LAST_RELEASE=$( wget -q https://api.github.com/$GITHUB_REPOSITORY/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
         if [[ $LAST_NANO>$LAST_RELEASE ]]; then 

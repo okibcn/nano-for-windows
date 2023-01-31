@@ -18,7 +18,7 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 - Integrated file browser.
 - Mouse support for scroll and cursor location.
 - Normal or regular expression (regex) search and replace.
-- auto indent, fast line comment for many programming languages.
+- auto indent, syntax highlight and fast line comment for many programming languages.
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
 
 <div align="center"><img width="640" alt="Screenshot 2023-01-26 212422" src="https://user-images.githubusercontent.com/22417711/215018756-09651357-8412-4b2c-a9af-c8dd2f0a20f0.png"></div>
@@ -27,7 +27,7 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 
 The easier way to install nano is by using **[Scoop package manager](https://scoop.sh/)**.
 
-1. To install Scoop utility Open a PowerShell terminal (version 5.1 or later) and run:
+1. To install Scoop utility open a PowerShell terminal (version 5.1 or later) and run:
 ```pwsh
 > Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 > irm get.scoop.sh | iex
