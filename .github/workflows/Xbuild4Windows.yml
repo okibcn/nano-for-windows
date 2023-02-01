@@ -5,18 +5,18 @@
 # Description: Builds nano for Windows
 
 name: Xbuild4Windows
-on: 
+on:
   schedule:
     - cron: '52 0 * * *'
   # runs at 0:52 UTC every day
   workflow_dispatch:
     inputs:
       debug_enabled:
-        description: 'Run the build with tmate debugging enabled true/false (default: false)'     
+        description: 'Run the build with tmate debugging enabled true/false (default: false)'
         required: false
         default: 'false'
       release:
-        description: 'Type (yes) for release, (no) will generate an artifact (default: no)'     
+        description: 'Type (yes) for release, (no) will generate an artifact (default: no)'
         required: false
         default: 'no'
 
@@ -38,7 +38,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate 
+        ##           or https://github.com/mxschmitt/action-tmate
 
 
     - name: "✔️ Pre-build checks"
@@ -56,7 +56,7 @@ jobs:
         LAST_RELEASE=$( wget -q https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        if [[ $LAST_NANO>$LAST_RELEASE ]]; then 
+        if [[ $LAST_NANO>$LAST_RELEASE ]]; then
           echo "NEW NANO SOURCE!!!!"
           echo "# NANO CHANGES" > body.txt
           echo >> body.txt
@@ -64,15 +64,15 @@ jobs:
           echo >> body.txt
           echo >> body.txt
           cat body.txt
-        fi 
-        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then 
+        fi
+        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then
           echo "NEW CURSES SOURCE!!!!"
           [ -f body.txt ] && echo >> body.txt
           echo "# PDCursesMod CHANGES" >> body.txt
           echo >> body.txt
           echo "$CHANGES_CURSES" >> body.txt
         fi
-        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then 
+        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
           echo "NEW WINDOWS PATCHES!!!!"
           [ -f body.txt ] && echo >> body.txt
           echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
@@ -92,7 +92,7 @@ jobs:
 
 
     - name: "👋 If no new sources are available, then we stop."
-      if:  env.CANCEL == 'true' 
+      if:  env.CANCEL == 'true'
       uses: andymckay/cancel-action@0.3
 
 
@@ -146,12 +146,13 @@ jobs:
         ##     APPLY PATCHES      ##
         ##                        ##
         ##########################
-        
+
         # 1. >realpath< function doesn't exist on Windows, which isn't fully POSIX compliant.
         echo -e "\n\nPATCH: realpath() workaround applied."
         cp -p ./src/definitions.h{,.bak}
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
+        # echo "#include <windows.h>"  >> ./src/definitions.h
         echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
         echo "#endif" >> ./src/definitions.h
         _diff
@@ -184,8 +185,8 @@ jobs:
         sed -i.bak 's/O_..ONLY/& | _O_BINARY/g' ./src/text.c
         _diff
 
-        # Change default terminal to nothing to remove terminal limitations.
-        echo -e "\n\nPATCH: Unlocking terminal features."
+        # Enable UTF-8 Terminal
+        echo -e "\n\nPATCH: Enable UTF-8 console."
         sed -i.bak 's|vt220||g
           /x1B/d
           /nl_langinfo(CODESET)/ c\\tsetlocale(LC_ALL, "");'  src/nano.c
@@ -197,19 +198,17 @@ jobs:
         _diff
 
         # Solve window resize crashes
-        echo -e "\n\nPATCH: Window resize fix... done."
+        echo -e "\n\nPATCH: Window resize fix."
         sed -i.bak -e "/LINES and COLS accordingly/{n;N;d}" src/nano.c # delets 2 next lines
-        _diff
-        sed -i.bak "/LINES and COLS accordingly/a\
+        sed -i "/LINES and COLS accordingly/a\
             \\\\tresize_term(0, 0); \\n\
             erase();" src/nano.c
-        _diff
-        sed -i.bak -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
+        sed -i -e "/recreate the subwindows with their (new) sizes/{n;d}" src/nano.c
         _diff
         sed -i.bak 's/the_window_resized/input == KEY_RESIZE/' src/winio.c
         _diff
 
-        # Solve long delay after unicode 
+        # Solve long delay after unicode
         echo -e "\n\nPATCH: solved deadlock with unicode characters."
         sed -i.bak "/halfdelay(ISSET(QUICK_BLANK)/,/disable_kb_interrupt/d"  src/winio.c
         _diff
@@ -230,9 +229,34 @@ jobs:
         sed -i '/prototypes.h/a#include "uniwidth.h"'  src/chars.c
         _diff
 
-        ####
-        #### PDCursesMod especific patches
-        ####
+        # Fix pipe-in data from Windows console.
+        echo -e "\n\nPATCH: Fix pipe in data in Windows console."
+        sed -i.bak "s/stream, 0/stream, fd/" src/nano.c
+        sed -i "/FILE \*stream/,/stop the reading/ c\
+          \\\\t static FILE \*stream;\\n\
+          static int fd\=0;\\n\
+          if \(fd\=\=0){\\n\
+          if \(GetConsoleWindow\() \!\= NULL)\\n\
+            fprintf\(stderr, _\(\"Reading data from keyboard; type a ^Z line to finish.\\\\n\"));\\n\
+          fd \= dup\(0);\\n\
+          stream \= fdopen\(fd, \"rb\");\\n\
+          return FALSE;}\\n\
+          endwin\();\\n\
+          if \(stream \=\= NULL) {\\n\
+          \\t int errnumber \= errno;\\n\
+          \\t if\(fd \> -1) close\(fd);\\n\
+          return FALSE;}" src/nano.c
+        sed -i "s|/dev/tty|CONIN$|" src/nano.c
+        sed -i "/initscr/i\
+          for\(int optind_\=optind; optind_ \< argc;optind_\+\+)\\n\
+            if \(strcmp\(argv\[optind_], \"\-\") \=\= 0){scoop_stdin\();break;}\\n\
+          reconnect_and_store_state\();" src/nano.c
+        _diff
+
+
+        ####                               ####
+        #### PDCursesMod especific patches ####
+        ####                               ####
 
         # Solve duplicated definitions ALT-ARROWS already in PDCursesMod
         echo -e "\n\nPATCH: remove duplicated definitions."
@@ -283,7 +307,11 @@ jobs:
         sed -i "s/char)keystring\[2])/&\+\(\(unsigned char)keystring\[2]>\='9' \? ALT_A-\(int)'a' \: ALT_0-\(int)'0')/" src/global.c
         _diff
 
-        # BRANDING and VERSIONING
+
+        ####                               ####
+        ####    BRANDING and VERSIONING    ####
+        ####                               ####
+
         LAST_FULLVERSION="$(wget -q https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')" || echo "FIRST RELEASE!!!!"
         LAST_VERSION="$(echo $LAST_FULLVERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
         NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")-$(git rev-list --count HEAD)"
@@ -400,7 +428,7 @@ jobs:
         ##      CREATE PACKAGE      ##
         ##                          ##
         ############################
-     
+
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         ../upx*/upx pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
@@ -423,7 +451,7 @@ jobs:
 
     - name: "🎉 Publish a new release"
       uses: softprops/action-gh-release@v0.1.15
-      # go to https://github.com/OWNER/REPO/settings/actions and 
+      # go to https://github.com/OWNER/REPO/settings/actions and
       # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
       if: github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes'
       env:
@@ -435,4 +463,4 @@ jobs:
         # body: |
         #   ${{ env.BODY }}
 
-          
+
