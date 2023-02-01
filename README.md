@@ -34,7 +34,7 @@ irm get.scoop.sh | iex
 ```
 2. Add the nano for windows app directly from its bucket:
 ```pwsh
-scoop bucket add .oki https://github.com/okibcn/Bucket
+scoop bucket add .oki https://github.com/okibcn/Bucket  # Optional: the changes are propagated faster this way
 scoop install nano
 ```
 To remove the app just type:
@@ -51,7 +51,7 @@ This repo handles only the conversion to Windows OS. The original GNU nano **[do
 
 The interface customization file is located in the user profile and has a fair description of each setting. To edit it, just open a powershell terminal type:
 ```pwsh
-> nano ~/.nanorc
+nano ~/.nanorc
 ```
 # Notes
 
