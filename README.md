@@ -53,8 +53,8 @@ The interface customization file is located in the user profile and has a fair d
 ```pwsh
 > nano ~/.nanorc
 ```
-# Known Issues
+# Notes
 
-- Pipes in Windows are not working yet.
+- When using Windows Terminal and the screen is resized within nano, after returning to the shell there could be some corruption due to the new size. To fix the issue just resize the terminal window to zero lines and return to the desired size.
 
-Feel free to open any issue you find, or use the [Discussions](https://github.com/okibcn/nano-for-windows/discussions) section for any other issue, suggestion, question, etc...
+- Feel free to open any issue you find, or use the [Discussions](https://github.com/okibcn/nano-for-windows/discussions) section for any other issue, suggestion, question, etc...
