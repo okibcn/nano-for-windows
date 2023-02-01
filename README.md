@@ -20,6 +20,7 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 - Normal or regular expression (regex) search and replace.
 - auto indent, syntax highlight and fast line comment for many programming languages.
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
+- Data input through stdin support, from pipe or keyboard.
 
 <div align="center"><img width="640" alt="Screenshot 2023-01-26 212422" src="https://user-images.githubusercontent.com/22417711/215018756-09651357-8412-4b2c-a9af-c8dd2f0a20f0.png"></div>
 
