@@ -231,7 +231,8 @@ jobs:
 
         # Fix pipe-in data from Windows console.
         echo -e "\n\nPATCH: Fix pipe in data in Windows console."
-        sed -i.bak "s/stream, 0/stream, fd/" src/nano.c
+        sed -i.bak "s|/dev/tty|CON|" src/nano.c
+        sed -i "s/stream, 0/stream, fd/" src/nano.c
         sed -i "/FILE \*stream/,/stop the reading/ c\
           \\\\t static FILE \*stream;\\n\
           static int fd\=0;\\n\
@@ -240,17 +241,18 @@ jobs:
             fprintf\(stderr, _\(\"Reading data from keyboard; type a ^Z line to finish.\\\\n\"));\\n\
           fd \= dup\(0);\\n\
           stream \= fdopen\(fd, \"rb\");\\n\
+          freopen\(\"CON\", \"rb\", stdin);\\n\
+          FreeConsole\();\\n\
+          AttachConsole\(ATTACH_PARENT_PROCESS);\\n\
           return FALSE;}\\n\
           endwin\();\\n\
           if \(stream \=\= NULL) {\\n\
           \\t int errnumber \= errno;\\n\
           \\t if\(fd \> -1) close\(fd);\\n\
           return FALSE;}" src/nano.c
-        sed -i "s|/dev/tty|CONIN$|" src/nano.c
         sed -i "/initscr/i\
           for\(int optind_\=optind; optind_ \< argc;optind_\+\+)\\n\
-            if \(strcmp\(argv\[optind_], \"\-\") \=\= 0){scoop_stdin\();break;}\\n\
-          reconnect_and_store_state\();" src/nano.c
+            if \(strcmp\(argv\[optind_], \"\-\") \=\= 0){scoop_stdin\();break;}" src/nano.c
         _diff
 
 
