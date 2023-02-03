@@ -153,6 +153,7 @@ jobs:
         echo " " >> ./src/definitions.h
         echo "#ifdef _WIN32" >> ./src/definitions.h
         echo "#include <windows.h>"  >> ./src/definitions.h
+        echo "#include \"uniwidth.h\""  >> ./src/definitions.h
         echo "#define realpath(N,R) _fullpath((R),(N),0)" >> ./src/definitions.h
         echo "#endif" >> ./src/definitions.h
         _diff
