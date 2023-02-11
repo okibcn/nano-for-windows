@@ -121,7 +121,7 @@ jobs:
       run: |
         function _diff() {
           # Thanks to @rasa for this function
-          mapfile -t < <(find . -type f -name '*.bak' | head -n 1)
+          mapfile -t < <(find . -type f -name '*.bak')
           for bak in "${MAPFILE[@]}"; do
             src=${bak/.bak/}
             n=1
