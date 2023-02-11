@@ -121,23 +121,24 @@ jobs:
       run: |
         function _diff() {
           # Thanks to @rasa for this function
-          bak=$(find . -type f -name '*.bak' | head -n 1)
-          test -z "${bak}" && return
-          src=${bak/.bak/}
-          n=1
-          while : ; do
-            patch=${src}-${n}.patch
-            test -f "${patch}" || break
-            ((n++))
+          mapfile -t < <(find . -type f -name '*.bak' | head -n 1)
+          for bak in "${MAPFILE[@]}"; do
+            src=${bak/.bak/}
+            n=1
+            while : ; do
+              patch=${src}-${n}.patch
+              test -f "${patch}" || break
+              ((n++))
+            done
+            diff -u -w "${bak}" "${src}" >"${patch}" || true
+            rm -f "${bak}" || true
+            if [[ ! -s "${patch}" ]]; then
+              rm -f "${patch}" || true
+              continue
+            fi
+            echo "${patch}":
+            cat "${patch}"
           done
-          diff -u -w "${bak}" "${src}" >"${patch}" || true
-          rm -f "${bak}" || true
-          if [[ ! -s "${patch}" ]]; then
-            rm -f "${patch}" || true
-            return 0
-          fi
-          echo "${patch}":
-          cat "${patch}"
           return 0
         }
         cd nano
