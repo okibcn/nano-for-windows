@@ -90,13 +90,16 @@ jobs:
           echo "CANCEL=true" >>  $GITHUB_ENV
         fi
 
-
+    # We can't cancel via andymckay/cancel-action@0.3 as this flags the workflow as failed
+    # See https://github.com/orgs/community/discussions/27174#discussioncomment-3254919
     - name: "👋 If no new sources are available, then we stop."
       if:  env.CANCEL == 'true'
-      uses: andymckay/cancel-action@0.3
-
+      run: |
+        echo Cancelling workflow as no new sources are available
+        exit 0
 
     - name: "⏬ Install Toolchain OS Tools"
+      if:  env.CANCEL != 'true'
       run: |
         # FAST UBUNTU SERVERS
         sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
@@ -110,6 +113,7 @@ jobs:
 
 
     - name: "⏬ Download Sources"
+      if:  env.CANCEL != 'true'
       run: |
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
@@ -118,6 +122,7 @@ jobs:
 
 
     - name: "🔧 Apply Windows Portability Patches"
+      if:  env.CANCEL != 'true'
       run: |
         function _diff() {
           # Thanks to @rasa for this function
@@ -351,6 +356,7 @@ jobs:
 
 
     - name: "⚙️ Build for Windows 64 bits"
+      if:  env.CANCEL != 'true'
       run: |
         cd nano
         ##########################
@@ -390,8 +396,8 @@ jobs:
         make install-strip || exit 1
         cd ../../..
 
-
     - name: "⚙️ Build for Windows 32 bits"
+      if:  env.CANCEL != 'true'
       run: |
         cd nano
         ############################
@@ -431,8 +437,8 @@ jobs:
         make install-strip || exit 1
         cd ../../..
 
-
     - name: "📦 Create Package"
+      if:  env.CANCEL != 'true'
       run: |
         cd nano
         ############################
@@ -454,7 +460,7 @@ jobs:
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.release != 'yes'
+      if: env.CANCEL != 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.release != 'yes'
       with:
         name: ${{ env.NANO_VERSION }}
         path: |
@@ -462,10 +468,11 @@ jobs:
           body.txt
 
     - name: "🎉 Publish a new release"
+      if:  env.CANCEL != 'true'
       uses: softprops/action-gh-release@v0.1.15
       # go to https://github.com/OWNER/REPO/settings/actions and
       # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
-      if: github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes'
+      if: env.CANCEL != 'true' && github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
