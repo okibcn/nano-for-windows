@@ -476,7 +476,6 @@ jobs:
           body.txt
 
     - name: "🎉 Publish a new release"
-      if:  env.CANCEL != 'true'
       uses: softprops/action-gh-release@v0.1.15
       # go to https://github.com/OWNER/REPO/settings/actions and
       # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
