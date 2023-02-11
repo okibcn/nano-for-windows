@@ -382,7 +382,7 @@ jobs:
         [ "${ARCH}" = "x86_64" ] && BITS="64" || BITS="32"
 
         export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDCDEBUG -DPDC_NCMOUSE"
+        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
         export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
         export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
         export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
@@ -423,7 +423,7 @@ jobs:
         [ "${ARCH}" = "x86_64" ] && BITS="64" || BITS="32"
 
         export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDCDEBUG -DPDC_NCMOUSE"
+        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
         export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
         export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
         export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
