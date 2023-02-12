@@ -25,13 +25,13 @@ on:
         default: false
         type: boolean
       release:
-        description: 'Type (yes) for release, (no) will generate an artifact (default: no)'
+        description: 'Delivery Channel'
         required: false
-        default: 'no'
+        default: 'Artifact'
         type: choice
         options:
-          - "yes"
-          - "no"        
+          - "Artifact"
+          - "Release"        
 
 jobs:
   build:
@@ -94,10 +94,10 @@ jobs:
         fi
 
         if [ -f body.txt ]; then
-          BODY=$(<body.txt)
-          echo "BODY<<EOF" >> $GITHUB_ENV
-          echo "$BODY" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          # BODY=$(<body.txt)
+          # echo "BODY<<EOF" >> $GITHUB_ENV
+          # echo "$BODY" >> $GITHUB_ENV
+          # echo "EOF" >> $GITHUB_ENV
           echo "CANCEL=false" >>  $GITHUB_ENV
         else
           echo "NO NEW SOURCES. CANCELLING ACTION..."
@@ -474,7 +474,7 @@ jobs:
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
-      if: env.CANCEL != 'true' && (github.event_name == 'workflow_dispatch' && github.event.inputs.release != 'yes')
+      if: env.CANCEL != 'true' && github.event.inputs.release == 'Artifact'
       with:
         name: ${{ env.NANO_VERSION }}
         path: |
@@ -483,9 +483,9 @@ jobs:
 
     - name: "🎉 Publish a new release"
       uses: softprops/action-gh-release@v0.1.15
-      # go to https://github.com/OWNER/REPO/settings/actions and
-      # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
-      if: env.CANCEL != 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes')
+      # WARNING: before useing this action go to https://github.com/OWNER/REPO/settings/actions
+      # and in **Workflow Permissions** section give actions **Read and Write permissions**.
+      if: env.CANCEL != 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'Release')
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
