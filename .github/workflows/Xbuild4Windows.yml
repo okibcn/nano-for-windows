@@ -49,8 +49,7 @@ jobs:
       uses: mxschmitt/action-tmate@v3
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: fromJSON(github.event.inputs.debug_enabled)
-      # if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+      if: github.event.inputs.debug_enabled == 'true'
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
 
