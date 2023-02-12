@@ -11,14 +11,19 @@ on:
   # runs at 0:52 UTC every day
   workflow_dispatch:
     inputs:
+      # debug_enabled:
+      #   description: 'Run the build with tmate debugging enabled true/false (default: false)'
+      #   required: false
+      #   default: 'false'
+      #   type: choice
+      #   options:
+      #     - "true"
+      #     - "false"        
       debug_enabled:
-        description: 'Run the build with tmate debugging enabled true/false (default: false)'
+        description: 'Debug session enabled'
         required: false
-        default: 'false'
-        type: choice
-        options:
-          - "true"
-          - "false"        
+        default: false
+        type: boolean
       release:
         description: 'Type (yes) for release, (no) will generate an artifact (default: no)'
         required: false
@@ -44,7 +49,8 @@ jobs:
       uses: mxschmitt/action-tmate@v3
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
+      if: fromJason(github.event.inputs.debug_enabled)
+      # if: github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true'
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
 
