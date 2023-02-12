@@ -468,7 +468,7 @@ jobs:
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
-      if: env.CANCEL != 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.release != 'yes'
+      if: env.CANCEL != 'true' && (github.event_name == 'workflow_dispatch' && github.event.inputs.release != 'yes')
       with:
         name: ${{ env.NANO_VERSION }}
         path: |
@@ -479,7 +479,7 @@ jobs:
       uses: softprops/action-gh-release@v0.1.15
       # go to https://github.com/OWNER/REPO/settings/actions and
       # in "**"Workflow Permissions" section give actions **Read and Write permissions**.
-      if: env.CANCEL != 'true' && github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes'
+      if: env.CANCEL != 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'yes')
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
