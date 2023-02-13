@@ -321,8 +321,8 @@ jobs:
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcscrn.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
-        mv -f getch.c curses/pdcurses
-        mv -f pdc*.c curses/wincon
+        mv -b --suffix=.bak getch.c curses/pdcurses
+        mv -b --suffix=.bak pdc*.c curses/wincon
         _diff
 
         # Fix ALT+[NUMBER|LETTER] not working with PDCursesMod
