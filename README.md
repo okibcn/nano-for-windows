@@ -1,6 +1,8 @@
 # NANO FOR WINDOWS
 
 [![Xbuild4Windows](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml) [![SyncNano](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml)
+![Version](https://img.shields.io/github/v/release/okibcn/nano-for-windows) [![Github All Releases](https://img.shields.io/github/downloads/okibcn/nano-for-windows/total.svg)]()
+
 
 This is the 32/64 bits Windows terminal version of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB).
 
