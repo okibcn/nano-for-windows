@@ -1,7 +1,11 @@
+</br><div align="center">
+
 # NANO FOR WINDOWS
 
 [![Xbuild4Windows](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml) [![SyncNano](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml)
 ![Version](https://img.shields.io/github/v/release/okibcn/nano-for-windows) [![Github All Releases](https://img.shields.io/github/downloads/okibcn/nano-for-windows/total.svg)]()
+
+</div></br></br>
 
 
 This is the 32/64 bits Windows terminal version of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB).
@@ -29,6 +33,8 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 - Transparent background in Windows Terminal.
 
 <div align="center"><img width="947" alt="image" src="https://user-images.githubusercontent.com/22417711/218406120-a7198c98-fd5f-4a1b-8793-b65c3ba68d7c.png"></div>
+
+</br>
 
 # Installation
 
