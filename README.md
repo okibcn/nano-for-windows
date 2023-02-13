@@ -6,7 +6,8 @@ This is the 32/64 bits Windows terminal version of the legendary **[GNU nano tex
 
 GNU nano is constantly being upgraded, but the original project is limited to providing support and functionality only for Linux. This project is meant to bring the latest updates to Windows 64/32 bits.
 
-<div align="center"><img width="640" alt="image" src="https://user-images.githubusercontent.com/22417711/215018921-9b0ae50c-e63e-424c-85bb-6b722c5944b0.png"></div>
+<div align="center"><img width="930" alt="image" src="https://user-images.githubusercontent.com/22417711/218406506-88cc1dc2-ee36-4440-94d2-61dd7dd84db6.png">
+</div>
 
 # Features ported to Windows
 
@@ -25,7 +26,7 @@ Pretty much everything is supported except for Linux-specific functions. We can 
 - Data input through stdin support, from pipe or keyboard.
 - Transparent background in Windows Terminal.
 
-<div align="center"><img width="640" alt="Screenshot 2023-01-26 212422" src="https://user-images.githubusercontent.com/22417711/215018756-09651357-8412-4b2c-a9af-c8dd2f0a20f0.png"></div>
+<div align="center"><img width="947" alt="image" src="https://user-images.githubusercontent.com/22417711/218406120-a7198c98-fd5f-4a1b-8793-b65c3ba68d7c.png"></div>
 
 # Installation
 

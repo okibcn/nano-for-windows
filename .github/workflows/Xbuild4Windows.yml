@@ -45,15 +45,6 @@ jobs:
       uses: actions/checkout@v3
 
 
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event.inputs.debug_enabled == 'true'
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
-
-
     - name: "✔️ Pre-build checks"
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -469,6 +460,16 @@ jobs:
           .nanorc LICENSE README.md || exit 1
         mv *.7z ..
         cd ..
+
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: github.event.inputs.debug_enabled == 'true'
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate
+
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
