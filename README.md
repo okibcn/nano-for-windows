@@ -1,4 +1,4 @@
-</br><div align="center">
+<div align="center">
 
 # NANO FOR WINDOWS
 
