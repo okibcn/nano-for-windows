@@ -319,7 +319,6 @@ jobs:
         echo -e "\n\nPATCH: fix for emojis input and output and transparent background."
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcdisp.c
-        wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdcscrn.c
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/wincon/pdckbd.c
         mv -b --suffix=.bak getch.c curses/pdcurses
         mv -b --suffix=.bak pdc*.c curses/wincon
