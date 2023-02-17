@@ -102,7 +102,7 @@ jobs:
         sudo -E apt -qq update
 
         # sudo -E apt -qq update && sudo apt upgrade -y
-        sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full zip
+        sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
         UPX=$(wget -q https://api.github.com/repos/upx/upx/releases/latest -O - | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
         wget -q $UPX -O - | tar -Jxf -
 
@@ -446,16 +446,14 @@ jobs:
         ../upx*/upx pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
         cp ../LICENSE ../README.md -t .
-        7z a -aoa -mmt"$(nproc)" --  \
-          "nano-for-windows_${{ env.NANO_VERSION }}.7z"  \
-          pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
-          .nanorc LICENSE README.md || exit 1
-        zip -r "nano-for-windows_${{ env.NANO_VERSION }}.zip"  \
-          pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
-          .nanorc LICENSE README.md || exit 1
-        mv *.7z *.zip ..
+        for type in 7z zip; do
+          7z a -t$type -aoa -mmt"$(nproc)" --  \
+            "nano-for-windows_${{ env.NANO_VERSION }}.$type"  \
+            pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
+            .nanorc LICENSE README.md || exit 1
+        done
         cd ..
-        sha256sum *.7z *.zip >hashes.txt
+        sha256sum nano-for-windows_${{ env.NANO_VERSION }}* >hashes.txt
 
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
