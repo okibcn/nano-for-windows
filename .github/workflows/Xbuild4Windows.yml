@@ -448,7 +448,7 @@ jobs:
         cp ../LICENSE ../README.md -t .
         for type in 7z zip; do
           7z a -t$type -aoa -mmt"$(nproc)" --  \
-            "nano-for-windows_${{ env.NANO_VERSION }}.$type"  \
+            "../nano-for-windows_${{ env.NANO_VERSION }}.$type"  \
             pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
             .nanorc LICENSE README.md || exit 1
         done
