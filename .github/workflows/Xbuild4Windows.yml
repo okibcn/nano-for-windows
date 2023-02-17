@@ -11,14 +11,6 @@ on:
   # runs at 0:52 UTC every day
   workflow_dispatch:
     inputs:
-      # debug_enabled:
-      #   description: 'Run the build with tmate debugging enabled true/false (default: false)'
-      #   required: false
-      #   default: 'false'
-      #   type: choice
-      #   options:
-      #     - "true"
-      #     - "false"        
       debug_enabled:
         description: 'Debug session enabled'
         required: false
@@ -458,7 +450,7 @@ jobs:
           "nano-for-windows_${{ env.NANO_VERSION }}.7z"  \
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
           .nanorc LICENSE README.md || exit 1
-        zip -r "nano-for-windows_${{ env.NANO_VERSION }}"  \
+        zip -r "nano-for-windows_${{ env.NANO_VERSION }}.zip"  \
           pkg_{i686,x86_64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
           .nanorc LICENSE README.md || exit 1
         mv *.7z *.zip ..
