@@ -85,7 +85,7 @@ jobs:
 
 
     - name: "⏬ Checkout repository"
-      if:  env.CANCEL == 'true'
+      if:  env.CANCEL != 'true'
       uses: actions/checkout@v3
 
 
