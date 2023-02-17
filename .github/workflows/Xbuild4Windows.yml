@@ -7,8 +7,8 @@
 name: Xbuild4Windows
 on:
   schedule:
-    - cron: '52 0 * * *'
-  # runs at 0:52 UTC every day
+    - cron: '51 */8 * * *'
+  # runs at {0,8,16}h51m UTC every day
   workflow_dispatch:
     inputs:
       debug_enabled:
@@ -33,10 +33,6 @@ jobs:
       run:
         shell: bash
     steps:
-    - name: "⏬ Checkout repository"
-      uses: actions/checkout@v3
-
-
     - name: "✔️ Pre-build checks"
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -49,34 +45,35 @@ jobs:
         CHANGES_CURSES="$(git log -1 --pretty=%B)"
         cd ../..
         rm -rf nano
-        LAST_RELEASE=$( wget -q https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest -O - | awk -F \" -v RS="," '/published_at/ {print $(NF-1)}' ) \
+        LAST_RELEASE=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        if [[ $LAST_NANO>$LAST_RELEASE ]]; then
+        body=/home/runner/body.txt
+        if [[ $LAST_NANO > $LAST_RELEASE ]]; then
           echo "NEW NANO SOURCE!!!!"
-          echo "# NANO CHANGES" > body.txt
-          echo >> body.txt
-          echo "$CHANGES_NANO" >> body.txt
-          echo >> body.txt
-          echo >> body.txt
-          cat body.txt
+          echo "# NANO CHANGES" > $body
+          echo >> $body
+          echo "$CHANGES_NANO" >> $body
+          echo >> $body
+          echo >> $body
+          cat $body
         fi
-        if [[ $LAST_CURSES>$LAST_RELEASE ]]; then
+        if [[ $LAST_CURSES > $LAST_RELEASE ]]; then
           echo "NEW CURSES SOURCE!!!!"
-          [ -f body.txt ] && echo >> body.txt
-          echo "# PDCursesMod CHANGES" >> body.txt
-          echo >> body.txt
-          echo "$CHANGES_CURSES" >> body.txt
+          [ -f $body ] && echo >> $body
+          echo "# PDCursesMod CHANGES" >> $body
+          echo >> $body
+          echo "$CHANGES_CURSES" >> $body
         fi
         if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
           echo "NEW WINDOWS PATCHES!!!!"
-          [ -f body.txt ] && echo >> body.txt
-          echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
-          echo >> body.txt
+          [ -f $body ] && echo >> $body
+          echo "# WINDOWS PORTABILITY PATCHES" >> $body
+          echo >> $body
         fi
 
-        if [ -f body.txt ]; then
-          # BODY=$(<body.txt)
+        if [ -f $body ]; then
+          # BODY=$(<$body)
           # echo "BODY<<EOF" >> $GITHUB_ENV
           # echo "$BODY" >> $GITHUB_ENV
           # echo "EOF" >> $GITHUB_ENV
@@ -86,13 +83,11 @@ jobs:
           echo "CANCEL=true" >>  $GITHUB_ENV
         fi
 
-    # We can't cancel via andymckay/cancel-action@0.3 as this flags the workflow as failed
-    # See https://github.com/orgs/community/discussions/27174#discussioncomment-3254919
-    - name: "👋 If no new sources are available, then we stop."
+
+    - name: "⏬ Checkout repository"
       if:  env.CANCEL == 'true'
-      run: |
-        echo Cancelling workflow as no new sources are available
-        exit 0
+      uses: actions/checkout@v3
+
 
     - name: "⏬ Install Toolchain OS Tools"
       if:  env.CANCEL != 'true'
@@ -105,7 +100,6 @@ jobs:
         sudo -E apt -qq install -y mingw-w64 autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
         UPX=$(wget -q https://api.github.com/repos/upx/upx/releases/latest -O - | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
         wget -q $UPX -O - | tar -Jxf -
-
 
 
     - name: "⏬ Download Sources"
@@ -324,7 +318,7 @@ jobs:
         ####    BRANDING and VERSIONING    ####
         ####                               ####
 
-        LAST_FULLVERSION="$(wget -q https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')" || echo "FIRST RELEASE!!!!"
+        LAST_FULLVERSION="$(wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r)" || echo "FIRST RELEASE!!!!"
         LAST_VERSION="$(echo $LAST_FULLVERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
         NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")-$(git rev-list --count HEAD)"
         NANO_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
@@ -335,7 +329,7 @@ jobs:
           NANO_VERSION="${NANO_VERSION}.${SUBBUILD}"
         fi
         cd curses
-        CURSES="$(wget -q https://api.github.com/repos/Bill-Gray/PDCursesMod/releases/latest -O - | awk -F \" -v RS="," '/tag_name/ {print $(NF-1)}')"
+        CURSES="$(wget -qO- https://api.github.com/repos/Bill-Gray/PDCursesMod/releases/latest | jq .tag_name -r)"
         CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
@@ -445,6 +439,7 @@ jobs:
         strip -s pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         ../upx*/upx pkg_{i686,x86_64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
+        cp ~/body.txt ..
         cp ../LICENSE ../README.md -t .
         for type in 7z zip; do
           7z a -t$type -aoa -mmt"$(nproc)" --  \
@@ -486,7 +481,6 @@ jobs:
         tag_name: ${{ env.NANO_VERSION }}
         body_path: body.txt
         files: ./*.7z ./*.zip ./hashes.txt
-        # body: |
-        #   ${{ env.BODY }}
+
 
 
