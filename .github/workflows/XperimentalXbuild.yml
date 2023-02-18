@@ -329,9 +329,9 @@ jobs:
 
         # Fix for PDCursesMod makefile to be aware of aarch64 in Xcompiling environment:
         echo -e "\n\nPATCH: PDCursesMod makefile to be aware of aarch64 in Xcompiling environment."
-        sed -i.bak '/i686-w64-mingw32/a endif\n  ifdef _a64\n    PREFIX  = aarch64-w64-mingw32-' PDCursesMod/wincon/Makefile  
-        sed -i 's|AR\s*=\s*|&$(PREFIX)|' PDCursesMod/wincon/Makefile  
-        sed -i 's|STRIP\s*=\s*|&$(PREFIX)|' PDCursesMod/wincon/Makefile
+        sed -i.bak '/i686-w64-mingw32/a endif\n  ifdef _a64\n    PREFIX  = aarch64-w64-mingw32-' curses/wincon/Makefile  
+        sed -i 's|AR\s*=\s*|&$(PREFIX)|' curses/wincon/Makefile  
+        sed -i 's|STRIP\s*=\s*|&$(PREFIX)|' curses/wincon/Makefile
         _diff  
 
 
