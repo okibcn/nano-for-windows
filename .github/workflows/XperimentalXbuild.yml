@@ -104,7 +104,7 @@ jobs:
         wget -qO- $URL | tar -Jxf -
         mv llvm* llvm-mingw
         echo "export PATH=\"$(pwd)/llvm-mingw/bin:$PATH\"" > llvm-ming.sh
-        sudo cp llvm-ming.d /etc/profile.d
+        sudo cp llvm-ming.sh /etc/profile.d
         
 
     - name: "⏬ Download Sources"
