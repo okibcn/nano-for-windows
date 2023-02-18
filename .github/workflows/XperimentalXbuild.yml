@@ -103,6 +103,8 @@ jobs:
         URL=$(wget -qO- https://api.github.com/repos/mstorsjo/llvm-mingw/releases/latest | grep 'browser.*url.*ucrt.*x86_64.tar.xz' | grep -o -e 'http.*\.xz')
         wget -qO- $URL | tar -Jxf -
         mv llvm* llvm-mingw
+        echo "export PATH=\"$(pwd)/llvm-mingw/bin:$PATH\"" > llvm-ming.sh
+        sudo cp llvm-ming.d /etc/profile.d
         
 
     - name: "⏬ Download Sources"
