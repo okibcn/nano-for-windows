@@ -508,6 +508,7 @@ jobs:
     - name: "📦 Create Package"
       if:  env.CANCEL != 'true'
       run: |
+        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
         cd nano
         ############################
         ##                          ##
@@ -515,7 +516,7 @@ jobs:
         ##                          ##
         ############################
 
-        strip -s pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe
+        llvm-strip -s pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe
         ../upx*/upx pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe
         cp doc/sample.nanorc.in .nanorc
         cp ~/body.txt ..
