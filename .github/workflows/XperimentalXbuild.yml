@@ -517,7 +517,7 @@ jobs:
         ############################
 
         llvm-strip -s pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe
-        #../upx*/upx pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe || true
+        ../upx*/upx pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe || true
         cp doc/sample.nanorc.in .nanorc
         cp ~/body.txt ..
         cp ../LICENSE ../README.md -t .
