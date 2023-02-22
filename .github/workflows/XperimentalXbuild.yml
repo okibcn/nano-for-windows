@@ -448,9 +448,9 @@ jobs:
           --sysconfdir="C:\\ProgramData"
         make -j$(($(nproc)*2)) && \
         make install-strip || exit 1
-        llvm-strip -s "${OUTDIR}/bin/nano.exe"
-        ../upx*/upx */nano.exe || true
         cd ${OUTDIR}
+        llvm-strip -s "bin/nano.exe"
+        ../upx*/upx "bin/nano.exe" || true
         mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
         mv share/nano syntax
         rm -rf bin share
