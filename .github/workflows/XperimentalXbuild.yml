@@ -54,7 +54,7 @@ jobs:
         LAST_RELEASE=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        body=/home/runner/body.txt
+        body=./body.txt
         if [[ $LAST_NANO > $LAST_RELEASE ]]; then
           echo "NEW NANO SOURCE!!!!"
           echo "# NANO CHANGES" > $body
@@ -446,7 +446,7 @@ jobs:
     needs:
     - checks
     - build
-    name: "📨 Publish"
+    name: "📨 Publish ${{ github.event.inputs.release }}"
     runs-on: ubuntu-latest
     defaults:
       run:
