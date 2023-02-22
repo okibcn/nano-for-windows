@@ -341,9 +341,9 @@ jobs:
         ####    BRANDING and VERSIONING    ####
         ####                               ####
 
+        NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")
         LAST_FULLVERSION="$(wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r)" || echo "FIRST RELEASE!!!!"
         LAST_VERSION="$(echo $LAST_FULLVERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
-        NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")-$(git rev-list --count HEAD)"
         NANO_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         if [ "${NANO_VERSION}" == "${LAST_VERSION}" ]; then
           # This is a new Windows build based on the same nano build, probably because there is a new curses patch
@@ -374,7 +374,13 @@ jobs:
         path: ./*
         key: ${{ github.sha }}-repo
 
-
+    - name: "💾 Save metadata"
+      if: steps.prebuild-checks.outputs.cancel != 'true'
+      uses: actions/cache@v3.2.6
+      id: cache-metadata
+      with:
+        key: ${{ github.sha }}-metadata
+        path: ./body.txt
 
   ## BUILD ##############################################################################
   build:
@@ -393,7 +399,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - name: Hit Cache
+    - name: "📂 Load Build Folder"
       uses: actions/cache@v3.2.6
       id: cache-sources
       with:
@@ -434,7 +440,7 @@ jobs:
         cd ../..
 
         # Build nano
-        sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
+        sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
         mkdir -p "$(pwd)/build_${TARGET}/nano"
         cd "$(pwd)/build_${TARGET}/nano"
         ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
@@ -447,18 +453,18 @@ jobs:
         cd ${OUTDIR}
         mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
         mv share/nano syntax
-        rm -rf nano doc
+        rm -rf bin share
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ needs.config.outputs.nano_version }}"
       uses: actions/upload-artifact@v3
       with:
-        name: nano-for-windows_${{ matrix.name }}_v${{ needs.config.outputs.nano_version }}
+        name: nano-for-windows_${{ matrix.name }}_${{ needs.config.outputs.nano_version }}
         path: |
           nano/pkg_${{ matrix.arch }}/*
 
 
   ## PUBLISH ##############################################################################
-  job-publish:
+  publish:
     if: needs.config.outputs.cancel != 'true'
     needs:
     - config
@@ -477,6 +483,13 @@ jobs:
       with:
         path: ./
 
+    - name: "📬 Receive metadata"
+      uses: actions/cache@v3.2.6
+      id: cache-metadata
+      with:
+        key: ${{ github.sha }}-metadata
+        path: ./body.txt
+
     - name: "🚮 Recycle Cache"
       uses: snnaplab/delete-branch-cache-action@v1
 
@@ -485,59 +498,22 @@ jobs:
       with:
           name: '*'
 
-    - name: "🔧 Prepare debug session"
-      if: github.event.inputs.debug_enabled == 'true'
-      run: |
-        ## install zsh
-        sudo apt install zsh zsh-syntax-highlighting
-
-        ## oh-my-posh
-        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-        sudo chmod +x /usr/local/bin/oh-my-posh
-
-        ## setting rc files
-        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.bashrc
-        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.zshrc
-
-        ## Default profiles
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O  ~/.nanorc
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O  ~/profile.sh
-        cp /etc/bash.bashrc ~
-        cat ~/profile.sh >> ~/bash.bashrc
-        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
-        cp ~/profile.sh ~/.zshrc
-
-
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      if: github.event.inputs.debug_enabled == 'true'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate        
-
-
-    - name: "📦 Create Scoop Package"
+    - name: "📦 Create Packages"
       if: steps.prechecks.outputs.cancel != 'true'
       run: |
-        for type in 7z zip; do
-          7z a -t$type -aoa -mmt"$(nproc)" --  \
-            "../nano-for-windows_${{ env.NANO_VERSION }}.$type"  \
-            pkg_{i686,x86_64,aarch64}-w64-mingw32/{bin/nano.exe,share/{nano,doc}/}  \
-            .nanorc LICENSE README.md || exit 1
+        ls -1 | grep nano-for-windows | while read f; do
+          cd $f
+          7z a -tzip -aoa -mmt"$(nproc)" -- ../${f}.zip *
+          cd ..
         done
-        cd ..
-        sha256sum nano-for-windows_${{ env.NANO_VERSION }}* >hashes.txt
-
-
+        sha256sum *.zip >hashes.txt
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
       if: env.CANCEL != 'true' && github.event.inputs.release == 'Artifact'
       with:
-        name: ${{ env.NANO_VERSION }}
+        name: ${{ needs.config.outputs.nano_version }}
         path: |
-          *.7z
           *.zip
           hashes.txt
           body.txt
@@ -546,13 +522,10 @@ jobs:
       uses: softprops/action-gh-release@v0.1.15
       # WARNING: before useing this action go to https://github.com/OWNER/REPO/settings/actions
       # and in **Workflow Permissions** section give actions **Read and Write permissions**.
-      if: env.CANCEL != 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'Release')
+      if: github.event_name != 'workflow_dispatch' || github.event.inputs.release == 'Release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.NANO_VERSION }}
+        tag_name: ${{ needs.config.outputs.nano_version }}
         body_path: body.txt
-        files: ./*.7z ./*.zip ./hashes.txt
-
-
-
+        files: ./*.zip ./hashes.txt
