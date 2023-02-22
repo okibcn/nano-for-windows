@@ -34,6 +34,7 @@ jobs:
     outputs:
       cancel: ${{ steps.checks.outputs.cancel }}
       body: ${{ steps.checks.outputs.body }}
+      body2: ${{ steps.checks.outputs.body2 }}
     steps:
     - name: "✔️ Pre-build checks"
       id: checks
@@ -76,33 +77,22 @@ jobs:
         fi
 
         if [ -f body.txt ]; then
-          # BODY=$(<body.txt)
-          # echo "BODY<<EOF" >> $GITHUB_ENV
-          # echo "body.txt" >> $GITHUB_ENV
-          # echo "EOF" >> $GITHUB_ENV
           echo "\"Hola\"" >> body.txt
           echo ""  >> body.txt
           echo " *"  >> body.txt
           echo "BODY.TXT:"
           cat body.txt
+          echo "body2<<EOF" >> $GITHUB_OUTPUT
+          echo "body.txt" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
           
           body=$(cat body.txt | base64 -w0)
-          echo "BODY.TXT.B64:"
-          echo $body
           echo "body=${body}" >>  $GITHUB_OUTPUT
           echo "cancel=false" >>  $GITHUB_OUTPUT
         else
           echo "NO NEW SOURCES. CANCELLING ACTION..."
           echo "cancel=true" >>  $GITHUB_OUTPUT
         fi
-
-    - name: "💾 Save metadata"
-      if: steps.checks.outputs.cancel != 'true'
-      uses: actions/cache@v3.2.6
-      id: cache-metadata
-      with:
-        key: ${{ github.sha }}-metadata
-        path: ./body.txt
 
   ## BUILD ##############################################################################
   build:
@@ -458,16 +448,6 @@ jobs:
       with:
         path: ./
 
-    - name: "📬 Receive metadata"
-      uses: actions/cache@v3.2.6
-      id: cache-metadata
-      with:
-        key: ${{ github.sha }}-metadata
-        path: ./body.txt
-
-    - name: "🚮 Recycle Cache"
-      uses: snnaplab/delete-branch-cache-action@v1
-
     - name: "🚮 Recycle Artifacts"
       uses: geekyeggo/delete-artifact@v2
       with:
@@ -483,11 +463,8 @@ jobs:
         done
         echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
-        echo "CANCEL: ${{ needs.checks.outputs.cancel }}"
-        echo "BODY: ${{ needs.checks.outputs.body }}"
-        echo "BODY:"
-        echo "${{ needs.checks.outputs.body }}" | base64 -d
-        echo "${{ needs.checks.outputs.body }}" | base64 -d > body2.txt
+        echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
+        echo "${{ needs.checks.outputs.body2 }}" > body2.txt
 
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
