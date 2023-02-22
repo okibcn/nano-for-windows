@@ -341,7 +341,7 @@ jobs:
         ####    BRANDING and VERSIONING    ####
         ####                               ####
 
-        NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")
+        NANO_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")"
         LAST_FULLVERSION="$(wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r)" || echo "FIRST RELEASE!!!!"
         LAST_VERSION="$(echo $LAST_FULLVERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
         NANO_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
