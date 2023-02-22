@@ -26,14 +26,20 @@ on:
           - "Release"        
 
 jobs:
-  build:
+  ## CONFIG ##############################################################################
+  config:
+    name: "📂 Prepare work folder"
     runs-on: ubuntu-latest
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    outputs:
+      cancel: ${{ steps.prechecks.outputs.cancel }}
+      nano_version: ${{ steps.prepare.outputs.nano_version }}
     defaults:
       run:
         shell: bash
     steps:
     - name: "✔️ Pre-build checks"
+      id: prechecks
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
         cd nano
@@ -77,46 +83,43 @@ jobs:
           # echo "BODY<<EOF" >> $GITHUB_ENV
           # echo "$BODY" >> $GITHUB_ENV
           # echo "EOF" >> $GITHUB_ENV
-          echo "CANCEL=false" >>  $GITHUB_ENV
+          echo "cancel=false" >>  $GITHUB_OUTPUT
         else
           echo "NO NEW SOURCES. CANCELLING ACTION..."
-          echo "CANCEL=true" >>  $GITHUB_ENV
+          echo "cancel=true" >>  $GITHUB_OUTPUT
         fi
 
-
-    - name: "⏬ Checkout repository"
-      if:  env.CANCEL != 'true'
+    - name: "⏬ Download repository"
+      if: steps.prechecks.outputs.cancel != 'true'
       uses: actions/checkout@v3
 
-
     - name: "⏬ Install Toolchain OS Tools"
-      if:  env.CANCEL != 'true'
+      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         # FAST UBUNTU SERVERS
         # sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
         sudo -E apt -qq update
-
-        # sudo -E apt -qq update && sudo apt upgrade -y
         sudo -E apt -qq install -y autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
         URL=$(wget -qO- https://api.github.com/repos/upx/upx/releases/latest | grep 'browser.*url.*amd64_linux' | grep -o -e 'http.*\.xz')
         wget -qO- $URL | tar -Jxf -
         URL=$(wget -qO- https://api.github.com/repos/mstorsjo/llvm-mingw/releases/latest | grep 'browser.*url.*ucrt.*x86_64.tar.xz' | grep -o -e 'http.*\.xz')
         wget -qO- $URL | tar -Jxf -
         mv llvm* llvm-mingw
-        
 
     - name: "⏬ Download Sources"
-      if:  env.CANCEL != 'true'
+      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
         ./autogen.sh
 
-
-    - name: "🔧 Apply Windows Portability Patches"
-      if:  env.CANCEL != 'true'
+    - name: "🪄 Apply Windows Portability Magic"
+      id: prepare
+      if: steps.prechecks.outputs.cancel != 'true'
       run: |
+        cp ~/body.txt .
+
         function _diff() {
           # Thanks to @rasa for this function
           mapfile -t < <(find . -type f -name '*.bak')
@@ -139,6 +142,7 @@ jobs:
           done
           return 0
         }
+
         cd nano
         ##########################
         ##                        ##
@@ -360,28 +364,58 @@ jobs:
         sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows, '"${NANO_VERSION}"' 64 bits, '"${BUILD_DATE}"'\\""' src/Makefile.am
         _diff
         echo -e "\n\nGNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
-        echo "NANO_VERSION=${NANO_VERSION}" >>$GITHUB_ENV
+        echo "nano_version=${NANO_VERSION}" >>$GITHUB_OUTPUT
+
+    - name: "💾 Save Build Folder"
+      uses: actions/cache@v3.2.6
+      id: cache-sources
+      if: steps.prechecks.outputs.cancel != 'true'
+      with:
+        path: ./*
+        key: ${{ github.sha }}-repo
 
 
 
+  ## BUILD ##############################################################################
+  build:
+    needs: [ config ]
+    if: needs.config.outputs.cancel != 'true'
+    name: "⚙️ Build nano for Windows ${{ matrix.pretty }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { arch: i686, name: x86, pretty: 32 bits }
+          - { arch: x86_64, name: x64, pretty: 64 bits }
+          - { arch: aarch64, name: amd64, pretty: on Arm }
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Hit Cache
+      uses: actions/cache@v3.2.6
+      id: cache-sources
+      with:
+        path: ./*
+        key: ${{ github.sha }}-repo
 
-    - name: "⚙️ Build for Windows 64 bits"
-      if:  env.CANCEL != 'true'
+    - name: "⏬ Install Toolchain OS Tools"
+      run: |
+        # FAST UBUNTU SERVERS
+        # sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
+        sudo -E apt -qq update
+        sudo -E apt -qq install -y autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
+
+    - name: "⚙️ Build for Windows  ${{ matrix.pretty }}"
       run: |
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
         cd nano
-        ##########################
-        ##                        ##
-        ##   BUILD FOR x86_64     ##
-        ##                        ##
-        ##########################
-
-        ARCH="x86_64"
-
+        ARCH=${{ matrix.arch }}
         PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
         BUILD="$(gcc -dumpmachine)"
         TARGET="${ARCH}-w64-mingw32"
-        OUTDIR="$(pwd)/pkg_${TARGET}"
+        OUTDIR="$(pwd)/pkg_${ARCH}"
         [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
         [ "${ARCH}" == "aarch64" ] && _arch="_a64"
         [ "${ARCH}" == "x86_64" ] && _arch="_w64"
@@ -396,131 +430,96 @@ jobs:
 
         # cross Build pdcurses for destination host
         cd "${CURSES_DIR}/${PDTERM}"
-        make clean && make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
+        make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
         cd ../..
 
         # Build nano
         sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
         mkdir -p "$(pwd)/build_${TARGET}/nano"
         cd "$(pwd)/build_${TARGET}/nano"
-        rm -rf *
         ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
           --enable-{utf8,threads=windows} --disable-{nls,speller} \
           --sysconfdir="C:\\ProgramData"
         make -j$(($(nproc)*2)) && \
         make install-strip || exit 1
-        cd ../../..
+        llvm-strip -s "${OUTDIR}/bin/nano.exe"
+        ../upx*/upx "${OUTDIR}/bin/nano.exe" || true
+        cd ${OUTDIR}
+        mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
+        mv share/nano syntax
+        rm -rf nano doc
+
+    - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ needs.config.outputs.nano_version }}"
+      uses: actions/upload-artifact@v3
+      with:
+        name: nano-for-windows_${{ matrix.name }}_v${{ needs.config.outputs.nano_version }}
+        path: |
+          nano/pkg_${{ matrix.arch }}/*
 
 
-    - name: "⚙️ Build for Windows arm64"
-      if:  env.CANCEL != 'true'
+  ## PUBLISH ##############################################################################
+  job-publish:
+    if: needs.config.outputs.cancel != 'true'
+    needs:
+    - config
+    - build
+    name: "📨 Publish"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: "⏬ Download repository"
+      uses: actions/checkout@v3
+
+    - name: "📬 Receive Images from Build Jobs"
+      uses: actions/download-artifact@v3
+      with:
+        path: ./
+
+    - name: "🚮 Recycle Cache"
+      uses: snnaplab/delete-branch-cache-action@v1
+
+    - name: "🚮 Recycle Artifacts"
+      uses: geekyeggo/delete-artifact@v2
+      with:
+          name: '*'
+
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
       run: |
-        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        cd nano
-        ##########################
-        ##                        ##
-        ##   BUILD FOR AARCH64    ##
-        ##                        ##
-        ##########################
+        ## install zsh
+        sudo apt install zsh zsh-syntax-highlighting
 
-        ARCH="aarch64"
+        ## oh-my-posh
+        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        sudo chmod +x /usr/local/bin/oh-my-posh
 
-        PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
-        BUILD="$(gcc -dumpmachine)"
-        TARGET="${ARCH}-w64-mingw32"
-        OUTDIR="$(pwd)/pkg_${TARGET}"
-        [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
-        [ "${ARCH}" == "aarch64" ] && _arch="_a64"
-        [ "${ARCH}" == "x86_64" ] && _arch="_w64"
-        [ "${ARCH}" == "i686" ] && _arch="_w32"
+        ## setting rc files
+        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.bashrc
+        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.zshrc
 
-        export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
-        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
-        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
-        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
-        export LIBS="-lbcrypt"
-
-        # cross Build pdcurses for destination host
-        cd "${CURSES_DIR}/${PDTERM}"
-        make clean && make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
-        cd ../..
-
-        # Build nano
-        sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
-        mkdir -p "$(pwd)/build_${TARGET}/nano"
-        cd "$(pwd)/build_${TARGET}/nano"
-        rm -rf *
-        ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
-          --enable-{utf8,threads=windows} --disable-{nls,speller} \
-          --sysconfdir="C:\\ProgramData"
-        make -j$(($(nproc)*2)) && \
-        make install-strip || exit 1
-        cd ../../..
+        ## Default profiles
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O  ~/.nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O  ~/profile.sh
+        cp /etc/bash.bashrc ~
+        cat ~/profile.sh >> ~/bash.bashrc
+        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
+        cp ~/profile.sh ~/.zshrc
 
 
-    - name: "⚙️ Build for Windows 32 bits"
-      if:  env.CANCEL != 'true'
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate        
+
+
+    - name: "📦 Create Scoop Package"
+      if: steps.prechecks.outputs.cancel != 'true'
       run: |
-        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        cd nano
-        ############################
-        ##                          ##
-        ## BUILD FOR i686 (32 bits) ##
-        ##                          ##
-        ############################
-
-        ARCH="i686"
-
-        PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
-        BUILD="$(gcc -dumpmachine)"
-        TARGET="${ARCH}-w64-mingw32"
-        OUTDIR="$(pwd)/pkg_${TARGET}"
-        [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
-        [ "${ARCH}" == "aarch64" ] && _arch="_a64"
-        [ "${ARCH}" == "x86_64" ] && _arch="_w64"
-        [ "${ARCH}" == "i686" ] && _arch="_w32"
-
-        export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
-        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
-        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
-        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
-        export LIBS="-lbcrypt"
-
-        # cross Build pdcurses for destination host
-        cd "${CURSES_DIR}/${PDTERM}"
-        make clean && make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
-        cd ../..
-
-        # Build nano
-        sed -i 's/...bits/'"${BITS}"' bits/' src/Makefile.am
-        mkdir -p "$(pwd)/build_${TARGET}/nano"
-        cd "$(pwd)/build_${TARGET}/nano"
-        rm -rf *
-        ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
-          --enable-{utf8,threads=windows} --disable-{nls,speller} \
-          --sysconfdir="C:\\ProgramData"
-        make -j$(($(nproc)*2)) && \
-        make install-strip || exit 1
-        cd ../../..
-
-    - name: "📦 Create Package"
-      if:  env.CANCEL != 'true'
-      run: |
-        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        cd nano
-        ############################
-        ##                          ##
-        ##      CREATE PACKAGE      ##
-        ##                          ##
-        ############################
-
-        llvm-strip -s pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe
-        ../upx*/upx pkg_{i686,x86_64,aarch64}-w64-mingw32/bin/nano.exe || true
-        cp doc/sample.nanorc.in .nanorc
-        cp ~/body.txt ..
-        cp ../LICENSE ../README.md -t .
         for type in 7z zip; do
           7z a -t$type -aoa -mmt"$(nproc)" --  \
             "../nano-for-windows_${{ env.NANO_VERSION }}.$type"  \
@@ -530,13 +529,6 @@ jobs:
         cd ..
         sha256sum nano-for-windows_${{ env.NANO_VERSION }}* >hashes.txt
 
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event.inputs.debug_enabled == 'true'
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
 
 
     - name: "👍 Upload Artifact"
