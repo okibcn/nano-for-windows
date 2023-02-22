@@ -101,7 +101,7 @@ jobs:
   build:
     needs: [ checks ]
     if: needs.config.outputs.cancel != 'true'
-    name: "⚙️ Build nano for Windows ${{ matrix.pretty }}"
+    name: "⚙️ Windows ${{ matrix.pretty }} build"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
