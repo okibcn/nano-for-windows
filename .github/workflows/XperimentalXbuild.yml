@@ -33,7 +33,7 @@ jobs:
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     outputs:
       cancel: ${{ steps.prechecks.outputs.cancel }}
-      BUILD_VERSION: ${{ steps.prepare.outputs.BUILD_VERSION }}
+      body: ${{ steps.prepare.outputs.body }}
     steps:
     - name: "✔️ Pre-build checks"
       id: prechecks
@@ -52,38 +52,37 @@ jobs:
         LAST_RELEASE=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
 
-        body=./body.txt
         if [[ $LAST_NANO > $LAST_RELEASE ]]; then
           echo "NEW NANO SOURCE!!!!"
-          echo "# NANO CHANGES" > $body
-          echo >> $body
-          echo "$CHANGES_NANO" >> $body
-          echo >> $body
-          echo >> $body
-          cat $body
+          echo "# NANO CHANGES" > body.txt
+          echo >> body.txt
+          echo "$CHANGES_NANO" >> body.txt
+          echo >> body.txt
+          echo >> body.txt
+          cat body.txt
         fi
         if [[ $LAST_CURSES > $LAST_RELEASE ]]; then
           echo "NEW CURSES SOURCE!!!!"
-          [ -f $body ] && echo >> $body
-          echo "# PDCursesMod CHANGES" >> $body
-          echo >> $body
-          echo "$CHANGES_CURSES" >> $body
+          [ -f body.txt ] && echo >> body.txt
+          echo "# PDCursesMod CHANGES" >> body.txt
+          echo >> body.txt
+          echo "$CHANGES_CURSES" >> body.txt
         fi
         if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
           echo "NEW WINDOWS PATCHES!!!!"
-          [ -f $body ] && echo >> $body
-          echo "# WINDOWS PORTABILITY PATCHES" >> $body
-          echo >> $body
+          [ -f body.txt ] && echo >> body.txt
+          echo "# WINDOWS PORTABILITY PATCHES" >> body.txt
+          echo >> body.txt
         fi
 
-        if [ -f $body ]; then
-          # BODY=$(<$body)
+        if [ -f body.txt ]; then
+          # BODY=$(<body.txt)
           # echo "BODY<<EOF" >> $GITHUB_ENV
-          # echo "$BODY" >> $GITHUB_ENV
+          # echo "body.txt" >> $GITHUB_ENV
           # echo "EOF" >> $GITHUB_ENV
-          echo "\"Hola\""
-          echo ""
-          echo " *"
+          echo "\"Hola\"" >> body.txt
+          echo ""  >> body.txt
+          echo " *"  >> body.txt
           echo "body=$(cat body.txt | base64 -w0)" >>  $GITHUB_OUTPUT
           echo "cancel=false" >>  $GITHUB_OUTPUT
         else
@@ -393,40 +392,40 @@ jobs:
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
         CWD=$(pwd)
         cd nano
-        ARCH=${{ matrix.arch }}
-        PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
-        BUILD="$(gcc -dumpmachine)"
-        TARGET="${ARCH}-w64-mingw32"
-        OUTDIR="$(pwd)/pkg_${ARCH}"
-        [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
-        [ "${ARCH}" == "aarch64" ] && _arch="_a64"
-        [ "${ARCH}" == "x86_64" ] && _arch="_w64"
-        [ "${ARCH}" == "i686" ] && _arch="_w32"
-        export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
-        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
-        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
-        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
-        export LIBS="-lbcrypt"
-        # cross Build pdcurses for destination host
-        cd "${CURSES_DIR}/${PDTERM}"
-        make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
-        cd ../..
-        # Build nano
-        sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
-        mkdir -p "$(pwd)/build_${TARGET}/nano"
-        cd "$(pwd)/build_${TARGET}/nano"
-        ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
-          --enable-{utf8,threads=windows} --disable-{nls,speller} \
-          --sysconfdir="C:\\ProgramData"
-        make -j$(($(nproc)*2)) && \
-        make install-strip || exit 1
-        cd ${OUTDIR}
-        llvm-strip -s "bin/nano.exe"
-        $CWD/upx*/upx "bin/nano.exe" || true
-        mv bin/nano.exe share/doc/nano/* $CWD/LICENSE $CWD/README.md .
-        mv share/nano syntax
-        rm -rf bin share
+          ARCH=${{ matrix.arch }}
+          PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
+          BUILD="$(gcc -dumpmachine)"
+          TARGET="${ARCH}-w64-mingw32"
+          OUTDIR="$(pwd)/pkg_${ARCH}"
+          [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
+          [ "${ARCH}" == "aarch64" ] && _arch="_a64"
+          [ "${ARCH}" == "x86_64" ] && _arch="_w64"
+          [ "${ARCH}" == "i686" ] && _arch="_w32"
+          export CURSES_DIR="$(pwd)/curses"
+          export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
+          export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
+          export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
+          export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
+          export LIBS="-lbcrypt"
+          # cross Build pdcurses for destination host
+          cd "${CURSES_DIR}/${PDTERM}"
+            make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
+          cd ../..
+          # Build nano
+          sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
+          mkdir -p "$(pwd)/build_${TARGET}/nano"
+          cd "$(pwd)/build_${TARGET}/nano"
+            ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
+              --enable-{utf8,threads=windows} --disable-{nls,speller} \
+              --sysconfdir="C:\\ProgramData"
+            make -j$(($(nproc)*2)) && \
+            make install-strip || exit 1
+            cd ${OUTDIR}
+              llvm-strip -s "bin/nano.exe"
+              $CWD/upx*/upx "bin/nano.exe" || true
+              mv bin/nano.exe share/doc/nano/* $CWD/LICENSE $CWD/README.md .
+              mv share/nano syntax
+              rm -rf bin share
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ env.BUILD_VERSION }}"
       uses: actions/upload-artifact@v3
