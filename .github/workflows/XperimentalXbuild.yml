@@ -34,12 +34,10 @@ jobs:
     outputs:
       cancel: ${{ steps.prechecks.outputs.cancel }}
       nano_version: ${{ steps.prepare.outputs.nano_version }}
-    defaults:
-      run:
-        shell: bash
     steps:
     - name: "✔️ Pre-build checks"
       id: prechecks
+      shell: bash
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
         cd nano
@@ -115,11 +113,9 @@ jobs:
         shell: bash
     steps:
     - name: "⏬ Download repository"
-      if: steps.prechecks.outputs.cancel != 'true'
       uses: actions/checkout@v3
 
     - name: "⏬ Install Toolchain OS Tools"
-      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         # FAST UBUNTU SERVERS
         # sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
@@ -132,7 +128,6 @@ jobs:
         mv llvm* llvm-mingw
 
     - name: "⏬ Download Sources"
-      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
@@ -141,7 +136,6 @@ jobs:
 
     - name: "🪄 Apply Windows Portability Magic"
       id: prepare
-      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         function _diff() {
           # Thanks to @rasa for this function
@@ -453,11 +447,6 @@ jobs:
     - name: "⏬ Download repository"
       uses: actions/checkout@v3
 
-    - name: "📬 Receive Images from Build Jobs"
-      uses: actions/download-artifact@v3
-      with:
-        path: ./
-
     - name: "📬 Receive metadata"
       uses: actions/cache@v3.2.6
       id: cache-metadata
@@ -478,7 +467,7 @@ jobs:
       run: |
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
-          7z a -t$type -aoa -mmt"$(nproc)" -mm=Deflate -mfb=258 -mpass=15 --  ../${f}.zip *
+          7z a -tzip -aoa -mmt"$(nproc)" -mm=Deflate -mfb=258 -mpass=15 --  ../${f}.zip *
           cd ..
         done
         sha256sum *.zip >hashes.txt
