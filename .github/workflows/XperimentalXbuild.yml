@@ -477,7 +477,8 @@ jobs:
       run: |
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
-          7z a -tzip -aoa -mmt"$(nproc)" -mm=Deflate -mfb=258 -mpass=15 --  ../${f}.zip *
+          7z a -mx9 -mm=PPMd:o=16 '-x!*.exe' ../${f}.zip *
+          7z a -mx9 -mm=Deflate64 ../${f}.zip nano.exe  
           cd ..
         done
         echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
