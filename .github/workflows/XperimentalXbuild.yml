@@ -32,11 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     outputs:
-      cancel: ${{ steps.prechecks.outputs.cancel }}
+      cancel: ${{ steps.checks.outputs.cancel }}
       body: ${{ steps.prepare.outputs.body }}
     steps:
     - name: "✔️ Pre-build checks"
-      id: prechecks
+      id: checks
       shell: bash
       run: |
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
@@ -83,7 +83,13 @@ jobs:
           echo "\"Hola\"" >> body.txt
           echo ""  >> body.txt
           echo " *"  >> body.txt
-          echo "body=$(cat body.txt | base64 -w0)" >>  $GITHUB_OUTPUT
+          echo "BODY.TXT:"
+          cat body.txt
+          
+          body=$(cat body.txt | base64 -w0)
+          echo "BODY.TXT.B64:"
+          echo $body
+          echo "body=${body}" >>  $GITHUB_OUTPUT
           echo "cancel=false" >>  $GITHUB_OUTPUT
         else
           echo "NO NEW SOURCES. CANCELLING ACTION..."
@@ -91,7 +97,7 @@ jobs:
         fi
 
     - name: "💾 Save metadata"
-      if: steps.prechecks.outputs.cancel != 'true'
+      if: steps.checks.outputs.cancel != 'true'
       uses: actions/cache@v3.2.6
       id: cache-metadata
       with:
@@ -476,7 +482,11 @@ jobs:
         done
         echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
-        echo ${{ needs.checks.outputs.body }} | base64 -d > body2.txt
+        echo "CANCEL: ${{ needs.checks.outputs.cancel }}"
+        echo "BODY: ${{ needs.checks.outputs.body }}"
+        echo "BODY:"
+        echo "${{ needs.checks.outputs.body }}" | base64 -d
+        echo "${{ needs.checks.outputs.body }}" | base64 -d > body2.txt
 
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
