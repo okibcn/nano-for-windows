@@ -33,7 +33,7 @@ jobs:
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     outputs:
       cancel: ${{ steps.checks.outputs.cancel }}
-      body: ${{ steps.prepare.outputs.body }}
+      body: ${{ steps.checks.outputs.body }}
     steps:
     - name: "✔️ Pre-build checks"
       id: checks
@@ -477,8 +477,8 @@ jobs:
       run: |
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
-          7z a -mx9 -mm=PPMd:o=16 '-x!*.exe' ../${f}.zip *
-          7z a -mx9 -mm=Deflate64 ../${f}.zip nano.exe  
+          7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' ../${f}.zip *
+          7z a -mx9 -mm=Deflate64 -mmt$(nproc) ../${f}.zip nano.exe  
           cd ..
         done
         echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
