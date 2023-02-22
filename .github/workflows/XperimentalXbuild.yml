@@ -143,8 +143,6 @@ jobs:
       id: prepare
       if: steps.prechecks.outputs.cancel != 'true'
       run: |
-        cp ~/body.txt .
-
         function _diff() {
           # Thanks to @rasa for this function
           mapfile -t < <(find . -type f -name '*.bak')
