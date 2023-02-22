@@ -449,11 +449,44 @@ jobs:
         make -j$(($(nproc)*2)) && \
         make install-strip || exit 1
         llvm-strip -s "${OUTDIR}/bin/nano.exe"
-        ../upx*/upx "${OUTDIR}/bin/nano.exe" || true
+        ../upx*/upx "*/*/nano.exe" || true
         cd ${OUTDIR}
         mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
         mv share/nano syntax
         rm -rf bin share
+
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
+      run: |
+        ## install zsh
+        sudo apt install zsh zsh-syntax-highlighting
+
+        ## oh-my-posh
+        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        sudo chmod +x /usr/local/bin/oh-my-posh
+
+        ## setting rc files
+        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.bashrc
+        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.zshrc
+
+        ## Default profiles
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O  ~/.nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O  ~/profile.sh
+        cp /etc/bash.bashrc ~
+        cat ~/profile.sh >> ~/bash.bashrc
+        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
+        cp ~/profile.sh ~/.zshrc
+
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate
+
+    
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ needs.config.outputs.nano_version }}"
       uses: actions/upload-artifact@v3
