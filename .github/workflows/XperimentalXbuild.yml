@@ -81,6 +81,10 @@ jobs:
           # echo "BODY<<EOF" >> $GITHUB_ENV
           # echo "$BODY" >> $GITHUB_ENV
           # echo "EOF" >> $GITHUB_ENV
+          echo "\"Hola\""
+          echo ""
+          echo " *"
+          echo "body=$(cat body.txt | base64 -w0)" >>  $GITHUB_OUTPUT
           echo "cancel=false" >>  $GITHUB_OUTPUT
         else
           echo "NO NEW SOURCES. CANCELLING ACTION..."
@@ -465,7 +469,6 @@ jobs:
           name: '*'
 
     - name: "📦 Create Packages"
-      if: steps.prechecks.outputs.cancel != 'true'
       run: |
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
@@ -474,6 +477,7 @@ jobs:
         done
         echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
+        echo ${{ needs.checks.outputs.body }} | base64 -d > body2.txt
 
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
