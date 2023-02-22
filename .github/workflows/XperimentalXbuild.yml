@@ -449,7 +449,7 @@ jobs:
         make -j$(($(nproc)*2)) && \
         make install-strip || exit 1
         llvm-strip -s "${OUTDIR}/bin/nano.exe"
-        ../upx*/upx "*/*/nano.exe" || true
+        ../upx*/upx */nano.exe || true
         cd ${OUTDIR}
         mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
         mv share/nano syntax
