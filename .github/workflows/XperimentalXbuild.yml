@@ -27,7 +27,7 @@ on:
 
 jobs:
   ## PRECHECK ##############################################################################
-  precheck:
+  checks:
     name: "✔️ Pre-build checks"
     runs-on: ubuntu-latest
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -99,7 +99,7 @@ jobs:
 
   ## BUILD ##############################################################################
   build:
-    needs: [ config ]
+    needs: [ checks ]
     if: needs.config.outputs.cancel != 'true'
     name: "⚙️ Build nano for Windows ${{ matrix.pretty }}"
     runs-on: ubuntu-latest
@@ -444,7 +444,7 @@ jobs:
   publish:
     if: needs.config.outputs.cancel != 'true'
     needs:
-    - config
+    - checks
     - build
     name: "📨 Publish"
     runs-on: ubuntu-latest
@@ -514,11 +514,10 @@ jobs:
         sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
         sudo chmod +x /usr/local/bin/oh-my-posh
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/profile.sh
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
         cp /etc/bash.bashrc ~
-        cat ~/profile.sh >> ~/bash.bashrc
+        cat ~/.zshrc >> ~/bash.bashrc
         sudo cp ~/bash.bashrc /etc/bash.bashrc -f
-        cp ~/profile.sh ~/.zshrc
 
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
