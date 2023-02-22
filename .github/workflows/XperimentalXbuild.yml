@@ -472,6 +472,7 @@ jobs:
           7z a -tzip -aoa -mmt"$(nproc)" -mm=Deflate -mfb=258 -mpass=15 --  ../${f}.zip *
           cd ..
         done
+        echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
 
     - name: "🔧 Prepare debug session"
@@ -494,16 +495,14 @@ jobs:
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
 
-
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
       if: env.CANCEL != 'true' && github.event.inputs.release == 'Artifact'
       with:
-        name: ${{ needs.checks.outputs.BUILD_VERSION }}
+        name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
           *.zip
-          hashes.txt
-          body.txt
+          *.txt
 
     - name: "🎉 Publish a new release"
       uses: softprops/action-gh-release@v0.1.15
