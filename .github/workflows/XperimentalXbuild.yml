@@ -26,9 +26,9 @@ on:
           - "Release"        
 
 jobs:
-  ## CONFIG ##############################################################################
-  config:
-    name: "📂 Prepare work folder"
+  ## PRECHECK ##############################################################################
+  precheck:
+    name: "✔️ Pre-build checks"
     runs-on: ubuntu-latest
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     outputs:
@@ -89,6 +89,31 @@ jobs:
           echo "cancel=true" >>  $GITHUB_OUTPUT
         fi
 
+    - name: "💾 Save metadata"
+      if: steps.prebuild-checks.outputs.cancel != 'true'
+      uses: actions/cache@v3.2.6
+      id: cache-metadata
+      with:
+        key: ${{ github.sha }}-metadata
+        path: ./body.txt
+
+  ## BUILD ##############################################################################
+  build:
+    needs: [ config ]
+    if: needs.config.outputs.cancel != 'true'
+    name: "⚙️ Build nano for Windows ${{ matrix.pretty }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { arch: i686, name: x86, pretty: 32 bits }
+          - { arch: x86_64, name: x64, pretty: 64 bits }
+          - { arch: aarch64, name: amd64, pretty: on Arm }
+    defaults:
+      run:
+        shell: bash
+    steps:
     - name: "⏬ Download repository"
       if: steps.prechecks.outputs.cancel != 'true'
       uses: actions/checkout@v3
@@ -366,56 +391,11 @@ jobs:
         echo -e "\n\nGNU nano version Tag: ${NANO_VERSION}, ${NANO_VERSION}\nUsing $CURSES"
         echo "nano_version=${NANO_VERSION}" >>$GITHUB_OUTPUT
 
-    - name: "💾 Save Build Folder"
-      uses: actions/cache@v3.2.6
-      id: cache-sources
-      if: steps.prechecks.outputs.cancel != 'true'
-      with:
-        path: ./*
-        key: ${{ github.sha }}-repo
-
-    - name: "💾 Save metadata"
-      if: steps.prebuild-checks.outputs.cancel != 'true'
-      uses: actions/cache@v3.2.6
-      id: cache-metadata
-      with:
-        key: ${{ github.sha }}-metadata
-        path: ./body.txt
-
-  ## BUILD ##############################################################################
-  build:
-    needs: [ config ]
-    if: needs.config.outputs.cancel != 'true'
-    name: "⚙️ Build nano for Windows ${{ matrix.pretty }}"
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { arch: i686, name: x86, pretty: 32 bits }
-          - { arch: x86_64, name: x64, pretty: 64 bits }
-          - { arch: aarch64, name: amd64, pretty: on Arm }
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: "📂 Load Build Folder"
-      uses: actions/cache@v3.2.6
-      id: cache-sources
-      with:
-        path: ./*
-        key: ${{ github.sha }}-repo
-
-    - name: "⏬ Install Toolchain OS Tools"
-      run: |
-        # FAST UBUNTU SERVERS
-        # sudo sed -i -e 's|azure.archive.ubuntu.com|ubuntu.securedservers.com|g' /etc/apt/sources.list
-        sudo -E apt -qq update
-        sudo -E apt -qq install -y autoconf automake autopoint gcc gettext git groff make pkg-config texinfo p7zip-full
 
     - name: "⚙️ Build for Windows  ${{ matrix.pretty }}"
       run: |
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
+        CWD=$(pwd)
         cd nano
         ARCH=${{ matrix.arch }}
         PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
@@ -426,19 +406,16 @@ jobs:
         [ "${ARCH}" == "aarch64" ] && _arch="_a64"
         [ "${ARCH}" == "x86_64" ] && _arch="_w64"
         [ "${ARCH}" == "i686" ] && _arch="_w32"
-
         export CURSES_DIR="$(pwd)/curses"
         export CFLAGS="-O3 -I${CURSES_DIR} -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
         export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
         export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
         export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
         export LIBS="-lbcrypt"
-
         # cross Build pdcurses for destination host
         cd "${CURSES_DIR}/${PDTERM}"
         make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
         cd ../..
-
         # Build nano
         sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
         mkdir -p "$(pwd)/build_${TARGET}/nano"
@@ -450,43 +427,10 @@ jobs:
         make install-strip || exit 1
         cd ${OUTDIR}
         llvm-strip -s "bin/nano.exe"
-        ../upx*/upx "bin/nano.exe" || true
-        mv bin/nano.exe share/doc/nano/* ../../LICENSE ../../README.md .
+        $CWD/upx*/upx "bin/nano.exe" || true
+        mv bin/nano.exe share/doc/nano/* $CWD/LICENSE $CWD/README.md .
         mv share/nano syntax
         rm -rf bin share
-
-    - name: "🔧 Prepare debug session"
-      if: github.event.inputs.debug_enabled == 'true'
-      run: |
-        ## install zsh
-        sudo apt install zsh zsh-syntax-highlighting
-
-        ## oh-my-posh
-        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-        sudo chmod +x /usr/local/bin/oh-my-posh
-
-        ## setting rc files
-        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.bashrc
-        echo "eval \"\$(oh-my-posh init \$(oh-my-posh get shell))\"" >> ~/.zshrc
-
-        ## Default profiles
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O  ~/.nanorc
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O  ~/profile.sh
-        cp /etc/bash.bashrc ~
-        cat ~/profile.sh >> ~/bash.bashrc
-        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
-        cp ~/profile.sh ~/.zshrc
-
-
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      if: github.event.inputs.debug_enabled == 'true'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
-
-    
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ needs.config.outputs.nano_version }}"
       uses: actions/upload-artifact@v3
@@ -562,3 +506,24 @@ jobs:
         tag_name: ${{ needs.config.outputs.nano_version }}
         body_path: body.txt
         files: ./*.zip ./hashes.txt
+
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
+      run: |
+        sudo apt install zsh zsh-syntax-highlighting
+        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        sudo chmod +x /usr/local/bin/oh-my-posh
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/profile.sh
+        cp /etc/bash.bashrc ~
+        cat ~/profile.sh >> ~/bash.bashrc
+        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
+        cp ~/profile.sh ~/.zshrc
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
+        ##           or https://github.com/mxschmitt/action-tmate
