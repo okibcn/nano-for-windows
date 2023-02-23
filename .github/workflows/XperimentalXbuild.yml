@@ -412,6 +412,7 @@ jobs:
               mv share/nano syntax
               mv sample.nanorc.in .nanorc
               rm -rf bin share rnano*
+              ls -als
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ env.BUILD_VERSION }}"
       uses: actions/upload-artifact@v3
@@ -447,6 +448,7 @@ jobs:
       run: |
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
+          ls -als 
           7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' ../${f}.zip *
           7z a -mx9 -mm=Deflate64 -mmt$(nproc) ../${f}.zip nano.exe  
           cd ..
