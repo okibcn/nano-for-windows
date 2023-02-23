@@ -287,7 +287,7 @@ jobs:
         # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M and certain CTRL+key combos
         echo -e "\n\nPATCH: Full key modifiers detection."
         sed -i.bak "/get_kbinput(midwin, VISIBLE)/a\
-            \\\\t if (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
+            \\\\t if (\!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
             \\t switch (input) {\\n\
             \\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
             \\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
