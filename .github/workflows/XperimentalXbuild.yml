@@ -414,7 +414,7 @@ jobs:
               rm -rf bin share rnano*
               ls -als
 
-    - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ env.BUILD_VERSION }}"
+    - name: "👍 Upload Artifact nano_${{ matrix.arch }}"
       uses: actions/upload-artifact@v3
       with:
         name: nano-for-windows_${{ matrix.name }}_${{ env.BUILD_VERSION }}
@@ -449,7 +449,7 @@ jobs:
         ls -1 | grep nano-for-windows | while read f; do
           cd $f
           ls -als 
-          7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' ../${f}.zip *
+          7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' ../${f}.zip * .nanorc
           7z a -mx9 -mm=Deflate64 -mmt$(nproc) ../${f}.zip nano.exe  
           cd ..
         done
