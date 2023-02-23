@@ -450,7 +450,8 @@ jobs:
           7z a -mx9 -mm=Deflate64 -mmt$(nproc) ../${f}.zip nano.exe  
           cd ..
         done
-        echo "BUILD_VERSION=$(ls -1 *.zip |  grep -Pom 1 '(?<=_)v.*(?=\.zip)')" >> $GITHUB_ENV
+        # already done above, right?
+        # echo "BUILD_VERSION=$(ls -1 *.zip \| grep -Pom 1 '(?<=_)v.*(?=\.zip)')" \>\> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
         echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
 
@@ -476,7 +477,7 @@ jobs:
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
-      if: env.CANCEL != 'true' && github.event.inputs.release == 'Artifact'
+      if: github.event.inputs.release == 'Artifact'
       with:
         name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
@@ -491,7 +492,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ needs.checks.outputs.BUILD_VERSION }}
+        tag_name: ${{ env.BUILD_VERSION }}
         body_path: body.txt
         files: ./*.zip ./hashes.txt
 
