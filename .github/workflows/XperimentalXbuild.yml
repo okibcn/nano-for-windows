@@ -408,9 +408,10 @@ jobs:
             cd ${OUTDIR}
               llvm-strip -s "bin/nano.exe"
               $CWD/upx*/upx "bin/nano.exe" || true
-              mv bin/nano.exe share/doc/nano/* $CWD/LICENSE $CWD/README.md .
+              mv bin/nano.exe share/doc/nano/* $CWD/nano/doc/sample.nanorc.in $CWD/LICENSE $CWD/README.md .
               mv share/nano syntax
-              rm -rf bin share
+              mv sample.nanorc.in .nanorc
+              rm -rf bin share rnano*
 
     - name: "👍 Upload Artifact nano_${{ matrix.arch }}_v${{ env.BUILD_VERSION }}"
       uses: actions/upload-artifact@v3
