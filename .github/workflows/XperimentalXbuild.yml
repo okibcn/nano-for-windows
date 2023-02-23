@@ -113,7 +113,7 @@ jobs:
         wget -qO- $URL | tar -Jxf -
         URL=$(wget -qO- https://api.github.com/repos/mstorsjo/llvm-mingw/releases/latest | grep 'browser.*url.*ucrt.*x86_64.tar.xz' | grep -o -e 'http.*\.xz')
         wget -qO- $URL | tar -Jxf -
-        mv llvm* llvm-mingw
+        mv llvm-mingw* llvm-mingw
 
     - name: "⏬ Download Sources"
       run: |
@@ -286,15 +286,15 @@ jobs:
 
         # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M and certain CTRL+key combos
         echo -e "\n\nPATCH: Full key modifiers detection."
-        sed -i.bak "/get_kbinput(midwin, VISIBLE)/a\
-            \\\\tif (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
-            \\tswitch (input) {\\n\
+        sed -i.bak "/get_kbinput\(midwin, VISIBLE)/a\
+            \\\\t if (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
+            \\t switch (input) {\\n\
             \\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
             \\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
             \\t}\\n\
             }\\n\
             if (PDC_get_key_modifiers() & PDC_KEY_MODIFIER_CONTROL){\\n\
-            \\tswitch (input) {\\n\
+            switch (input) {\\n\
             \\t\\tcase '/':          input = 31; break;\\n\
             \\t\\tcase SHIFT_DELETE: input = CONTROL_SHIFT_DELETE; break;\\n\
             \\t}\\n\
@@ -347,7 +347,7 @@ jobs:
         ####                               ####
 
         BUILD_VERSION="$(git describe --tags 2>/dev/null | sed "s/.\{10\}$//")"
-        LAST_BUILD_VERSION="$(wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r)" || echo "FIRST RELEASE!!!!"
+        LAST_BUILD_VERSION="$(wget -qO- https://api.github.com/repos/okibcn/nano-for-windows/releases/latest | jq .tag_name -r)" || echo "FIRST RELEASE!!!!"
         LAST_NANO_VERSION="$(echo $LAST_BUILD_VERSION | awk -F .  '{print $1"."$2}')"  # last version without the subbuild
         NANO_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         if [ "${BUILD_VERSION}" == "${LAST_NANO_VERSION}" ]; then
@@ -453,8 +453,7 @@ jobs:
           7z a -mx9 -mm=Deflate64 -mmt$(nproc) ../${f}.zip nano.exe  
           cd ..
         done
-        # already done above, right?
-        # echo "BUILD_VERSION=$(ls -1 *.zip \| grep -Pom 1 '(?<=_)v.*(?=\.zip)')" \>\> $GITHUB_ENV
+        echo "BUILD_VERSION=$(ls -1 *.zip \| grep -Pom 1 '(?<=_)v.*(?=\.zip)')" \>\> $GITHUB_ENV
         sha256sum *.zip >hashes.txt
         echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
 
