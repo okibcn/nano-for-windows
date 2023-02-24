@@ -59,7 +59,7 @@ jobs:
 
     - name: "📦 Create package"
       run: |
-        tar xvf ../llvm-mingw.tar.xz
+        tar cJvf ../llvm-mingw.tar.xz
 
     - name: "💾 Save Build Folder"
       uses: actions/cache@v3.2.6
