@@ -1,4 +1,4 @@
-name: Toolchain-cache-temp
+name: Toolchain-cache-test
 on:
   # schedule:
   #   - cron: '51 10 28 * *'
@@ -98,7 +98,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add bash nano-syntax iproute2 util-linux-misc iproute2 \
+        apk add bash nano-syntax iproute2 util-linux-misc iproute2 tar xz \
           bash git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
