@@ -27,7 +27,8 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        # apk add build-base linux-headers python3 coreutils \
+        apk add git
+         #  build-base linux-headers python3 coreutils \
         #   cmake file git make tar xz curl jq \
         #   bash nano-syntax iproute2 util-linux-misc
         # set PATH like in Ubuntu
