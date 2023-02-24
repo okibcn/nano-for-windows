@@ -124,6 +124,7 @@ jobs:
     - name: " Fast Build nano"
       run: |
         apk list -I | sort
+        apk list -I | awk -F'[{}]' '{print $2}' | sort | tr '\n' ' '
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
 
