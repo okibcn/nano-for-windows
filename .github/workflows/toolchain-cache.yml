@@ -27,7 +27,7 @@ jobs:
       run: |
         apk update && apk upgrade
         apk add bash nano-syntax iproute2 util-linux-misc iproute2 \
-          build-base linux-headers python3 cmake file git make tar xz
+          build-base linux-headers python3 cmake file git make tar xz curl
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
@@ -61,6 +61,9 @@ jobs:
       run: |
         tar cJvf ../llvm-mingw.tar.xz
 
+    - name: "🚮 Recycle Cache"
+      uses: snnaplab/delete-branch-cache-action@v1
+
     - name: "💾 Save Build Folder"
       uses: actions/cache@v3.2.6
       id: cache-sources
@@ -74,3 +77,10 @@ jobs:
       with:
         key: llvm-txz
         path: ./llvm-mingw.tar.xz
+
+    - name: "📃 list Caches"
+      run: |
+        curl \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/actions/caches
