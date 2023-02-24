@@ -8,7 +8,7 @@ on:
       debug_enabled:
         description: 'Debug session enabled'
         required: false
-        default: false
+        default: true
         type: boolean
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       if: ${{ job.container }}
       shell: sh
       run: |
-        apk update && apk upgrade && apk add bash cmake file git make tar xz
+        apk update && apk upgrade && apk add bash cmake file git make tar xz 
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
@@ -34,13 +34,13 @@ jobs:
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
       run: |
-        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-        sudo chmod +x /usr/local/bin/oh-my-posh
+        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        chmod +x /usr/local/bin/oh-my-posh
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
         cp /etc/bash.bashrc ~
         cat ~/.zshrc >> ~/bash.bashrc
-        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
+        cp ~/bash.bashrc /etc/bash.bashrc -f
 
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
