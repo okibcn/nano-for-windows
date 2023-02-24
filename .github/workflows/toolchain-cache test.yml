@@ -441,7 +441,9 @@ jobs:
         make -j$(($(nproc)*2)) && \
         make install || exit 1
         cd ${OUTDIR}
-            mv bin/nano.exe share/doc/nano/* $CWD/nano/doc/sample.nanorc.in $CWD/LICENSE $CWD/README.md .
+            wget -q https://raw.githubusercontent.com/okibcn/nano-for-windows/releases/LICENSE
+            wget -q https://raw.githubusercontent.com/okibcn/nano-for-windows/releases/README.md
+            mv bin/nano.exe share/doc/nano/* $CWD/nano/doc/sample.nanorc.in .
             mv share/nano syntax
             mv sample.nanorc.in .nanorc
             rm -rf bin share rnano*
