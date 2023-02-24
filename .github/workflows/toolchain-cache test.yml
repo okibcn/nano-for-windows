@@ -14,7 +14,7 @@ on:
 jobs:
   ## CREATES CACHE ##############################################################################
   build:
-    if: ${{ true }}
+    if: ${{ false }}
     name: Builds toolchain
     runs-on: ubuntu-latest
     container: alpine:edge
@@ -48,8 +48,7 @@ jobs:
       if: github.event.inputs.debug_enabled == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
+
 
     - name: "📦 Fake package build"
       run: |
@@ -83,7 +82,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add bash curl \
+        apk add bash curl jq \
           git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
           # build-base gcc mingw-w64-gcc-base linux-headers python3 clang cmake tar xz curl \
           # nano-syntax iproute2 util-linux-misc iproute2
@@ -109,6 +108,7 @@ jobs:
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
       run: |
+        apk add bash nano-syntax iproute2 util-linux-misc
         wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
         chmod +x /usr/local/bin/oh-my-posh
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
@@ -120,8 +120,6 @@ jobs:
       if: github.event.inputs.debug_enabled == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
 
 
     - name: " Fast Build nano"
@@ -129,9 +127,9 @@ jobs:
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
 
-        git clone git://git.savannah.gnu.org/nano.git
+        git clone --depth 1 git://git.savannah.gnu.org/nano.git
         cd nano
-        git clone https://github.com/Bill-Gray/PDCursesMod.git curses
+        git clone --depth 1 https://github.com/Bill-Gray/PDCursesMod.git curses
         ./autogen.sh
 
         function _diff() {
