@@ -100,7 +100,7 @@ jobs:
         apk update && apk upgrade
         apk add bash tar xz curl bash \
           git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip \
-          build-base gcc-base linux-headers python3 cmake file git tar xz curl \
+          build-base gcc mingw-w64-gcc-base linux-headers python3 cmake file git tar xz curl \
           nano-syntax iproute2 util-linux-misc iproute2
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
