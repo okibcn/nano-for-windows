@@ -88,7 +88,7 @@ jobs:
     name: Builds Nano
     needs: build
     runs-on: ubuntu-latest
-    container: alpine:edge
+    container: alpine:3.17
     defaults:
       run:
         shell: bash
