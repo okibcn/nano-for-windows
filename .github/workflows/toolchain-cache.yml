@@ -25,7 +25,9 @@ jobs:
       if: ${{ job.container }}
       shell: sh
       run: |
-        apk update && apk upgrade && apk add bash cmake file git make tar xz 
+        apk update && apk upgrade
+        apk add bash nano-syntax iproute2 util-linux-misc iproute2 \
+          cmake file git make tar xz nano-syntax
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
@@ -49,3 +51,10 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
+
+    - name: "🔧 Build"
+      if: ${{ false }}
+      run: |
+        echo " This shell: $SHELL"
+        git clone https://github.com/mstorsjo/llvm-mingw.git llvm
+        cd llvm
