@@ -38,11 +38,9 @@ jobs:
       run: |
         wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
         chmod +x /usr/local/bin/oh-my-posh
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
-        cp /etc/bash.bashrc ~ || true
-        cat ~/.zshrc >> ~/bash.bashrc 
-        cp ~/bash.bashrc /etc/bash.bashrc -f
+        cat ~/.zshrc >> ~/.bashrc 
 
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
