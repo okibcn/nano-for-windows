@@ -100,6 +100,7 @@ jobs:
         apk update && apk upgrade
         apk add bash tar xz curl bash \
           git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip \
+          build-base linux-headers python3 cmake file git tar xz curl \
           nano-syntax iproute2 util-linux-misc iproute2
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
@@ -140,9 +141,6 @@ jobs:
 
     - name: " Fast Build nano"
       run: |
-        export LC_ALL=en_US.UTF-8
-        export LANG=en_US.UTF-8
-        export LANGUAGE=en_US.UTF-8
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
 
