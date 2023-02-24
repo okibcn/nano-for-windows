@@ -27,7 +27,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add  git bash curl jq \
+        apk add  git bash curl jq tar \
            build-base python3 cmake linux-headers coreutils perl
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
