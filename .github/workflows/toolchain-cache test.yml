@@ -14,7 +14,7 @@ on:
 jobs:
   ## CREATES CACHE ##############################################################################
   build:
-    if: ${{ false }}
+    if: ${{ true }}
     name: Builds toolchain
     runs-on: ubuntu-latest
     container: alpine:edge
@@ -27,8 +27,9 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add bash nano-syntax iproute2 util-linux-misc iproute2 \
-          build-base linux-headers python3 cmake file git make tar xz curl jq
+        # apk add build-base linux-headers python3 coreutils \
+        #   cmake file git make tar xz curl jq \
+        #   bash nano-syntax iproute2 util-linux-misc
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
@@ -51,7 +52,7 @@ jobs:
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
 
-    - name: "📦 get package"
+    - name: "📦 Fake package build"
       run: |
         wget https://github.com/okibcn/nano-for-windows/releases/download/v7.2-8-10163.1/llvm-mingw.tar.xz
         tar xvf llvm-mingw.tar.xz
@@ -66,27 +67,12 @@ jobs:
         key: llvm-folder
         path: llvm-mingw
 
-    - name: "💾 Save Build tar.xz"
-      uses: actions/cache@v3.2.6
-      id: cache-package
-      with:
-        key: llvm-txz
-        path: llvm-mingw.tar.xz
-
-    - name: "📃 list Caches"
-      run: |
-        curl \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/$GITHUB_REPOSITORY/actions/caches
-
-
 
   ## TEST CACHE ##############################################################################
   test:
-    if: ${{ true }}
+    if: ${{ false }}
     name: Builds Nano
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
     container: alpine:3.17
     defaults:
@@ -98,10 +84,10 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add bash tar xz curl bash \
-          git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip \
-          build-base gcc mingw-w64-gcc-base linux-headers python3 cmake file git tar xz curl \
-          nano-syntax iproute2 util-linux-misc iproute2
+        apk add bash curl \
+          git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
+          # build-base gcc mingw-w64-gcc-base linux-headers python3 clang cmake tar xz curl \
+          # nano-syntax iproute2 util-linux-misc iproute2
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
