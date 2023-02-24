@@ -27,7 +27,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add git
+        apk add git bash
          #  build-base linux-headers python3 coreutils \
         #   cmake file git make tar xz curl jq \
         #   bash nano-syntax iproute2 util-linux-misc
