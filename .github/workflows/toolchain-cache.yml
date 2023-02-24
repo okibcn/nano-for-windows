@@ -1,8 +1,8 @@
 name: Toolchain-cache
 on:
-  # schedule:
-  #   - cron: '51 10 28 * *'
-  # runs at 10:51 UTC every 28th day of each month
+  schedule:
+    - cron: '51 10 28 * *'
+    # runs at 10:51 UTC every 28th day of each month
   workflow_dispatch:
     inputs:
       debug_enabled:
