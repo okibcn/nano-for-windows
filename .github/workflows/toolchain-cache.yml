@@ -8,7 +8,7 @@ on:
       debug_enabled:
         description: 'Debug session enabled'
         required: false
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -27,8 +27,8 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add  build-base linux-headers python3 coreutils perl cmake jq \
-            bash nano-syntax iproute2 util-linux-misc iproute2
+        apk add  apk add git bash curl jq \
+           build-base python3 cmake linux-headers coreutils perl
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
@@ -48,15 +48,13 @@ jobs:
       if: github.event.inputs.debug_enabled == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ## More info at https://til.simonwillison.net/github-actions/debug-tmate
-        ##           or https://github.com/mxschmitt/action-tmate
 
     - name: "⚙️ Build LLVM-MinGW Master"
       run: |
         echo " This shell: $SHELL"
         git clone https://github.com/mstorsjo/llvm-mingw.git llvm
         cd llvm
-        ./build-all.sh ../llvm-mingw
+          ./build-all.sh ../llvm-mingw
 
     - name: "🚮 Recycle Cache"
       uses: snnaplab/delete-branch-cache-action@v1
