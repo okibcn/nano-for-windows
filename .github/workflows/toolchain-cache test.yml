@@ -121,7 +121,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
     - name: " Fast Build nano"
       run: |
         CWD=$(pwd)
@@ -422,7 +421,6 @@ jobs:
             7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
             7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" nano.exe
             echo "BUILD_VERSION=$BUILD_VERSION" >> $GITHUB_ENV
-
 
     - name: "👍 Upload Artifact"
       uses: actions/upload-artifact@v3
