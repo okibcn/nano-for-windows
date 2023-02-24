@@ -140,6 +140,9 @@ jobs:
 
     - name: " Fast Build nano"
       run: |
+        export LC_ALL=en_US.UTF-8
+        export LANG=en_US.UTF-8
+        export LANGUAGE=en_US.UTF-8
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
 
