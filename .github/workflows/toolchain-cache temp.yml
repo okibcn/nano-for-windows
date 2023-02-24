@@ -55,17 +55,17 @@ jobs:
 
     - name: "💾 Save Build Folder"
       uses: actions/cache@v3.2.6
-      id: cache-sources
+      id: cache-folder
       with:
         key: llvm-folder
-        path: ./llvm-mingw/
+        path: llvm-mingw
 
     - name: "💾 Save Build tar.xz"
       uses: actions/cache@v3.2.6
-      id: cache-sources
+      id: cache-package
       with:
         key: llvm-txz
-        path: ./llvm-mingw.tar.xz
+        path: llvm-mingw.tar.xz
 
     - name: "📃 list Caches"
       run: |
