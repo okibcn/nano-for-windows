@@ -86,7 +86,7 @@ jobs:
   test:
     if: ${{ true }}
     name: Builds Nano
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     container: alpine:3.17
     defaults:
