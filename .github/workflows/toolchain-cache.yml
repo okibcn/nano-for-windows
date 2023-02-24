@@ -21,7 +21,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - name: "get basic Packages"
+    - name: "⏬ Download tools"
       if: ${{ job.container }}
       shell: sh
       run: |
@@ -50,7 +50,7 @@ jobs:
         ## More info at https://til.simonwillison.net/github-actions/debug-tmate
         ##           or https://github.com/mxschmitt/action-tmate
 
-    - name: "🔧 Build LLVM-MinGW Master"
+    - name: "⚙️ Build LLVM-MinGW Master"
       run: |
         echo " This shell: $SHELL"
         git clone https://github.com/mstorsjo/llvm-mingw.git llvm
