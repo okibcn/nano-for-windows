@@ -38,8 +38,8 @@ jobs:
         chmod +x /usr/local/bin/oh-my-posh
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
-        cp /etc/bash.bashrc ~
-        cat ~/.zshrc >> ~/bash.bashrc
+        cp /etc/bash.bashrc ~ || true
+        cat ~/.zshrc >> ~/bash.bashrc 
         cp ~/bash.bashrc /etc/bash.bashrc -f
 
     - name: "🐞 Debug session"
