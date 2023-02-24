@@ -84,8 +84,7 @@ jobs:
         apk update && apk upgrade
         apk add bash curl jq tar \
           git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
-          # build-base gcc mingw-w64-gcc-base linux-headers python3 clang cmake tar xz curl \
-          # nano-syntax iproute2 util-linux-misc iproute2
+        apk add alpine-zsh-config apk-tools curl elfutils htop iptables libcap libmnl libnftnl musl-fts tty-copy zsh-syntax-highlighting
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
