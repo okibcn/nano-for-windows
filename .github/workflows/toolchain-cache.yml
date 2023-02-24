@@ -12,6 +12,7 @@ on:
         type: boolean
 
 jobs:
+
   build:
     if: ${{ true }}
     name: Builds toolchain
