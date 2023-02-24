@@ -155,6 +155,7 @@ jobs:
 
     - name: " Fast Build nano"
       run: |
+        CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
 
         git clone git://git.savannah.gnu.org/nano.git
@@ -414,9 +415,7 @@ jobs:
         ##########################
         ARCH=x86_64
 
-        cd ~
-
-        CWD=$(pwd)
+        cd $CWD
         cd nano
             PDTERM="wincon"    # PDCursesMod supports wincon, vt, wingui, sdl1, sdl2
             TARGET="${ARCH}-w64-mingw32"
@@ -452,8 +451,8 @@ jobs:
                 llvm-strip -s nano.exe
                 upx nano.exe || true
                 ls -als
-                7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "../nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
-                7z a -mx9 -mm=Deflate64 -mmt$(nproc) "../nano_for-windows${_arch}_${BUILD_VERSION}.zip" nano.exe
+                7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
+                7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" nano.exe
                 echo "BUILD_VERSION=$BUILD_VERSION" >> $GITHUB_ENV
 
 
