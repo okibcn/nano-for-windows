@@ -27,7 +27,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add  apk add git bash curl jq \
+        apk add  git bash curl jq \
            build-base python3 cmake linux-headers coreutils perl
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
@@ -37,6 +37,7 @@ jobs:
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
       run: |
+        apk add bash nano-syntax iproute2 util-linux-misc
         wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
         chmod +x /usr/local/bin/oh-my-posh
         wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
