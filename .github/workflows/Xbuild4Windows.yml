@@ -275,7 +275,7 @@ jobs:
         # Desambiguation of BACKSPACE vs ^H, or ENTER vs ^M and certain CTRL+key combos
         echo -e "\n\nPATCH: Full key modifiers detection."
         sed -i.bak "/get_kbinput(midwin, VISIBLE)/a\
-            \\\\tif (!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
+            \\\\tif (\!((PDC_get_key_modifiers()) & (PDC_KEY_MODIFIER_SHIFT|PDC_KEY_MODIFIER_CONTROL|PDC_KEY_MODIFIER_ALT)) ) {\\n\
             \\tswitch (input) {\\n\
             \\t\\tcase 0x08:      input = KEY_BACKSPACE; break;\\n\
             \\t\\tcase 0x0d:      input = KEY_ENTER;\\n\
@@ -291,7 +291,7 @@ jobs:
 
         # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
         echo -e "\n\nPATCH: change to 32 bits wchar_t."
-        sed -i.bak '0,/#/s//#define wchar_t int\n&/' src/definitions.h curses/curses.h
+        sed -i.bak '1,/#/ s/#/#define wchar_t int\n&/' src/definitions.h curses/curses.h
         _diff
         echo -e "\n\nPATCH: fix for emojis input and output and transparent background."
         wget -q https://github.com/okibcn/nano-editor/raw/my-github-sync/curses/pdcurses/getch.c
