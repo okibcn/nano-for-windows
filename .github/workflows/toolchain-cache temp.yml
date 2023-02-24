@@ -62,7 +62,7 @@ jobs:
       id: cache-folder
       with:
         key: llvm-folder
-        path: llvm-mingw
+        path: llvm-mingw/*
 
     - name: "💾 Save Build tar.xz"
       uses: actions/cache@v3.2.6
