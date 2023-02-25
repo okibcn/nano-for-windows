@@ -123,7 +123,7 @@ jobs:
       run: |
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        echo: "SHELL:"
+        echo "SHELL:"
         readlink /proc/$$/exe
         echo $0
         echo "PATH:"
