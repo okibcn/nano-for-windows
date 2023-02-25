@@ -438,9 +438,6 @@ jobs:
         ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
             --enable-{utf8,threads=windows} --disable-{nls,speller} \
             --sysconfdir="C:\\ProgramData"
-        cd ..
-        tar czvf $CWD/nanogh.tar.gz nano
-        cd nano
         make -j$(($(nproc)*2)) && \
         make install || exit 1
         cd ${OUTDIR}
@@ -463,4 +460,3 @@ jobs:
         name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
           *.zip
-          nanogh.tar.gz
