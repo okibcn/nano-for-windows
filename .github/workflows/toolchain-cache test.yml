@@ -83,8 +83,9 @@ jobs:
       run: |
         apk update && apk upgrade
         apk add bash curl jq tar \
-          git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
-        apk add alpine-zsh-config apk-tools curl elfutils htop iptables libcap libmnl libnftnl musl-fts tty-copy zsh-syntax-highlighting
+          alpine-baselayout alpine-baselayout-data alpine-keys apk-tools autoconf automake bash brotli-libs busybox busybox-binsh ca-certificates ca-certificates-bundle coreutils gettext gettext-asprintf gettext-dev gettext-libs git git-perl groff htop iproute2 ipro ute2-minimal iproute2-ss iproute2-tc iptables jq libacl libattr libblkid libbz2 libc-utils libcap2 libcrypto3 libcurl libelf libexpat li bfdisk libgcc libgomp libintl libmnl libmount libnftnl libsmartcols libssl3 libstdc++ libunistring libuuid libxml2 m4 make musl musl-fts  musl-utils nano nano-syntax ncurses-libs ncurses-terminfo-base nghttp2-libs oniguruma p7zip pcre2 perl perl-error perl-git pkgconf read line scanelf skalibs ssl_client texinfo upx util-linux-misc utmps-libs xz-libs zlib        
+        #   git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
+        # apk add alpine-zsh-config apk-tools curl elfutils htop iptables libcap libmnl libnftnl musl-fts tty-copy zsh-syntax-highlighting
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
