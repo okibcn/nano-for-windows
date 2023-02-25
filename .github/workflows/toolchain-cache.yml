@@ -52,7 +52,7 @@ jobs:
 
     - name: "⚙️ Build LLVM-MinGW Master"
       run: |
-        echo " This shell: $SHELL"
+        echo " Using SHELL: $0"
         git clone https://github.com/mstorsjo/llvm-mingw.git llvm
         cd llvm
           ./build-all.sh ../llvm-mingw

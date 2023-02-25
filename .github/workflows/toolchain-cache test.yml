@@ -123,6 +123,8 @@ jobs:
       run: |
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
+        echo: SHELL:"
+        echo $0
         echo "PATH:"
         echo "$PATH" | tr : '\n'
         echo "OS PACKAGES:"
