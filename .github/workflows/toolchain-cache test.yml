@@ -121,11 +121,13 @@ jobs:
 
     - name: " Fast Build nano"
       run: |
-        apk list -I | sort
-        apk list -I | awk -F'-[0-9]' '{print $1}' | sort | tr '\n' ' '
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-
+        echo "PATH:"
+        echo "$PATH" | tr : '\n'
+        echo "OS PACKAGES:"
+        apk list -I | sort
+        echo ""
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
