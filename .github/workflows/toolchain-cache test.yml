@@ -83,8 +83,7 @@ jobs:
       run: |
         apk update && apk upgrade
         apk add bash curl jq tar \
-          alpine-baselayout alpine-baselayout-data alpine-keys apk-tools autoconf automake bash brotli-libs busybox busybox-binsh ca-certificates ca-certificates-bundle coreutils gettext gettext-asprintf gettext-dev gettext-libs git git-perl groff htop iproute2 iproute2-minimal iproute2-ss iproute2-tc iptables jq libacl libattr libblkid libbz2 libc-utils libcap2 libcrypto3 libcurl libelf libexpat libfdisk libgcc libgomp libintl libmnl libmount libnftnl libsmartcols libssl3 libstdc++ libunistring libuuid libxml2 m4 make musl musl-fts musl-utils nano nano-syntax ncurses-libs ncurses-terminfo-base nghttp2-libs oniguruma p7zip pcre2 perl perl-error perl-git pkgconf readline scanelf skalibs ssl_client texinfo upx util-linux-misc utmps-libs xz-libs zlib
-        #   git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
+          alpine-baselayout alpine-baselayout-data alpine-keys alpine-zsh-config apk-tools apk-tools-zsh-completion autoconf automake bash binutils brotli-libs build-base busybox busybox-binsh ca-certificates ca-certificates-bundle cmake coreutils curl curl-zsh-completion file fortify-headers g++ gcc gcc-zsh-completion gdbm gengetopt gettext gettext-asprintf gettext-dev gettext-libs git git-perl git-zsh-completion gmp groff htop iproute2 iproute2-minimal iproute2-ss iproute2-tc iptables isl25 jq libacl libarchive libatomic libattr libblkid libbz2 libc-dev libc-utils libcap2 libcrypto3 libcurl libelf libexpat libfdisk libffi libgcc libgomp libintl libmagic libmnl libmount libnftnl libsmartcols libssl3 libstdc++ libstdc++-dev libunistring libuuid libuv libxml2 linux-headers lz4-libs m4 make mingw-w64-binutils mingw-w64-gcc-base mingw-w64-headers mingw-w64-headers-bootstrap mpc1 mpdecimal mpfr4 musl musl-dev musl-fts musl-utils nano nano-syntax ncurses-libs ncurses-terminfo-base nghttp2-libs oniguruma p7zip patch pcre2 perl perl-error perl-git pkgconf python3 readline rhash-libs scanelf skalibs sqlite-libs ssl_client tar texinfo tty-copy upx util-linux-misc utmps-libs xz-libs zlib zsh zsh-syntax-highlighting zstd-libs        #   git texinfo groff gettext-dev automake autoconf pkgconf coreutils jq make upx p7zip 
         # apk add alpine-zsh-config apk-tools curl elfutils htop iptables libcap libmnl libnftnl musl-fts tty-copy zsh-syntax-highlighting
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
@@ -424,7 +423,7 @@ jobs:
         [ "${ARCH}" == "i686" ] && _arch="_w32"
         export CURSES_DIR="$(pwd)/curses"
         export CURSES_DIR="$(pwd)/curses"
-        export CFLAGS="-O3 -Os -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
+        export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
         export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
         export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
         export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
