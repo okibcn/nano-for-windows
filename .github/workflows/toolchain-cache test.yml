@@ -72,7 +72,7 @@ jobs:
     name: Builds Nano
     # needs: build
     runs-on: ubuntu-latest
-    container: alpine:3.17
+    container: alpine:edge
     defaults:
       run:
         shell: bash
@@ -125,7 +125,6 @@ jobs:
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
         echo "SHELL:"
         readlink /proc/$$/exe
-        echo $0
         echo "PATH:"
         echo "$PATH" | tr : '\n'
         echo "OS PACKAGES:"
