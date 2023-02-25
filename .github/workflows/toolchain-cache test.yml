@@ -131,7 +131,38 @@ jobs:
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
-        ./autogen.sh
+        git clone git://git.sv.gnu.org/gnulib.git --depth 1
+        autopoint --force
+        glibmodules="
+            futimens
+            getdelim
+            getline
+            getopt-gnu
+            glob
+            isblank
+            iswblank
+            lstat
+            mkstemps
+            nl_langinfo
+            regex
+            sigaction
+            snprintf-posix
+            stdarg
+            strcase
+            strcasestr-simple
+            strnlen
+            sys_wait
+            vsnprintf-posix
+            wchar
+            wctype-h
+            wcwidth
+        "
+        rm -rf lib
+        ./gnulib/gnulib-tool --import ${glibmodules}
+        aclocal -I m4
+        autoconf
+        autoheader
+        automake --add-missing
 
         function _diff() {
             # Thanks to @rasa for this function
@@ -410,7 +441,7 @@ jobs:
             --enable-{utf8,threads=windows} --disable-{nls,speller} \
             --sysconfdir="C:\\ProgramData"
         cd ..
-        tar czvf $CWD/nanogh.tar.gz
+        tar czvf $CWD/nanogh.tar.gz nano
         cd nano
         make -j$(($(nproc)*2)) && \
         make install || exit 1
@@ -434,3 +465,4 @@ jobs:
         name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
           *.zip
+          nanogh.tar.gz
