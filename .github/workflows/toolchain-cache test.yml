@@ -124,7 +124,7 @@ jobs:
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
         echo: SHELL:"
-        ps  -ef | grep $$ | grep -v grep | awk '{print $(NF)}'
+        readlink /proc/$$/exe
         echo "PATH:"
         echo "$PATH" | tr : '\n'
         echo "OS PACKAGES:"
