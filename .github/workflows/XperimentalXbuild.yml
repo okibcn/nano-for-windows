@@ -449,12 +449,12 @@ jobs:
         # Configure nano
         mkdir -p nano/build
         cd nano/build
-          ../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
+          ../configure --host="${TARGET}" --prefix="${OUTDIR}" \
               --enable-{utf8,threads=windows} --disable-{nls,speller} \
               --sysconfdir="C:\\ProgramData" || cat config.log
           echo "
-            #define HAVE_FREXPL_IN_LIBC 1
             #define HAVE_FREXP_IN_LIBC 1
+            #define HAVE_FREXPL_IN_LIBC 1
             #define HAVE_SNPRINTF_RETVAL_C99 1
             #define HAVE_SNPRINTF_TRUNCATION_C99 1
             #define MBRTOWC_EMPTY_INPUT_BUG 1
@@ -466,8 +466,7 @@ jobs:
           sed -i "/#define NEED_PRINTF_INFINITE_DOUBLE 1/d" config.h
           sed -i "/#define NEED_PRINTF_UNBOUNDED_PRECISION 1/d" config.h
           # sed -i "/#define __GETOPT_PREFIX rpl_/d" config.h
-          BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
-          BRANDING="GNU nano for Windows ${{ matrix.pretty }}, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
+          BRANDING="GNU nano for Windows ${{ matrix.pretty }}, ${{ needs.checks.outputs.build }} $(TZ=UTC date +'%Y.%m.%d')"
           echo "#define REVISION \"${BRANDING}\"" > src/revision.h
 
     - name: "⚙️ Build for Windows ${{ matrix.pretty }}"
