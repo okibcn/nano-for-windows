@@ -7,7 +7,7 @@
 
 </div><br/><br/>
 
-This is a 64-bit/32-bit Windows port of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB). It can be run in a Windows Terminal, Powershell window, Command Prompt window, SSH session, or similar environment.
+This is a 64-bit/32-bit and Windows on ARM port of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB). It can be run in a Windows Terminal, Powershell window, Command Prompt window, SSH session, or similar environment.
 
 GNU nano is constantly being upgraded, but the original project is focused on providing support and functionality for Linux. This project is meant to bring the latest updates to both 64-bit and 32-bit Windows users.
 
@@ -30,7 +30,7 @@ Pretty much everything is supported except for Linux-specific functions, includi
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
 - Data input through stdin support, from a pipe or the keyboard.
 - Transparent backgrounds in Windows Terminal, and other supported environments.
-- Beta support for Windows on ARM (WoA)
+- Beta native support for Windows on ARM (WoA)
 
 <div align="center"><img width="947" alt="image" src="https://user-images.githubusercontent.com/22417711/218406120-a7198c98-fd5f-4a1b-8793-b65c3ba68d7c.png"></div>
 
