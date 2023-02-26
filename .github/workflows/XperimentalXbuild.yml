@@ -547,7 +547,7 @@ jobs:
     - name: "📦 Prepare Final Package"
       run: |
         mv nano-for*/* .
-        sha256sum *.zip >hashes.txt
+        sha256sum *.zip > hashes.txt
         echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
 
     - name: "👍 Upload nano-for-windows_${{ needs.checks.outputs.build }} as Artifact"
@@ -570,7 +570,9 @@ jobs:
         prerelease: true
         tag_name: ${{ needs.checks.outputs.build }}
         body_path: body.txt
-        files: ./*.zip ./hashes.txt
+        files: |
+          ./*.zip 
+          ./hashes.txt
 
 
     - name: "🔧 Prepare debug session"
