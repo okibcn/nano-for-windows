@@ -79,17 +79,17 @@ jobs:
         if [ -f body.txt ]; then
           wget -q "http://git.savannah.gnu.org/gitweb/?p=nano.git;a=shortlog" -O log.html
           VERSION=$(cat log.html | grep -m 1 "title=\"tags/" | grep -Eo "v[0-9]+\.[0-9]+" | head -1)
-          echo "VERSION: $VERSION"
+          echo "Nano VERSION: $VERSION"
           SUBVER=$(cat log.html | awk '1; /"tag indirect"/{exit}' | grep -c '</tr>')
-          echo "SUBVERSION: $SUBVER"
+          echo "Nano SUBVERSION: $SUBVER"
           [$SUBVER -gt 0 ] && VERSION="${VERSION}-${SUBVER}"
           echo "Current nano version: ${VERSION}"
           LAST_BUILD=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r ) || echo "FIRST RELEASE!!!!"
-          echo "Last published build: ${LAST_BUILD}"
+          echo "Last Nano for Windows build: ${LAST_BUILD}"
           LAST_VERSION=$(echo $LAST_BUILD | awk -F '-' '{print $1}')
           LAST_SUBVER=$(echo $LAST_BUILD | awk -F '[\.-]' '{print $3}')
-          [$LAST_SUBVER -gt 0 ] && NANO_VERSION="${NANO_VERSION}-${SUBVER}"
-          echo "Last published version: ${NANO_VERSION}"
+          [$LAST_SUBVER -gt 0 ] && LAST_VERSION="${NANO_VERSION}-${SUBVER}"
+          echo "Last Nano version: ${LAST_VERSION}"
           if [ "${VERSION}" == "${LAST_VERSION}" ]; then
             # This is a new Windows build based on the same nano build, probably because there is a new curses patch
             SUBBUILD="$(echo $LAST_BUILD | awk -F . '{print $3}')"
