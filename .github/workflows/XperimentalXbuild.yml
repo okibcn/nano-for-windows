@@ -408,9 +408,9 @@ jobs:
         ####                               ####
 
         cd curses
-        CURSES="$(wget -qO- https://api.github.com/repos/Bill-Gray/PDCursesMod/releases/latest | jq .tag_name -r)"
+        # CURSES="$(gh api repos/Bill-Gray/PDCursesMod/releases/latest | jq .tag_name -r)"
         CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
-        CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
+        CURSES="PDCursesMod PDC_VERDOT build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
         sed -i.bak 's/ GNU nano from git,//' src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
