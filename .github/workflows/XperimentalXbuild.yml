@@ -440,7 +440,6 @@ jobs:
           [ "${ARCH}" == "x86_64" ] && _arch="_w64"
           [ "${ARCH}" == "i686" ] && _arch="_w32"
           export CURSES_DIR="$(pwd)/curses"
-          export UPX="--lzma --best"
           export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
           export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
           export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
@@ -483,6 +482,7 @@ jobs:
       run: |
         CWD=$(pwd)
         cd nano/pkg
+          export UPX="--lzma --best"
           wget -q https://raw.githubusercontent.com/okibcn/nano-for-windows/releases/LICENSE
           wget -q https://raw.githubusercontent.com/okibcn/nano-for-windows/releases/README.md
           mv bin/nano.exe share/doc/nano/* $CWD/nano/doc/sample.nanorc.in .
@@ -524,13 +524,13 @@ jobs:
       with:
           name: '*'
 
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      if: github.event.inputs.debug_enabled == 'true'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: "📦 Prepare Final Package"
+      run: |
+        mv nano-for*/* .
+        sha256sum *.zip >hashes.txt
+        echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
 
-    - name: "👍 Upload Artifact"
+    - name: "👍 Upload nano-for-windows_${{ needs.checks.outputs.build }} as Artifact"
       uses: actions/upload-artifact@v3
       if: github.event.inputs.release == 'Artifact'
       with:
@@ -552,12 +552,6 @@ jobs:
         files: ./*.zip ./hashes.txt
 
 
-    - name: "📦 Prepare Final Package"
-      run: |
-        mv nano-for*/* .
-        sha256sum *.zip >hashes.txt
-        echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
-
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
       run: |
@@ -569,3 +563,10 @@ jobs:
         cp /etc/bash.bashrc ~
         cat ~/.zshrc >> ~/bash.bashrc
         sudo cp ~/bash.bashrc /etc/bash.bashrc -f
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
