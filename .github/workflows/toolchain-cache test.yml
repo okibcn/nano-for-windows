@@ -120,6 +120,8 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: " Fast Build nano"
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         CWD=$(pwd)
         export PATH="$(pwd)/llvm-mingw/bin:$PATH"
