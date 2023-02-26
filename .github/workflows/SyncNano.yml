@@ -17,7 +17,7 @@ jobs:
         persist-credentials: false
 
     - name: GitHub Repo Sync
-      uses: repo-sync/github-sync@v2
+      uses: repo-sync/github-sync@v2.3.0
       with:
         source_repo: "git://git.savannah.gnu.org/nano.git"
         source_branch: "*"
