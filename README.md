@@ -30,6 +30,7 @@ Pretty much everything is supported except for Linux-specific functions, includi
 - Line wrap, search, cut, copy & paste, and all the basic functions of any full-fledged editor.
 - Data input through stdin support, from a pipe or the keyboard.
 - Transparent backgrounds in Windows Terminal, and other supported environments.
+- Beta support for Windows on ARM (WoA)
 
 <div align="center"><img width="947" alt="image" src="https://user-images.githubusercontent.com/22417711/218406120-a7198c98-fd5f-4a1b-8793-b65c3ba68d7c.png"></div>
 
