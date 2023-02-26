@@ -442,6 +442,20 @@ jobs:
         ../../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
             --enable-{utf8,threads=windows} --disable-{nls,speller} \
             --sysconfdir="C:\\ProgramData"
+        echo  -e "
+          #define HAVE_FREXPL_IN_LIBC 1
+          #define HAVE_FREXP_IN_LIBC 1
+          #define HAVE_SNPRINTF_RETVAL_C99 1
+          #define HAVE_SNPRINTF_TRUNCATION_C99 1
+          #define MBRTOWC_EMPTY_INPUT_BUG 1
+        " >> config.h
+        sed -i "/#define NEED_PRINTF_DIRECTIVE_A 1/d" config.h
+        sed -i "/#define NEED_PRINTF_DIRECTIVE_F 1/d" config.h
+        sed -i "/#define NEED_PRINTF_FLAG_GROUPING 1/d" config.h
+        sed -i "/#define NEED_PRINTF_FLAG_ZERO 1/d" config.h
+        sed -i "/#define NEED_PRINTF_INFINITE_DOUBLE 1/d" config.h
+        sed -i "/#define NEED_PRINTF_UNBOUNDED_PRECISION 1/d" config.h
+        # sed -i "/#define __GETOPT_PREFIX rpl_/d" config.h
         make -j$(($(nproc)*2)) && \
         make install || exit 1
         cd ${OUTDIR}
