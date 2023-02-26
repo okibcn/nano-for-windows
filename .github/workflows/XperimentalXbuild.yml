@@ -122,7 +122,7 @@ jobs:
         include:
           - { arch: i686, name: win32, short: w32, pretty: 32 bits }
           - { arch: x86_64, name: win64, short: w64, pretty: 64 bits }
-          - { arch: aarch64, name: amd64, short: a64, pretty: on Arm }
+          - { arch: aarch64, name: arm64, short: a64, pretty: on Arm }
     defaults:
       run:
         shell: bash
@@ -399,6 +399,7 @@ jobs:
         sed -i.bak '/i686-w64-mingw32/a endif\n  ifdef _a64\n    PREFIX  = aarch64-w64-mingw32-' curses/wincon/Makefile  
         sed -i 's|AR\s*=\s*|&$(PREFIX)|' curses/wincon/Makefile  
         sed -i 's|STRIP\s*=\s*|&$(PREFIX)|' curses/wincon/Makefile
+        sed -i 's|CFLAGS\s*=|CFLAGS +=|' curses/wincon/Makefile
         _diff  
 
 
@@ -411,20 +412,9 @@ jobs:
         CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
-
-        # BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
-        # BRANDING="GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
-        # sed -i '/= BRANDING/s|BRANDING|"'"${BRANDING}"'"|' src/winio.c
-        # sed -i.bak -e '/ifdef REVISION/i printf(_(" '"${BRANDING}"'\\n"));' src/nano.c
-        # sed -i -e "/ifdef REVISION/{N;N;N;N;d}" src/nano.c
-
         sed -i.bak 's/ GNU nano from git,//' src/nano.c
-
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
-        # sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'\\""' src/Makefile.am
-        # _diff
-
 
     - name: "⚙️ Compile curses lib for ${{ matrix.name}}"
       run: |
@@ -436,7 +426,7 @@ jobs:
 
         PDTERM="wincon"
         echo "PDTERM=${PDTERM}" >> $GITHUB_ENV
-        export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
+        export CFLAGS="-Oz -fno-math-errno -flto"
         cd "nano/curses/${PDTERM}"
           make -j$(($(nproc)*2)) WIDE=Y UTF8=Y _${{matrix.short}}=Y
 
