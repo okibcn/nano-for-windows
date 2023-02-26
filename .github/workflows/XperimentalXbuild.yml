@@ -413,7 +413,9 @@ jobs:
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
         BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
-        sed -i.bak -e '/ifdef REVISION/i printf(_(" GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'\\n"));' src/nano.c
+        BRANDING = "GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
+        sed -i '/= BRANDING/s|BRANDING|"'"${BRANDING}"'"|' src/winio.c
+        sed -i.bak -e '/ifdef REVISION/i printf(_(" '"${BRANDING}"'\\n"));' src/nano.c
         sed -i -e "/ifdef REVISION/{N;N;N;N;d}" src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
