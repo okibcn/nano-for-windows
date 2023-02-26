@@ -450,7 +450,7 @@ jobs:
           make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
           cd ../..
           # Configure nano
-          touch src/roll-a-release.sh
+          touch roll-a-release.sh
           sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
           mkdir -p build
           cd build
