@@ -120,9 +120,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { arch: i686, name: win32, pretty: 32 bits }
-          - { arch: x86_64, name: win64, pretty: 64 bits }
-          - { arch: aarch64, name: amd64, pretty: on Arm }
+          - { arch: i686, name: win32, short: w32, pretty: 32 bits }
+          - { arch: x86_64, name: win64, short: w64, pretty: 64 bits }
+          - { arch: aarch64, name: amd64, short: a64, pretty: on Arm }
     defaults:
       run:
         shell: bash
@@ -433,15 +433,12 @@ jobs:
         ##     COMPILE CURSES     ##
         ##                        ##
         ##########################
-        
+
         PDTERM="wincon"
         echo "PDTERM=${PDTERM}" >> $GITHUB_ENV
-        [ "${{ matrix.arch }}" == "aarch64" ] && _arch="_a64"
-        [ "${{ matrix.arch }}" == "x86_64" ] && _arch="_w64"
-        [ "${{ matrix.arch }}" == "i686" ] && _arch="_w32"
         export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
         cd "nano/curses/${PDTERM}"
-          make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
+          make -j$(($(nproc)*2)) WIDE=Y UTF8=Y _${{matrix.short}}=Y
 
     - name: "🔧 Configure Nano Build"
       run: |
