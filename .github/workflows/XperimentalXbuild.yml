@@ -415,7 +415,7 @@ jobs:
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
         sed -i.bak 's/ GNU nano from git,//' src/nano.c
-        sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
+        sed -i 's|Compiled options|Project info at http://github.com/okibcn/nano-for-windows\\n Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
 
     - name: "⚙️ Compile curses lib for ${{ matrix.name}}"
