@@ -412,12 +412,13 @@ jobs:
         CURSES_DATE=$(TZ=UTC git show --quiet --date='format-local:%Y.%m.%d' --format="%cd")
         CURSES="PDCursesMod ${CURSES} build $(git rev-list --count HEAD), ${CURSES_DATE}"
         cd ..
-        sed -i.bak 's/ GNU nano from git,//' src/nano.c
+        BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
+        sed -i.bak -e '/ifdef REVISION/i printf(_(" GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'"));' src/nano.c
+        sed -i -e "/ifdef REVISION/{N;N;N;N;d}" src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
-        BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
-        sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'\\""' src/Makefile.am
-        _diff
+        # sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'\\""' src/Makefile.am
+        # _diff
 
 
     - name: "🔧 Configure Build"
