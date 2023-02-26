@@ -434,7 +434,7 @@ jobs:
         ##                        ##
         ##########################
         PDTERM="wincon"
-        echo "PDTERM=PDTERM" >> $GITHUB_ENV
+        echo "PDTERM=${PDTERM}" >> $GITHUB_ENV
         [ "${{ matrix.arch }}" == "aarch64" ] && _arch="_a64"
         [ "$${{ matrix.arch }}" == "x86_64" ] && _arch="_w64"
         [ "${{ matrix.arch }}" == "i686" ] && _arch="_w32"
