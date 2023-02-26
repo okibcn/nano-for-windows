@@ -526,6 +526,7 @@ jobs:
 
     - name: "📦 Prepare Final Package"
       run: |
+        mv nano-for*/* .
         sha256sum *.zip >hashes.txt
         echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
 
