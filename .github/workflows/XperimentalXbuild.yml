@@ -79,7 +79,9 @@ jobs:
         if [ -f body.txt ]; then
           wget -q "http://git.savannah.gnu.org/gitweb/?p=nano.git;a=shortlog" -O log.html
           VERSION=$(cat log.html | grep -m 1 "title=\"tags/" | grep -Eo "v[0-9]+\.[0-9]+" | head -1)
+          echo "VERSION: $VERSION"
           SUBVER=$(cat log.html | awk '1; /"tag indirect"/{exit}' | grep -c '</tr>')
+          echo "SUBVERSION: $SUBVER"
           [$SUBVER -gt 0 ] && VERSION="${VERSION}-${SUBVER}"
           echo "Current nano version: ${VERSION}"
           LAST_BUILD=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .tag_name -r ) || echo "FIRST RELEASE!!!!"
