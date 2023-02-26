@@ -148,6 +148,9 @@ jobs:
 
     - name: "⏬ Download Sources"
       run: |
+        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
+        echo "PATH=${PATH}" >> $GITHUB_ENV
+
         git clone git://git.savannah.gnu.org/nano.git --depth 1
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
@@ -414,49 +417,52 @@ jobs:
         cd ..
         BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
         BRANDING="GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
+
         sed -i '/= BRANDING/s|BRANDING|"'"${BRANDING}"'"|' src/winio.c
         sed -i.bak -e '/ifdef REVISION/i printf(_(" '"${BRANDING}"'\\n"));' src/nano.c
         sed -i -e "/ifdef REVISION/{N;N;N;N;d}" src/nano.c
+
+
+
+
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
         _diff
         # sed -i.bak '/SOMETHING = "REVISION/cSOMETHING = "REVISION \\"GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} '"${BUILD_DATE}"'\\""' src/Makefile.am
         # _diff
 
 
-    - name: "🔧 Configure Build"
+    - name: "⚙️ Compile curses lib for ${{ matrix.name}}"
       run: |
         ##########################
         ##                        ##
-        ##     BUILD NANO         ##
+        ##     COMPILE CURSES     ##
         ##                        ##
         ##########################
-        ARCH=${{ matrix.arch }}
-        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        echo "PATH=${PATH}" >> $GITHUB_ENV
-        CWD=$(pwd)
-        cd nano
-          PDTERM="wincon"
-          TARGET="${ARCH}-w64-mingw32"
-          OUTDIR="$(pwd)/pkg"
-          [ "${ARCH}" != "i686" ] && BITS="64" || BITS="32"
-          [ "${ARCH}" == "aarch64" ] && _arch="_a64"
-          [ "${ARCH}" == "x86_64" ] && _arch="_w64"
-          [ "${ARCH}" == "i686" ] && _arch="_w32"
-          export CURSES_DIR="$(pwd)/curses"
-          export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
-          export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
-          export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
-          export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
-          export LIBS="-lbcrypt"
-          # cross Build pdcurses for destination host
-          cd "${CURSES_DIR}/${PDTERM}"
+        PDTERM="wincon"
+        [ "${{ matrix.arch }}" == "aarch64" ] && _arch="_a64"
+        [ "$${{ matrix.arch }}" == "x86_64" ] && _arch="_w64"
+        [ "${{ matrix.arch }}" == "i686" ] && _arch="_w32"
+        export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
+        cd "nano/curses/${PDTERM}"
           make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
-          cd ../..
-          # Configure nano
-          touch roll-a-release.sh
-          sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
-          mkdir -p build
-          cd build
+
+    - name: "🔧 Configure Nano Build"
+      run: |
+        ##########################
+        ##                        ##
+        ##     CONFIGURE BUILD    ##
+        ##                        ##
+        ##########################
+        TARGET="${{ matrix.arch }}-w64-mingw32"
+        OUTDIR="$(pwd)/nano/pkg"
+        export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
+        export LDFLAGS="-L${CURSES_DIR}/${PDTERM} -static -static-libgcc ${CURSES_DIR}/${PDTERM}/pdcurses.a"
+        export NCURSESW_CFLAGS="-I${CURSES_DIR} -DNCURSES_STATIC  -DENABLE_MOUSE"
+        export NCURSESW_LIBS="-l:pdcurses.a -lwinmm"
+        export LIBS="-lbcrypt"
+        # Configure nano
+        mkdir -p nano/build
+        cd nano/build
           ../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
               --enable-{utf8,threads=windows} --disable-{nls,speller} \
               --sysconfdir="C:\\ProgramData"
@@ -474,6 +480,9 @@ jobs:
           sed -i "/#define NEED_PRINTF_INFINITE_DOUBLE 1/d" config.h
           sed -i "/#define NEED_PRINTF_UNBOUNDED_PRECISION 1/d" config.h
           # sed -i "/#define __GETOPT_PREFIX rpl_/d" config.h
+          BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
+          BRANDING="GNU nano for Windows ${{ matrix.pretty }}, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
+          echo "#define REVISION \"${BRANDING}\"" > src/revision.h
 
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
@@ -493,6 +502,11 @@ jobs:
 
     - name: "⚙️ Build for Windows ${{ matrix.pretty }}"
       run: |
+        ##########################
+        ##                        ##
+        ##     BUILD NANO         ##
+        ##                        ##
+        ##########################
         cd nano/build
           make -j$(($(nproc)*2)) && \
           make install || exit 1
