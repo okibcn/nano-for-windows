@@ -565,6 +565,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        prerelease: true
         tag_name: ${{ needs.checks.outputs.build }}
         body_path: body.txt
         files: ./*.zip ./hashes.txt
