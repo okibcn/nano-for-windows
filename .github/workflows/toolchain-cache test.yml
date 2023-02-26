@@ -132,6 +132,10 @@ jobs:
         echo "OS PACKAGES:"
         apk list -I | sort
         echo ""
+        wget -q "http://git.savannah.gnu.org/gitweb/?p=nano.git;a=shortlog" -O log.html
+        VER=$(cat log.html | grep -m 1 "title=\"tags/" | grep -Eo "v[0-9]+\.[0-9]+" | head -1)
+        SUBVER=$(cat log.html | awk '1; /"tag indirect"/{exit}' | grep -c '</tr>')
+        NANO_VERSION="${VER}-$(SUBVER)"
         git clone git://git.savannah.gnu.org/nano.git
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
@@ -472,8 +476,8 @@ jobs:
             upx nano.exe || true
             ls -als
             7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
-            7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" * .nanorc
-            7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" nano.exe
+            # 7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" * .nanorc
+            # 7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" nano.exe
             echo "BUILD_VERSION=$BUILD_VERSION" >> $GITHUB_ENV
 
     - name: "👍 Upload Artifact"
@@ -482,4 +486,3 @@ jobs:
         name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
           *.zip
-          *.7z
