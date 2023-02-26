@@ -134,8 +134,7 @@ jobs:
         apk update && apk upgrade
         apk add bash curl jq tar github-cli \
           git make texinfo groff gettext-dev automake autoconf pkgconf coreutils upx p7zip
-        # set PATH like in Ubuntu
-        echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+        echo "PATH=$(pwd)/llvm-mingw/bin:$PATH" >> $GITHUB_ENV
         # this seems to be needed when running in a container (beause of UID mismatch??)
         git config --global --add safe.directory '*'
 
@@ -148,9 +147,6 @@ jobs:
 
     - name: "⏬ Download Sources"
       run: |
-        export PATH="$(pwd)/llvm-mingw/bin:$PATH"
-        echo "PATH=${PATH}" >> $GITHUB_ENV
-
         git clone git://git.savannah.gnu.org/nano.git --depth 1
         cd nano
         git clone https://github.com/Bill-Gray/PDCursesMod.git curses
@@ -452,6 +448,13 @@ jobs:
         ##     CONFIGURE BUILD    ##
         ##                        ##
         ##########################
+        echo "SHELL:"
+        readlink /proc/$$/exe
+        echo "PATH:"
+        echo "$PATH" | tr : '\n'
+        echo "OS PACKAGES:"
+        apk list -I | sort
+        echo ""
         TARGET="${{ matrix.arch }}-w64-mingw32"
         OUTDIR="$(pwd)/nano/pkg"
         export CFLAGS="-O3 -Oz -fno-math-errno -flto -DPDC_FORCE_UTF8 -DPDC_NCMOUSE"
