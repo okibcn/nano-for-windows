@@ -524,24 +524,6 @@ jobs:
       with:
           name: '*'
 
-    - name: "📦 Prepare Final Package"
-      run: |
-        mv nano-for*/* .
-        sha256sum *.zip >hashes.txt
-        echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
-
-    - name: "🔧 Prepare debug session"
-      if: github.event.inputs.debug_enabled == 'true'
-      run: |
-        sudo apt install zsh zsh-syntax-highlighting
-        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-        sudo chmod +x /usr/local/bin/oh-my-posh
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
-        cp /etc/bash.bashrc ~
-        cat ~/.zshrc >> ~/bash.bashrc
-        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
-
     - name: "🐞 Debug session"
       uses: mxschmitt/action-tmate@v3
       if: github.event.inputs.debug_enabled == 'true'
@@ -569,3 +551,21 @@ jobs:
         body_path: body.txt
         files: ./*.zip ./hashes.txt
 
+
+    - name: "📦 Prepare Final Package"
+      run: |
+        mv nano-for*/* .
+        sha256sum *.zip >hashes.txt
+        echo "${{ needs.checks.outputs.body }}" | base64 -d > body.txt
+
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
+      run: |
+        sudo apt install zsh zsh-syntax-highlighting
+        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        sudo chmod +x /usr/local/bin/oh-my-posh
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O ~/.nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
+        cp /etc/bash.bashrc ~
+        cat ~/.zshrc >> ~/bash.bashrc
+        sudo cp ~/bash.bashrc /etc/bash.bashrc -f
