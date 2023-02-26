@@ -471,8 +471,9 @@ jobs:
             llvm-strip -s nano.exe
             upx nano.exe || true
             ls -als
-            7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
-            7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" nano.exe
+            7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.zip" * .nanorc
+            7z a -mx9 -mm=PPMd:o=16 -mmt$(nproc) '-x!*.exe' "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" * .nanorc
+            7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano_for-windows${_arch}_${BUILD_VERSION}.7z" nano.exe
             echo "BUILD_VERSION=$BUILD_VERSION" >> $GITHUB_ENV
 
     - name: "👍 Upload Artifact"
@@ -481,3 +482,4 @@ jobs:
         name: nano-for-windows_${{ env.BUILD_VERSION }}
         path: |
           *.zip
+          *.7z
