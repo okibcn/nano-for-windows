@@ -414,7 +414,7 @@ jobs:
         cd ..
         BUILD_DATE=$(TZ=UTC date +'%Y.%m.%d')
         BRANDING = "GNU nano for Windows 64 bits, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
-        sed -i '/= BRANDING/s|BRANDING|"'"${BRANDING}"'"|' src/winio.c
+        # sed -i '/= BRANDING/s|BRANDING|"'"${BRANDING}"'"|' src/winio.c
         sed -i.bak -e '/ifdef REVISION/i printf(_(" '"${BRANDING}"'\\n"));' src/nano.c
         sed -i -e "/ifdef REVISION/{N;N;N;N;d}" src/nano.c
         sed -i 's|Compiled options|Using '"${CURSES}"'\\n &|' src/nano.c
@@ -475,6 +475,21 @@ jobs:
           sed -i "/#define NEED_PRINTF_UNBOUNDED_PRECISION 1/d" config.h
           # sed -i "/#define __GETOPT_PREFIX rpl_/d" config.h
 
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
+      run: |
+        apk add bash nano-syntax iproute2 util-linux-misc
+        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        chmod +x /usr/local/bin/oh-my-posh
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
+        cat ~/.zshrc >> ~/.bashrc 
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: "⚙️ Build for Windows ${{ matrix.pretty }}"
       run: |
