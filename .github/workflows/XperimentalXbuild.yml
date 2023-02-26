@@ -467,7 +467,7 @@ jobs:
         cd nano/build
           ../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
               --enable-{utf8,threads=windows} --disable-{nls,speller} \
-              --sysconfdir="C:\\ProgramData"
+              --sysconfdir="C:\\ProgramData" || cat config.log
           echo "
             #define HAVE_FREXPL_IN_LIBC 1
             #define HAVE_FREXP_IN_LIBC 1
