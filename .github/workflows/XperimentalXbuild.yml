@@ -32,9 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     outputs:
-      cancel: ${{ steps.checks.outputs.cancel }}
       body: ${{ steps.checks.outputs.body }}
       build: ${{ steps.checks.outputs.build }}
+      cancel: ${{ steps.checks.outputs.cancel }}
     steps:
     - name: "✔️ Pre-build checks"
       id: checks
@@ -450,9 +450,10 @@ jobs:
           make -j$(($(nproc)*2)) WIDE=Y UTF8=Y ${_arch}=Y
           cd ../..
           # Configure nano
+          touch src/roll-a-release.sh
           sed -i 's/...bits/${{ matrix.pretty }}/' src/Makefile.am
-          mkdir -p "$(pwd)/build"
-          cd "$(pwd)/build"
+          mkdir -p build
+          cd build
           ../configure --host="${TARGET}" --prefix="${OUTDIR}"  \
               --enable-{utf8,threads=windows} --disable-{nls,speller} \
               --sysconfdir="C:\\ProgramData"
