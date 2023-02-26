@@ -101,7 +101,7 @@ jobs:
         curl \
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          gh api repos/$GITHUB_REPOSITORY/actions/caches
+          http://github.com/repos/$GITHUB_REPOSITORY/actions/caches
       
     - name: "🔧 Prepare debug session"
       if: github.event.inputs.debug_enabled == 'true'
