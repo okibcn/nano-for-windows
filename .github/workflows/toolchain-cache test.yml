@@ -82,7 +82,7 @@ jobs:
       shell: sh
       run: |
         apk update && apk upgrade
-        apk add bash curl jq tar \
+        apk add bash curl jq tar github-cli \
           git make texinfo groff gettext-dev automake autoconf pkgconf coreutils upx p7zip
         # set PATH like in Ubuntu
         echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
