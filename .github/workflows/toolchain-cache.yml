@@ -1,8 +1,9 @@
 name: Toolchain-cache
+# REGENERATES THE LLVM-MINGW for Alpine Linux with fresh code.
 on:
   schedule:
-    - cron: '51 10 28 * *'
-    # runs at 10:51 UTC every 28th day of each month
+    - cron: '51 10 * * SAT'
+    # runs at 10:51 UTC every Saturday
   workflow_dispatch:
     inputs:
       debug_enabled:
