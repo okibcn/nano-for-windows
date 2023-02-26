@@ -470,22 +470,6 @@ jobs:
           BRANDING="GNU nano for Windows ${{ matrix.pretty }}, ${{ needs.checks.outputs.build }} ${BUILD_DATE}"
           echo "#define REVISION \"${BRANDING}\"" > src/revision.h
 
-    - name: "🔧 Prepare debug session"
-      if: github.event.inputs.debug_enabled == 'true'
-      run: |
-        apk add bash nano-syntax iproute2 util-linux-misc
-        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-        chmod +x /usr/local/bin/oh-my-posh
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
-        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
-        cat ~/.zshrc >> ~/.bashrc 
-
-    - name: "🐞 Debug session"
-      uses: mxschmitt/action-tmate@v3
-      if: github.event.inputs.debug_enabled == 'true'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: "⚙️ Build for Windows ${{ matrix.pretty }}"
       run: |
         ##########################
@@ -511,7 +495,7 @@ jobs:
           llvm-strip -s nano.exe
           upx nano.exe || true
           ls -als
-          7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano-for-windows${{matrix.name}}_${{ needs.checks.outputs.build }}.zip" * .nanorc
+          7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano-for-windows_${{matrix.name}}_${{ needs.checks.outputs.build }}.zip" * .nanorc
 
     - name: "👍 Upload Artifact nano-for-windows_${{ matrix.name }}_${{ needs.checks.outputs.build }}.zip"
       uses: actions/upload-artifact@v3
@@ -520,6 +504,22 @@ jobs:
         path: |
           *.zip
 
+
+    - name: "🔧 Prepare debug session"
+      if: github.event.inputs.debug_enabled == 'true'
+      run: |
+        apk add bash nano-syntax iproute2 util-linux-misc
+        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        chmod +x /usr/local/bin/oh-my-posh
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/.nanorc -O /etc/nanorc
+        wget -q https://github.com/okibcn/miniU/raw/main/Github_Linux/profile.sh -O ~/.zshrc
+        cat ~/.zshrc >> ~/.bashrc 
+
+    - name: "🐞 Debug session"
+      uses: mxschmitt/action-tmate@v3
+      if: github.event.inputs.debug_enabled == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   ## PUBLISH ##############################################################################
   publish:
