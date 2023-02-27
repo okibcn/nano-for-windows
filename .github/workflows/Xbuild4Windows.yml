@@ -43,16 +43,18 @@ jobs:
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
         cd nano
         LAST_NANO=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
+        echo "Nano last commit DATE:    $LAST_NANO"
         CHANGES_NANO="$(git log -1 --pretty=%B)"
         git clone --depth=1 -n https://github.com/Bill-Gray/PDCursesMod.git curses
         cd curses
         LAST_CURSES=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
+        echo "Curses last commit DATE:  $LAST_NANO"
         CHANGES_CURSES="$(git log -1 --pretty=%B)"
         cd ../..
         rm -rf nano
-        LAST_RELEASE=$( wget -qO- https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | jq .published_at -r) \
+        LAST_RELEASE=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*datetime="([0-9TZ.:-]+).*|\1|p' | head -1 ) \
           || LAST_RELEASE="2000.01.01T00:00:00Z"
-
+        echo "n4win last release DATE:  $LAST_RELEASE"
         if [[ $LAST_NANO > $LAST_RELEASE ]]; then
           echo "NEW NANO SOURCE!!!!"
           echo "# NANO CHANGES" > body.txt
@@ -84,7 +86,7 @@ jobs:
           echo "Nano SUBVERSION: $SUBVER"
           [ $SUBVER -gt 0 ] && VERSION="${VERSION}-${SUBVER}"
           echo "Current nano version: ${VERSION}"
-          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*assets/(v[0-9.-]+).*|\1|p' | head -1 ) || echo "FIRST RELEASE!!!!"
+          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*tag/(v[0-9.-]+).*|\1|p' | head -1 ) || echo "FIRST RELEASE!!!!"
           echo "Last Nano for Windows build: ${LAST_BUILD}"
           LAST_VERSION=$( echo $LAST_BUILD | awk -F '-' '{print $1}' )
           echo "Last Nano for Windows main Version: ${LAST_VERSION}"
