@@ -84,7 +84,7 @@ jobs:
           echo "Nano SUBVERSION: $SUBVER"
           [ $SUBVER -gt 0 ] && VERSION="${VERSION}-${SUBVER}"
           echo "Current nano version: ${VERSION}"
-          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*v([0-9.-]+).*|\1|p' | head -1 ) || echo "FIRST RELEASE!!!!"
+          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*assets/(v[0-9.-]+).*|\1|p' | head -1 ) || echo "FIRST RELEASE!!!!"
           echo "Last Nano for Windows build: ${LAST_BUILD}"
           LAST_VERSION=$( echo $LAST_BUILD | awk -F '-' '{print $1}' )
           echo "Last Nano for Windows main Version: ${LAST_VERSION}"
