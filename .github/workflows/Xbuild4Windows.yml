@@ -43,12 +43,12 @@ jobs:
         git clone --depth=1 -n git://git.savannah.gnu.org/nano.git
         cd nano
         LAST_NANO=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
-        echo "Nano last commit DATE:    $LAST_NANO"
         CHANGES_NANO="$(git log -1 --pretty=%B)"
         git clone --depth=1 -n https://github.com/Bill-Gray/PDCursesMod.git curses
         cd curses
+        echo "Nano last commit DATE:    $LAST_NANO"
         LAST_CURSES=$( TZ=UTC git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd" )
-        echo "Curses last commit DATE:  $LAST_NANO"
+        echo "Curses last commit DATE:  $LAST_CURSES"
         CHANGES_CURSES="$(git log -1 --pretty=%B)"
         cd ../..
         rm -rf nano
