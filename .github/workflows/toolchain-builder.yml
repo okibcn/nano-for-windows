@@ -1,4 +1,4 @@
-name: Toolchain BUILD_VERSION
+name: Toolchain Builder
 # REGENERATES THE LLVM-MINGW for Alpine Linux with fresh code.
 on:
   schedule:
