@@ -368,7 +368,7 @@ jobs:
             s/0x404/CTL_DOWN/
             s/0x405/CTL_HOME/
             s/0x406/CTL_END/
-            s/0x40D/CTL_DELETE/
+            s/0x40D/CTL_DEL/
             s/0x427/ALT_PGUP/
             s/0x428/ALT_PGDN/
             s/0x42C/ALT_INS/
