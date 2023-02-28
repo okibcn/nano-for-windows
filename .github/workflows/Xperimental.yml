@@ -345,6 +345,23 @@ jobs:
             \\t\\tcase SHIFT_DELETE: input = CONTROL_SHIFT_DELETE; break;\\n\
             \\t}\\n\
             }"  src/nano.c
+        sed -Ei.bak '
+            s|(M-\{", )0|\1ALT_LBRACKET|
+            s|(M-}", )0|\1ALT_RBRACKET|
+            ' src/global.c
+        sed -i.bak "
+            s/0x401/CTL_LEFT/
+            s/0x402/CTL_RIGHT/
+            s/0x403/CTL_UP/
+            s/0x404/CTL_DOWN/
+            s/0x405/CTL_HOME/
+            s/0x406/CTL_END/
+            s/0x40D/CTL_DEL/
+            s/0x427/ALT_PGUP/
+            s/0x428/ALT_PGDN/
+            s/0x42C/ALT_INS/
+            s/0x42D/ALT_DEL/
+            " src/definitions.h
         _diff
 
         # Fix wchar_t 16 bits limitation to display emojis and all the suplemental codepoints:
