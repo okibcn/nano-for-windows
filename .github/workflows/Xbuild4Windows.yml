@@ -361,6 +361,10 @@ jobs:
             \\t\\tcase SHIFT_DELETE: input = CONTROL_SHIFT_DELETE; break;\\n\
             \\t}\\n\
             }"  src/nano.c
+        sed -Ei.bak '
+            s|(M-\{", )0|\1ALT_LBRACKET|
+            s|(M-}", )0|\1ALT_RBRACKET|
+            ' src/global.c
         sed -i.bak "
             s/0x401/CTL_LEFT/
             s/0x402/CTL_RIGHT/
