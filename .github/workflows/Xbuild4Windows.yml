@@ -101,6 +101,8 @@ jobs:
             [ -z $(echo "$LAST_BUILD" |grep '-') ] \
               && BUILD="${NANO_VERSION}-0.${SUBBUILD}" \
               || BUILD="${NANO_VERSION}.${SUBBUILD}"
+          else
+            BUILD="${NANO_VERSION}"
           fi
           echo "New Build: ${BUILD}"
           echo "build=${BUILD}" >>  $GITHUB_OUTPUT
