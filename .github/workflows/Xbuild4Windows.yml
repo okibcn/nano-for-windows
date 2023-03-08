@@ -80,27 +80,27 @@ jobs:
 
         if [ -f body.txt ]; then
           wget -q "http://git.savannah.gnu.org/gitweb/?p=nano.git;a=shortlog" -O log.html
-          VERSION=$(grep -m 1 "title=\"tags/" log.html | grep -Eo "v[0-9]+\.[0-9]+" | head -1)
-          echo "Nano main VERSION: $VERSION"
-          SUBVER=$( awk '1; /"tag indirect"/{exit}' log.html | grep -c '</tr>')
-          echo "Nano SUBVERSION: $SUBVER"
-          [ $SUBVER -gt 0 ] && VERSION="${VERSION}-${SUBVER}"
-          echo "Current nano version: ${VERSION}"
-          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE 's|^.*tag/(v[0-9.-]+).*|\1|p' | head -1 ) || echo "FIRST RELEASE!!!!"
+          NANO_VERSION=$(grep -m 1 "title=\"tags/" log.html | grep -Eo "v[0-9]+\.[0-9]+" | head -1)
+          echo "Nano main VERSION: $NANO_VERSION"
+          NANO_SUBVER=$( awk '1; /"tag indirect"/{exit}' log.html | grep -c '</tr>')
+          echo "Nano SUBVERSION: $NANO_SUBVER"
+          [ $NANO_SUBVER -gt 0 ] && NANO_VERSION="${NANO_VERSION}-${NANO_SUBVER}"
+          echo "Current nano version: ${NANO_VERSION}"
+          LAST_BUILD=$( wget -qO- https://github.com/$GITHUB_REPOSITORY/releases | sed -nE "s|^.*tag/(v[0-9.-]+).*|\1|p" | head -1 ) || echo "FIRST RELEASE!!!!"
           echo "Last Nano for Windows build: ${LAST_BUILD}"
           LAST_VERSION=$( echo $LAST_BUILD | awk -F '-' '{print $1}' )
           echo "Last Nano for Windows main Version: ${LAST_VERSION}"
           LAST_SUBVER=$(echo $LAST_BUILD | awk -F '[.-]' '{print $3}' )
           echo "Last Nano for Windows Subversion: ${LAST_SUBVER}"
-          [ $LAST_SUBVER -gt 0 ] && LAST_VERSION="${LAST_VERSION}-${SUBVER}"
+          [ $LAST_SUBVER -gt 0 ] && LAST_VERSION="${LAST_VERSION}-${LAST_SUBVER}"
           echo "Last Nano version: ${LAST_VERSION}"
-          if [ "${VERSION}" == "${LAST_VERSION}" ]; then
+          if [ "${NANO_VERSION}" == "${LAST_VERSION}" ]; then
             # This is a new Windows build based on the same nano build, probably because there is a new curses patch
             SUBBUILD="$(echo $LAST_BUILD | awk -F . '{print $3}')"
             ((SUBBUILD=SUBBUILD+1))
             [ -z $(echo "$LAST_BUILD" |grep '-') ] \
-              && BUILD="${VERSION}-0.${SUBBUILD}" \
-              || BUILD="${VERSION}.${SUBBUILD}"
+              && BUILD="${NANO_VERSION}-0.${SUBBUILD}" \
+              || BUILD="${NANO_VERSION}.${SUBBUILD}"
           fi
           echo "New Build: ${BUILD}"
           echo "build=${BUILD}" >>  $GITHUB_OUTPUT
