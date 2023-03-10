@@ -59,7 +59,7 @@ jobs:
       uses: snnaplab/delete-branch-cache-action@v1
 
     - name: "💾 Save Build Folder"
-      uses: actions/cache@v3.2.6
+      uses: actions/cache@v3.3.0
       id: cache-folder
       with:
         key: llvm-folder
@@ -90,7 +90,7 @@ jobs:
         git config --global --add safe.directory '*'
 
     - name: "📂 Load LLVM-MinGW Folder"
-      uses: actions/cache@v3.2.6
+      uses: actions/cache@v3.3.0
       id: cache-folder
       with:
         key: llvm-folder
