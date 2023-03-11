@@ -177,11 +177,9 @@ jobs:
             mapfile -t < <(find . -type f -name '*.bak')
             for bak in "${MAPFILE[@]}"; do
             src=${bak/.bak/}
-            n=1
-            while : ; do
+            for (( ; ; ++n)); do
                 patch=${src}-${n}.patch
                 test -f "${patch}" || break
-                ((n++))
             done
             diff -u -w "${bak}" "${src}" >"${patch}" || true
             rm -f "${bak}" || true
