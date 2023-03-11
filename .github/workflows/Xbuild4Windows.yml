@@ -193,19 +193,19 @@ jobs:
           # Thanks to @rasa for this function
           mapfile -t < <(find . -type f -name '*.bak')
           for bak in "${MAPFILE[@]}"; do
-          src=${bak/.bak/}
-          for (( ; ; ++n)); do
-            patch=${src}-${n}.patch
-            test -f "${patch}" || break
-          done
-          diff -u -w "${bak}" "${src}" >"${patch}" || true
-          rm -f "${bak}" || true
-          if [[ ! -s "${patch}" ]]; then
-            rm -f "${patch}" || true
-            continue
-          fi
-          echo "${patch}":
-          cat "${patch}"
+            src=${bak/.bak/}
+            for ((n=1; ; n++)); do
+              patch=${src}-${n}.patch
+              test -f "${patch}" || break
+            done
+            diff -u -w "${bak}" "${src}" >"${patch}" || true
+            rm -f "${bak}" || true
+            if [[ ! -s "${patch}" ]]; then
+              rm -f "${patch}" || true
+              continue
+            fi
+            echo "${patch}":
+            cat "${patch}"
           done
           return 0
         }
