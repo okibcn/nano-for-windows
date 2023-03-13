@@ -143,7 +143,7 @@ jobs:
         git config --global --add safe.directory '*'
 
     - name: "📂 Restore LLVM-MinGW Folder"
-      uses: actions/cache@v3.3.0
+      uses: actions/cache@v3.3.1
       id: cache-folder
       with:
         key: llvm-folder
