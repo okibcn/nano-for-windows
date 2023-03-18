@@ -61,7 +61,7 @@ scoop update nano
 
 # Installation via direct download
 
-Visit the [releases](https://github.com/okibcn/nano-for-windows/releases) page, and download the latest release file ending in `.7z`. Then use [7-zip](https://www.7-zip.org/download.html) to unzip the file to a directory in your `%PATH%`.
+Visit the [releases](https://github.com/okibcn/nano-for-windows/releases) page, and download the latest release file ending in `.zip` for your architecture (Windows 32, Windows 64, or Windows on Arm). Then unzip the file to a directory in your `%PATH%`.
 
 # Usage
 
