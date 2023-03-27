@@ -2846,7 +2846,7 @@ void do_linter(void)
 			confirm_margin();
 #endif
 			edit_refresh();
-			statusline(NOTICE, curlint->msg);
+			statusline(NOTICE, "%s", curlint->msg);
 			bottombars(MLINTER);
 		}
 
@@ -2877,7 +2877,7 @@ void do_linter(void)
 				beep();
 				napms(600);
 				last_wait = time(NULL);
-				statusline(NOTICE, curlint->msg);
+				statusline(NOTICE, "%s", curlint->msg);
 			}
 		} else if (function == do_page_down || function == to_next_block) {
 			if (curlint->next != NULL)
@@ -2887,7 +2887,7 @@ void do_linter(void)
 				beep();
 				napms(600);
 				last_wait = time(NULL);
-				statusline(NOTICE, curlint->msg);
+				statusline(NOTICE, "%s", curlint->msg);
 			}
 		} else
 			beep();
