@@ -2547,7 +2547,7 @@ int main(int argc, char **argv)
 
 #ifdef ENABLE_NANORC
 	if (startup_problem != NULL)
-		statusline(ALERT, startup_problem);
+		statusline(ALERT, "%s", startup_problem);
 
 #define NOTREBOUND  first_sc_for(MMAIN, do_help) && \
 						first_sc_for(MMAIN, do_help)->keycode == 0x07
