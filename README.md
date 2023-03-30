@@ -5,7 +5,7 @@
 [![Xbuild4Windows](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/Xbuild4Windows.yml) [![SyncNano](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml/badge.svg)](https://github.com/okibcn/nano-for-windows/actions/workflows/SyncNano.yml)
 [![Version](https://img.shields.io/github/v/release/okibcn/nano-for-windows)](https://github.com/okibcn/nano-for-windows/releases/latest) [![Github All Releases](https://img.shields.io/github/downloads/okibcn/nano-for-windows/total.svg)](https://github.com/okibcn/nano-for-windows/blob/releases/README.md#installation)
 
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fokibcn%2Fwslcompact)
+[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fokibcn%2Fwslcompact)](javascript:(function(){n=getSelection().anchorNode;if(!n){t=document.title;}else{t=n.nodeType===3?n.data:n.innerText;}t=t.trim()+%27\n\n%27;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}${document.location.href}`)})();)
 </div><br/><br/>
 
 This is a 64-bit/32-bit and Windows on ARM port of the legendary **[GNU nano text editor](https://www.nano-editor.org/)**, a small and compact CLI editor that packs a world of functionality in a small footprint (less than 300KB). It can be run in a Windows Terminal, Powershell window, Command Prompt window, SSH session, or similar environment.
