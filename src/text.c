@@ -1871,7 +1871,8 @@ void justify_text(bool whole_buffer)
 #endif
 			refresh_needed = TRUE;
 			return;
-		}
+		} else
+			openfile->current_x = 0;
 
 		/* Set the starting point of the paragraph. */
 		startline = openfile->current;
