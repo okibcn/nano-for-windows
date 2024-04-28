@@ -1760,6 +1760,8 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 #endif
 	char *realname = real_dir_from_tilde(name);
 		/* The filename after tilde expansion. */
+	int fd = 0;
+		/* The descriptor that is assigned when opening the file. */
 	char *tempname = NULL;
 		/* The name of the temporary file we use when prepending. */
 	linestruct *line = openfile->filetop;
@@ -1843,7 +1845,6 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 	 * For an emergency file, access is restricted to just the owner. */
 	if (thefile == NULL) {
 		mode_t permissions = (normal ? RW_FOR_ALL : S_IRUSR|S_IWUSR);
-		int fd;
 
 #ifndef NANO_TINY
 		block_sigwinch(TRUE);
@@ -1967,6 +1968,16 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 			fclose(thefile);
 			goto cleanup_and_exit;
 		}
+#endif
+
+#if !defined(NANO_TINY) && defined(HAVE_CHMOD) && defined(HAVE_CHOWN)
+	/* Change permissions and owner of an emergency save file to the values
+	 * of the original file, but ignore any failure as we are in a hurry. */
+	if (method == EMERGENCY && fd && openfile->statinfo) {
+		IGNORE_CALL_RESULT(fchmod(fd, openfile->statinfo->st_mode));
+		IGNORE_CALL_RESULT(fchown(fd, openfile->statinfo->st_uid,
+											openfile->statinfo->st_gid));
+	}
 #endif
 
 	if (fclose(thefile) != 0) {

@@ -337,18 +337,8 @@ void emergency_save(const char *filename)
 
 	if (*targetname == '\0')
 		fprintf(stderr, _("\nToo many .save files\n"));
-	else if (write_file(targetname, NULL, SPECIAL, OVERWRITE, NONOTES)) {
+	else if (write_file(targetname, NULL, SPECIAL, EMERGENCY, NONOTES))
 		fprintf(stderr, _("\nBuffer written to %s\n"), targetname);
-#if !defined(NANO_TINY) && defined(HAVE_CHMOD) && defined(HAVE_CHOWN)
-		/* Try to chmod/chown the saved file to the values of the original file,
-		 * but ignore any failure as we are in a hurry to get out. */
-		if (openfile->statinfo) {
-			IGNORE_CALL_RESULT(chmod(targetname, openfile->statinfo->st_mode));
-			IGNORE_CALL_RESULT(chown(targetname, openfile->statinfo->st_uid,
-													openfile->statinfo->st_gid));
-		}
-#endif
-	}
 
 	free(targetname);
 	free(plainname);

@@ -283,7 +283,7 @@ typedef enum {
 } message_type;
 
 typedef enum {
-	OVERWRITE, APPEND, PREPEND
+	OVERWRITE, APPEND, PREPEND, EMERGENCY
 } kind_of_writing_type;
 
 typedef enum {
