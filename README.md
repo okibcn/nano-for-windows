@@ -48,6 +48,7 @@ irm get.scoop.sh | iex
 2. Add nano for Windows directly from its bucket:
 ```pwsh
 scoop bucket add .oki https://github.com/okibcn/Bucket  # Optional: the changes are propagated faster this way
+scoop install curl # Installing curl will also install 7zip to prevent nano zip archive issue installation.
 scoop install nano
 ```
 To remove the app, type:
