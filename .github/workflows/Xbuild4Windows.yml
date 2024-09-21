@@ -507,7 +507,7 @@ jobs:
           llvm-strip -s nano.exe
           upx nano.exe || true
           ls -als
-          7z a -mx9 -mm=Deflate64 -mmt$(nproc) "$CWD/nano-for-windows_${{matrix.name}}_${{ needs.checks.outputs.build }}.zip" * .nanorc
+          7z a -mx9 -mm=Deflate -mmt$(nproc) "$CWD/nano-for-windows_${{matrix.name}}_${{ needs.checks.outputs.build }}.zip" * .nanorc
 
     - name: "👍 Upload Artifact nano-for-windows_${{ matrix.name }}_${{ needs.checks.outputs.build }}.zip"
       uses: actions/upload-artifact@v3
