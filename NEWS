@@ -1,3 +1,6 @@
+2026.02.04 - GNU nano 8.7.1 "Tende Samnug"
+• A build failure when compiling against glibc-2.43 is fixed.
+
 2025.11.12 - GNU nano 8.7 "Blue Highways"
 • At the Execute prompt, preceding the command with two pipe symbols
   allows implementing a copy-to-clipboard feature in your nanorc (on
