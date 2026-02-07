@@ -11,14 +11,12 @@ linter pyflakes
 # Function definitions.
 color brightblue "def [[:alnum:]_]+"
 # Keywords.
-color brightcyan "\<(and|as|assert|async|await|break|case|class|continue)\>"
-color brightcyan "\<(def|del|elif|else|except|finally|for|from)\>"
-color brightcyan "\<(global|if|import|in|is|match|lambda|nonlocal|not|or)\>"
-color brightcyan "\<(pass|raise|return|try|while|with|yield)\>"
-
-# These two are keywords in Python 2, but functions in Python 3,
-# so only color them when they are followed by whitespace, assuming
-# that print(x) is a function invocation and print (x) is a statement.
+color brightcyan "\<(and|as|assert|async|await|break|case|class|continue|def|del)\>"
+color brightcyan "\<(elif|else|except|finally|for|from|global|if|import|in|is|match)\>"
+color brightcyan "\<(lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield)\>"
+# In Python 2 `print` and `exec` are keywords, but they are functions in Python 3,
+# so only color these words when they are followed by whitespace, assuming that
+# `print (x)` is a statement and `print(x)` a function call.
 color brightcyan "\<(exec|print)([[:blank:]]|$)"
 
 # Special values.
