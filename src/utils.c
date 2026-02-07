@@ -347,9 +347,13 @@ size_t get_page_start(size_t column)
 		if (column < CUSHION)
 			return 0;
 		else if (column < openfile->brink + CUSHION)
-			return column - CUSHION;
+		{	if (ISSET(JUMPY_SCROLLING))
+				return (column > editwincols / 2) ? column - editwincols / 2 : 0;
+			else
+				return column - CUSHION;
+		}
 		else if (column > openfile->brink + editwincols - CUSHION - 1)
-			return column - editwincols + CUSHION + 1;
+			return column - editwincols + (ISSET(JUMPY_SCROLLING) ? editwincols / 2 : CUSHION) + 1;
 		else
 			return openfile->brink;
 	}
