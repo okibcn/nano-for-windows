@@ -1527,8 +1527,8 @@ with Shift.)
 Rebinding @code{^M} (Enter) or @code{^I} (Tab) is probably not a good idea.
 Rebinding @code{^[} (Esc) is not possible, because its keycode
 is the starter byte of Meta keystrokes and escape sequences.
-Rebinding any of the dedicated cursor-moving keys (the arrows, Home, End,
-PageUp and PageDown) is not possible.
+Rebinding any of the dedicated cursor-moving keys (Home, End,
+PageUp, PageDown, and the arrows) is not possible.
 On some terminals it's not possible to rebind @code{^H} (unless @code{--raw}
 is used) because its keycode is identical to that of the Backspace key.
 
