@@ -81,7 +81,9 @@ How to compile and install nano
     You will need the header files of ncurses installed for ./configure
     to succeed -- get them from libncurses-dev (Debian) or ncurses-devel
     (Fedora) or a similarly named package.  Use --prefix with ./configure
-    to override the default installation directory of /usr/local.
+    to override the default installation directory of /usr/local.  And
+    use --sysconfdir=/etc when you want your self-compiled nano to read
+    the /etc/nanorc file.
 
     After installation you may want to copy the doc/sample.nanorc file
     to your home directory, rename it to ".nanorc", and then edit it

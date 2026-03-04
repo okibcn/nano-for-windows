@@ -176,7 +176,7 @@
 <h3 id="3.8">3.8. How do I make a .nanorc file that will be read when I start nano?</h3>
 <blockquote><p>It's not hard at all! Simply copy the <b>sample.nanorc</b> from the doc/ directory in the nano source package (or from /usr/doc/nano on your system) to <b>.nanorc</b> in your home directory, and then edit it. If you didn't get a sample nanorc, the syntax of the file is simple: features are turned on and off by using the words <b>set</b> and <b>unset</b> followed by the long option name of the feature (see <b>man nanorc</b> for the full list of options). For example, &quot;set quickblank&quot; or &quot;set smarthome&quot;. Of course, for this to work, your nano must <b>not</b> have been compiled with <b>--disable-nanorc</b>.</p></blockquote>
 <h3 id="3.9">3.9. Why does my self-compiled nano not read /etc/nanorc?</h3>
-<blockquote><p>By default (see <a href="#3.3">3.3</a>), nano gets installed into /usr/local. This also means that, at startup, nano reads <b>/usr/local/etc/nanorc</b> instead of <b>/etc/nanorc</b>. You can make a symlink from the former to the latter if you want your self-compiled nano to read the same nanorc as the system-installed nano. Or you can configure your nano to overwrite the system nano (again, see <a href="#3.3">3.3</a>).</p></blockquote>
+<blockquote><p>By default (see <a href="#3.3">3.3</a>), nano gets installed into /usr/local. This also means that, at startup, nano reads <b>/usr/local/etc/nanorc</b> instead of <b>/etc/nanorc</b>. You can make a symlink from the former to the latter if you want your self-compiled nano to read the same nanorc as the system-installed nano. Or you can simply configure your nano with <b>--sysconfdir=/etc</b>.</p></blockquote>
 <hr width="100%">
 
 <h1 id="4">4. Running</h1>

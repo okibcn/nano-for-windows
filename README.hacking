@@ -57,6 +57,9 @@ directory:
 
     $ ./configure [--add-options-here]
 
+Use --sysconfdir=/etc when you want your self-compiled nano to read
+/etc/nanorc instead of /usr/local/etc/nanorc.
+
 
 Build and install
 -----------------
