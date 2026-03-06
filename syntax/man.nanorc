@@ -24,7 +24,7 @@ color yellow "^\.(RS|RE|UR|UE|MT|ME|EX|EE|PD|DT)"
 color yellow "^\.(ad|bp|br|ce|de|ds|el|ie|if|fi|ft|ig|in|na|ne|nf|nh|ps|so|sp|ti|tr)"
 
 # Comments.
-color cyan "(^\.)?\\".*"
+color cyan "(^\\#|(^\.)?\\").*"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
