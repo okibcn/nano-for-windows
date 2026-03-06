@@ -2693,12 +2693,10 @@ void draw_row(int row, const char *converted, linestruct *line, size_t from_col)
 				}
 
 				line->multidata[varnish->id] = ENDSHERE;
+				index = endmatch.rm_eo;
 			}
 
-			/* Second step: look for starts on this line, but begin
-			 * looking only after an end match, if there is one. */
-			index = (paintlen == 0) ? 0 : endmatch.rm_eo;
-
+			/* Now look for start matches on this line. */
 			while (index < PAINT_LIMIT && regexec(varnish->start, line->data + index,
 								1, &startmatch, (index == 0) ? 0 : REG_NOTBOL) == 0) {
 				/* Make the match relative to the beginning of the line. */
