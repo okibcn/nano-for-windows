@@ -2611,8 +2611,8 @@ void draw_row(int row, const char *converted, linestruct *line, size_t from_col)
 				/* The place in converted from where painting starts. */
 			regmatch_t match;
 				/* The match positions of a single-line regex. */
-			const linestruct *start_line = line->prev;
-				/* The first line before line that matches 'start'. */
+			const linestruct *priorline = line->prev;
+				/* The line before the current one, if any. */
 			regmatch_t startmatch, endmatch;
 				/* The match positions of the start and end regexes. */
 
@@ -2666,14 +2666,14 @@ void draw_row(int row, const char *converted, linestruct *line, size_t from_col)
 			/* Assume nothing gets painted until proven otherwise below. */
 			line->multidata[varnish->id] = NOTHING;
 
-			if (start_line && !start_line->multidata)
+			if (priorline && !priorline->multidata)
 				statusline(ALERT, "Missing multidata -- please report a bug");
 			else
 
 			/* If there is an unterminated start match before the current line,
 			 * we need to look for an end match first. */
-			if (start_line && (start_line->multidata[varnish->id] == WHOLELINE ||
-								start_line->multidata[varnish->id] == STARTSHERE)) {
+			if (priorline && (priorline->multidata[varnish->id] == WHOLELINE ||
+								priorline->multidata[varnish->id] == STARTSHERE)) {
 				/* If there is no end on this line, paint whole line, and be done. */
 				if (regexec(varnish->end, line->data, 1, &endmatch, 0) == REG_NOMATCH) {
 					wattron(midwin, varnish->attributes);
