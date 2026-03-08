@@ -394,6 +394,10 @@ void do_scroll_down(void);
 #endif
 void do_left(void);
 void do_right(void);
+#ifndef NANO_TINY
+void do_scroll_left(void);
+void do_scroll_right(void);
+#endif
 
 /* Most functions in nano.c. */
 linestruct *make_new_node(linestruct *prevnode);

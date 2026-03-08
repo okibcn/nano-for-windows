@@ -339,6 +339,12 @@ keystruct *strtosc(const char *input)
 	else if (!strcmp(input, "down") ||
 	         !strcmp(input, "nextline"))
 		s->func = do_down;
+#ifndef NANO_TINY
+	else if (!strcmp(input, "scrollleft"))
+		s->func = do_scroll_left;
+	else if (!strcmp(input, "scrollright"))
+		s->func = do_scroll_right;
+#endif
 #if !defined(NANO_TINY) || defined(ENABLE_HELP)
 	else if (!strcmp(input, "scrollup"))
 		s->func = do_scroll_up;
