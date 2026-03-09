@@ -385,6 +385,14 @@ int keycode_from_string(const char *keystring)
 		}
 		if (strcasecmp(keystring, "M-Space") == 0)
 			return (int)' ';
+		else if (strcasecmp(keystring, "M-Left") == 0)
+			return ALT_LEFT;
+		else if (strcasecmp(keystring, "M-Right") == 0)
+			return ALT_RIGHT;
+		else if (strcasecmp(keystring, "M-Up") == 0)
+			return ALT_UP;
+		else if (strcasecmp(keystring, "M-Down") == 0)
+			return ALT_DOWN;
 		else
 			return -1;
 #ifdef ENABLE_NANORC
