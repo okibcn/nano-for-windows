@@ -794,6 +794,17 @@ Goes one line up (in the editor or browser).
 .B down
 Goes one line down (in the editor or browser).
 .TP
+.B scrollleft
+Scrolls the viewport a tabsize to the left, when possible.
+(This function is bound by default to \fBM-<\fR.)
+.TP
+.B scrollright
+Scrolls the viewport a tabsize to the right.  When the cursor
+cannot be kept in view after this move, it is moved down until
+it will fit in the viewport.  If there is no line long enough,
+the cursor will land on the last line of the buffer.
+(This function is bound by default to \fBM->\fR.)
+.TP
 .B scrollup
 Scrolls the viewport up one row (meaning that the text slides down)
 while keeping the cursor in the same text position, if possible.
