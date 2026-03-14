@@ -698,6 +698,9 @@ void do_scroll_left(void)
 {
 	size_t frame_x;
 
+	if (ISSET(SOFTWRAP))
+		return;
+
 	openfile->brink -= (openfile->brink < tabsize) ? openfile->brink : tabsize;
 
 	frame_x = actual_x(openfile->current->data, openfile->brink + editwincols - CUSHION - 1);
@@ -714,6 +717,9 @@ void do_scroll_left(void)
 void do_scroll_right(void)
 {
 	size_t frame_x;
+
+	if (ISSET(SOFTWRAP))
+		return;
 
 	while (openfile->current->data[openfile->current_x] == '\0' && openfile->current->next)
 		do_down();
