@@ -32,13 +32,24 @@ Since version 9.0, all lines are scrolled horizontally together
 (when the cursor approaches the edge), by just the amount needed,
 instead of scrolling only the current line by a large step.
 If you prefer the old behavior, you can use \fB--solo\fR on the
-command line or \fBset solosidescroll\fR in your nanorc.
+command line or \fBset solosidescroll\fR in your \fInanorc\fR.
+.sp
+Also since version 9.0, keystrokes \fBM-<\fR and \fBM->\fR have
+been reassigned to the `scrollleft` and `scrollright` functions.
+If you want those keystrokes to do what they did before version 9.0,
+add these two lines at the end of your \fInanorc\fR file:
+.sp
+.RS 4
+.B bind M\-< prevbuf main
+.br
+.B bind M\-> nextbuf main
+.RE
 .sp
 Since version 8.0, to be newcomer friendly, \fB^F\fR starts a forward search,
 \fB^B\fR starts a backward search, \fBM\-F\fR searches the next occurrence
 forward, and \fBM\-B\fR searches the next occurrence backward.  If you want
 those keystrokes to do what they did before version 8.0, add the following
-lines at the end of your \fInanorc\fR file:
+four lines at the end of your \fInanorc\fR file:
 .sp
 .RS 4
 .B bind ^F forward main

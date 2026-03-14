@@ -136,6 +136,12 @@ If you prefer the old behavior, you can use @code{--solo} on the
 command line or @code{set solosidescroll} in your nanorc.
 
 @blankline
+Also since version 9.0, keystrokes @kbd{M-<} and @kbd{M->} have been
+reassigned to the @code{scrollleft} and @code{scrollright} functions.
+If you want those keystrokes to do what they did before version 9.0,
+see the rebindings in the sample nanorc file.
+
+@blankline
 Please report bugs via @url{https://savannah.gnu.org/bugs/?group=nano}.
 
 @blankline

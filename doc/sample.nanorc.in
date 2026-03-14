@@ -14,6 +14,10 @@
 # bind M-F formatter main
 # bind M-B linter main
 
+## Make M-< and M-> switch between buffers, as they did before version 9.0:
+# bind M-< prevbuf main
+# bind M-> nextbuf main
+
 ## Make 'nextword' (Ctrl+Right) and 'chopwordright' (Ctrl+Delete)
 ## stop at word ends instead of at beginnings.
 # set afterends
