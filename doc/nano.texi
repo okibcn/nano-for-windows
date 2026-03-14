@@ -1698,14 +1698,14 @@ the cursor will land on the last line of the buffer.
 @item scrollup
 Scrolls the viewport up one row (meaning that the text slides down)
 while keeping the cursor in the same text position, if possible.
-(This function is bound by default to @kbd{Alt+Up}.
+(This function is bound by default to @kbd{M-Up}.
 If @kbd{Alt+Up} does nothing on your Linux console, see the FAQ:
 @url{https://nano-editor.org/dist/latest/faq.html#4.1}.)
 
 @item scrolldown
 Scrolls the viewport down one row (meaning that the text slides up)
 while keeping the cursor in the same text position, if possible.
-(This function is bound by default to @kbd{Alt+Down}.)
+(This function is bound by default to @kbd{M-Down}.)
 
 @item center
 Scrolls the line with the cursor to the middle of the viewport.
