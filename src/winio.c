@@ -2856,9 +2856,8 @@ int update_line(linestruct *line, size_t index)
 	/* Expand the piece to be drawn to its representable form, and draw it. */
 	converted = display_string(line->data, from_col, editwincols, TRUE, FALSE);
 	draw_row(row, converted, line, from_col);
-	free(converted);
 
-	if (from_col > 0) {
+	if (from_col > 0 && *converted != '\0') {
 		wattron(midwin, hilite_attribute);
 		mvwaddch(midwin, row, margin, '<');
 		wattroff(midwin, hilite_attribute);
@@ -2872,6 +2871,7 @@ int update_line(linestruct *line, size_t index)
 	if (spotlighted && line == openfile->current)
 		spotlight(light_from_col, light_to_col);
 
+	free(converted);
 	return 1;
 }
 
