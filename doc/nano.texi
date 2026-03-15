@@ -1518,7 +1518,8 @@ ASCII characters (@@, ], \, ^, _), or the word "Space".
 Example: @code{^C}.
 
 @item @code{M-@var{X}}
-where @var{X} is any ASCII character except [, or the word "Space".
+where @var{X} is any ASCII character (except [),
+or the word "Space", "Left", "Right", "Up", or "Down".
 Example: @code{M-8}.
 
 @item @code{Sh-M-@var{X}}
