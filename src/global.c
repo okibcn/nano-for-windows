@@ -949,28 +949,27 @@ void shortcut_init(void)
 	add_to_funcs(to_next_word, MMAIN,
 			N_("Next Word"), WHENHELP(nextword_gist), TOGETHER);
 #endif
-
 	add_to_funcs(do_home, MMAIN,
 			/* TRANSLATORS: These two mean: "to beginning of line", "to end of line". */
 			N_("Home"), WHENHELP(home_gist), TOGETHER);
 	add_to_funcs(do_end, MMAIN,
-			N_("End"), WHENHELP(end_gist), BLANKAFTER);
+			N_("End"), WHENHELP(end_gist), TOGETHER);
+#ifndef NANO_TINY
+	add_to_funcs(do_scroll_left, MMAIN,
+			/* TRANSLATORS: Try to keep the next two strings at most 12 characters. */
+			N_("Scroll Left"), WHENHELP(scrollleft_gist), TOGETHER);
+	add_to_funcs(do_scroll_right, MMAIN,
+			N_("Scroll Right"), WHENHELP(scrollright_gist), BLANKAFTER);
+#endif
 
 	add_to_funcs(do_up, MMAIN|MBROWSER|MHELP,
 			/* TRANSLATORS: Try to keep the next two strings at most 10 characters. */
 			N_("Prev Line"), WHENHELP(prevline_gist), TOGETHER);
 	add_to_funcs(do_down, MMAIN|MBROWSER|MHELP,
-			N_("Next Line"), WHENHELP(nextline_gist), BLANKAFTER);
-
-#ifndef NANO_TINY
-	add_to_funcs(do_scroll_left, MMAIN,
-			/* TRANSLATORS: Try to keep the next six strings at most 12 characters. */
-			N_("Scroll Left"), WHENHELP(scrollleft_gist), TOGETHER);
-	add_to_funcs(do_scroll_right, MMAIN,
-			N_("Scroll Right"), WHENHELP(scrollright_gist), TOGETHER);
-#endif
+			N_("Next Line"), WHENHELP(nextline_gist), TOGETHER);
 #if !defined(NANO_TINY) || defined(ENABLE_HELP)
 	add_to_funcs(do_scroll_up, MMAIN,
+			/* TRANSLATORS: Try to keep the next four strings at most 12 characters. */
 			N_("Scroll Up"), WHENHELP(scrollup_gist), TOGETHER);
 	add_to_funcs(do_scroll_down, MMAIN,
 			N_("Scroll Down"), WHENHELP(scrolldown_gist), BLANKAFTER);
