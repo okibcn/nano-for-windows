@@ -703,7 +703,7 @@ void do_scroll_left(void)
 
 	openfile->brink -= (openfile->brink < tabsize) ? openfile->brink : tabsize;
 
-	frame_x = actual_x(openfile->current->data, openfile->brink + editwincols - CUSHION);
+	frame_x = actual_x(openfile->current->data, openfile->brink + editwincols - CUSHION - 1);
 
 	if (openfile->current_x > frame_x) {
 		openfile->current_x = frame_x;
