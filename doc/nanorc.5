@@ -811,10 +811,10 @@ Scrolls the viewport a tabsize to the left, when possible.
 (This function is bound by default to \fBM-<\fR.)
 .TP
 .B scrollright
-Scrolls the viewport a tabsize to the right.  When the cursor
-cannot be kept in view after this move, it is moved down until
-it will fit in the viewport.  If there is no line long enough,
-the cursor will land on the last line of the buffer.
+Scrolls the viewport a tabsize to the right.  When the current line
+is not long enough to keep the cursor visible after this scroll,
+the cursor is moved down to a longer line in the viewport.
+If there is no sufficiently longer line, no scroll is made.
 (This function is bound by default to \fBM->\fR.)
 .TP
 .B scrollup
