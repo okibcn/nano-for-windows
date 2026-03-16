@@ -716,15 +716,21 @@ void do_scroll_left(void)
 /* Scroll the viewport horizontally to the right. */
 void do_scroll_right(void)
 {
+	size_t sill = openfile->edittop->lineno + editwinrows;
+	linestruct *line = openfile->current;
 	size_t frame_x;
 
 	if (ISSET(SOFTWRAP))
 		return;
 
-	while (openfile->current->data[openfile->current_x] == '\0' && openfile->current->next)
-		do_down();
-
 	openfile->brink += tabsize;
+
+	/* If the current line does not allow further scrolling,
+	 * seek a later line in the viewport that does allow it. */
+	while (line->lineno < sill && breadth(line->data) < openfile->brink + CUSHION && line->next)
+		line = line->next;
+	if (line->lineno < sill && breadth(line->data) >= openfile->brink + CUSHION)
+		openfile->current = line;
 
 	frame_x = actual_x(openfile->current->data, openfile->brink + CUSHION);
 
