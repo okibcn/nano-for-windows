@@ -393,15 +393,15 @@ void restore_anchors(char *string)
 /* Load the recorded cursor positions for files that were edited. */
 void load_poshistory(void)
 {
-	FILE *histfile = fopen(registername, "rb");
+	FILE *registry = fopen(registername, "rb");
 
-	/* If reading an existing file failed, don't save history when we quit. */
-	if (histfile == NULL && errno != ENOENT) {
+	/* If reading an existing file failed, don't save the register when we quit. */
+	if (registry == NULL && errno != ENOENT) {
 		jot_error(N_("Error reading %s: %s"), registername, strerror(errno));
 		UNSET(POSITIONLOG);
 	}
 
-	if (histfile == NULL)
+	if (registry == NULL)
 		return;
 
 	positionstruct *lastitem = NULL;
@@ -414,7 +414,7 @@ void load_poshistory(void)
 	ssize_t length;
 
 	/* Read and parse each line, and store the extracted data. */
-	while (count++ < 200 && (length = getline(&phrase, &dummy, histfile)) > 1) {
+	while (count++ < 200 && (length = getline(&phrase, &dummy, registry)) > 1) {
 		stanza = strchr(phrase, '/');
 		length -= (stanza ? stanza - phrase : 0);
 
@@ -450,7 +450,7 @@ void load_poshistory(void)
 		lastitem = newitem;
 	}
 
-	if (fclose(histfile) == EOF)
+	if (fclose(registry) == EOF)
 		jot_error(N_("Error reading %s: %s"), registername, strerror(errno));
 
 	free(phrase);
@@ -462,17 +462,17 @@ void load_poshistory(void)
 /* Save the recorded cursor positions for files that were edited. */
 void save_poshistory(void)
 {
-	FILE *histfile = fopen(registername, "wb");
+	FILE *registry = fopen(registername, "wb");
 	struct stat fileinfo;
 	positionstruct *item;
 	int count = 0;
 
-	if (histfile == NULL) {
+	if (registry == NULL) {
 		jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 		return;
 	}
 
-	/* Don't allow others to read or write the history file. */
+	/* Don't allow others to read or write the positions-register file. */
 	if (chmod(registername, S_IRUSR | S_IWUSR) < 0)
 		jot_error(N_("Cannot limit permissions on %s: %s"), registername, strerror(errno));
 
@@ -481,7 +481,7 @@ void save_poshistory(void)
 		size_t length = (item->anchors == NULL) ? 0 : strlen(item->anchors);
 
 		/* First write the string of line numbers with anchors, if any. */
-		if (length && fwrite(item->anchors, 1, length, histfile) < length)
+		if (length && fwrite(item->anchors, 1, length, registry) < length)
 			jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
 		/* Assume 20 decimal positions each for line and column number,
@@ -495,20 +495,20 @@ void save_poshistory(void)
 		/* Restore the terminating newline. */
 		path_and_place[length - 1] = '\n';
 
-		if (fwrite(path_and_place, 1, length, histfile) < length)
+		if (fwrite(path_and_place, 1, length, registry) < length)
 			jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
 		free(path_and_place);
 	}
 
-	if (fclose(histfile) == EOF)
+	if (fclose(registry) == EOF)
 		jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
 	if (stat(registername, &fileinfo) == 0)
 		latest_timestamp = fileinfo.st_mtime;
 }
 
-/* Reload the position history file if it has been modified since last load. */
+/* Reload the positions-register file if it has been modified since last load. */
 void reload_positions_if_needed(void)
 {
 	positionstruct *item, *nextone;
