@@ -390,8 +390,8 @@ void restore_anchors(char *string)
 #endif
 }
 
-/* Load the recorded cursor positions for files that were edited. */
-void load_poshistory(void)
+/* Load the recorded cursor positions for files that were opened. */
+void load_positions_register(void)
 {
 	FILE *registry = fopen(registername, "rb");
 
@@ -459,8 +459,8 @@ void load_poshistory(void)
 		latest_timestamp = fileinfo.st_mtime;
 }
 
-/* Save the recorded cursor positions for files that were edited. */
-void save_poshistory(void)
+/* Save the recorded cursor positions for files that were opened. */
+void save_positions_register(void)
 {
 	FILE *registry = fopen(registername, "wb");
 	struct stat fileinfo;
@@ -526,12 +526,12 @@ void reload_positions_if_needed(void)
 
 	positions_register = NULL;
 
-	load_poshistory();
+	load_positions_register();
 }
 
 /* Update the recorded last file positions with the current position in the
  * current buffer.  If no existing entry is found, add a new one at the top. */
-void update_poshistory(void)
+void update_positions_register(void)
 {
 	char *fullpath = get_full_path(openfile->filename);
 	positionstruct *previous = NULL;
@@ -571,7 +571,7 @@ void update_poshistory(void)
 
 	free(fullpath);
 
-	save_poshistory();
+	save_positions_register();
 }
 
 /* Check whether the current filename matches an entry in the list of

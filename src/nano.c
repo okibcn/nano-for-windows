@@ -272,7 +272,7 @@ void close_and_go(void)
 #endif
 #ifdef ENABLE_HISTORIES
 	if (ISSET(POSITIONLOG) && openfile->filename[0] != '\0')
-		update_poshistory();
+		update_positions_register();
 #endif
 #ifdef ENABLE_MULTIBUFFER
 	/* If there is another buffer, close this one; otherwise just terminate. */
@@ -2329,7 +2329,7 @@ int main(int argc, char **argv)
 	if (ISSET(HISTORYLOG))
 		load_history();
 	if (ISSET(POSITIONLOG))
-		load_poshistory();
+		load_positions_register();
 #endif
 
 #ifndef NANO_TINY

@@ -356,8 +356,8 @@ char *get_history_completion(linestruct **h, char *s, size_t len);
 bool have_statedir(void);
 void load_history(void);
 void save_history(void);
-void load_poshistory(void);
-void update_poshistory(void);
+void load_positions_register(void);
+void update_positions_register(void);
 void restore_cursor_position_if_any(void);
 #endif
 
