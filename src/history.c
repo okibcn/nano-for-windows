@@ -40,7 +40,7 @@ static char *poshistname = NULL;
 		/* The name of the positions-history file. */
 static time_t latest_timestamp = 942927132;
 		/* The last time the positions-history file was written. */
-static positionstruct *position_history = NULL;
+static positionstruct *positions_register = NULL;
 		/* A list of recently opened files with their last cursor position. */
 
 /* Initialize the lists of historical search and replace strings
@@ -442,8 +442,8 @@ void load_poshistory(void)
 		newitem->next = NULL;
 
 		/* Add the record to the list. */
-		if (position_history == NULL)
-			position_history = newitem;
+		if (positions_register == NULL)
+			positions_register = newitem;
 		else
 			lastitem->next = newitem;
 
@@ -476,7 +476,7 @@ void save_poshistory(void)
 	if (chmod(poshistname, S_IRUSR | S_IWUSR) < 0)
 		jot_error(N_("Cannot limit permissions on %s: %s"), poshistname, strerror(errno));
 
-	for (item = position_history; item != NULL && count++ < 200; item = item->next) {
+	for (item = positions_register; item != NULL && count++ < 200; item = item->next) {
 		char *path_and_place;
 		size_t length = (item->anchors == NULL) ? 0 : strlen(item->anchors);
 
@@ -517,20 +517,20 @@ void reload_positions_if_needed(void)
 	if (stat(poshistname, &fileinfo) != 0 || fileinfo.st_mtime == latest_timestamp)
 		return;
 
-	for (item = position_history; item != NULL; item = nextone) {
+	for (item = positions_register; item != NULL; item = nextone) {
 		nextone = item->next;
 		free(item->filename);
 		free(item->anchors);
 		free(item);
 	}
 
-	position_history = NULL;
+	positions_register = NULL;
 
 	load_poshistory();
 }
 
 /* Update the recorded last file positions with the current position in the
- * current buffer.  If no existing entry is found, add a new one at the end. */
+ * current buffer.  If no existing entry is found, add a new one at the top. */
 void update_poshistory(void)
 {
 	char *fullpath = get_full_path(openfile->filename);
@@ -543,7 +543,7 @@ void update_poshistory(void)
 	reload_positions_if_needed();
 
 	/* Look for a matching filename in the list. */
-	for (item = position_history; item != NULL; item = item->next) {
+	for (item = positions_register; item != NULL; item = item->next) {
 		if (!strcmp(item->filename, fullpath))
 			break;
 		previous = item;
@@ -558,9 +558,9 @@ void update_poshistory(void)
 		previous->next = item->next;
 
 	/* Place the found or new node at the beginning, if not already there. */
-	if (item != position_history) {
-		item->next = position_history;
-		position_history = item;
+	if (item != positions_register) {
+		item->next = positions_register;
+		positions_register = item;
 	}
 
 	/* Record the last cursor position and any anchors. */
@@ -586,7 +586,7 @@ void restore_cursor_position_if_any(void)
 
 	reload_positions_if_needed();
 
-	item = position_history;
+	item = positions_register;
 	while (item != NULL && strcmp(item->filename, fullpath) != 0)
 		item = item->next;
 
