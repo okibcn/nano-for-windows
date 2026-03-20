@@ -36,10 +36,10 @@
 
 static bool history_changed = FALSE;
 		/* Whether any of the history lists has changed. */
-static char *poshistname = NULL;
-		/* The name of the positions-history file. */
+static char *registername = NULL;
+		/* The name of the positions-register file. */
 static time_t latest_timestamp = 942927132;
-		/* The last time the positions-history file was written. */
+		/* The last time the positions-register file was written. */
 static positionstruct *positions_register = NULL;
 		/* A list of recently opened files with their last cursor position. */
 
@@ -208,7 +208,7 @@ bool have_statedir(void)
 		statedir = concatenate(homedir, "/.nano/");
 
 		if (stat(statedir, &dirinfo) == 0 && S_ISDIR(dirinfo.st_mode)) {
-			poshistname = concatenate(statedir, POSITION_HISTORY);
+			registername = concatenate(statedir, POSITION_HISTORY);
 			return TRUE;
 		}
 	}
@@ -248,7 +248,7 @@ bool have_statedir(void)
 		return FALSE;
 	}
 
-	poshistname = concatenate(statedir, POSITION_HISTORY);
+	registername = concatenate(statedir, POSITION_HISTORY);
 	return TRUE;
 }
 
@@ -393,11 +393,11 @@ void restore_anchors(char *string)
 /* Load the recorded cursor positions for files that were edited. */
 void load_poshistory(void)
 {
-	FILE *histfile = fopen(poshistname, "rb");
+	FILE *histfile = fopen(registername, "rb");
 
 	/* If reading an existing file failed, don't save history when we quit. */
 	if (histfile == NULL && errno != ENOENT) {
-		jot_error(N_("Error reading %s: %s"), poshistname, strerror(errno));
+		jot_error(N_("Error reading %s: %s"), registername, strerror(errno));
 		UNSET(POSITIONLOG);
 	}
 
@@ -451,30 +451,30 @@ void load_poshistory(void)
 	}
 
 	if (fclose(histfile) == EOF)
-		jot_error(N_("Error reading %s: %s"), poshistname, strerror(errno));
+		jot_error(N_("Error reading %s: %s"), registername, strerror(errno));
 
 	free(phrase);
 
-	if (stat(poshistname, &fileinfo) == 0)
+	if (stat(registername, &fileinfo) == 0)
 		latest_timestamp = fileinfo.st_mtime;
 }
 
 /* Save the recorded cursor positions for files that were edited. */
 void save_poshistory(void)
 {
-	FILE *histfile = fopen(poshistname, "wb");
+	FILE *histfile = fopen(registername, "wb");
 	struct stat fileinfo;
 	positionstruct *item;
 	int count = 0;
 
 	if (histfile == NULL) {
-		jot_error(N_("Error writing %s: %s"), poshistname, strerror(errno));
+		jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 		return;
 	}
 
 	/* Don't allow others to read or write the history file. */
-	if (chmod(poshistname, S_IRUSR | S_IWUSR) < 0)
-		jot_error(N_("Cannot limit permissions on %s: %s"), poshistname, strerror(errno));
+	if (chmod(registername, S_IRUSR | S_IWUSR) < 0)
+		jot_error(N_("Cannot limit permissions on %s: %s"), registername, strerror(errno));
 
 	for (item = positions_register; item != NULL && count++ < 200; item = item->next) {
 		char *path_and_place;
@@ -482,7 +482,7 @@ void save_poshistory(void)
 
 		/* First write the string of line numbers with anchors, if any. */
 		if (length && fwrite(item->anchors, 1, length, histfile) < length)
-			jot_error(N_("Error writing %s: %s"), poshistname, strerror(errno));
+			jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
 		/* Assume 20 decimal positions each for line and column number,
 		 * plus two spaces, plus the line feed, plus the null byte. */
@@ -496,15 +496,15 @@ void save_poshistory(void)
 		path_and_place[length - 1] = '\n';
 
 		if (fwrite(path_and_place, 1, length, histfile) < length)
-			jot_error(N_("Error writing %s: %s"), poshistname, strerror(errno));
+			jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
 		free(path_and_place);
 	}
 
 	if (fclose(histfile) == EOF)
-		jot_error(N_("Error writing %s: %s"), poshistname, strerror(errno));
+		jot_error(N_("Error writing %s: %s"), registername, strerror(errno));
 
-	if (stat(poshistname, &fileinfo) == 0)
+	if (stat(registername, &fileinfo) == 0)
 		latest_timestamp = fileinfo.st_mtime;
 }
 
@@ -514,7 +514,7 @@ void reload_positions_if_needed(void)
 	positionstruct *item, *nextone;
 	struct stat fileinfo;
 
-	if (stat(poshistname, &fileinfo) != 0 || fileinfo.st_mtime == latest_timestamp)
+	if (stat(registername, &fileinfo) != 0 || fileinfo.st_mtime == latest_timestamp)
 		return;
 
 	for (item = positions_register; item != NULL; item = nextone) {
