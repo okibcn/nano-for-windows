@@ -532,18 +532,18 @@ typedef struct undostruct {
 #endif /* !NANO_TINY */
 
 #ifdef ENABLE_HISTORIES
-typedef struct poshiststruct {
+typedef struct positionstruct {
 	char *filename;
 		/* The full path plus name of the file. */
 	ssize_t linenumber;
-		/* The line where the cursor was when we closed the file. */
+		/* The line where the cursor was when the file was closed. */
 	ssize_t columnnumber;
 		/* The column where the cursor was. */
 	char *anchors;
 		/* The line numbers where anchors were placed, in string form. */
-	struct poshiststruct *next;
-		/* The next item of position history. */
-} poshiststruct;
+	struct positionstruct *next;
+		/* The next item in the positions register. */
+} positionstruct;
 #endif
 
 typedef struct openfilestruct {

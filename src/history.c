@@ -40,8 +40,8 @@ static char *poshistname = NULL;
 		/* The name of the positions-history file. */
 static time_t latest_timestamp = 942927132;
 		/* The last time the positions-history file was written. */
-static poshiststruct *position_history = NULL;
-		/* The list of filenames with their last cursor positions. */
+static positionstruct *position_history = NULL;
+		/* A list of recently opened files with their last cursor position. */
 
 /* Initialize the lists of historical search and replace strings
  * and the list of historical executed commands. */
@@ -404,8 +404,8 @@ void load_poshistory(void)
 	if (histfile == NULL)
 		return;
 
-	poshiststruct *lastitem = NULL;
-	poshiststruct *newitem;
+	positionstruct *lastitem = NULL;
+	positionstruct *newitem;
 	char *stanza, *lineptr, *columnptr;
 	char *phrase = NULL;
 	struct stat fileinfo;
@@ -434,7 +434,7 @@ void load_poshistory(void)
 		*(lineptr++) = '\0';
 
 		/* Create a new position record. */
-		newitem = nmalloc(sizeof(poshiststruct));
+		newitem = nmalloc(sizeof(positionstruct));
 		newitem->filename = copy_of(stanza);
 		newitem->linenumber = atoi(lineptr);
 		newitem->columnnumber = atoi(columnptr);
@@ -464,7 +464,7 @@ void save_poshistory(void)
 {
 	FILE *histfile = fopen(poshistname, "wb");
 	struct stat fileinfo;
-	poshiststruct *item;
+	positionstruct *item;
 	int count = 0;
 
 	if (histfile == NULL) {
@@ -511,7 +511,7 @@ void save_poshistory(void)
 /* Reload the position history file if it has been modified since last load. */
 void reload_positions_if_needed(void)
 {
-	poshiststruct *item, *nextone;
+	positionstruct *item, *nextone;
 	struct stat fileinfo;
 
 	if (stat(poshistname, &fileinfo) != 0 || fileinfo.st_mtime == latest_timestamp)
@@ -534,8 +534,8 @@ void reload_positions_if_needed(void)
 void update_poshistory(void)
 {
 	char *fullpath = get_full_path(openfile->filename);
-	poshiststruct *previous = NULL;
-	poshiststruct *item;
+	positionstruct *previous = NULL;
+	positionstruct *item;
 
 	if (fullpath == NULL)
 		return;
@@ -551,7 +551,7 @@ void update_poshistory(void)
 
 	/* If no match was found, make a new node; otherwise, unlink the match. */
 	if (item == NULL) {
-		item = nmalloc(sizeof(poshiststruct));
+		item = nmalloc(sizeof(positionstruct));
 		item->filename = copy_of(fullpath);
 		item->anchors = NULL;
 	} else if (previous)
@@ -579,7 +579,7 @@ void update_poshistory(void)
 void restore_cursor_position_if_any(void)
 {
 	char *fullpath = get_full_path(openfile->filename);
-	poshiststruct *item;
+	positionstruct *item;
 
 	if (fullpath == NULL)
 		return;
