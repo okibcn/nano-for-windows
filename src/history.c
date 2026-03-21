@@ -269,7 +269,7 @@ void load_history(void)
 		return;
 	}
 
-	linestruct **history = &search_history;
+	linestruct **list = &search_history;
 	char *stanza = NULL;
 	size_t dummy = 0;
 	ssize_t read;
@@ -280,11 +280,11 @@ void load_history(void)
 		stanza[--read] = '\0';
 		if (read > 0) {
 			recode_NUL_to_LF(stanza, read);
-			update_history(history, stanza, IGNORE_DUPLICATES);
-		} else if (history == &search_history)
-			history = &replace_history;
+			update_history(list, stanza, IGNORE_DUPLICATES);
+		} else if (list == &search_history)
+			list = &replace_history;
 		else
-			history = &execute_history;
+			list = &execute_history;
 	}
 
 	if (fclose(histfile) == EOF)
