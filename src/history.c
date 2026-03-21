@@ -255,17 +255,17 @@ bool have_statedir(void)
 /* Load the histories for Search, Replace With, and Execute Command. */
 void load_history(void)
 {
-	char *histname = concatenate(statedir, SEARCH_HISTORY);
-	FILE *histfile = fopen(histname, "rb");
+	char *historyname = concatenate(statedir, SEARCH_HISTORY);
+	FILE *histories = fopen(historyname, "rb");
 
 	/* If reading an existing file failed, don't save history when we quit. */
-	if (histfile == NULL && errno != ENOENT) {
-		jot_error(N_("Error reading %s: %s"), histname, strerror(errno));
+	if (histories == NULL && errno != ENOENT) {
+		jot_error(N_("Error reading %s: %s"), historyname, strerror(errno));
 		UNSET(HISTORYLOG);
 	}
 
-	if (histfile == NULL) {
-		free(histname);
+	if (histories == NULL) {
+		free(historyname);
 		return;
 	}
 
@@ -276,7 +276,7 @@ void load_history(void)
 
 	/* Load the three history lists (first search, then replace, then execute)
 	 * from oldest entry to newest.  Between two lists there is an empty line. */
-	while ((read = getline(&stanza, &dummy, histfile)) > 0) {
+	while ((read = getline(&stanza, &dummy, histories)) > 0) {
 		stanza[--read] = '\0';
 		if (read > 0) {
 			recode_NUL_to_LF(stanza, read);
@@ -287,10 +287,10 @@ void load_history(void)
 			list = &execute_history;
 	}
 
-	if (fclose(histfile) == EOF)
-		jot_error(N_("Error reading %s: %s"), histname, strerror(errno));
+	if (fclose(histories) == EOF)
+		jot_error(N_("Error reading %s: %s"), historyname, strerror(errno));
 
-	free(histname);
+	free(historyname);
 	free(stanza);
 
 	/* Reading in the lists has marked them as changed; undo this side effect. */
@@ -299,7 +299,7 @@ void load_history(void)
 
 /* Write the lines of a history list, starting at head, from oldest to newest,
  * to the given file.  Return TRUE if writing succeeded, and FALSE otherwise. */
-bool write_list(const linestruct *head, FILE *histfile)
+bool write_list(const linestruct *head, FILE *histories)
 {
 	const linestruct *item;
 
@@ -307,9 +307,9 @@ bool write_list(const linestruct *head, FILE *histfile)
 		/* Decode 0x0A bytes as embedded NULs. */
 		size_t length = recode_LF_to_NUL(item->data);
 
-		if (fwrite(item->data, 1, length, histfile) < length)
+		if (fwrite(item->data, 1, length, histories) < length)
 			return FALSE;
-		if (putc('\n', histfile) == EOF)
+		if (putc('\n', histories) == EOF)
 			return FALSE;
 	}
 
@@ -319,34 +319,31 @@ bool write_list(const linestruct *head, FILE *histfile)
 /* Save the histories for Search, Replace With, and Execute Command. */
 void save_history(void)
 {
-	char *histname;
-	FILE *histfile;
-
 	/* If the histories are unchanged, don't bother saving them. */
 	if (!history_changed)
 		return;
 
-	histname = concatenate(statedir, SEARCH_HISTORY);
-	histfile = fopen(histname, "wb");
+	char *historyname = concatenate(statedir, SEARCH_HISTORY);
+	FILE *histories = fopen(historyname, "wb");
 
-	if (histfile == NULL) {
-		jot_error(N_("Error writing %s: %s"), histname, strerror(errno));
-		free(histname);
+	if (histories == NULL) {
+		jot_error(N_("Error writing %s: %s"), historyname, strerror(errno));
+		free(historyname);
 		return;
 	}
 
 	/* Don't allow others to read or write the history file. */
-	if (chmod(histname, S_IRUSR | S_IWUSR) < 0)
-		jot_error(N_("Cannot limit permissions on %s: %s"), histname, strerror(errno));
+	if (chmod(historyname, S_IRUSR | S_IWUSR) < 0)
+		jot_error(N_("Cannot limit permissions on %s: %s"), historyname, strerror(errno));
 
-	if (!write_list(searchtop, histfile) || !write_list(replacetop, histfile) ||
-											!write_list(executetop, histfile))
-		jot_error(N_("Error writing %s: %s"), histname, strerror(errno));
+	if (!write_list(searchtop, histories) || !write_list(replacetop, histories) ||
+											!write_list(executetop, histories))
+		jot_error(N_("Error writing %s: %s"), historyname, strerror(errno));
 
-	if (fclose(histfile) == EOF)
-		jot_error(N_("Error writing %s: %s"), histname, strerror(errno));
+	if (fclose(histories) == EOF)
+		jot_error(N_("Error writing %s: %s"), historyname, strerror(errno));
 
-	free(histname);
+	free(historyname);
 }
 
 /* Return as a string... the line numbers of the lines with an anchor. */
