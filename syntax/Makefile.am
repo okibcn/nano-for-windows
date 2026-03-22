@@ -6,7 +6,6 @@ pkgdata_DATA =	asm.nanorc \
 		c.nanorc \
 		css.nanorc \
 		default.nanorc \
-		elisp.nanorc \
 		email.nanorc \
 		go.nanorc \
 		groff.nanorc \
