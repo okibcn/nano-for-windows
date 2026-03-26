@@ -698,8 +698,11 @@ void do_scroll_left(void)
 {
 	size_t frame_x;
 
-	if (ISSET(SOFTWRAP))
+	if (ISSET(SOFTWRAP) || ISSET(SOLO_SIDESCROLL)) {
+		/* TRANSLATORS: The %s is the name of an option. */
+		statusline(AHEM, _("Not possible with '%s'"), ISSET(SOFTWRAP) ? "--softwrap" : "--solo");
 		return;
+	}
 
 	openfile->brink -= (openfile->brink < tabsize) ? openfile->brink : tabsize;
 
@@ -720,8 +723,10 @@ void do_scroll_right(void)
 	linestruct *line = openfile->current;
 	size_t frame_x;
 
-	if (ISSET(SOFTWRAP))
+	if (ISSET(SOFTWRAP) || ISSET(SOLO_SIDESCROLL)) {
+		statusline(AHEM, _("Not possible with '%s'"), ISSET(SOFTWRAP) ? "--softwrap" : "--solo");
 		return;
+	}
 
 	openfile->brink += tabsize;
 
