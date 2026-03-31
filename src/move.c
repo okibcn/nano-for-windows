@@ -730,8 +730,10 @@ void do_scroll_right(void)
 
 	openfile->brink += tabsize;
 
-	/* If the current line does not allow further scrolling,
-	 * seek a later line in the viewport that does allow it. */
+	/* If the current line does not allow further scrolling, seek
+	 * in the viewport an earlier or later line that does allow it. */
+	while (line != openfile->edittop && breadth(line->data) < openfile->brink + CUSHION)
+		line = line->prev;
 	while (line->lineno < sill && breadth(line->data) < openfile->brink + CUSHION && line->next)
 		line = line->next;
 	if (line->lineno < sill && breadth(line->data) >= openfile->brink + CUSHION)
