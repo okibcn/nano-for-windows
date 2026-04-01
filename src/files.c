@@ -579,7 +579,7 @@ void redecorate_after_switch(void)
 	/* If the switched-to buffer gave an error during opening, show the message
 	 * once; otherwise, indicate on the status bar which file we switched to. */
 	if (openfile->errormessage) {
-		statusline(ALERT, openfile->errormessage);
+		statusline(ALERT, "%s", openfile->errormessage);
 		free(openfile->errormessage);
 		openfile->errormessage = NULL;
 	} else
