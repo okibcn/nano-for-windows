@@ -824,11 +824,11 @@ Use key bindings similar to the ones that most modern programs use:
 @kbd{^F} searches forward, @kbd{^G} searches next,
 @kbd{^S} saves, @kbd{^O} opens a file, @kbd{^Q} quits,
 and (when the terminal permits) @kbd{^H} shows help.
-Furthermore, @kbd{^A} sets the mark,
-@kbd{^R} makes replacements, @kbd{^D} searches previous,
+Furthermore, @kbd{^A} sets the mark, @kbd{^B} searches backward,
+@kbd{^D} searches previous, @kbd{^R} makes replacements,
 @kbd{^P} shows the position, @kbd{^T} goes to a line,
 @kbd{^W} writes out a file, and @kbd{^E} executes a command.
-Note that this overrides option @option{-p} (@option{--preserve}).
+Note that this option overrides option @option{-p} (@option{--preserve}).
 
 @end table
 
