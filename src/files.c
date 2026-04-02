@@ -781,7 +781,7 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 
 	/* If there was a real error during the reading, let the user know. */
 	if (ferror(f) && errornumber != EINTR && errornumber != 0)
-		statusline(ALERT, strerror(errornumber));
+		statusline(ALERT, "%s", strerror(errornumber));
 
 	if (control_C_was_pressed)
 		statusline(ALERT, _("Interrupted"));

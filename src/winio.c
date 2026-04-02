@@ -2421,7 +2421,7 @@ void statusbar(const char *msg)
 void warn_and_briefly_pause(const char *msg)
 {
 	blank_bottombars();
-	statusline(ALERT, msg);
+	statusline(ALERT, "%s", msg);
 	lastmessage = VACUUM;
 	napms(1500);
 }
