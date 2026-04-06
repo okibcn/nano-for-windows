@@ -227,7 +227,7 @@ bool have_statedir(void)
 	if (stat(statedir, &dirinfo) == -1) {
 		if (xdgdatadir == NULL) {
 			char *statepath = concatenate(homedir, "/.local");
-			mkdir(statepath, S_IRWXU | S_IRWXG | S_IRWXO);
+			mkdir(statepath, S_IRWXU);
 			free(statepath);
 			statepath = concatenate(homedir, "/.local/share");
 			mkdir(statepath, S_IRWXU);
