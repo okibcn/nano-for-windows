@@ -1,3 +1,104 @@
+Changes between v8.7 and v9.0:
+------------------------------
+
+Benno Schulenberg (92):
+      bindings: assign M-< and M-> to the sideways-scrolling functions
+      build: add move.c to the list of files that contain translatable strings
+      build: avoid three warnings when compiling against glibc-2.43
+      build: exclude whole-window sideways scrolling from the tiny version
+      bump version numbers and add a news item for the 9.0 release
+      copyright: update the years for significantly changed files
+      copyright: update the years for significantly changed files
+      copyright: update the years for the FSF
+      display: add extra variable, to avoid one-way toggling of SOLO_SIDESCROLL
+      display: begin looking for new start matches at the correct place
+      display: correct the previous commit -- the -1 is needed when going left
+      display: draw the "<" marker only if part of the line is onscreen
+      display: for narrow windows, fall back to single-line sidescrolling
+      display: let option --jumpyscrolling affect also sideways scrolling
+      display: put cursor at CUSHION columns from edge when scrolling sideways
+      display: redraw the screen also when 'brink' is not what it should be
+      display: store `brink` per buffer, to keep the viewport stable
+      display: when scrolling sideways, refresh edit window only if mark is on
+      docs: add an Exit Status section to the man page and the manual
+      docs: add a notice about the changed sideways scrolling behavior
+      docs: add a section about the recording and replaying of keyboard macros
+      docs: add ^B among the list of keystrokes for --modernbindings
+      docs: add notices about the reassignment of the M-< and M-> keystrokes
+      docs: adjust the cheatsheet for the new functions and changed bindings
+      docs: adjust the description of `scrollright` for the changed behavior
+      docs: adjust the description of `scrollright` for the improved behavior
+      docs: advise the use of --sysconfdir=/etc when configuring nano
+      docs: copy the 8.7.1 news item from the release branch
+      docs: document the new bindable `scrollleft` and `scrollright` functions
+      docs: document the new --solosidescroll and 'set solosidescroll' options
+      docs: explain what "overlong" means for --breaklonglines
+      docs: in the cheatsheet, place Ctrl+L in the Special movement section
+      docs: mention that M-Left, M-Right, M-Up, and M-Down are valid keynames
+      docs: reshuffle the --solosidescroll option to match the order in --help
+      docs: trim stuff that is more than four years old from the changelog
+      docs: use rebindable names M-Up and M-Down instead of Alt+Up and Alt+Down
+      feedback: prevent interpretation of %s and similar in a filename
+      files: include also the slash when re-adding the filename to the path
+      gnulib: update to a recent version, to allow compiling against glibc-2.43
+      gnulib: update to its current upstream state
+      help: group the sideways scrolling keystrokes with the horizontal movers
+      history: create the ~/.local directory with limited access rights
+      input: allow `recordmacro` and `runmacro` to continue cuts and copies
+      input: prevent also a string bind from breaking a chain of cuts or copies
+      input: prevent most toggles from breaking a series of cuts or copies
+      mouse: allow clicking before the answer to place cursor at its beginning
+      moving: ignore `scrollleft` and `scrollright` when softwrapping
+      moving: ignore `scrollleft` and `scrollright` with --solosidescroll too
+      moving: make the minimum step for sideways scrolling two cells
+      moving: stay in the viewport when stepping to a longer line
+      moving: when scrolling sideways, search also upward for a longer line
+      new default feature: smooth whole-window sideways scrolling
+      new feature: bindable functions for scrolling a tabsize left or right
+      new feature: clicking in the scrollbar jumps to the corresponding line
+      options: accept --solosidescroll and 'set solosidescroll'
+      rcfile: allow rebinding M-Left, M-Right, M-Up, and M-Down
+      syntax: elisp: remove file -- something specific to Emacs is not for nano
+      syntax: groff, man: colorize also \" tail comments and \# line comments
+      syntax: guile: colorize more syntax words and procedure names
+      syntax: nanorc: colorize M-Left, M-Right, M-Up, M-Down as valid keynames
+      syntax: python: colorize also the `match` and `case` keywords
+      syntax: python: require a blank after the keyword `match`
+      syntaxes: add a license line to the files created by Mark Oteiza
+      tweaks: add a comment for an unclear fragment of code
+      tweaks: avoid having to restore the original click coordinates
+      tweaks: condense the Python coloring rules, and reword a comment
+      tweaks: condense two oververbose comments
+      tweaks: correct a comment
+      tweaks: correct and simplify the logic from the previous two commits
+      tweaks: defend against hypothetical format specifiers
+      tweaks: give the three "debugging" feedback messages a more unusual color
+      tweaks: lowercase subsequent words in section titles, to be less pompous
+      tweaks: move a function to a more logical place
+      tweaks: no need to be overpolite when giving directions
+      tweaks: normalize brace placement after the previous change
+      tweaks: reduce the scope of two variables
+      tweaks: refer to two renamed gnulib modules with their adjusted names
+      tweaks: remove an unneeded parameter from get_mouseinput()
+      tweaks: rename a type, away from a double abbreviation
+      tweaks: rename a variable, away from a double abbreviation
+      tweaks: rename a variable, for contrast, and to be more fitting
+      tweaks: rename a variable, to be more fitting
+      tweaks: rename a variable, to be more fitting and away from an abbrev
+      tweaks: rename a variable whose function has changed over time
+      tweaks: rename three functions, to be more accurate
+      tweaks: rename two functions, reword some comments, rewrap a line
+      tweaks: rename two variables, away from abbreviations
+      tweaks: reorder a list of keys, starting with singles, ending with group
+      tweaks: replace the three instances of impersonal "one" with direct "you"
+      tweaks: reshuffle or transmute a few lines, to elide an 'if'
+      tweaks: slightly adjust a wording
+      tweaks: slightly improve three comments in the sample nanorc
+
+Charles Mirabile (1):
+      macro: cancel the recording if nothing was entered between start and stop
+
+
 Changes between v8.6 and v8.7:
 ------------------------------
 

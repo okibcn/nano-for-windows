@@ -1,6 +1,13 @@
 Improvements in GNU nano
 ========================
 
+Since 9.0:
+  - With M-< and M-> the viewport can be scrolled sideways.
+  - When the cursor nears the edge, all lines are scrolled sideways.
+  - M-Left, M-Right, M-Up, and M-Down have become rebindable.
+  - Immediately stopping a recording retains the existing macro.
+  - Clicking in the scrollbar crudely navigates in the buffer.
+
 Since 8.0:
   - To accommodate newcomers, ^F now starts a forward search.
   - Option --modernbindings makes ^Q quit, ^X cut, ^C copy, ^V paste,

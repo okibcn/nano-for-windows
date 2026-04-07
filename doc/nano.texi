@@ -12,9 +12,9 @@ The complete manual for the GNU nano text editor.
 @end documentdescription
 
 @smallbook
-@set EDITION 0.8
-@set VERSION 8.7
-@set UPDATED November 2025
+@set EDITION 0.9
+@set VERSION 9.0
+@set UPDATED April 2026
 
 @dircategory Editors
 @direntry
@@ -29,7 +29,7 @@ The complete manual for the GNU nano text editor.
 
 @title GNU @command{nano}
 @subtitle a small and friendly text editor
-@subtitle version 8.7
+@subtitle version 9.0
 
 @author Chris Allegretta
 
@@ -79,7 +79,7 @@ For suggesting improvements: @email{nano-devel@@gnu.org}
 @node Top
 @top
 
-This manual documents GNU @command{nano}, version 8.7.
+This manual documents GNU @command{nano}, version 9.0.
 
 @menu
 * Introduction::

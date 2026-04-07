@@ -15,7 +15,7 @@ Appearance
     In rough ASCII graphics, this is what nano's screen looks like:
 
    ____________________________________________________________________
-  |  GNU nano 8.7                  filename                  Modified  |
+  |  GNU nano 9.0                  filename                  Modified  |
    --------------------------------------------------------------------
   | This is the text window, displaying the contents of a 'buffer',    |
   | the contents of the file you are editing.                          |

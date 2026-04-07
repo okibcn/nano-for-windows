@@ -1,3 +1,20 @@
+2026.04.08 - GNU nano 9.0 "Le bonheur est dans le pré"
+• When the cursor almost goes offscreen to the right, all lines are
+  now scrolled sideways together, by just the amount needed to keep
+  the cursor in view.  Use --solosidescroll or 'set solosidescroll'
+  to get back the old, jerky, single-line horizontal scrolling.
+• The viewport can be scrolled sideways (in steps of one tabsize)
+  with M-< and M->.  See `man nanorc` if M-< and M-> should switch
+  between buffers (as they did earlier).
+• M-Left, M-Right, M-Up, and M-Down have become rebindable.
+• Stopping the recording of a macro immediately after starting it
+  cancels the recording and leaves an existing macro in place.
+• Feature toggles no longer break a chain of ^K cuts or M-6 copies,
+  except the M-K cut-from-cursor toggle.
+• With --mouse and --indicator, one can click in the scrollbar area
+  to roughly navigate within the buffer.
+
+
 2026.02.04 - GNU nano 8.7.1 "Tende Samnug"
 • A build failure when compiling against glibc-2.43 is fixed.
 
