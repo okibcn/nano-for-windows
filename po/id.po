@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 8.4-pre1\n"
 "Report-Msgid-Bugs-To: nano-devel@gnu.org\n"
-"POT-Creation-Date: 2025-11-12 10:44+0100\n"
+"POT-Creation-Date: 2026-04-08 17:05+0200\n"
 "PO-Revision-Date: 2025-03-24 17:19+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -41,7 +41,7 @@ msgstr "(besar)"
 msgid "Search Wrapped"
 msgstr "Pancarian Di-wrap"
 
-#: src/browser.c:281 src/search.c:436
+#: src/browser.c:281 src/search.c:441
 msgid "This is the only occurrence"
 msgstr "Hanya ini adanya"
 
@@ -55,13 +55,14 @@ msgstr "Cari"
 msgid " [Backwards]"
 msgstr " [Mundur]"
 
-#: src/browser.c:322 src/browser.c:563 src/files.c:1163 src/files.c:1256
-#: src/files.c:2193 src/nano.c:321 src/search.c:114 src/search.c:294
-#: src/search.c:723 src/search.c:790 src/text.c:2621 src/text.c:2820
+#: src/browser.c:322 src/browser.c:563 src/files.c:1164 src/files.c:1257
+#: src/files.c:2195 src/nano.c:321 src/search.c:114 src/search.c:294
+#: src/search.c:731 src/search.c:798 src/text.c:2621 src/text.c:2820
+#: src/winio.c:103
 msgid "Cancelled"
 msgstr "Dibatalkan"
 
-#: src/browser.c:349 src/search.c:370
+#: src/browser.c:349 src/search.c:375
 msgid "No current search pattern"
 msgstr "Tidak ada pola pencarian kini"
 
@@ -90,9 +91,9 @@ msgstr "Tidak dapat pergi ke luar dari %s"
 msgid "Can't move up a directory"
 msgstr "Tidak dapat memindahkan direktori"
 
-#: src/browser.c:616 src/files.c:920 src/files.c:926 src/files.c:1828
-#: src/files.c:1843 src/history.c:263 src/history.c:291 src/history.c:400
-#: src/history.c:454 src/rcfile.c:926 src/rcfile.c:1712
+#: src/browser.c:616 src/files.c:921 src/files.c:927 src/files.c:1830
+#: src/files.c:1845 src/history.c:263 src/history.c:291 src/history.c:397
+#: src/history.c:451 src/rcfile.c:933 src/rcfile.c:1719
 #, c-format
 msgid "Error reading %s: %s"
 msgstr "Galat saat membaca %s: %s"
@@ -101,7 +102,7 @@ msgstr "Galat saat membaca %s: %s"
 msgid "Paste is ignored"
 msgstr "Tempel diabaikan"
 
-#: src/browser.c:691 src/files.c:363
+#: src/browser.c:691 src/files.c:364
 msgid "The working directory has disappeared"
 msgstr "Direktori kerja telah menghilang"
 
@@ -120,1295 +121,1312 @@ msgstr "magic_load() gagal: %s"
 msgid "magic_file(%s) failed: %s"
 msgstr "magic_file(%s) gagal: %s"
 
-#: src/cut.c:172 src/cut.c:237 src/cut.c:571
+#: src/cut.c:175 src/cut.c:240 src/cut.c:574
 msgid "Nothing was cut"
 msgstr "Tidak ada yang dipotong"
 
-#: src/cut.c:621 src/cut.c:675
+#: src/cut.c:624 src/cut.c:678
 msgid "Copied nothing"
 msgstr "Tidak menyalin apa pun"
 
-#: src/cut.c:740
+#: src/cut.c:743
 msgid "Cutbuffer is empty"
 msgstr "Penyangga potong kosong"
 
-#: src/files.c:133
+#: src/files.c:134
 #, c-format
 msgid "Error deleting lock file %s: %s"
 msgstr "Galat saat menghapus berkas kunci %s: %s"
 
 #. TRANSLATORS: Keep the next seven messages at most 76 characters.
-#: src/files.c:162
+#: src/files.c:163
 msgid "Couldn't determine my identity for lock file"
 msgstr "Tidak dapat menentukan identitasku bagi berkas kunci"
 
-#: src/files.c:167
+#: src/files.c:168
 #, c-format
 msgid "Couldn't determine hostname: %s"
 msgstr "Tidak dapat menentukan nama host: %s"
 
-#: src/files.c:183 src/files.c:226
+#: src/files.c:184 src/files.c:227
 #, c-format
 msgid "Error writing lock file %s: %s"
 msgstr "Galat saat menulis berkas kunci %s: %s"
 
-#: src/files.c:254
+#: src/files.c:255
 msgid "Someone else is also editing this file"
 msgstr "Seseorang juga sedang menyunting berkas ini"
 
-#: src/files.c:263
+#: src/files.c:264
 #, c-format
 msgid "Error opening lock file %s: %s"
 msgstr "Galat saat membuka berkas kunci %s: %s"
 
-#: src/files.c:278
+#: src/files.c:279
 #, c-format
 msgid "Bad lock file is ignored: %s"
 msgstr "Berkas kunci buruk diabaikan: %s"
 
 #. TRANSLATORS: The second %s is the name of the user, the third that of the editor.
-#: src/files.c:299
+#: src/files.c:300
 #, c-format
 msgid "File %s is being edited by %s (with %s, PID %s); open anyway?"
 msgstr "Berkas %s sedang disunting oleh %s (dengan %s, PID %s); buka saja?"
 
 #. TRANSLATORS: Keep the next ten messages at most 76 characters.
-#: src/files.c:367
+#: src/files.c:368
 #, c-format
 msgid "Directory '%s' does not exist"
 msgstr "Direktori '%s' tidak ada"
 
-#: src/files.c:369
+#: src/files.c:370
 #, c-format
 msgid "Path '%s': %s"
 msgstr "Path '%s': %s"
 
-#: src/files.c:371
+#: src/files.c:372
 #, c-format
 msgid "Path '%s' is not a directory"
 msgstr "Path '%s' bukan suatu direktori"
 
-#: src/files.c:373
+#: src/files.c:374
 #, c-format
 msgid "Path '%s' is not accessible"
 msgstr "Path '%s' tidak dapat diakses"
 
-#: src/files.c:376
+#: src/files.c:377
 #, c-format
 msgid "Directory '%s' is not writable"
 msgstr "Direktori '%s' tidak dapat ditulisi"
 
-#: src/files.c:403
+#: src/files.c:404
 #, c-format
 msgid "Can't read file from outside of %s"
 msgstr "Tidak dapat membaca berkas dari luar %s"
 
-#: src/files.c:413 src/rcfile.c:902
+#: src/files.c:414 src/rcfile.c:909
 #, c-format
 msgid "\"%s\" is a directory"
 msgstr "\"%s\" adalah sebuah direktori"
 
-#: src/files.c:418 src/rcfile.c:903
+#: src/files.c:419 src/rcfile.c:910
 #, c-format
 msgid "\"%s\" is a device file"
 msgstr "\"%s\" adalah sebuah berkas peranti"
 
-#: src/files.c:424
+#: src/files.c:425
 #, c-format
 msgid "\"%s\" is a FIFO"
 msgstr "\"%s\" adalah sebuah FIFO"
 
-#: src/files.c:431
+#: src/files.c:432
 #, c-format
 msgid "%s is meant to be read-only"
 msgstr "%s dimaksudkan untuk dibaca saja"
 
 #. TRANSLATORS: First %s is file name, second %s is file format.
-#: src/files.c:543
+#: src/files.c:544
 #, c-format
 msgid "%s -- %zu line (%s)"
 msgid_plural "%s -- %zu lines (%s)"
 msgstr[0] "%s -- %zu baris (%s)"
 
-#: src/files.c:545 src/files.c:551 src/global.c:1112 src/winio.c:2056
+#: src/files.c:546 src/files.c:552 src/global.c:1132 src/winio.c:2062
 msgid "New Buffer"
 msgstr "Penyangga Baru"
 
-#: src/files.c:546
+#: src/files.c:547
 msgid "DOS"
 msgstr "DOS"
 
-#: src/files.c:546
+#: src/files.c:547
 msgid "Mac"
 msgstr "Mac"
 
-#: src/files.c:549
+#: src/files.c:550
 #, c-format
 msgid "%s -- %zu line"
 msgid_plural "%s -- %zu lines"
 msgstr[0] "%s -- %zu baris"
 
-#: src/files.c:559
+#: src/files.c:560
 msgid "No more open file buffers"
 msgstr "Tidak ada penyangga berkas yang terbuka lagi"
 
-#: src/files.c:786 src/files.c:918 src/files.c:1881
+#: src/files.c:787 src/files.c:919 src/files.c:1883
 msgid "Interrupted"
 msgstr "Diinterupsi"
 
-#: src/files.c:832
+#: src/files.c:833
 #, c-format
 msgid "File '%s' is unwritable"
 msgstr "Berkas '%s' tidak dapat ditulis"
 
 #. TRANSLATORS: Keep the next three messages at most 78 characters.
-#: src/files.c:838
+#: src/files.c:839
 #, c-format
 msgid "Read %zu line (converted from Mac format)"
 msgid_plural "Read %zu lines (converted from Mac format)"
 msgstr[0] "Baca %zu baris (dikonversi dari format Mac)"
 
-#: src/files.c:842
+#: src/files.c:843
 #, c-format
 msgid "Read %zu line (converted from DOS format)"
 msgid_plural "Read %zu lines (converted from DOS format)"
 msgstr[0] "Baca %zu baris (dikonversi dari format DOS)"
 
-#: src/files.c:847
+#: src/files.c:848
 #, c-format
 msgid "Read %zu line"
 msgid_plural "Read %zu lines"
 msgstr[0] "Membaca %zu baris"
 
-#: src/files.c:892
+#: src/files.c:893
 msgid "New File"
 msgstr "Berkas Baru"
 
-#: src/files.c:895
+#: src/files.c:896
 #, c-format
 msgid "File \"%s\" not found"
 msgstr "Berkas \"%s\" tidak ditemukan"
 
-#: src/files.c:902
+#: src/files.c:903
 msgid "Reading from FIFO..."
 msgstr "Membaca dari FIFO..."
 
-#: src/files.c:930
+#: src/files.c:931
 msgid "Reading..."
 msgstr "Membaca..."
 
-#: src/files.c:1037 src/text.c:2364 src/text.c:2629
+#: src/files.c:1038 src/text.c:2364 src/text.c:2629
 #, c-format
 msgid "Could not create pipe: %s"
 msgstr "Tidak bisa membuat pipa: %s"
 
-#: src/files.c:1078 src/files.c:1122 src/text.c:2178 src/text.c:2444
+#: src/files.c:1079 src/files.c:1123 src/text.c:2178 src/text.c:2444
 #: src/text.c:2664
 #, c-format
 msgid "Could not fork: %s"
 msgstr "Tidak bisa fork: %s"
 
-#: src/files.c:1083
+#: src/files.c:1084
 msgid "Executing..."
 msgstr "Mengeksekusi..."
 
 #. TRANSLATORS: This one goes with Undid/Redid messages.
-#: src/files.c:1103 src/files.c:1153
+#: src/files.c:1104 src/files.c:1154
 msgid "filtering"
 msgstr "menyaring"
 
-#: src/files.c:1146
+#: src/files.c:1147
 #, c-format
 msgid "Failed to open pipe: %s"
 msgstr "Gagal membuka pipa: %s"
 
-#: src/files.c:1164
+#: src/files.c:1165
 #, c-format
 msgid "Error: %s"
 msgstr "Galat: %s"
 
-#: src/files.c:1169
+#: src/files.c:1170
 msgid "Piping failed"
 msgstr "Perpipaan gagal"
 
 #. TRANSLATORS: The next six messages are prompts.
-#: src/files.c:1218
+#: src/files.c:1219
 msgid "Command to execute in new buffer"
 msgstr "Perintah untuk dieksekusi dalam penyangga baru"
 
-#: src/files.c:1221
+#: src/files.c:1222
 msgid "Command to execute"
 msgstr "Perintah untuk dieksekusi"
 
-#: src/files.c:1229
+#: src/files.c:1230
 #, c-format
 msgid "File to read unconverted into new buffer [from %s]"
 msgstr "Berkas yang akan dibaca tanpa konversi ke penyangga baru [dari %s]"
 
-#: src/files.c:1232
+#: src/files.c:1233
 #, c-format
 msgid "File to read into new buffer [from %s]"
 msgstr "Berkas yang akan dibaca ke penyangga baru [dari %s]"
 
-#: src/files.c:1237
+#: src/files.c:1238
 #, c-format
 msgid "File to insert unconverted [from %s]"
 msgstr "Berkas yang akan disisipkan tak dikonversi [dari %s]"
 
-#: src/files.c:1240
+#: src/files.c:1241
 #, c-format
 msgid "File to insert [from %s]"
 msgstr "Berkas yang akan disisipkan [dari %s]"
 
-#: src/files.c:1508
+#: src/files.c:1510
 #, c-format
 msgid "Invalid operating directory: %s\n"
 msgstr "Direktori operasi tidak valid: %s\n"
 
-#: src/files.c:1557
+#: src/files.c:1559
 #, c-format
 msgid "Invalid backup directory: %s\n"
 msgstr "Direktori cadangan tidak valid: %s\n"
 
-#: src/files.c:1612
+#: src/files.c:1614
 msgid "Making backup..."
 msgstr "Membuat cadangan..."
 
-#: src/files.c:1644
+#: src/files.c:1646
 msgid "Too many existing backup files"
 msgstr "Terlalu banyak berkas cadangan yang ada"
 
-#: src/files.c:1692
+#: src/files.c:1694
 msgid "Cannot read original file"
 msgstr "Tidak bisa membaca berkas asli"
 
-#: src/files.c:1724
+#: src/files.c:1726
 msgid "Cannot make regular backup"
 msgstr "Tidak dapat membuat cadangan reguler"
 
-#: src/files.c:1725
+#: src/files.c:1727
 msgid "Trying again in your home directory"
 msgstr "Mencoba lagi di direktori rumah Anda"
 
-#: src/files.c:1737
+#: src/files.c:1739
 msgid "Cannot make backup"
 msgstr "Tidak bisa membuat cadangan"
 
 #. TRANSLATORS: Try to keep this message at most 76 characters.
-#: src/files.c:1748
+#: src/files.c:1750
 msgid "Cannot make backup; continue and save actual file? "
 msgstr ""
 "Tidak dapat membuat cadangan; melanjutkan dan menyimpan berkas yang "
 "sebenarnya? "
 
 #. TRANSLATORS: The %s is the reason of failure.
-#: src/files.c:1753
+#: src/files.c:1755
 #, c-format
 msgid "Cannot make backup: %s"
 msgstr "Tidak dapat membuat cadangan: %s"
 
-#: src/files.c:1789
+#: src/files.c:1791
 #, c-format
 msgid "Can't write outside of %s"
 msgstr "Tidak dapat menulis di luar %s"
 
-#: src/files.c:1821 src/files.c:1883 src/files.c:1894 src/files.c:1915
-#: src/files.c:1932 src/files.c:1941 src/files.c:1969 src/files.c:1980
-#: src/files.c:1997 src/history.c:333 src/history.c:344 src/history.c:347
-#: src/history.c:471 src/history.c:485 src/history.c:499 src/history.c:505
+#: src/files.c:1823 src/files.c:1885 src/files.c:1896 src/files.c:1917
+#: src/files.c:1934 src/files.c:1943 src/files.c:1971 src/files.c:1982
+#: src/files.c:1999 src/history.c:330 src/history.c:341 src/history.c:344
+#: src/history.c:468 src/history.c:482 src/history.c:496 src/history.c:502
 #, c-format
 msgid "Error writing %s: %s"
 msgstr "Galat saat menulis %s: %s"
 
-#: src/files.c:1835 src/files.c:1847 src/text.c:2553 src/text.c:2565
+#: src/files.c:1837 src/files.c:1849 src/text.c:2553 src/text.c:2565
 #: src/text.c:2971
 #, c-format
 msgid "Error writing temp file: %s"
 msgstr "Kesalahan menulis berkas temp: %s"
 
-#: src/files.c:1854
+#: src/files.c:1856
 msgid "Writing to FIFO..."
 msgstr "Menulis ke FIFO..."
 
-#: src/files.c:1901
+#: src/files.c:1903
 msgid "Writing..."
 msgstr "Menulis..."
 
-#: src/files.c:1957 src/files.c:1965
+#: src/files.c:1959 src/files.c:1967
 #, c-format
 msgid "Error reading temp file: %s"
 msgstr "Kesalahan membaca berkas temp: %s"
 
 #. TRANSLATORS: This warns for data loss when the disk is full.
-#: src/files.c:2004
+#: src/files.c:2006
 msgid "File on disk has been truncated!"
 msgstr "Berkas pada disk telah terpotong!"
 
 #. TRANSLATORS: This is a suggestion to the user,
 #. * where "resume" means resuming from suspension.
 #. * Try to keep this at most 76 characters.
-#: src/files.c:2009
+#: src/files.c:2011
 msgid "Maybe ^T^Z, make room on disk, resume, then ^S^X"
 msgstr "Mungkin ^T^Z, buat ruang pada disk, lanjutkan, lalu ^S^X"
 
-#: src/files.c:2071
+#: src/files.c:2073
 #, c-format
 msgid "Wrote %zu line"
 msgid_plural "Wrote %zu lines"
 msgstr[0] "Menulis %zu baris"
 
-#: src/files.c:2156
+#: src/files.c:2158
 msgid " [DOS Format]"
 msgstr " [DOS Format]"
 
-#: src/files.c:2157
+#: src/files.c:2159
 msgid " [Mac Format]"
 msgstr " [Mac Format]"
 
-#: src/files.c:2158
+#: src/files.c:2160
 msgid " [Backup]"
 msgstr " [Backup]"
 
 #. TRANSLATORS: The next six strings are prompts.
-#: src/files.c:2165
+#: src/files.c:2167
 msgid "Prepend Selection to File"
 msgstr "Menambahkan Pilihan ke Awal Berkas"
 
-#: src/files.c:2166
+#: src/files.c:2168
 msgid "Append Selection to File"
 msgstr "Menambahkan Pilihan ke Akhir Berkas"
 
-#: src/files.c:2167
+#: src/files.c:2169
 msgid "Write Selection to File"
 msgstr "Menulis Pilihan ke Berkas"
 
 #. TRANSLATORS: Next three prompts are analogous to the above three.
-#: src/files.c:2170
+#: src/files.c:2172
 msgid "Prepend to File"
 msgstr "Menambahkan ke Awal Berkas"
 
-#: src/files.c:2170
+#: src/files.c:2172
 msgid "Append to File"
 msgstr "Menambahkan ke Akhir Berkas"
 
-#: src/files.c:2173
+#: src/files.c:2175
 msgid "Write to File"
 msgstr "Menulis ke Berkas"
 
 #. TRANSLATORS: Concisely say the screen is too small.
-#: src/files.c:2254 src/nano.c:1097 src/nano.c:1106
+#: src/files.c:2256 src/nano.c:1098 src/nano.c:1107
 msgid "Too tiny"
 msgstr "Terlalu mungil"
 
 #. TRANSLATORS: Restricted mode forbids overwriting.
-#: src/files.c:2287
+#: src/files.c:2289
 msgid "File exists -- cannot overwrite"
 msgstr "Berkas sudah ada -- tidak bisa menimpa"
 
-#: src/files.c:2296
+#: src/files.c:2298
 msgid "Save file under DIFFERENT NAME? "
 msgstr "Simpan berkas dengan NAMA LAIN? "
 
-#: src/files.c:2304
+#: src/files.c:2306
 #, c-format
 msgid "File \"%s\" exists; OVERWRITE? "
 msgstr "Berkas \"%s\" sudah ada; DITIMPA? "
 
-#: src/files.c:2328
+#: src/files.c:2330
 msgid "File on disk has changed"
 msgstr "Berkas pada disk telah berubah"
 
 #. TRANSLATORS: Try to keep this at most 76 characters.
-#: src/files.c:2331
+#: src/files.c:2333
 msgid "File was modified since you opened it; continue saving? "
 msgstr "Berkas telah dimodifikasi sejak Anda membukanya; lanjutkan menyimpan? "
 
-#: src/files.c:2708
+#: src/files.c:2710
 msgid "(more)"
 msgstr "(lagi)"
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
-#: src/global.c:563
+#: src/global.c:573
 msgid "Exit"
 msgstr "Keluar"
 
-#: src/global.c:564
+#: src/global.c:574
 msgid "Close"
 msgstr "Tutup"
 
 #. TRANSLATORS: The next long series of strings are shortcut descriptions;
 #. * they are best kept shorter than 56 characters, but may be longer.
-#: src/global.c:572
+#: src/global.c:582
 msgid "Cancel the current function"
 msgstr "Batalkan fungsi ini"
 
-#: src/global.c:573
+#: src/global.c:583
 msgid "Display this help text"
 msgstr "Tampilkan teks bantuan ini"
 
-#: src/global.c:574
+#: src/global.c:584
 msgid "Close the current buffer / Exit from nano"
 msgstr "Tutup penyangga saat ini / Keluar dari nano"
 
-#: src/global.c:576
+#: src/global.c:586
 msgid "Write the current buffer (or the marked region) to disk"
 msgstr "Tulis berkas saat ini (atau daerah yang ditandai) ke disk"
 
-#: src/global.c:578
+#: src/global.c:588
 msgid "Insert another file into current buffer (or into new buffer)"
 msgstr ""
 "Sisipkan berkas lain ke penyangga saat ini (atau ke dalam penyangga baru)"
 
-#: src/global.c:580
+#: src/global.c:590
 msgid "Search forward for a string or a regular expression"
 msgstr "Cari maju untuk string atau ekspresi reguler"
 
-#: src/global.c:582
+#: src/global.c:592
 msgid "Search backward for a string or a regular expression"
 msgstr "Cari mundur untuk string atau ekspresi reguler"
 
-#: src/global.c:584
+#: src/global.c:594
 msgid "Cut current line (or marked region) and store it in cutbuffer"
 msgstr ""
 "Potong baris saat ini (atau wilayah yang ditandai) dan taruh dalam cutbuffer"
 
-#: src/global.c:586
+#: src/global.c:596
 msgid "Copy current line (or marked region) and store it in cutbuffer"
 msgstr ""
 "Salin baris saat ini (atau wilayah yang ditandai) dan simpan dalam cutbuffer"
 
-#: src/global.c:588
+#: src/global.c:598
 msgid "Paste the contents of cutbuffer at current cursor position"
 msgstr "Tempelkan konten cutbuffer pada lokasi kursor saat ini"
 
-#: src/global.c:589
+#: src/global.c:599
 msgid "Display the position of the cursor"
 msgstr "Tampilkan posisi kursor"
 
-#: src/global.c:591
+#: src/global.c:601
 msgid "Invoke the spell checker, if available"
 msgstr "Panggil pemeriksa ejaan, bila tersedia"
 
-#: src/global.c:593
+#: src/global.c:603
 msgid "Replace a string or a regular expression"
 msgstr "Gantikan suatu string atau ekspresi reguler"
 
-#: src/global.c:594
+#: src/global.c:604
 msgid "Go to line and column number"
 msgstr "Ke nomor baris dan kolom"
 
-#: src/global.c:596
+#: src/global.c:606
 msgid "Go to the matching bracket"
 msgstr "Ke tanda kurung yang cocok"
 
-#: src/global.c:597
+#: src/global.c:607
 msgid "Mark text starting from the cursor position"
 msgstr "Tandai teks dimulai dari posisi kursor saat ini"
 
-#: src/global.c:598
+#: src/global.c:608
 msgid "Throw away the current line (or marked region)"
 msgstr "Buang baris saat ini (atau wilayah yang ditandai)"
 
-#: src/global.c:599
+#: src/global.c:609
 msgid "Indent the current line (or marked lines)"
 msgstr "Indentasikan baris saat ini (atau baris-baris yang ditandai)"
 
-#: src/global.c:600
+#: src/global.c:610
 msgid "Unindent the current line (or marked lines)"
 msgstr "Mundurkan indentasi baris saat ini (atau baris-baris yang ditandai)"
 
-#: src/global.c:601
+#: src/global.c:611
 msgid "Undo the last operation"
 msgstr "Tak jadi jalankan operasi terakhir"
 
-#: src/global.c:602
+#: src/global.c:612
 msgid "Redo the last undone operation"
 msgstr "Jadikan lagi operasi yang sebelumnya dibatalkan"
 
-#: src/global.c:604
+#: src/global.c:614
 msgid "Go back one character"
 msgstr "Mundur satu karakter"
 
-#: src/global.c:605
+#: src/global.c:615
 msgid "Go forward one character"
 msgstr "Maju satu karakter"
 
-#: src/global.c:606
+#: src/global.c:616
 msgid "Go back one word"
 msgstr "Mundur satu kata"
 
-#: src/global.c:607
+#: src/global.c:617
 msgid "Go forward one word"
 msgstr "Maju satu kata"
 
-#: src/global.c:608
+#: src/global.c:618
 msgid "Go to previous line"
 msgstr "Ke baris sebelumnya"
 
-#: src/global.c:609
+#: src/global.c:619
 msgid "Go to next line"
 msgstr "Ke baris berikutnya"
 
-#: src/global.c:610
+#: src/global.c:620
 msgid "Go to beginning of current line"
 msgstr "Ke awal baris ini"
 
-#: src/global.c:611
+#: src/global.c:621
 msgid "Go to end of current line"
 msgstr "Ke akhir baris ini"
 
-#: src/global.c:612
+#: src/global.c:622
 msgid "Go to previous block of text"
 msgstr "Ke blok teks sebelumnya"
 
-#: src/global.c:613
+#: src/global.c:623
 msgid "Go to next block of text"
 msgstr "Ke blok teks berikutnya"
 
-#: src/global.c:616
+#: src/global.c:626
 msgid "Go to beginning of paragraph; then of previous paragraph"
 msgstr "Ke awal paragraf; lalu paragraf sebelumnya"
 
-#: src/global.c:618
+#: src/global.c:628
 msgid "Go just beyond end of paragraph; then of next paragraph"
 msgstr "Tepat setelah akhir paragraf; lalu paragraf berikutnya"
 
-#: src/global.c:621
+#: src/global.c:631
 msgid "Go to first row in the viewport"
 msgstr "Ke baris pertama dalam viewport"
 
-#: src/global.c:622
+#: src/global.c:632
 msgid "Go to last row in the viewport"
 msgstr "Ke baris terakhir dalam viewport"
 
-#: src/global.c:623
+#: src/global.c:633
 msgid "Center the line where the cursor is"
 msgstr "Ketengahkan baris pada kursor"
 
-#: src/global.c:624
+#: src/global.c:634
 msgid "Push the cursor line to the center, then top, then bottom"
 msgstr "Dorong baris kursor ke tengah, lalu ke puncak, lalu ke dasar"
 
-#: src/global.c:626
+#: src/global.c:636
 msgid "Go one screenful up"
 msgstr "Naik satu layar"
 
-#: src/global.c:627
+#: src/global.c:637
 msgid "Go one screenful down"
 msgstr "Turun satu layar"
 
-#: src/global.c:628
+#: src/global.c:638
 msgid "Go to the first line of the file"
 msgstr "Ke baris pertama berkas"
 
-#: src/global.c:629
+#: src/global.c:639
 msgid "Go to the last line of the file"
 msgstr "Ke baris terakhir berkas"
 
-#: src/global.c:632
+#: src/global.c:641
+msgid "Scroll the viewport a tabsize to the left"
+msgstr ""
+
+#: src/global.c:642
+msgid "Scroll the viewport a tabsize to the right"
+msgstr ""
+
+#: src/global.c:646
 msgid "Scroll up one line without moving the cursor textually"
 msgstr "Gulir naik satu baris tanpa memindah kursor secara tekstual"
 
-#: src/global.c:634
+#: src/global.c:648
 msgid "Scroll down one line without moving the cursor textually"
 msgstr "Gulir turun satu baris tanpa memindahkan kursor secara tekstual"
 
-#: src/global.c:637
+#: src/global.c:651
 msgid "Switch to the previous file buffer"
 msgstr "Beralih ke penyangga berkas sebelumnya"
 
-#: src/global.c:638
+#: src/global.c:652
 msgid "Switch to the next file buffer"
 msgstr "Beralih ke penyangga berkas berikutnya"
 
-#: src/global.c:640
+#: src/global.c:654
 msgid "Insert the next keystroke verbatim"
 msgstr "Sisipkan ketukan tombol berikutnya apa adanya"
 
-#: src/global.c:641
+#: src/global.c:655
 msgid "Insert a tab at the cursor position (or indent marked lines)"
 msgstr ""
 "Sisipkan sebuah tab di posisi kursor (atau indentasikan baris-baris yang "
 "ditandai)"
 
-#: src/global.c:642
+#: src/global.c:656
 msgid "Insert a newline at the cursor position"
 msgstr "Sisipkan sebuah baris baru di posisi kursor"
 
-#: src/global.c:643
+#: src/global.c:657
 msgid "Delete the character under the cursor"
 msgstr "Hapus karakter pada kursor"
 
-#: src/global.c:645
+#: src/global.c:659
 msgid "Delete the character to the left of the cursor"
 msgstr "Hapus satu karakter di kiri kursor"
 
-#: src/global.c:648
+#: src/global.c:662
 msgid "Delete backward from cursor to word start"
 msgstr "Hapus mundur dari kursor ke awal kata"
 
-#: src/global.c:650
+#: src/global.c:664
 msgid "Delete forward from cursor to next word start"
 msgstr "Hapus maju dari kursor ke awal kata berikutnya"
 
-#: src/global.c:652
+#: src/global.c:666
 msgid "Cut from the cursor position to the end of the file"
 msgstr "Potong dari posisi kursor ke akhir berkas"
 
-#: src/global.c:655
+#: src/global.c:669
 msgid "Justify the current paragraph"
 msgstr "Ratakan paragraf saat ini"
 
-#: src/global.c:656
+#: src/global.c:670
 msgid "Justify the entire file"
 msgstr "Ratakan seluruh berkas"
 
-#: src/global.c:660
+#: src/global.c:674
 msgid "Count the number of lines, words, and characters"
 msgstr "Hitung cacah baris, kata, dan karakter"
 
-#: src/global.c:661
+#: src/global.c:675
 msgid "Suspend the editor (return to the shell)"
 msgstr "Suspensikan penyunting (kembali ke shell)"
 
-#: src/global.c:663
+#: src/global.c:677
 msgid "Refresh (redraw) the current screen"
 msgstr "Segarkan (gambar ulang) layar saat ini"
 
-#: src/global.c:665
+#: src/global.c:679
 msgid "Try and complete the current word"
 msgstr "Coba dan lengkapkan kata saat ini"
 
-#: src/global.c:669
+#: src/global.c:683
 msgid "Comment/uncomment the current line (or marked lines)"
 msgstr ""
 "Jadikan komentar/bukan komentar baris saat ini (atau baris-baris yang "
 "ditandai)"
 
-#: src/global.c:671
+#: src/global.c:685
 msgid "Save file without prompting"
 msgstr "Simpan berkas tanpa bertanya"
 
-#: src/global.c:672
+#: src/global.c:686
 msgid "Search next occurrence backward"
 msgstr "Cari kemunculan berikutnya mundur"
 
-#: src/global.c:673
+#: src/global.c:687
 msgid "Search next occurrence forward"
 msgstr "Cari kemunculan berikutnya maju"
 
-#: src/global.c:675
+#: src/global.c:689
 msgid "Start/stop recording a macro"
 msgstr "Mulai/berhenti merekam makro"
 
-#: src/global.c:676
+#: src/global.c:690
 msgid "Run the last recorded macro"
 msgstr "Jalankan makro yang terakhir direkam"
 
-#: src/global.c:677
+#: src/global.c:691
 msgid "Place or remove an anchor at the current line"
 msgstr "Tempatkan atau hapus jangkar di baris saat ini"
 
-#: src/global.c:678
+#: src/global.c:692
 msgid "Jump backward to the nearest anchor"
 msgstr "Melompat mundur ke jangkar terdekat"
 
-#: src/global.c:679
+#: src/global.c:693
 msgid "Jump forward to the nearest anchor"
 msgstr "Melompat maju ke jangkar terdekat"
 
-#: src/global.c:681
+#: src/global.c:695
 msgid "Toggle the case sensitivity of the search"
 msgstr "Jungkitkan peka besar/kecil huruf dari pencarian"
 
-#: src/global.c:682
+#: src/global.c:696
 msgid "Reverse the direction of the search"
 msgstr "Balikkan arah pencarian"
 
-#: src/global.c:683
+#: src/global.c:697
 msgid "Toggle the use of regular expressions"
 msgstr "Jungkitkan penggunaan ekspresi reguler"
 
-#: src/global.c:685
+#: src/global.c:699
 msgid "Recall the previous search/replace string"
 msgstr "Pakai string cari/ganti sebelumnya"
 
-#: src/global.c:686
+#: src/global.c:700
 msgid "Recall the next search/replace string"
 msgstr "Pakai string cari/ganti selanjutnya"
 
-#: src/global.c:689
+#: src/global.c:703
 msgid "Toggle the use of DOS format"
 msgstr "Jungkitkan penggunaan format DOS"
 
-#: src/global.c:690
+#: src/global.c:704
 msgid "Toggle the use of Mac format"
 msgstr "Jungkitkan penggunaan format Mac"
 
-#: src/global.c:691
+#: src/global.c:705
 msgid "Toggle appending"
 msgstr "Jungkitkan menambah di belakang"
 
-#: src/global.c:692
+#: src/global.c:706
 msgid "Toggle prepending"
 msgstr "Jungkitkan menambah di depan"
 
-#: src/global.c:693
+#: src/global.c:707
 msgid "Toggle backing up of the original file"
 msgstr "Jungkitkan mencadangkan berkas asli"
 
-#: src/global.c:694
+#: src/global.c:708
 msgid "Execute a function or an external command"
 msgstr "Eksekusi suatu fungsi atau perintah eksternal"
 
-#: src/global.c:696
+#: src/global.c:710
 msgid "Pipe the current buffer (or marked region) to the command"
 msgstr ""
 "Salurkan penyangga (atau wilayah yang ditandai) saat ini lewat pipa ke "
 "perintah"
 
-#: src/global.c:698
+#: src/global.c:712
 msgid "Recall the previous command"
 msgstr "Panggil lagi perintah sebelumnya"
 
-#: src/global.c:699
+#: src/global.c:713
 msgid "Recall the next command"
 msgstr "Panggil lagi perintah berikutnya"
 
-#: src/global.c:701
+#: src/global.c:715
 msgid "Do not convert from DOS/Mac format"
 msgstr "Jangan konversikan dari format DOS/Mac"
 
-#: src/global.c:704
+#: src/global.c:718
 msgid "Toggle the use of a new buffer"
 msgstr "Jungkitkan penggunaan penyangga baru"
 
-#: src/global.c:706
+#: src/global.c:720
 msgid "Close buffer without saving it"
 msgstr "Tutup penyangga tanpa menyimpannya"
 
-#: src/global.c:708
+#: src/global.c:722
 msgid "Go to file browser"
 msgstr "Ke peramban berkas"
 
-#: src/global.c:709
+#: src/global.c:723
 msgid "Exit from the file browser"
 msgstr "Keluar dari peramban berkas"
 
-#: src/global.c:710
+#: src/global.c:724
 msgid "Go to the first file in the list"
 msgstr "Ke berkas pertama dalam daftar"
 
-#: src/global.c:711
+#: src/global.c:725
 msgid "Go to the last file in the list"
 msgstr "Ke berkas terakhir dalam daftar"
 
-#: src/global.c:712
+#: src/global.c:726
 msgid "Go to the previous file in the list"
 msgstr "Ke berkas sebelumnya dalam daftar"
 
-#: src/global.c:713
+#: src/global.c:727
 msgid "Go to the next file in the list"
 msgstr "Ke berkas berikutnya dalam daftar"
 
-#: src/global.c:715
+#: src/global.c:729
 msgid "Go to lefthand column"
 msgstr "Ke kolom kiri"
 
-#: src/global.c:716
+#: src/global.c:730
 msgid "Go to righthand column"
 msgstr "Ke kolom kanan"
 
-#: src/global.c:717
+#: src/global.c:731
 msgid "Go to first row in this column"
 msgstr "Ke baris pertama dalam kolom ini"
 
-#: src/global.c:718
+#: src/global.c:732
 msgid "Go to last row in this column"
 msgstr "Ke baris terakhir dalam kolom ini"
 
-#: src/global.c:720
+#: src/global.c:734
 msgid "Search forward for a string"
 msgstr "Cari maju untuk string"
 
-#: src/global.c:721
+#: src/global.c:735
 msgid "Search backward for a string"
 msgstr "Cari mundur untuk string"
 
-#: src/global.c:722
+#: src/global.c:736
 msgid "Refresh the file list"
 msgstr "Segarkan daftar berkas"
 
-#: src/global.c:723
+#: src/global.c:737
 msgid "Go to directory"
 msgstr "Ke direktori"
 
-#: src/global.c:726
+#: src/global.c:740
 msgid "Invoke the linter, if available"
 msgstr "Panggil linter, jika ada"
 
-#: src/global.c:727
+#: src/global.c:741
 msgid "Go to previous linter msg"
 msgstr "Ke pesan linter sebelumnya"
 
-#: src/global.c:728
+#: src/global.c:742
 msgid "Go to next linter msg"
 msgstr "Ke pesan linter berikutnya"
 
-#: src/global.c:732
+#: src/global.c:746
 msgid "Invoke a program to format/arrange/manipulate the buffer"
 msgstr "Panggil program untuk memformat/menata/memanipulasi penyangga"
 
 #. TRANSLATORS: Try to keep the next thirteen strings at most 10 characters.
-#: src/global.c:750
+#: src/global.c:764
 msgid "Help"
 msgstr "Bantuan"
 
-#: src/global.c:754 src/prompt.c:711
+#: src/global.c:768 src/prompt.c:711
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/global.c:776
+#: src/global.c:790
 msgid "Write Out"
 msgstr "Tulis"
 
 # terjemahan adalah saran dari maintainer
-#: src/global.c:784
+#: src/global.c:798
 msgid "Read File"
 msgstr "Baca"
 
-#: src/global.c:788 src/global.c:827
+#: src/global.c:802 src/global.c:841
 msgid "Justify"
 msgstr "Ratakan"
 
-#: src/global.c:794 src/global.c:886 src/global.c:1096
+#: src/global.c:808 src/global.c:900 src/global.c:1116
 msgid "Refresh"
 msgstr "Segarkan"
 
 # terjemahan adalah saran dari maintainer
-#: src/global.c:799 src/global.c:889
+#: src/global.c:813 src/global.c:903
 msgid "Where Is"
 msgstr "Cari"
 
-#: src/global.c:802 src/global.c:863
+#: src/global.c:816 src/global.c:877
 msgid "Replace"
 msgstr "Ganti"
 
-#: src/global.c:815
+#: src/global.c:829
 msgid "Cut"
 msgstr "Potong"
 
-#: src/global.c:818
+#: src/global.c:832
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/global.c:823 src/global.c:1088
+#: src/global.c:837 src/global.c:1108
 msgid "Execute"
 msgstr "Jalankan"
 
 #. TRANSLATORS: This refers to the position of the cursor.
-#: src/global.c:833
+#: src/global.c:847
 msgid "Location"
 msgstr "Lokasi"
 
-#: src/global.c:839 src/global.c:998 src/global.c:1138
+#: src/global.c:853 src/global.c:1018 src/global.c:1158
 msgid "Go To Line"
 msgstr "Ke Baris"
 
 #. TRANSLATORS: Try to keep the next ten strings at most 12 characters.
-#: src/global.c:845
+#: src/global.c:859
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: src/global.c:847
+#: src/global.c:861
 msgid "Redo"
 msgstr "Jadi Lagi"
 
-#: src/global.c:850
+#: src/global.c:864
 msgid "Set Mark"
 msgstr "Atur Tanda"
 
-#: src/global.c:852 src/global.c:1032
+#: src/global.c:866 src/global.c:1052
 msgid "Copy"
 msgstr "Salin"
 
-#: src/global.c:856
+#: src/global.c:870
 msgid "Case Sens"
 msgstr "Besar/Kecil"
 
-#: src/global.c:858
+#: src/global.c:872
 msgid "Reg.exp."
 msgstr "Eksp.reg."
 
-#: src/global.c:860
+#: src/global.c:874
 msgid "Backwards"
 msgstr "Mundur"
 
-#: src/global.c:865
+#: src/global.c:879
 msgid "No Replace"
 msgstr "Tiada Ganti"
 
-#: src/global.c:869 src/global.c:874
+#: src/global.c:883 src/global.c:888
 msgid "Older"
 msgstr "Lebih Tua"
 
-#: src/global.c:871 src/global.c:876
+#: src/global.c:885 src/global.c:890
 msgid "Newer"
 msgstr "Lebih Baru"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
-#: src/global.c:883
+#: src/global.c:897
 msgid "Go To Dir"
 msgstr "Ke Dir"
 
 # terjemahan adalah saran dari maintainer
 #. TRANSLATORS: This starts a backward search.
-#: src/global.c:891 src/global.c:910
+#: src/global.c:905 src/global.c:924
 msgid "Where Was"
 msgstr "Cari Mund."
 
 #. TRANSLATORS: This refers to searching the preceding occurrence.
-#: src/global.c:894 src/global.c:914
+#: src/global.c:908 src/global.c:928
 msgid "Previous"
 msgstr "Sebelum"
 
-#: src/global.c:896 src/global.c:916
+#: src/global.c:910 src/global.c:930
 msgid "Next"
 msgstr "Berikut"
 
-#: src/global.c:906
+#: src/global.c:920
 msgid "To Bracket"
 msgstr "Ke Kurung"
 
 #. TRANSLATORS: This means move the cursor one character back.
-#: src/global.c:921 src/global.c:926
+#: src/global.c:935 src/global.c:940
 msgid "Back"
 msgstr "Mundur"
 
-#: src/global.c:923 src/global.c:928
+#: src/global.c:937 src/global.c:942
 msgid "Forward"
 msgstr "Maju"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
-#: src/global.c:934
+#: src/global.c:948
 msgid "Prev Word"
 msgstr "Kata Sebelum"
 
-#: src/global.c:936
+#: src/global.c:950
 msgid "Next Word"
 msgstr "Kata Berikut"
 
 #. TRANSLATORS: These two mean: "to beginning of line", "to end of line".
-#: src/global.c:941
+#: src/global.c:954
 msgid "Home"
 msgstr "Awal"
 
-#: src/global.c:943
+#: src/global.c:956
 msgid "End"
 msgstr "Akhir"
 
+#. TRANSLATORS: Try to keep the next two strings at most 12 characters.
+#: src/global.c:960
+msgid "Scroll Left"
+msgstr ""
+
+#: src/global.c:962
+msgid "Scroll Right"
+msgstr ""
+
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
-#: src/global.c:947
+#: src/global.c:967
 msgid "Prev Line"
 msgstr "Baris Sebelum"
 
-#: src/global.c:949
+#: src/global.c:969
 msgid "Next Line"
 msgstr "Baris Berikut"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
-#: src/global.c:953
+#: src/global.c:973
 msgid "Scroll Up"
 msgstr "Gulir Naik"
 
-#: src/global.c:955
+#: src/global.c:975
 msgid "Scroll Down"
 msgstr "Gulir Turun"
 
-#: src/global.c:959
+#: src/global.c:979
 msgid "Prev Block"
 msgstr "Blok Sebelum"
 
-#: src/global.c:961
+#: src/global.c:981
 msgid "Next Block"
 msgstr "Blok Berikut"
 
 #. TRANSLATORS: Try to keep these two strings at most 16 characters.
-#: src/global.c:965
+#: src/global.c:985
 msgid "Begin of Paragr."
 msgstr "Awal Paragraf"
 
-#: src/global.c:967
+#: src/global.c:987
 msgid "End of Paragraph"
 msgstr "Akhir Paragraf"
 
-#: src/global.c:972 src/global.c:1204
+#: src/global.c:992 src/global.c:1224
 msgid "Top Row"
 msgstr "Baris Puncak"
 
-#: src/global.c:974 src/global.c:1206
+#: src/global.c:994 src/global.c:1226
 msgid "Bottom Row"
 msgstr "Baris Dasar"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
-#: src/global.c:979 src/global.c:1189
+#: src/global.c:999 src/global.c:1209
 msgid "Prev Page"
 msgstr "Hlm Sebelum"
 
-#: src/global.c:981 src/global.c:1191
+#: src/global.c:1001 src/global.c:1211
 msgid "Next Page"
 msgstr "Hlm Berikut"
 
-#: src/global.c:984
+#: src/global.c:1004
 msgid "First Line"
 msgstr "Baris Pertama"
 
-#: src/global.c:986
+#: src/global.c:1006
 msgid "Last Line"
 msgstr "Baris Terakhir"
 
 #. TRANSLATORS: Try to keep these two strings at most 15 characters.
-#: src/global.c:991
+#: src/global.c:1011
 msgid "Prev File"
 msgstr "Berkas Sebelum"
 
-#: src/global.c:993
+#: src/global.c:1013
 msgid "Next File"
 msgstr "Berkas Berikut"
 
 #. TRANSLATORS: The next four strings are names of keyboard keys.
-#: src/global.c:1003
+#: src/global.c:1023
 msgid "Tab"
 msgstr "Tab"
 
-#: src/global.c:1005
+#: src/global.c:1025
 msgid "Enter"
 msgstr "Enter"
 
-#: src/global.c:1008
+#: src/global.c:1028
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/global.c:1010
+#: src/global.c:1030
 msgid "Delete"
 msgstr "Hapus"
 
 #. TRANSLATORS: The next two strings refer to deleting words.
-#: src/global.c:1015
+#: src/global.c:1035
 msgid "Chop Left"
 msgstr "Potong Kiri"
 
-#: src/global.c:1017
+#: src/global.c:1037
 msgid "Chop Right"
 msgstr "Potong Kanan"
 
-#: src/global.c:1019 src/global.c:1172
+#: src/global.c:1039 src/global.c:1192
 msgid "Cut Till End"
 msgstr "Potong Ke Akhir"
 
-#: src/global.c:1024 src/global.c:1129
+#: src/global.c:1044 src/global.c:1149
 msgid "Full Justify"
 msgstr "Rata Penuh"
 
-#: src/global.c:1029
+#: src/global.c:1049
 msgid "Word Count"
 msgstr "Cacah Kata"
 
-#: src/global.c:1036
+#: src/global.c:1056
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/global.c:1043
+#: src/global.c:1063
 msgid "Indent"
 msgstr "Indentasi"
 
-#: src/global.c:1045
+#: src/global.c:1065
 msgid "Unindent"
 msgstr "Inden. Mundur"
 
-#: src/global.c:1049
+#: src/global.c:1069
 msgid "Comment Lines"
 msgstr "Komentarkan Baris"
 
-#: src/global.c:1053
+#: src/global.c:1073
 msgid "Complete"
 msgstr "Selesai"
 
-#: src/global.c:1058
+#: src/global.c:1078
 msgid "Record"
 msgstr "Rekam"
 
-#: src/global.c:1060
+#: src/global.c:1080
 msgid "Run Macro"
 msgstr "Jalankan Makro"
 
 #. TRANSLATORS: This refers to deleting a line or marked region.
-#: src/global.c:1064
+#: src/global.c:1084
 msgid "Zap"
 msgstr "Zap"
 
-#: src/global.c:1067
+#: src/global.c:1087
 msgid "Anchor"
 msgstr "Jangkar"
 
-#: src/global.c:1069
+#: src/global.c:1089
 msgid "Up to anchor"
 msgstr "Naik ke jangkar"
 
-#: src/global.c:1071
+#: src/global.c:1091
 msgid "Down to anchor"
 msgstr "Turun ke jangkar"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
-#: src/global.c:1075 src/global.c:1121
+#: src/global.c:1095 src/global.c:1141
 msgid "Spell Check"
 msgstr "Periksa Ejaan"
 
-#: src/global.c:1079 src/global.c:1125
+#: src/global.c:1099 src/global.c:1145
 msgid "Linter"
 msgstr "Linter"
 
-#: src/global.c:1083 src/global.c:1133
+#: src/global.c:1103 src/global.c:1153
 msgid "Formatter"
 msgstr "Pemformat"
 
-#: src/global.c:1091 src/global.c:1175
+#: src/global.c:1111 src/global.c:1195
 msgid "Suspend"
 msgstr "Suspensi"
 
-#: src/global.c:1100
+#: src/global.c:1120
 msgid "Center"
 msgstr "Tengah"
 
-#: src/global.c:1102
+#: src/global.c:1122
 msgid "Cycle"
 msgstr "Siklus"
 
-#: src/global.c:1106
+#: src/global.c:1126
 msgid "Save"
 msgstr "Simpan"
 
-#: src/global.c:1116
+#: src/global.c:1136
 msgid "Pipe Text"
 msgstr "Pipakan Teks"
 
-#: src/global.c:1140
+#: src/global.c:1160
 msgid "Go To Text"
 msgstr "Ke Teks"
 
-#: src/global.c:1145
+#: src/global.c:1165
 msgid "DOS Format"
 msgstr "Format DOS"
 
-#: src/global.c:1147
+#: src/global.c:1167
 msgid "Mac Format"
 msgstr "Format Mac"
 
-#: src/global.c:1155
+#: src/global.c:1175
 msgid "Append"
 msgstr "Tambah"
 
-#: src/global.c:1157
+#: src/global.c:1177
 msgid "Prepend"
 msgstr "Tambah Di Awal"
 
-#: src/global.c:1160
+#: src/global.c:1180
 msgid "Backup File"
 msgstr "Backup Berkas"
 
-#: src/global.c:1164
+#: src/global.c:1184
 msgid "No Conversion"
 msgstr "Tanpa Konversi"
 
-#: src/global.c:1169
+#: src/global.c:1189
 msgid "Execute Command"
 msgstr "Eksekusi Perintah"
 
-#: src/global.c:1179
+#: src/global.c:1199
 msgid "Discard buffer"
 msgstr "Buang Penyangga"
 
 #. TRANSLATORS: This invokes the file browser.
-#: src/global.c:1186
+#: src/global.c:1206
 msgid "Browse"
 msgstr "Ramban"
 
-#: src/global.c:1194
+#: src/global.c:1214
 msgid "First File"
 msgstr "Berkas Pertama"
 
-#: src/global.c:1196
+#: src/global.c:1216
 msgid "Last File"
 msgstr "Berkas Terakhir"
 
-#: src/global.c:1200
+#: src/global.c:1220
 msgid "Left Column"
 msgstr "Kolom Kiri"
 
-#: src/global.c:1202
+#: src/global.c:1222
 msgid "Right Column"
 msgstr "Kolom Kanan"
 
 #. TRANSLATORS: The next two strings may be up to 37 characters each.
-#: src/global.c:1213
+#: src/global.c:1233
 msgid "Previous Linter message"
 msgstr "Pesan Linter sebelumnya"
 
-#: src/global.c:1215
+#: src/global.c:1235
 msgid "Next Linter message"
 msgstr "Pesan Linter berikutnya"
 
 #. TRANSLATORS: The next thirteen strings are toggle descriptions;
 #. * they are best kept shorter than 40 characters, but may be longer.
-#: src/global.c:1609
+#: src/global.c:1629
 msgid "Hidden interface"
 msgstr "Antar muka tersembunyi"
 
-#: src/global.c:1611
+#: src/global.c:1631
 msgid "Help mode"
 msgstr "Mode bantuan"
 
-#: src/global.c:1613
+#: src/global.c:1633
 msgid "Constant cursor position display"
 msgstr "Tampilan posisi kursor konstan"
 
-#: src/global.c:1615
+#: src/global.c:1635
 msgid "Soft wrapping of overlong lines"
 msgstr "Lipat lunak baris panjang"
 
-#: src/global.c:1617
+#: src/global.c:1637
 msgid "Line numbering"
 msgstr "Penomoran baris"
 
-#: src/global.c:1619
+#: src/global.c:1639
 msgid "Whitespace display"
 msgstr "Tampilkan whitespace"
 
-#: src/global.c:1621
+#: src/global.c:1641
 msgid "Color syntax highlighting"
 msgstr "Pewarnaan sintaks"
 
-#: src/global.c:1623
+#: src/global.c:1643
 msgid "Smart home key"
 msgstr "Tombol home cerdas"
 
-#: src/global.c:1625
+#: src/global.c:1645
 msgid "Auto indent"
 msgstr "Inden otomatis"
 
-#: src/global.c:1627
+#: src/global.c:1647
 msgid "Cut to end"
 msgstr "Potong hingga akhir"
 
-#: src/global.c:1629
+#: src/global.c:1649
 msgid "Hard wrapping of overlong lines"
 msgstr "Lipat keras baris panjang"
 
-#: src/global.c:1631
+#: src/global.c:1651
 msgid "Conversion of typed tabs to spaces"
 msgstr "Konversi tab yang diketik ke spasi"
 
-#: src/global.c:1633
+#: src/global.c:1653
 msgid "Mouse support"
 msgstr "Dukungan tetikus"
 
@@ -1760,7 +1778,7 @@ msgstr ""
 msgid "enable/disable"
 msgstr "aktifkan/nonaktifkan"
 
-#: src/help.c:585 src/nano.c:1667
+#: src/help.c:585 src/nano.c:1672
 msgid "^W = Ctrl+W    M-W = Alt+W"
 msgstr "^W = Ctrl+W    M-W = Alt+W"
 
@@ -1783,10 +1801,16 @@ msgstr ""
 "Nano tidak akan dapat memuat atau menyimpan riwayat pencarian atau posisi "
 "kursor.\n"
 
-#: src/history.c:340 src/history.c:477
+#: src/history.c:337 src/history.c:474
 #, c-format
 msgid "Cannot limit permissions on %s: %s"
 msgstr "Tidak bisa membatasi izin pada %s: %s"
+
+#. TRANSLATORS: The %s is the name of an option.
+#: src/move.c:703 src/move.c:727
+#, c-format
+msgid "Not possible with '%s'"
+msgstr ""
 
 #: src/nano.c:201
 msgid "Key is invalid in view mode"
@@ -2181,169 +2205,173 @@ msgstr "Tampilkan bilah umpan balik di dasar"
 msgid "Hide all bars, use whole terminal"
 msgstr "Sembunyikan semua bilah, gunakan seluruh terminal"
 
-#: src/nano.c:656
+#: src/nano.c:655
+msgid "Scroll only the current line sideways"
+msgstr ""
+
+#: src/nano.c:657
 msgid "Use better-known key bindings"
 msgstr "Gunakan pengikatan kunci yang lebih terkenal"
 
-#: src/nano.c:666
+#: src/nano.c:667
 #, c-format
 msgid " GNU nano, version %s\n"
 msgstr " GNU nano, versi %s\n"
 
 #. TRANSLATORS: The %s is the year of the latest release.
-#: src/nano.c:670
+#: src/nano.c:671
 #, c-format
 msgid " (C) %s the Free Software Foundation and various contributors\n"
 msgstr " (C) %s Free Software Foundation dan berbagai kontributor\n"
 
-#: src/nano.c:672
+#: src/nano.c:673
 #, c-format
 msgid " Compiled options:"
 msgstr " Opsi yang dikompail:"
 
-#: src/nano.c:807
+#: src/nano.c:808
 #, c-format
 msgid "Available syntaxes:\n"
 msgstr "Sintaks yang tersedia:\n"
 
-#: src/nano.c:854
+#: src/nano.c:855
 msgid "Could not reconnect stdin to keyboard\n"
 msgstr "Tidak bisa menyambungkan ulang stdin ke papan tik\n"
 
-#: src/nano.c:872
+#: src/nano.c:873
 #, c-format
 msgid "Reading data from keyboard; type ^D or ^D^D to finish.\n"
 msgstr "Membaca data dari papan tik; ketikkan ^D atau ^D^D untuk mengakhiri.\n"
 
-#: src/nano.c:882
+#: src/nano.c:883
 #, c-format
 msgid "Failed to open stdin: %s"
 msgstr "Gagal membuka stdin: %s"
 
-#: src/nano.c:964
+#: src/nano.c:965
 msgid "Received SIGHUP or SIGTERM\n"
 msgstr "Menerima SIGHUP atau SIGTERM\n"
 
-#: src/nano.c:971
+#: src/nano.c:972
 #, c-format
 msgid "Sorry! Nano crashed!  Code: %d.  Please report a bug.\n"
 msgstr "Maaf! Nano crash!  Kode: %d.  Harap laporkan kutu.\n"
 
-#: src/nano.c:987
+#: src/nano.c:988
 #, c-format
 msgid "Use \"fg\" to return to nano.\n"
 msgstr "Gunakan \"fg\" untuk kembali ke nano.\n"
 
-#: src/nano.c:1130
+#: src/nano.c:1131
 msgid "Current syntax determines Tab"
 msgstr "Sintaks saat ini menentukan Tab"
 
-#: src/nano.c:1158
+#: src/nano.c:1159
 msgid "enabled"
 msgstr "difungsikan"
 
-#: src/nano.c:1158
+#: src/nano.c:1159
 msgid "disabled"
 msgstr "dinonaktifkan"
 
 #. TRANSLATORS: This refers to a sequence of escape codes
 #. * (from the keyboard) that nano does not recognize.
-#: src/nano.c:1301
+#: src/nano.c:1302
 msgid "Unknown sequence"
 msgstr "Urutan yang tak dikenal"
 
-#: src/nano.c:1304 src/rcfile.c:819
+#: src/nano.c:1305 src/rcfile.c:826
 #, c-format
 msgid "Unknown function: %s"
 msgstr "Fungsi tak dikenal: %s"
 
-#: src/nano.c:1306
+#: src/nano.c:1307
 msgid "Missing }"
 msgstr "Kurang }"
 
 #. TRANSLATORS: This refers to an unbound function key.
-#: src/nano.c:1311
+#: src/nano.c:1312
 #, c-format
 msgid "Unbound key: F%i"
 msgstr "Tombol tak diikat: F%i"
 
-#: src/nano.c:1314
+#: src/nano.c:1315
 msgid "Unbound key"
 msgstr "Tombol yang tak diikat"
 
-#: src/nano.c:1318
+#: src/nano.c:1319
 #, c-format
 msgid "Unbindable key: M-^%c"
 msgstr "Tombol tak bisa diikat: M-^%c"
 
-#: src/nano.c:1323 src/nano.c:1326 src/nano.c:1330 src/nano.c:1333
+#: src/nano.c:1324 src/nano.c:1327 src/nano.c:1331 src/nano.c:1334
 #, c-format
 msgid "Unbound key: %s%c"
 msgstr "Tombol tak diikat: %s%c"
 
-#: src/nano.c:1328
+#: src/nano.c:1329
 msgid "Unbindable key: ^["
 msgstr "Tombol tak bisa diikat: ^["
 
-#: src/nano.c:1468
+#: src/nano.c:1469
 msgid "Flawed paste"
 msgstr "Tempel yang cacat"
 
-#: src/nano.c:1929 src/rcfile.c:1678
+#: src/nano.c:1937 src/rcfile.c:1685
 #, c-format
 msgid "Guide column \"%s\" is invalid"
 msgstr "Kolom panduan \"%s\" tidak valid"
 
-#: src/nano.c:1975 src/rcfile.c:1683
+#: src/nano.c:1983 src/rcfile.c:1690
 #, c-format
 msgid "Requested tab size \"%s\" is invalid"
 msgstr "Ukuran tab yang diminta \"%s\" tidak valid"
 
-#: src/nano.c:2079 src/rcfile.c:1628
+#: src/nano.c:2087 src/rcfile.c:1635
 #, c-format
 msgid "Requested fill size \"%s\" is invalid"
 msgstr "Ukuran pengisian \"%s\" yang diminta tidak valid"
 
-#: src/nano.c:2151
+#: src/nano.c:2162
 #, c-format
 msgid "Type '%s -h' for a list of available options.\n"
 msgstr "Ketikkan '%s -h' untuk daftar opsi yang tersedia.\n"
 
-#: src/nano.c:2353
+#: src/nano.c:2364
 #, c-format
 msgid "Bad quoting regex \"%s\": %s\n"
 msgstr "Regex kutip yang buruk \"%s\": %s\n"
 
-#: src/nano.c:2521
+#: src/nano.c:2532
 #, c-format
 msgid "Invalid search modifier '%c'"
 msgstr "Pengubah pencarian tidak valid '%c'"
 
-#: src/nano.c:2532
+#: src/nano.c:2543
 msgid "Empty search string"
 msgstr "String pencarian kosong"
 
-#: src/nano.c:2541 src/search.c:801
+#: src/nano.c:2552 src/search.c:809
 msgid "Invalid line or column number"
 msgstr "Nomor kolom atau baris yang tidak valid"
 
-#: src/nano.c:2577
+#: src/nano.c:2588
 msgid "Invalid number\n"
 msgstr "Angka tidak valid\n"
 
-#: src/nano.c:2623
+#: src/nano.c:2634
 msgid "Standard input is not a terminal\n"
 msgstr "Masukan standar bukan terminal\n"
 
-#: src/nano.c:2642
+#: src/nano.c:2653
 msgid "Can open just one file\n"
 msgstr "Hanya bisa membuka satu berkas\n"
 
-#: src/nano.c:2660
+#: src/nano.c:2671
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
 msgstr "Selamat datang ke nano.  Untuk bantuan dasar, ketikkan Ctrl+G."
 
-#: src/nano.c:2699
+#: src/nano.c:2718
 msgid "Byte Order Mark"
 msgstr "Tanda Urutan Byte"
 
@@ -2374,216 +2402,216 @@ msgstr "Tidak"
 msgid "All"
 msgstr "Semua"
 
-#: src/rcfile.c:191
+#: src/rcfile.c:192
 #, c-format
 msgid "Mistakes in '%s'"
 msgstr "Kesalahan dalam '%s'"
 
-#: src/rcfile.c:195
+#: src/rcfile.c:196
 msgid "Problems with history file"
 msgstr "Masalah dengan berkas riwayat"
 
-#: src/rcfile.c:199
+#: src/rcfile.c:200
 #, c-format
 msgid "Error in %s on line %zu: "
 msgstr "Kesalahan dalam %s pada baris %zu: "
 
-#: src/rcfile.c:566
+#: src/rcfile.c:573
 #, c-format
 msgid "Argument '%s' has an unterminated \""
 msgstr "Argumen '%s' memiliki \" yang tidak diakhiri"
 
-#: src/rcfile.c:587 src/rcfile.c:598
+#: src/rcfile.c:594 src/rcfile.c:605
 msgid "Regex strings must begin and end with a \" character"
 msgstr "String regex harus dimulai dan diakhiri dengan sebuah karakter \""
 
-#: src/rcfile.c:603
+#: src/rcfile.c:610
 msgid "Empty regex string"
 msgstr "String regex kosong"
 
-#: src/rcfile.c:628 src/search.c:45
+#: src/rcfile.c:635 src/search.c:45
 #, c-format
 msgid "Bad regex \"%s\": %s"
 msgstr "Regex jelek \"%s\": %s"
 
-#: src/rcfile.c:648
+#: src/rcfile.c:655
 msgid "Missing syntax name"
 msgstr "Nama sintaks tidak ada"
 
-#: src/rcfile.c:656
+#: src/rcfile.c:663
 msgid "Unpaired quote in syntax name"
 msgstr "Kutip tanpa pasangan dalam nama sintaks"
 
-#: src/rcfile.c:668
+#: src/rcfile.c:675
 msgid "The \"none\" syntax is reserved"
 msgstr "Sintaks \"none\" dicadangkan"
 
-#: src/rcfile.c:699
+#: src/rcfile.c:706
 msgid "The \"default\" syntax does not accept extensions"
 msgstr "Sintaks \"default\" tidak menerima ekstensi"
 
-#: src/rcfile.c:717
+#: src/rcfile.c:724
 #, c-format
 msgid "Syntax \"%s\" has no color commands"
 msgstr "Sintaks \"%s\" tidak punya perintah warna"
 
-#: src/rcfile.c:750
+#: src/rcfile.c:757
 msgid "Missing key name"
 msgstr "Nama kunci kurang"
 
-#: src/rcfile.c:767 src/rcfile.c:774
+#: src/rcfile.c:774 src/rcfile.c:781
 #, c-format
 msgid "Key name %s is invalid"
 msgstr "Nama kunci %s tidak valid"
 
-#: src/rcfile.c:783
+#: src/rcfile.c:790
 msgid "Must specify a function to bind the key to"
 msgstr "Mesti menyatakan suatu fungsi yang akan diikat ke tombol"
 
 #. TRANSLATORS: Do not translate the word "all".
-#: src/rcfile.c:794
+#: src/rcfile.c:801
 msgid "Must specify a menu (or \"all\") in which to bind/unbind the key"
 msgstr ""
 "Mesti menyatakan menu (atau \"all\") untuk mengikat/melepas ikatan tombol"
 
-#: src/rcfile.c:801
+#: src/rcfile.c:808
 #, c-format
 msgid "Unknown menu: %s"
 msgstr "Menu tak dikenal: %s"
 
-#: src/rcfile.c:858
+#: src/rcfile.c:865
 #, c-format
 msgid "Function '%s' does not exist in menu '%s'"
 msgstr "Fungsi '%s' tidak ada dalam menu '%s'"
 
-#: src/rcfile.c:869
+#: src/rcfile.c:876
 #, c-format
 msgid "Keystroke %s may not be rebound"
 msgstr "Ketukan tombol %s mungkin tidak memantul"
 
-#: src/rcfile.c:960 src/rcfile.c:1531
+#: src/rcfile.c:967 src/rcfile.c:1538
 #, c-format
 msgid "Command \"%s\" not understood"
 msgstr "Perintah \"%s\" tidak dipahami"
 
-#: src/rcfile.c:987
+#: src/rcfile.c:994
 msgid "Path is too long"
 msgstr "Path terlalu panjang"
 
-#: src/rcfile.c:1001
+#: src/rcfile.c:1008
 #, c-format
 msgid "Error expanding %s: %s"
 msgstr "Galat saat mengekspansi %s: %s"
 
-#: src/rcfile.c:1071 src/rcfile.c:1082
+#: src/rcfile.c:1078 src/rcfile.c:1089
 #, c-format
 msgid "Color '%s' takes no prefix"
 msgstr "Warna '%s' tidak menerima prefiks"
 
-#: src/rcfile.c:1090
+#: src/rcfile.c:1097
 #, c-format
 msgid "Color \"%s\" not understood"
 msgstr "Warna \"%s\" tidak dipahami"
 
-#: src/rcfile.c:1106 src/rcfile.c:1117
+#: src/rcfile.c:1113 src/rcfile.c:1124
 msgid "An attribute requires a subsequent comma"
 msgstr "Suatu atribut memerlukan koma lanjutan"
 
-#: src/rcfile.c:1161
+#: src/rcfile.c:1168
 msgid "Missing color name"
 msgstr "Kurang nama warna"
 
-#: src/rcfile.c:1172 src/rcfile.c:1272
+#: src/rcfile.c:1179 src/rcfile.c:1279
 #, c-format
 msgid "Missing regex string after '%s' command"
 msgstr "Kurang string regex setelah perintah '%s'"
 
-#: src/rcfile.c:1198
+#: src/rcfile.c:1205
 msgid "\"start=\" requires a corresponding \"end=\""
 msgstr "\"start=\" membutuhkan \"end=\" yang sesuai"
 
-#: src/rcfile.c:1261 src/rcfile.c:1511
+#: src/rcfile.c:1268 src/rcfile.c:1518
 #, c-format
 msgid "A '%s' command requires a preceding 'syntax' command"
 msgstr "Perintah '%s' memerlukan perintah 'syntax' sebelumnya"
 
-#: src/rcfile.c:1267
+#: src/rcfile.c:1274
 #, c-format
 msgid "The \"default\" syntax does not accept '%s' regexes"
 msgstr "Sintaks \"default\" tidak menerima regex '%s'"
 
-#: src/rcfile.c:1314
+#: src/rcfile.c:1321
 #, c-format
 msgid "Missing argument after '%s'"
 msgstr "Kurang argumen setelah '%s'"
 
-#: src/rcfile.c:1324
+#: src/rcfile.c:1331
 #, c-format
 msgid "Argument of '%s' lacks closing \""
 msgstr "Argumen '%s' tidak memiliki \" penutup"
 
-#: src/rcfile.c:1374
+#: src/rcfile.c:1381
 #, c-format
 msgid "No key is bound to function '%s' in menu '%s'.  Exiting.\n"
 msgstr "Tidak ada tombol yang diikat ke fungsi '%s' di menu '%s'.  Keluar.\n"
 
-#: src/rcfile.c:1376
+#: src/rcfile.c:1383
 msgid ""
 "If needed, use nano with the -I option to adjust your nanorc settings.\n"
 msgstr ""
 "Jika diperlukan, gunakan nano dengan opsi -I untuk menyesuaikan pengaturan "
 "nanorc Anda.\n"
 
-#: src/rcfile.c:1443
+#: src/rcfile.c:1450
 #, c-format
 msgid "Could not find syntax \"%s\" to extend"
 msgstr "Tidak dapat menemukan sintaks \"%s\" untuk dikembangkan"
 
-#: src/rcfile.c:1500
+#: src/rcfile.c:1507
 #, c-format
 msgid "Command \"%s\" not allowed in included file"
 msgstr "Perintah \"%s\" tidak diizinkan dalam suatu berkas sertaan"
 
-#: src/rcfile.c:1543
+#: src/rcfile.c:1550
 msgid "Missing option"
 msgstr "Kurang opsi"
 
-#: src/rcfile.c:1557
+#: src/rcfile.c:1564
 #, c-format
 msgid "Unknown option: %s"
 msgstr "Opsi tak dikenal: %s"
 
-#: src/rcfile.c:1572
+#: src/rcfile.c:1579
 #, c-format
 msgid "Cannot unset option \"%s\""
 msgstr "Tidak dapat menghapus pengaturan opsi \"%s\""
 
-#: src/rcfile.c:1577
+#: src/rcfile.c:1584
 #, c-format
 msgid "Option \"%s\" requires an argument"
 msgstr "Opsi \"%s\" membutuhkan sebuah argumen"
 
-#: src/rcfile.c:1589
+#: src/rcfile.c:1596
 msgid "Argument is not a valid multibyte string"
 msgstr "Argumen bukanlah string multibyte yang valid"
 
-#: src/rcfile.c:1636 src/rcfile.c:1654 src/rcfile.c:1659
+#: src/rcfile.c:1643 src/rcfile.c:1661 src/rcfile.c:1666
 msgid "Non-blank characters required"
 msgstr "Karakter non-kosong diperlukan"
 
-#: src/rcfile.c:1638
+#: src/rcfile.c:1645
 msgid "Even number of characters required"
 msgstr "Cacah karakter genap dibutuhkan"
 
-#: src/rcfile.c:1643
+#: src/rcfile.c:1650
 msgid "Two single-column characters required"
 msgstr "Dua karakter kolom tunggal diperlukan"
 
-#: src/rcfile.c:1734
+#: src/rcfile.c:1741
 msgid "Specified rcfile does not exist\n"
 msgstr "rcfile yang ditentukan tidak ada\n"
 
-#: src/rcfile.c:1753
+#: src/rcfile.c:1760
 msgid "I can't find my home directory!  Wah!"
 msgstr "Saya tidak dapat menemukan direktori home!  Wah!"
 
@@ -2610,57 +2638,57 @@ msgstr " (ganti)"
 msgid "Searching..."
 msgstr "Mencari..."
 
-#: src/search.c:409
+#: src/search.c:414
 #, c-format
 msgid "\"%.*s%s\" not found"
 msgstr "\"%.*s%s\" tidak ditemukan"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:598
+#: src/search.c:606
 msgid "Replace this instance?"
 msgstr "Ganti yang ini?"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:709
+#: src/search.c:717
 msgid "Replace with"
 msgstr "Ganti dengan"
 
-#: src/search.c:739
+#: src/search.c:747
 #, c-format
 msgid "Replaced %zd occurrence"
 msgid_plural "Replaced %zd occurrences"
 msgstr[0] "Mengganti %zd kemunculan"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:778
+#: src/search.c:786
 msgid "Enter line number, column number"
 msgstr "Masukkan nomor baris, nomor kolom"
 
-#: src/search.c:956
+#: src/search.c:964
 msgid "Not a bracket"
 msgstr "Bukan tanda kurung"
 
-#: src/search.c:999
+#: src/search.c:1007
 msgid "No matching bracket"
 msgstr "Tidak ada tanda kurung yang cocok"
 
-#: src/search.c:1018
+#: src/search.c:1026
 msgid "Placed anchor"
 msgstr "Jangkar ditempatkan"
 
-#: src/search.c:1020
+#: src/search.c:1028
 msgid "Removed anchor"
 msgstr "Jangkar dihapus"
 
-#: src/search.c:1039
+#: src/search.c:1047
 msgid "Jumped to anchor"
 msgstr "Melompat ke jangkar"
 
-#: src/search.c:1041
+#: src/search.c:1049
 msgid "This is the only anchor"
 msgstr "Hanya ini jangkarnya"
 
-#: src/search.c:1043
+#: src/search.c:1051
 msgid "There are no anchors"
 msgstr "Tidak ada jangkar"
 
@@ -2938,136 +2966,136 @@ msgstr "Tiada yang cocok"
 msgid "Nano is out of memory!\n"
 msgstr "Nano kehabisan memori!\n"
 
-#: src/winio.c:100
+#: src/winio.c:98
 msgid "Recording a macro..."
 msgstr "Merekam makro..."
 
-#: src/winio.c:104
+#: src/winio.c:108
 msgid "Stopped recording"
 msgstr "Berhenti merekam"
 
-#: src/winio.c:116
+#: src/winio.c:128
 msgid "Cannot run macro while recording"
 msgstr "Tidak bisa menjalankan makro saat merekam"
 
-#: src/winio.c:122
+#: src/winio.c:134
 msgid "Macro is empty"
 msgstr "Makro kosong"
 
-#: src/winio.c:137
+#: src/winio.c:149
 msgid "Too much input at once\n"
 msgstr "Terlalu banyak masukan sekaligus\n"
 
-#: src/winio.c:250
+#: src/winio.c:262
 msgid "Too many errors from stdin\n"
 msgstr "Terlalu banyak kesalahan dari stdin\n"
 
 #. TRANSLATORS: This is shown while a six-digit hexadecimal
 #. * Unicode character code (%s) is being typed in.
-#: src/winio.c:1412
+#: src/winio.c:1424
 #, c-format
 msgid "Unicode Input: %s"
 msgstr "Masukan Unicode: %s"
 
 #. TRANSLATORS: The next five are "labels" in the title bar.
-#: src/winio.c:2034
+#: src/winio.c:2040
 msgid "Linting --"
 msgstr "Linting --"
 
-#: src/winio.c:2040
+#: src/winio.c:2046
 msgid "DIR:"
 msgstr "DIR:"
 
-#: src/winio.c:2061
+#: src/winio.c:2067
 msgid "View"
 msgstr "Tilik"
 
-#: src/winio.c:2067 src/winio.c:2071
+#: src/winio.c:2073 src/winio.c:2077
 msgid "Modified"
 msgstr "Diubah"
 
-#: src/winio.c:2069
+#: src/winio.c:2075
 msgid "Restricted"
 msgstr "Terbatas"
 
-#: src/winio.c:2175
+#: src/winio.c:2181
 msgid "(nameless)"
 msgstr "(tanpa nama)"
 
-#: src/winio.c:2207
+#: src/winio.c:2213
 #, c-format
 msgid " (%zu line)"
 msgid_plural " (%zu lines)"
 msgstr[0] " (%zu baris)"
 
-#: src/winio.c:2209
+#: src/winio.c:2215
 #, c-format
 msgid " (%zu line, %s)"
 msgid_plural " (%zu lines, %s)"
 msgstr[0] " (%zu baris, %s)"
 
-#: src/winio.c:3517
+#: src/winio.c:3541
 #, c-format
 msgid "line %*zd/%zd (%2d%%), col %2zu/%2zu (%3d%%), char %*zu/%zu (%2d%%)"
 msgstr "baris %*zd/%zd (%2d%%), kol %2zu/%2zu (%3d%%), char %*zu/%zu (%2d%%)"
 
-#: src/winio.c:3671
+#: src/winio.c:3695
 msgid "The nano text editor"
 msgstr "Nano penyunting teks"
 
-#: src/winio.c:3672
+#: src/winio.c:3696
 msgid "version"
 msgstr "versi"
 
-#: src/winio.c:3673
+#: src/winio.c:3697
 msgid "Brought to you by:"
 msgstr "Dibuat untuk Anda oleh:"
 
-#: src/winio.c:3674
+#: src/winio.c:3698
 msgid "Special thanks to:"
 msgstr "Ucapan terima kasih khusus kepada:"
 
-#: src/winio.c:3675
+#: src/winio.c:3699
 msgid "The Free Software Foundation"
 msgstr "The Free Software Foundation"
 
-#: src/winio.c:3676
+#: src/winio.c:3700
 msgid "the many translators and the TP"
 msgstr "banyak penerjemah dan TP"
 
-#: src/winio.c:3677
+#: src/winio.c:3701
 msgid "For ncurses:"
 msgstr "Untuk ncurses:"
 
-#: src/winio.c:3678
+#: src/winio.c:3702
 msgid "and anyone else we forgot..."
 msgstr "dan orang lain yang kami lupa...."
 
-#: src/winio.c:3679
+#: src/winio.c:3703
 msgid "Thank you for using nano!"
 msgstr "Terima kasih telah menggunakan nano!"
 
-#: lib/getopt.c:282
+#: lib/getopt.c:283
 #, c-format
 msgid "%s: option '%s%s' is ambiguous\n"
 msgstr "%s: opsi '%s%s' ambigu\n"
 
-#: lib/getopt.c:288
+#: lib/getopt.c:289
 #, c-format
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
 msgstr "%s: opsi '%s%s' ambigu; kemungkinan:"
 
-#: lib/getopt.c:322
+#: lib/getopt.c:323
 #, c-format
 msgid "%s: unrecognized option '%s%s'\n"
 msgstr "%s: opsi tidak dikenal '%s%s'\n"
 
-#: lib/getopt.c:348
+#: lib/getopt.c:349
 #, c-format
 msgid "%s: option '%s%s' doesn't allow an argument\n"
 msgstr "%s: opsi '%s%s' tidak mengizinkan sebuah argumen\n"
 
-#: lib/getopt.c:363
+#: lib/getopt.c:364
 #, c-format
 msgid "%s: option '%s%s' requires an argument\n"
 msgstr "%s: opsi '%s%s' membutuhkan sebuah argumen\n"

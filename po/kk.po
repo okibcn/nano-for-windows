@@ -1,418 +1,416 @@
-# GNU nano-rentzat egindako hitzulpena.
-# Copyright (C) 2006 Free Software Foundation, Inc.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nano package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026.
 #
-# Peio Ziarsolo <peio@sindominio.net>, 2001, 2002.
-# Mikel Olasagasti <hey_neken@mundurat.net>, 2004, 2005, 2006.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: nano 1.9.99pre0\n"
+"Project-Id-Version: nano 9.0-pre2\n"
 "Report-Msgid-Bugs-To: nano-devel@gnu.org\n"
 "POT-Creation-Date: 2026-04-08 17:05+0200\n"
-"PO-Revision-Date: 2006-09-25 19:59+0200\n"
-"Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
-"Language-Team: Basque <translation-team-eu@lists.sourceforge.net>\n"
-"Language: eu\n"
+"PO-Revision-Date: 2026-03-31 20:38+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <(nothing)>\n"
+"Language: kk\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: Anything more than 7 cells gets clipped.
 #: src/browser.c:186 src/browser.c:193
 msgid "(dir)"
-msgstr "(dir)"
+msgstr "(бума)"
 
 #. TRANSLATORS: Anything more than 12 cells gets clipped.
 #: src/browser.c:190
 msgid "(parent dir)"
-msgstr "(aita dir.)"
+msgstr "(жоғарғы бума)"
 
 #. TRANSLATORS: Anything more than 7 cells gets clipped.
 #. * If necessary, you can leave out the parentheses.
 #: src/browser.c:220
 msgid "(huge)"
-msgstr ""
+msgstr "(үлкен)"
 
 #: src/browser.c:269 src/browser.c:274 src/search.c:259
 msgid "Search Wrapped"
-msgstr "Bilaketa berriz hasia"
+msgstr "Іздеу басына оралды"
 
 #: src/browser.c:281 src/search.c:441
 msgid "This is the only occurrence"
-msgstr "Hau da kointzidentzia bakarra"
+msgstr "Бұл жалғыз сәйкестік"
 
 #. TRANSLATORS: This is the main search prompt.
 #: src/browser.c:314 src/search.c:100
 msgid "Search"
-msgstr "Bilatu"
+msgstr "Іздеу"
 
 #. TRANSLATORS: A modifier of the Search prompt.
 #: src/browser.c:316 src/search.c:104
 msgid " [Backwards]"
-msgstr "[Atzeruntza]"
+msgstr " [Кері қарай]"
 
 #: src/browser.c:322 src/browser.c:563 src/files.c:1164 src/files.c:1257
 #: src/files.c:2195 src/nano.c:321 src/search.c:114 src/search.c:294
 #: src/search.c:731 src/search.c:798 src/text.c:2621 src/text.c:2820
 #: src/winio.c:103
 msgid "Cancelled"
-msgstr "Bertan behera utzita"
+msgstr "Бас тартылды"
 
 #: src/browser.c:349 src/search.c:375
 msgid "No current search pattern"
-msgstr "Ez dago bilatzeko eredurik"
+msgstr "Ағымдағы іздеу үлгісі жоқ"
 
 #: src/browser.c:404
 #, c-format
 msgid "Cannot open directory: %s"
-msgstr ""
+msgstr "Буманы ашу мүмкін емес: %s"
 
 #: src/browser.c:444
 msgid "No entries"
-msgstr ""
+msgstr "Жазбалар жоқ"
 
 #. TRANSLATORS: This is a prompt.
 #: src/browser.c:562
 msgid "Go To Directory"
-msgstr "Joan direktorio honetara"
+msgstr "Бумаға өту"
 
 #. TRANSLATORS: This refers to the confining effect of
 #. * the option --operatingdir, not of --restricted.
 #: src/browser.c:579 src/browser.c:610
 #, c-format
 msgid "Can't go outside of %s"
-msgstr ""
+msgstr "%s сыртына шығу мүмкін емес"
 
 #: src/browser.c:601
 msgid "Can't move up a directory"
-msgstr "Ezin da direktorioan gora egin"
+msgstr "Жоғарғы бумаға өту мүмкін емес"
 
 #: src/browser.c:616 src/files.c:921 src/files.c:927 src/files.c:1830
 #: src/files.c:1845 src/history.c:263 src/history.c:291 src/history.c:397
 #: src/history.c:451 src/rcfile.c:933 src/rcfile.c:1719
 #, c-format
 msgid "Error reading %s: %s"
-msgstr "Errorea %s irakurtzen: %s"
+msgstr "%s оқу қатесі: %s"
 
 #: src/browser.c:643 src/help.c:510
 msgid "Paste is ignored"
-msgstr ""
+msgstr "Кірістіру ескерілмейді"
 
 #: src/browser.c:691 src/files.c:364
 msgid "The working directory has disappeared"
-msgstr ""
+msgstr "Жұмыс бумасы жоқ болып кетті"
 
 #: src/color.c:156
 #, c-format
 msgid "Unknown syntax name: %s"
-msgstr ""
+msgstr "Синтаксис атауы белгісіз: %s"
 
 #: src/color.c:196
 #, c-format
 msgid "magic_load() failed: %s"
-msgstr ""
+msgstr "magic_load() сәтсіз аяқталды: %s"
 
 #: src/color.c:200
 #, c-format
 msgid "magic_file(%s) failed: %s"
-msgstr ""
+msgstr "magic_file(%s) сәтсіз аяқталды: %s"
 
 #: src/cut.c:175 src/cut.c:240 src/cut.c:574
 msgid "Nothing was cut"
-msgstr ""
+msgstr "Ештеңе қиылған жоқ"
 
 #: src/cut.c:624 src/cut.c:678
 msgid "Copied nothing"
-msgstr ""
+msgstr "Ештеңе көшірілмеді"
 
 #: src/cut.c:743
 msgid "Cutbuffer is empty"
-msgstr ""
+msgstr "Қиып алу буфері бос"
 
 #: src/files.c:134
 #, c-format
 msgid "Error deleting lock file %s: %s"
-msgstr ""
+msgstr "%s құлыптау файлын өшіру қатесі: %s"
 
 #. TRANSLATORS: Keep the next seven messages at most 76 characters.
 #: src/files.c:163
 msgid "Couldn't determine my identity for lock file"
-msgstr ""
+msgstr "Құлыптау файлы үшін өз сәйкестігімді анықтау мүмкін болмады"
 
 #: src/files.c:168
 #, c-format
 msgid "Couldn't determine hostname: %s"
-msgstr ""
+msgstr "Хост атын анықтау мүмкін болмады: %s"
 
 #: src/files.c:184 src/files.c:227
 #, c-format
 msgid "Error writing lock file %s: %s"
-msgstr ""
+msgstr "%s құлыптау файлын жазу қатесі: %s"
 
 #: src/files.c:255
 msgid "Someone else is also editing this file"
-msgstr ""
+msgstr "Бұл файлды қазір басқа біреу де түзетіп жатыр"
 
 #: src/files.c:264
 #, c-format
 msgid "Error opening lock file %s: %s"
-msgstr ""
+msgstr "%s құлыптау файлын ашу қатесі: %s"
 
 #: src/files.c:279
 #, c-format
 msgid "Bad lock file is ignored: %s"
-msgstr ""
+msgstr "Қате құлыптау файлы ескерілмейді: %s"
 
 #. TRANSLATORS: The second %s is the name of the user, the third that of the editor.
 #: src/files.c:300
 #, c-format
 msgid "File %s is being edited by %s (with %s, PID %s); open anyway?"
 msgstr ""
+"%s файлын %s түзетіп жатыр (%s көмегімен, PID %s); бәрібір ашу керек пе?"
 
 #. TRANSLATORS: Keep the next ten messages at most 76 characters.
 #: src/files.c:368
 #, c-format
 msgid "Directory '%s' does not exist"
-msgstr ""
+msgstr "«%s» бумасы жоқ"
 
 #: src/files.c:370
 #, c-format
 msgid "Path '%s': %s"
-msgstr ""
+msgstr "«%s» жолы: %s"
 
 #: src/files.c:372
 #, c-format
 msgid "Path '%s' is not a directory"
-msgstr ""
+msgstr "«%s» жолы бума емес"
 
 #: src/files.c:374
 #, c-format
 msgid "Path '%s' is not accessible"
-msgstr ""
+msgstr "«%s» жолына қол жеткізу мүмкін емес"
 
 #: src/files.c:377
 #, c-format
 msgid "Directory '%s' is not writable"
-msgstr ""
+msgstr "«%s» бумасына жазу мүмкін емес"
 
 #: src/files.c:404
 #, c-format
 msgid "Can't read file from outside of %s"
-msgstr ""
+msgstr "%s сыртынан файлды оқу мүмкін емес"
 
 #: src/files.c:414 src/rcfile.c:909
 #, c-format
 msgid "\"%s\" is a directory"
-msgstr "\"%s\" direktorio bat da"
+msgstr "«%s» бума болып тұр"
 
 #: src/files.c:419 src/rcfile.c:910
 #, c-format
 msgid "\"%s\" is a device file"
-msgstr "\"%s\" fitxategia dispositibo-fitxategi bat da"
+msgstr "«%s» құрылғы файлы болып тұр"
 
 #: src/files.c:425
 #, c-format
 msgid "\"%s\" is a FIFO"
-msgstr ""
+msgstr "«%s» FIFO болып тұр"
 
 #: src/files.c:432
 #, c-format
 msgid "%s is meant to be read-only"
-msgstr ""
+msgstr "%s тек оқу үшін арналған"
 
 #. TRANSLATORS: First %s is file name, second %s is file format.
 #: src/files.c:544
 #, c-format
 msgid "%s -- %zu line (%s)"
 msgid_plural "%s -- %zu lines (%s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s -- %zu жол (%s)"
 
 #: src/files.c:546 src/files.c:552 src/global.c:1132 src/winio.c:2062
 msgid "New Buffer"
-msgstr "Bufer berria"
+msgstr "Жаңа буфер"
 
 #: src/files.c:547
 msgid "DOS"
-msgstr ""
+msgstr "DOS"
 
 #: src/files.c:547
 msgid "Mac"
-msgstr ""
+msgstr "Mac"
 
 #: src/files.c:550
 #, c-format
 msgid "%s -- %zu line"
 msgid_plural "%s -- %zu lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s -- %zu жол"
 
 #: src/files.c:560
 msgid "No more open file buffers"
-msgstr "Ez dago irekitako fitxategi buffer gehiagorik"
+msgstr "Басқа ашық файл буферлері жоқ"
 
 #: src/files.c:787 src/files.c:919 src/files.c:1883
 msgid "Interrupted"
-msgstr ""
+msgstr "Үзілді"
 
 #: src/files.c:833
 #, c-format
 msgid "File '%s' is unwritable"
-msgstr ""
+msgstr "«%s» файлына жазу мүмкін емес"
 
 #. TRANSLATORS: Keep the next three messages at most 78 characters.
 #: src/files.c:839
 #, c-format
 msgid "Read %zu line (converted from Mac format)"
 msgid_plural "Read %zu lines (converted from Mac format)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%zu жол оқылды (Mac пішімінен түрлендірілді)"
 
 #: src/files.c:843
 #, c-format
 msgid "Read %zu line (converted from DOS format)"
 msgid_plural "Read %zu lines (converted from DOS format)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%zu жол оқылды (DOS пішімінен түрлендірілді)"
 
 #: src/files.c:848
 #, c-format
 msgid "Read %zu line"
 msgid_plural "Read %zu lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%zu жол оқылды"
 
 #: src/files.c:893
 msgid "New File"
-msgstr "Fitxategi berria"
+msgstr "Жаңа файл"
 
 #: src/files.c:896
 #, c-format
 msgid "File \"%s\" not found"
-msgstr ""
+msgstr "«%s» файлы табылмады"
 
 #: src/files.c:903
 msgid "Reading from FIFO..."
-msgstr ""
+msgstr "FIFO-дан оқу..."
 
 #: src/files.c:931
 msgid "Reading..."
-msgstr ""
+msgstr "Оқу..."
 
 #: src/files.c:1038 src/text.c:2364 src/text.c:2629
 #, c-format
 msgid "Could not create pipe: %s"
-msgstr ""
+msgstr "Пайп жасау мүмкін болмады: %s"
 
 #: src/files.c:1079 src/files.c:1123 src/text.c:2178 src/text.c:2444
 #: src/text.c:2664
 #, c-format
 msgid "Could not fork: %s"
-msgstr ""
+msgstr "Процесті тармақтау (fork) мүмкін болмады: %s"
 
 #: src/files.c:1084
 msgid "Executing..."
-msgstr ""
+msgstr "Орындалуда..."
 
 #. TRANSLATORS: This one goes with Undid/Redid messages.
 #: src/files.c:1104 src/files.c:1154
 msgid "filtering"
-msgstr ""
+msgstr "сүзу"
 
 #: src/files.c:1147
 #, c-format
 msgid "Failed to open pipe: %s"
-msgstr ""
+msgstr "Пайпты ашу сәтсіз аяқталды: %s"
 
 #: src/files.c:1165
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Қате: %s"
 
 #: src/files.c:1170
 msgid "Piping failed"
-msgstr ""
+msgstr "Пайпқа жіберу сәтсіз аяқталды"
 
 #. TRANSLATORS: The next six messages are prompts.
 #: src/files.c:1219
 msgid "Command to execute in new buffer"
-msgstr ""
+msgstr "Жаңа буферде орындалатын команда"
 
 #: src/files.c:1222
 msgid "Command to execute"
-msgstr ""
+msgstr "Орындалатын команда"
 
 #: src/files.c:1230
 #, c-format
 msgid "File to read unconverted into new buffer [from %s]"
-msgstr ""
+msgstr "Жаңа буферге түрлендірусіз оқылатын файл [%s ішінен]"
 
 #: src/files.c:1233
 #, c-format
 msgid "File to read into new buffer [from %s]"
-msgstr ""
+msgstr "Жаңа буферге оқылатын файл [%s ішінен]"
 
 #: src/files.c:1238
 #, c-format
 msgid "File to insert unconverted [from %s]"
-msgstr ""
+msgstr "Түрлендірусіз кірістірілетін файл [%s ішінен]"
 
 #: src/files.c:1241
 #, c-format
 msgid "File to insert [from %s]"
-msgstr ""
+msgstr "Кірістірілетін файл [%s ішінен]"
 
 #: src/files.c:1510
 #, c-format
 msgid "Invalid operating directory: %s\n"
-msgstr ""
+msgstr "Жұмыс бумасы жарамсыз: %s\n"
 
 #: src/files.c:1559
 #, c-format
 msgid "Invalid backup directory: %s\n"
-msgstr ""
+msgstr "Архивтеу бумасы жарамсыз: %s\n"
 
 #: src/files.c:1614
 msgid "Making backup..."
-msgstr ""
+msgstr "Архивтеу..."
 
 #: src/files.c:1646
 msgid "Too many existing backup files"
-msgstr ""
+msgstr "Архивтік файлдар тым көп"
 
 #: src/files.c:1694
 msgid "Cannot read original file"
-msgstr ""
+msgstr "Түпнұсқа файлды оқу мүмкін емес"
 
 #: src/files.c:1726
 msgid "Cannot make regular backup"
-msgstr ""
+msgstr "Қалыпты архив көшірмесін жасау мүмкін емес"
 
 #: src/files.c:1727
 msgid "Trying again in your home directory"
-msgstr ""
+msgstr "Үй бумаңызда қайта байқап көруде"
 
 #: src/files.c:1739
 msgid "Cannot make backup"
-msgstr ""
+msgstr "Архив көшірмесін жасау мүмкін емес"
 
 #. TRANSLATORS: Try to keep this message at most 76 characters.
 #: src/files.c:1750
 msgid "Cannot make backup; continue and save actual file? "
 msgstr ""
+"Архив көшірмесін жасау мүмкін емес; жалғастырып, нақты файлды сақтау керек "
+"пе? "
 
 #. TRANSLATORS: The %s is the reason of failure.
 #: src/files.c:1755
 #, c-format
 msgid "Cannot make backup: %s"
-msgstr ""
+msgstr "Архив көшірмесін жасау мүмкін емес: %s"
 
 #: src/files.c:1791
 #, c-format
 msgid "Can't write outside of %s"
-msgstr "Ezin da %staz kanpo idatzi"
+msgstr "%s сыртына жазу мүмкін емес"
 
 #: src/files.c:1823 src/files.c:1885 src/files.c:1896 src/files.c:1917
 #: src/files.c:1934 src/files.c:1943 src/files.c:1971 src/files.c:1982
@@ -420,31 +418,31 @@ msgstr "Ezin da %staz kanpo idatzi"
 #: src/history.c:468 src/history.c:482 src/history.c:496 src/history.c:502
 #, c-format
 msgid "Error writing %s: %s"
-msgstr "Errorea %s idazten: %s"
+msgstr "%s жазу қатесі: %s"
 
 #: src/files.c:1837 src/files.c:1849 src/text.c:2553 src/text.c:2565
 #: src/text.c:2971
 #, c-format
 msgid "Error writing temp file: %s"
-msgstr "Errorea aldi baterako fitxategia idazten: %s"
+msgstr "Уақытша файлды жазу қатесі: %s"
 
 #: src/files.c:1856
 msgid "Writing to FIFO..."
-msgstr ""
+msgstr "FIFO-ға жазу..."
 
 #: src/files.c:1903
 msgid "Writing..."
-msgstr ""
+msgstr "Жазу..."
 
 #: src/files.c:1959 src/files.c:1967
 #, c-format
 msgid "Error reading temp file: %s"
-msgstr ""
+msgstr "Уақытша файлды оқу қатесі: %s"
 
 #. TRANSLATORS: This warns for data loss when the disk is full.
 #: src/files.c:2006
 msgid "File on disk has been truncated!"
-msgstr ""
+msgstr "Дискідегі файл қысқартылған!"
 
 #. TRANSLATORS: This is a suggestion to the user,
 #. * where "resume" means resuming from suspension.
@@ -452,973 +450,978 @@ msgstr ""
 #: src/files.c:2011
 msgid "Maybe ^T^Z, make room on disk, resume, then ^S^X"
 msgstr ""
+"Мүмкін ^T^Z арқылы дискіде орын босатып, жалғастырып, сосын ^S^X басу керек"
 
 #: src/files.c:2073
 #, c-format
 msgid "Wrote %zu line"
 msgid_plural "Wrote %zu lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%zu жол жазылды"
 
 #: src/files.c:2158
 msgid " [DOS Format]"
-msgstr "[DOS formatua]"
+msgstr " [DOS пішімі]"
 
 #: src/files.c:2159
 msgid " [Mac Format]"
-msgstr "[Mac formatua]"
+msgstr " [Mac пішімі]"
 
 #: src/files.c:2160
 msgid " [Backup]"
-msgstr " [Babeskopia]"
+msgstr " [Архивтік көшірме]"
 
 #. TRANSLATORS: The next six strings are prompts.
 #: src/files.c:2167
 msgid "Prepend Selection to File"
-msgstr "Gehitu aukeraketa fitxategiaren hasieran"
+msgstr "Ерекшеленгенді файл басына қосу"
 
 #: src/files.c:2168
 msgid "Append Selection to File"
-msgstr "Gehitu aukeraketa fitxategian"
+msgstr "Ерекшеленгенді файл соңына қосу"
 
 #: src/files.c:2169
 msgid "Write Selection to File"
-msgstr "Ahuatespena artxiboan idatzi"
+msgstr "Ерекшеленгенді файлға жазу"
 
 #. TRANSLATORS: Next three prompts are analogous to the above three.
 #: src/files.c:2172
 msgid "Prepend to File"
-msgstr ""
+msgstr "Файл басына қосу"
 
 #: src/files.c:2172
 msgid "Append to File"
-msgstr ""
+msgstr "Файл соңына қосу"
 
 #: src/files.c:2175
 msgid "Write to File"
-msgstr ""
+msgstr "Файлға жазу"
 
 #. TRANSLATORS: Concisely say the screen is too small.
 #: src/files.c:2256 src/nano.c:1098 src/nano.c:1107
 msgid "Too tiny"
-msgstr ""
+msgstr "Тым кішкентай"
 
 #. TRANSLATORS: Restricted mode forbids overwriting.
 #: src/files.c:2289
 msgid "File exists -- cannot overwrite"
-msgstr ""
+msgstr "Файл бар — үстінен жазу мүмкін емес"
 
 #: src/files.c:2298
 msgid "Save file under DIFFERENT NAME? "
-msgstr ""
+msgstr "Файлды БАСҚА АТАУМЕН сақтау керек пе? "
 
 #: src/files.c:2306
 #, c-format
 msgid "File \"%s\" exists; OVERWRITE? "
-msgstr ""
+msgstr "«%s» файлы бар; ҮСТІНЕН ЖАЗУ КЕРЕК ПЕ? "
 
 #: src/files.c:2330
 msgid "File on disk has changed"
-msgstr ""
+msgstr "Дискідегі файл өзгерді"
 
 #. TRANSLATORS: Try to keep this at most 76 characters.
 #: src/files.c:2333
 msgid "File was modified since you opened it; continue saving? "
-msgstr ""
+msgstr "Файл сіз ашқаннан бері өзгертілген; сақтауды жалғастыру керек пе? "
 
 #: src/files.c:2710
 msgid "(more)"
-msgstr "(gehiago)"
+msgstr "(тағы)"
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
 #: src/global.c:573
 msgid "Exit"
-msgstr "Irten"
+msgstr "Шығу"
 
 #: src/global.c:574
 msgid "Close"
-msgstr "Itxi"
+msgstr "Жабу"
 
 #. TRANSLATORS: The next long series of strings are shortcut descriptions;
 #. * they are best kept shorter than 56 characters, but may be longer.
 #: src/global.c:582
 msgid "Cancel the current function"
-msgstr "Uneko funtzioa bertan behera utzi"
+msgstr "Ағымдағы функциядан бас тарту"
 
 #: src/global.c:583
 msgid "Display this help text"
-msgstr "Erakutsi laguntza testu hau"
+msgstr "Осы көмек мәтінін көрсету"
 
 #: src/global.c:584
 msgid "Close the current buffer / Exit from nano"
-msgstr ""
+msgstr "Ағымдағы буферді жабу / nano-дан шығу"
 
 #: src/global.c:586
 msgid "Write the current buffer (or the marked region) to disk"
-msgstr ""
+msgstr "Ағымдағы буферді (немесе белгіленген аймақты) дискіге жазу"
 
 #: src/global.c:588
 msgid "Insert another file into current buffer (or into new buffer)"
-msgstr ""
+msgstr "Ағымдағы буферге (немесе жаңа буферге) басқа файлды кірістіру"
 
 #: src/global.c:590
 msgid "Search forward for a string or a regular expression"
-msgstr ""
+msgstr "Жолды немесе тұрақты өрнекті алға қарай іздеу"
 
 #: src/global.c:592
 msgid "Search backward for a string or a regular expression"
-msgstr ""
+msgstr "Жолды немесе тұрақты өрнекті артқа қарай іздеу"
 
 #: src/global.c:594
 msgid "Cut current line (or marked region) and store it in cutbuffer"
 msgstr ""
+"Ағымдағы жолды (немесе белгіленген аймақты) қиып алып, қиып алу буферінде "
+"сақтау"
 
 #: src/global.c:596
 msgid "Copy current line (or marked region) and store it in cutbuffer"
 msgstr ""
+"Ағымдағы жолды (немесе белгіленген аймақты) көшіріп алып, қиып алу буферінде "
+"сақтау"
 
 #: src/global.c:598
 msgid "Paste the contents of cutbuffer at current cursor position"
-msgstr ""
+msgstr "Қиып алу буферінің мазмұнын курсордың ағымдағы орнына кірістіру"
 
 #: src/global.c:599
 msgid "Display the position of the cursor"
-msgstr "Kurtsorearen posisioa erakutsi"
+msgstr "Курсордың орнын көрсету"
 
 #: src/global.c:601
 msgid "Invoke the spell checker, if available"
-msgstr "Deitu zuzentzaileari, eskuragarri badago"
+msgstr "Егер болса, емлені тексерушіні шақыру"
 
 #: src/global.c:603
 msgid "Replace a string or a regular expression"
-msgstr "Ordezkatu kate bat edo expresio erregular bat"
+msgstr "Жолды немесе тұрақты өрнекті алмастыру"
 
 #: src/global.c:604
 msgid "Go to line and column number"
-msgstr "Joan espezifikatutako lerro eta zutabera"
+msgstr "Жол мен баған нөміріне өту"
 
 #: src/global.c:606
 msgid "Go to the matching bracket"
-msgstr ""
+msgstr "Сәйкес жақшаға өту"
 
 #: src/global.c:607
 msgid "Mark text starting from the cursor position"
-msgstr ""
+msgstr "Мәтінді курсор орнынан бастап белгілеу"
 
 #: src/global.c:608
 msgid "Throw away the current line (or marked region)"
-msgstr ""
+msgstr "Ағымдағы жолды (немесе белгіленген аймақты) алып тастау"
 
 #: src/global.c:609
 msgid "Indent the current line (or marked lines)"
-msgstr ""
+msgstr "Ағымдағы жолдың (немесе белгіленген жолдардың) шегінісін арттыру"
 
 #: src/global.c:610
 msgid "Unindent the current line (or marked lines)"
-msgstr ""
+msgstr "Ағымдағы жолдың (немесе белгіленген жолдардың) шегінісін азайту"
 
 #: src/global.c:611
 msgid "Undo the last operation"
-msgstr ""
+msgstr "Соңғы әрекетті болдырмау"
 
 #: src/global.c:612
 msgid "Redo the last undone operation"
-msgstr ""
+msgstr "Болдырылмаған соңғы әрекетті қайталау"
 
 #: src/global.c:614
 msgid "Go back one character"
-msgstr ""
+msgstr "Бір таңбаға артқа өту"
 
 #: src/global.c:615
 msgid "Go forward one character"
-msgstr ""
+msgstr "Бір таңбаға алға өту"
 
 #: src/global.c:616
 msgid "Go back one word"
-msgstr ""
+msgstr "Бір сөзге артқа өту"
 
 #: src/global.c:617
 msgid "Go forward one word"
-msgstr ""
+msgstr "Бір сөзге алға өту"
 
 #: src/global.c:618
 msgid "Go to previous line"
-msgstr ""
+msgstr "Алдыңғы жолға өту"
 
 #: src/global.c:619
 msgid "Go to next line"
-msgstr ""
+msgstr "Келесі жолға өту"
 
 #: src/global.c:620
 msgid "Go to beginning of current line"
-msgstr ""
+msgstr "Ағымдағы жолдың басына өту"
 
 #: src/global.c:621
 msgid "Go to end of current line"
-msgstr ""
+msgstr "Ағымдағы жолдың соңына өту"
 
 #: src/global.c:622
 msgid "Go to previous block of text"
-msgstr ""
+msgstr "Мәтіннің алдыңғы блогына өту"
 
 #: src/global.c:623
 msgid "Go to next block of text"
-msgstr ""
+msgstr "Мәтіннің келесі блогына өту"
 
 #: src/global.c:626
 msgid "Go to beginning of paragraph; then of previous paragraph"
-msgstr ""
+msgstr "Абзацтың басына, сосын алдыңғы абзацқа өту"
 
 #: src/global.c:628
 msgid "Go just beyond end of paragraph; then of next paragraph"
-msgstr ""
+msgstr "Абзацтың соңына, сосын келесі абзацқа өту"
 
 #: src/global.c:631
 msgid "Go to first row in the viewport"
-msgstr ""
+msgstr "Көру аймағындағы бірінші жолға өту"
 
 #: src/global.c:632
 msgid "Go to last row in the viewport"
-msgstr ""
+msgstr "Көру аймағындағы соңғы жолға өту"
 
 #: src/global.c:633
 msgid "Center the line where the cursor is"
-msgstr ""
+msgstr "Курсор тұрған жолды ортаға келтіру"
 
 #: src/global.c:634
 msgid "Push the cursor line to the center, then top, then bottom"
-msgstr ""
+msgstr "Курсор жолын ортаға, сосын жоғарыға, сосын төменге жылжыту"
 
 #: src/global.c:636
 msgid "Go one screenful up"
-msgstr ""
+msgstr "Бір экранға жоғары өту"
 
 #: src/global.c:637
 msgid "Go one screenful down"
-msgstr ""
+msgstr "Бір экранға төмен өту"
 
 #: src/global.c:638
 msgid "Go to the first line of the file"
-msgstr ""
+msgstr "Файлдық бірінші жолына өту"
 
 #: src/global.c:639
 msgid "Go to the last line of the file"
-msgstr ""
+msgstr "Файлдық соңғы жолына өту"
 
 #: src/global.c:641
 msgid "Scroll the viewport a tabsize to the left"
-msgstr ""
+msgstr "Көру аймағын бір табуляция шамасына солға айналдыру"
 
 #: src/global.c:642
 msgid "Scroll the viewport a tabsize to the right"
-msgstr ""
+msgstr "Көру аймағын бір табуляция шамасына оңға айналдыру"
 
 #: src/global.c:646
 msgid "Scroll up one line without moving the cursor textually"
-msgstr ""
+msgstr "Курсорды мәтіндік түрде жылжытпай, бір жолға жоғары айналдыру"
 
 #: src/global.c:648
 msgid "Scroll down one line without moving the cursor textually"
-msgstr ""
+msgstr "Курсорды мәтіндік түрде жылжытпай, бір жолға төмен айналдыру"
 
 #: src/global.c:651
 msgid "Switch to the previous file buffer"
-msgstr "Aldatu aurreko fitxategi buffer-era"
+msgstr "Алдыңғы файл буферіне ауысу"
 
 #: src/global.c:652
 msgid "Switch to the next file buffer"
-msgstr "Aldatu hurrengo fitxategi buffer-era"
+msgstr "Келесі файл буферіне ауысу"
 
 #: src/global.c:654
 msgid "Insert the next keystroke verbatim"
-msgstr "Hurrengo tekla-sakatzea literalki sartu"
+msgstr "Келесі перне басылуын сол күйінде кірістіру"
 
 #: src/global.c:655
 msgid "Insert a tab at the cursor position (or indent marked lines)"
-msgstr ""
+msgstr "Курсор орнына таб кірістіру (немесе белгіленген жолдарды шегіндіру)"
 
 #: src/global.c:656
 msgid "Insert a newline at the cursor position"
-msgstr ""
+msgstr "Курсор орнына жаңа жол таңбасын кірістіру"
 
 #: src/global.c:657
 msgid "Delete the character under the cursor"
-msgstr "Kurtsorearen azpiko karaterea ezabatu"
+msgstr "Курсор астындағы таңбаны өшіру"
 
 #: src/global.c:659
 msgid "Delete the character to the left of the cursor"
-msgstr "Kurtsorearen ezkerraldeko karaterea ezabatu"
+msgstr "Курсордың сол жағындағы таңбаны өшіру"
 
 #: src/global.c:662
 msgid "Delete backward from cursor to word start"
-msgstr ""
+msgstr "Курсордан сөз басына дейін артқа қарай өшіру"
 
 #: src/global.c:664
 msgid "Delete forward from cursor to next word start"
-msgstr ""
+msgstr "Курсордан келесі сөз басына дейін алға қарай өшіру"
 
 #: src/global.c:666
 msgid "Cut from the cursor position to the end of the file"
-msgstr "Moztu kurtsoretik posiziotik lerro amaierara arte"
+msgstr "Курсор орнынан файл соңына дейін қиып алу"
 
 #: src/global.c:669
 msgid "Justify the current paragraph"
-msgstr "Uneko parrafoa justifikatu"
+msgstr "Ағымдағы абзацты шеттері бойынша туралау"
 
 #: src/global.c:670
 msgid "Justify the entire file"
-msgstr "Justifikatu lerro osoa"
+msgstr "Бүкіл файлды шеттері бойынша туралау"
 
 #: src/global.c:674
 msgid "Count the number of lines, words, and characters"
-msgstr "Zenbatu lerro, hitz eta karaktere kopurua"
+msgstr "Жолдар, сөздер және таңбалар санын есептеу"
 
 #: src/global.c:675
 msgid "Suspend the editor (return to the shell)"
-msgstr ""
+msgstr "Редакторды уақытша тоқтату (қоршамға оралу)"
 
 #: src/global.c:677
 msgid "Refresh (redraw) the current screen"
-msgstr "Freskatu uneko pantaila"
+msgstr "Ағымдағы экранды жаңарту (қайта сызу)"
 
 #: src/global.c:679
 msgid "Try and complete the current word"
-msgstr ""
+msgstr "Ағымдағы сөзді толықтыруға тырысу"
 
 #: src/global.c:683
 msgid "Comment/uncomment the current line (or marked lines)"
-msgstr ""
+msgstr "Ағымдағы жолды (немесе белгіленген жолдарды) түсіндірме жасау/алу"
 
 #: src/global.c:685
 msgid "Save file without prompting"
-msgstr ""
+msgstr "Файлды сұраусыз сақтау"
 
 #: src/global.c:686
 msgid "Search next occurrence backward"
-msgstr ""
+msgstr "Келесі сәйкестікті артқа қарай іздеу"
 
 #: src/global.c:687
 msgid "Search next occurrence forward"
-msgstr ""
+msgstr "Келесі сәйкестікті алға қарай іздеу"
 
 #: src/global.c:689
 msgid "Start/stop recording a macro"
-msgstr ""
+msgstr "Макросты жазуды бастау/тоқтату"
 
 #: src/global.c:690
 msgid "Run the last recorded macro"
-msgstr ""
+msgstr "Соңғы жазылған макросты орындау"
 
 #: src/global.c:691
 msgid "Place or remove an anchor at the current line"
-msgstr ""
+msgstr "Ағымдағы жолға зәкір қою немесе алып тастау"
 
 #: src/global.c:692
 msgid "Jump backward to the nearest anchor"
-msgstr ""
+msgstr "Жақын маңдағы зәкірге артқа қарай өту"
 
 #: src/global.c:693
 msgid "Jump forward to the nearest anchor"
-msgstr ""
+msgstr "Жақын маңдағы зәкірге алға қарай өту"
 
 #: src/global.c:695
 msgid "Toggle the case sensitivity of the search"
-msgstr ""
+msgstr "Іздеу кезіндегі регистрге сезімталдықты қосу/сөндіру"
 
 #: src/global.c:696
 msgid "Reverse the direction of the search"
-msgstr ""
+msgstr "Іздеу бағытын өзгерту"
 
 #: src/global.c:697
 msgid "Toggle the use of regular expressions"
-msgstr ""
+msgstr "Тұрақты өрнектерді қолдануды қосу/сөндіру"
 
 #: src/global.c:699
 msgid "Recall the previous search/replace string"
-msgstr ""
+msgstr "Алдыңғы іздеу/алмастыру жолын қайтару"
 
 #: src/global.c:700
 msgid "Recall the next search/replace string"
-msgstr ""
+msgstr "Келесі іздеу/алмастыру жолын қайтару"
 
 #: src/global.c:703
 msgid "Toggle the use of DOS format"
-msgstr ""
+msgstr "DOS пішімін қолдануды қосу/сөндіру"
 
 #: src/global.c:704
 msgid "Toggle the use of Mac format"
-msgstr ""
+msgstr "Mac пішімін қолдануды қосу/сөндіру"
 
 #: src/global.c:705
 msgid "Toggle appending"
-msgstr ""
+msgstr "Соңына қосуды қосу/сөндіру"
 
 #: src/global.c:706
 msgid "Toggle prepending"
-msgstr ""
+msgstr "Басына қосуды қосу/сөндіру"
 
 #: src/global.c:707
 msgid "Toggle backing up of the original file"
-msgstr ""
+msgstr "Түпнұсқа файлды архивтеуді қосу/сөндіру"
 
 #: src/global.c:708
 msgid "Execute a function or an external command"
-msgstr ""
+msgstr "Функцияны немесе сыртқы команданы орындау"
 
 #: src/global.c:710
 msgid "Pipe the current buffer (or marked region) to the command"
 msgstr ""
+"Ағымдағы буферді (немесе белгіленген аймақты) командаға пайп арқылы жіберу"
 
 #: src/global.c:712
 msgid "Recall the previous command"
-msgstr ""
+msgstr "Алдыңғы команданы қайтару"
 
 #: src/global.c:713
 msgid "Recall the next command"
-msgstr ""
+msgstr "Келесі команданы қайтару"
 
 #: src/global.c:715
 msgid "Do not convert from DOS/Mac format"
-msgstr ""
+msgstr "DOS/Mac пішімінен түрлендірмеу"
 
 #: src/global.c:718
 msgid "Toggle the use of a new buffer"
-msgstr ""
+msgstr "Жаңа буферді қолдануды қосу/сөндіру"
 
 #: src/global.c:720
 msgid "Close buffer without saving it"
-msgstr ""
+msgstr "Буферді сақтамай жабу"
 
 #: src/global.c:722
 msgid "Go to file browser"
-msgstr "Fitxategi nabigatzailera joan"
+msgstr "Файл браузеріне өту"
 
 #: src/global.c:723
 msgid "Exit from the file browser"
-msgstr "Irten fitxategi nabigatzailetik"
+msgstr "Файл браузерінен шығу"
 
 #: src/global.c:724
 msgid "Go to the first file in the list"
-msgstr "Joan zerrendako lehen fitxategira"
+msgstr "Тізімдегі бірінші файлға өту"
 
 #: src/global.c:725
 msgid "Go to the last file in the list"
-msgstr "Joan zerrendako azken fitxategira"
+msgstr "Тізімдегі соңғы файлға өту"
 
 #: src/global.c:726
 msgid "Go to the previous file in the list"
-msgstr ""
+msgstr "Тізімдегі алдыңғы файлға өту"
 
 #: src/global.c:727
 msgid "Go to the next file in the list"
-msgstr ""
+msgstr "Тізімдегі келесі файлға өту"
 
 #: src/global.c:729
 msgid "Go to lefthand column"
-msgstr ""
+msgstr "Сол жақ бағанға өту"
 
 #: src/global.c:730
 msgid "Go to righthand column"
-msgstr ""
+msgstr "Оң жақ бағанға өту"
 
 #: src/global.c:731
 msgid "Go to first row in this column"
-msgstr ""
+msgstr "Осы бағандағы бірінші жолға өту"
 
 #: src/global.c:732
 msgid "Go to last row in this column"
-msgstr ""
+msgstr "Осы бағандағы соңғы жолға өту"
 
 #: src/global.c:734
 msgid "Search forward for a string"
-msgstr ""
+msgstr "Жолды алға қарай іздеу"
 
 #: src/global.c:735
 msgid "Search backward for a string"
-msgstr ""
+msgstr "Жолды артқа қарай іздеу"
 
 #: src/global.c:736
 msgid "Refresh the file list"
-msgstr ""
+msgstr "Файлдар тізімін жаңарту"
 
 #: src/global.c:737
 msgid "Go to directory"
-msgstr "Joan direktorio honetara"
+msgstr "Бумаға өту"
 
 #: src/global.c:740
 msgid "Invoke the linter, if available"
-msgstr ""
+msgstr "Егер болса, линтерді шақыру"
 
 #: src/global.c:741
 msgid "Go to previous linter msg"
-msgstr ""
+msgstr "Линтердің алдыңғы хабарламасына өту"
 
 #: src/global.c:742
 msgid "Go to next linter msg"
-msgstr ""
+msgstr "Линтердің келесі хабарламасына өту"
 
 #: src/global.c:746
 msgid "Invoke a program to format/arrange/manipulate the buffer"
-msgstr ""
+msgstr "Буферді пішімдеу/реттеу/өңдеу үшін бағдарламаны шақыру"
 
 #. TRANSLATORS: Try to keep the next thirteen strings at most 10 characters.
 #: src/global.c:764
 msgid "Help"
-msgstr ""
+msgstr "Көмек"
 
 #: src/global.c:768 src/prompt.c:711
 msgid "Cancel"
-msgstr "Bertan behera utzi"
+msgstr "Бас тарту"
 
 #: src/global.c:790
 msgid "Write Out"
-msgstr ""
+msgstr "Жазу"
 
 #: src/global.c:798
 msgid "Read File"
-msgstr "Artxiboa irakurri"
+msgstr "Файлды оқу"
 
 #: src/global.c:802 src/global.c:841
 msgid "Justify"
-msgstr "Justifikatu"
+msgstr "Туралау"
 
 #: src/global.c:808 src/global.c:900 src/global.c:1116
 msgid "Refresh"
-msgstr "Freskatu"
+msgstr "Жаңарту"
 
 #: src/global.c:813 src/global.c:903
 msgid "Where Is"
-msgstr "Bilatu"
+msgstr "Қайда"
 
 #: src/global.c:816 src/global.c:877
 msgid "Replace"
-msgstr "Ordezkatu"
+msgstr "Алмастыру"
 
 #: src/global.c:829
 msgid "Cut"
-msgstr ""
+msgstr "Қиып алу"
 
 #: src/global.c:832
 msgid "Paste"
-msgstr ""
+msgstr "Кірістіру"
 
 #: src/global.c:837 src/global.c:1108
 msgid "Execute"
-msgstr ""
+msgstr "Орындау"
 
 #. TRANSLATORS: This refers to the position of the cursor.
 #: src/global.c:847
 msgid "Location"
-msgstr ""
+msgstr "Орналасуы"
 
 #: src/global.c:853 src/global.c:1018 src/global.c:1158
 msgid "Go To Line"
-msgstr "Joan lerro hontara"
+msgstr "Жолға өту"
 
 #. TRANSLATORS: Try to keep the next ten strings at most 12 characters.
 #: src/global.c:859
 msgid "Undo"
-msgstr ""
+msgstr "Болдырмау"
 
 #: src/global.c:861
 msgid "Redo"
-msgstr ""
+msgstr "Қайталау"
 
 #: src/global.c:864
 msgid "Set Mark"
-msgstr ""
+msgstr "Белгі қою"
 
 #: src/global.c:866 src/global.c:1052
 msgid "Copy"
-msgstr ""
+msgstr "Көшіру"
 
 #: src/global.c:870
 msgid "Case Sens"
-msgstr "May/Min"
+msgstr "Регистр"
 
 #: src/global.c:872
 msgid "Reg.exp."
-msgstr ""
+msgstr "Тұр. өрн."
 
 #: src/global.c:874
 msgid "Backwards"
-msgstr "Atzeruntza"
+msgstr "Артқа қарай"
 
 #: src/global.c:879
 msgid "No Replace"
-msgstr "Ez ordezkatu"
+msgstr "Алмастырмау"
 
 #: src/global.c:883 src/global.c:888
 msgid "Older"
-msgstr ""
+msgstr "Ескірек"
 
 #: src/global.c:885 src/global.c:890
 msgid "Newer"
-msgstr ""
+msgstr "Жаңалау"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
 #: src/global.c:897
 msgid "Go To Dir"
-msgstr "Joan direktorio honetara"
+msgstr "Бумаға өту"
 
 #. TRANSLATORS: This starts a backward search.
 #: src/global.c:905 src/global.c:924
 msgid "Where Was"
-msgstr ""
+msgstr "Қайда болды"
 
 #. TRANSLATORS: This refers to searching the preceding occurrence.
 #: src/global.c:908 src/global.c:928
 msgid "Previous"
-msgstr ""
+msgstr "Алдыңғы"
 
 #: src/global.c:910 src/global.c:930
 msgid "Next"
-msgstr ""
+msgstr "Келесі"
 
 #: src/global.c:920
 msgid "To Bracket"
-msgstr ""
+msgstr "Жақшаға"
 
 #. TRANSLATORS: This means move the cursor one character back.
 #: src/global.c:935 src/global.c:940
 msgid "Back"
-msgstr "Atzean"
+msgstr "Артқа"
 
 #: src/global.c:937 src/global.c:942
 msgid "Forward"
-msgstr "Aurrean"
+msgstr "Алға"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
 #: src/global.c:948
 msgid "Prev Word"
-msgstr "Aurreko hitza"
+msgstr "Алд. сөз"
 
 #: src/global.c:950
 msgid "Next Word"
-msgstr "Hurrengo hitza"
+msgstr "Кел. сөз"
 
 #. TRANSLATORS: These two mean: "to beginning of line", "to end of line".
 #: src/global.c:954
 msgid "Home"
-msgstr "Etxea"
+msgstr "Басына"
 
 #: src/global.c:956
 msgid "End"
-msgstr "Bukaera"
+msgstr "Соңына"
 
 #. TRANSLATORS: Try to keep the next two strings at most 12 characters.
 #: src/global.c:960
 msgid "Scroll Left"
-msgstr ""
+msgstr "Солға айн."
 
 #: src/global.c:962
 msgid "Scroll Right"
-msgstr ""
+msgstr "Оңға айн."
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
 #: src/global.c:967
 msgid "Prev Line"
-msgstr "Aurreko lerroa"
+msgstr "Алд. жол"
 
 #: src/global.c:969
 msgid "Next Line"
-msgstr "Hurrengo lerroa"
+msgstr "Кел. жол"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
 #: src/global.c:973
 msgid "Scroll Up"
-msgstr "Korritu gora"
+msgstr "Жоғары айн."
 
 #: src/global.c:975
 msgid "Scroll Down"
-msgstr "Korritu behera"
+msgstr "Төмен айн."
 
 #: src/global.c:979
 msgid "Prev Block"
-msgstr ""
+msgstr "Алд. блок"
 
 #: src/global.c:981
 msgid "Next Block"
-msgstr ""
+msgstr "Кел. блок"
 
 #. TRANSLATORS: Try to keep these two strings at most 16 characters.
 #: src/global.c:985
 msgid "Begin of Paragr."
-msgstr ""
+msgstr "Абзац басы"
 
 #: src/global.c:987
 msgid "End of Paragraph"
-msgstr ""
+msgstr "Абзац соңы"
 
 #: src/global.c:992 src/global.c:1224
 msgid "Top Row"
-msgstr ""
+msgstr "Жоғарғы жол"
 
 #: src/global.c:994 src/global.c:1226
 msgid "Bottom Row"
-msgstr ""
+msgstr "Төменгі жол"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
 #: src/global.c:999 src/global.c:1209
 msgid "Prev Page"
-msgstr "Aurreko orrialdea"
+msgstr "Алд. бет"
 
 #: src/global.c:1001 src/global.c:1211
 msgid "Next Page"
-msgstr "Hurrengo orrialdea"
+msgstr "Кел. бет"
 
 #: src/global.c:1004
 msgid "First Line"
-msgstr "Lehen lerroa"
+msgstr "Бірінші жол"
 
 #: src/global.c:1006
 msgid "Last Line"
-msgstr "Azken lerroa"
+msgstr "Соңғы жол"
 
 #. TRANSLATORS: Try to keep these two strings at most 15 characters.
 #: src/global.c:1011
 msgid "Prev File"
-msgstr ""
+msgstr "Алд. файл"
 
 #: src/global.c:1013
 msgid "Next File"
-msgstr "Hurrengo fitxategia"
+msgstr "Кел. файл"
 
 #. TRANSLATORS: The next four strings are names of keyboard keys.
 #: src/global.c:1023
 msgid "Tab"
-msgstr "Tab"
+msgstr "Таб"
 
 #: src/global.c:1025
 msgid "Enter"
-msgstr "Sartu"
+msgstr "Енгізу"
 
 #: src/global.c:1028
 msgid "Backspace"
-msgstr "Atzera tekla"
+msgstr "Backspace"
 
 #: src/global.c:1030
 msgid "Delete"
-msgstr "Ezabatu"
+msgstr "Өшіру"
 
 #. TRANSLATORS: The next two strings refer to deleting words.
 #: src/global.c:1035
 msgid "Chop Left"
-msgstr ""
+msgstr "Сол жақты кесу"
 
 #: src/global.c:1037
 msgid "Chop Right"
-msgstr ""
+msgstr "Оң жақты кесу"
 
 #: src/global.c:1039 src/global.c:1192
 msgid "Cut Till End"
-msgstr ""
+msgstr "Соңына дейін қиып алу"
 
 #: src/global.c:1044 src/global.c:1149
 msgid "Full Justify"
-msgstr ""
+msgstr "Толық туралау"
 
 #: src/global.c:1049
 msgid "Word Count"
-msgstr "Hitz kopurua"
+msgstr "Сөздер саны"
 
 #: src/global.c:1056
 msgid "Verbatim"
-msgstr ""
+msgstr "Сол күйінде"
 
 #: src/global.c:1063
 msgid "Indent"
-msgstr ""
+msgstr "Шегініс"
 
 #: src/global.c:1065
 msgid "Unindent"
-msgstr ""
+msgstr "Шегіністі алу"
 
 #: src/global.c:1069
 msgid "Comment Lines"
-msgstr ""
+msgstr "Жолдарға түсінд."
 
 #: src/global.c:1073
 msgid "Complete"
-msgstr ""
+msgstr "Толықтыру"
 
 #: src/global.c:1078
 msgid "Record"
-msgstr ""
+msgstr "Жазу"
 
 #: src/global.c:1080
 msgid "Run Macro"
-msgstr ""
+msgstr "Макросты орындау"
 
 #. TRANSLATORS: This refers to deleting a line or marked region.
 #: src/global.c:1084
 msgid "Zap"
-msgstr ""
+msgstr "Жою"
 
 #: src/global.c:1087
 msgid "Anchor"
-msgstr ""
+msgstr "Зәкір"
 
 #: src/global.c:1089
 msgid "Up to anchor"
-msgstr ""
+msgstr "Зәкірге жоғары"
 
 #: src/global.c:1091
 msgid "Down to anchor"
-msgstr ""
+msgstr "Зәкірге төмен"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
 #: src/global.c:1095 src/global.c:1141
 msgid "Spell Check"
-msgstr ""
+msgstr "Емлені тексеру"
 
 #: src/global.c:1099 src/global.c:1145
 msgid "Linter"
-msgstr ""
+msgstr "Линтер"
 
 #: src/global.c:1103 src/global.c:1153
 msgid "Formatter"
-msgstr ""
+msgstr "Пішімдеуші"
 
 #: src/global.c:1111 src/global.c:1195
 msgid "Suspend"
-msgstr ""
+msgstr "Уақытша тоқтату"
 
 #: src/global.c:1120
 msgid "Center"
-msgstr ""
+msgstr "Ортаға"
 
 #: src/global.c:1122
 msgid "Cycle"
-msgstr ""
+msgstr "Цикл"
 
 #: src/global.c:1126
 msgid "Save"
-msgstr ""
+msgstr "Сақтау"
 
 #: src/global.c:1136
 msgid "Pipe Text"
-msgstr ""
+msgstr "Мәтін пайпы"
 
 #: src/global.c:1160
 msgid "Go To Text"
-msgstr "Joan testu hontara"
+msgstr "Мәтінге өту"
 
 #: src/global.c:1165
 msgid "DOS Format"
-msgstr "DOS formatua"
+msgstr "DOS пішімі"
 
 #: src/global.c:1167
 msgid "Mac Format"
-msgstr "Mac formatua"
+msgstr "Mac пішімі"
 
 #: src/global.c:1175
 msgid "Append"
-msgstr "Gehitu"
+msgstr "Соңына қосу"
 
 #: src/global.c:1177
 msgid "Prepend"
-msgstr "Gehitu"
+msgstr "Басына қосу"
 
 #: src/global.c:1180
 msgid "Backup File"
-msgstr "Babeskopia fitxategia"
+msgstr "Архивтік файл"
 
 #: src/global.c:1184
 msgid "No Conversion"
-msgstr ""
+msgstr "Түрлендірусіз"
 
 #: src/global.c:1189
 msgid "Execute Command"
-msgstr "Exekutatu komandoa"
+msgstr "Команданы орындау"
 
 #: src/global.c:1199
 msgid "Discard buffer"
-msgstr ""
+msgstr "Буферден бас тарту"
 
 #. TRANSLATORS: This invokes the file browser.
 #: src/global.c:1206
 msgid "Browse"
-msgstr ""
+msgstr "Шолу"
 
 #: src/global.c:1214
 msgid "First File"
-msgstr "Lehen fitxategia"
+msgstr "Бірінші файл"
 
 #: src/global.c:1216
 msgid "Last File"
-msgstr "Azken Fitxategia"
+msgstr "Соңғы файл"
 
 #: src/global.c:1220
 msgid "Left Column"
-msgstr ""
+msgstr "Сол жақ баған"
 
 #: src/global.c:1222
 msgid "Right Column"
-msgstr ""
+msgstr "Оң жақ баған"
 
 #. TRANSLATORS: The next two strings may be up to 37 characters each.
 #: src/global.c:1233
 msgid "Previous Linter message"
-msgstr ""
+msgstr "Линтердің алдыңғы хабарламасы"
 
 #: src/global.c:1235
 msgid "Next Linter message"
-msgstr ""
+msgstr "Линтердің келесі хабарламасы"
 
 #. TRANSLATORS: The next thirteen strings are toggle descriptions;
 #. * they are best kept shorter than 40 characters, but may be longer.
 #: src/global.c:1629
 msgid "Hidden interface"
-msgstr ""
+msgstr "Жасырын интерфейс"
 
 #: src/global.c:1631
 msgid "Help mode"
-msgstr "Laguntza modua"
+msgstr "Көмек режимі"
 
 #: src/global.c:1633
 msgid "Constant cursor position display"
-msgstr "Kurtzorearen posizioa bistaratu beti"
+msgstr "Курсор орнын тұрақты көрсету"
 
 #: src/global.c:1635
 msgid "Soft wrapping of overlong lines"
-msgstr ""
+msgstr "Ұзын жолдарды жұмсақ тасымалдау"
 
 #: src/global.c:1637
 msgid "Line numbering"
-msgstr ""
+msgstr "Жолдарды нөмірлеу"
 
 #: src/global.c:1639
 msgid "Whitespace display"
-msgstr "Erakutsi txuriguneak"
+msgstr "Бос орындарды көрсету"
 
 #: src/global.c:1641
 msgid "Color syntax highlighting"
-msgstr "Kolore sintaxi nabarmentzea"
+msgstr "Синтаксисті түрлі-түсті белгілеу"
 
 #: src/global.c:1643
 msgid "Smart home key"
-msgstr "'Smart home' tekla"
+msgstr "Ақылды Home пернесі"
 
 #: src/global.c:1645
 msgid "Auto indent"
-msgstr "Auto indentatu"
+msgstr "Автоматты шегініс"
 
 #: src/global.c:1647
 msgid "Cut to end"
-msgstr "Lerroaren bukaeraraino ebaki"
+msgstr "Соңына дейін қиып алу"
 
 #: src/global.c:1649
 msgid "Hard wrapping of overlong lines"
-msgstr ""
+msgstr "Ұзын жолдарды қатаң тасымалдау"
 
 #: src/global.c:1651
 msgid "Conversion of typed tabs to spaces"
-msgstr "Bihurtu idatzitako tabulazioak zuriuneetara"
+msgstr "Терілген табтарды бос орындарға түрлендіру"
 
 #: src/global.c:1653
 msgid "Mouse support"
-msgstr "Xagu euskarria"
+msgstr "Тышқанды қолдау"
 
 #: src/help.c:54
 msgid ""
@@ -1432,14 +1435,14 @@ msgid ""
 "prompt.  Hitting Enter without entering any text will perform the previous "
 "search.  "
 msgstr ""
-"Bilaketa komandoen laguntza testua\n"
+"Іздеу командасының көмек мәтіні\n"
 "\n"
-" Sartu bilatu nahi dituzun hitz edo karaktereak, eta sakatu enter.  Pareko "
-"zerbait aurkitzen badu gertuen aurkitu duen kateraino eramango zaitu.\n"
+" Іздегіңіз келетін сөздерді немесе таңбаларды енгізіп, Enter басыңыз. Егер "
+"сіз енгізген мәтін табылса, экран ең жақын сәйкестік орнына дейін "
+"жаңартылады.\n"
 "\n"
-" Aurreko bilaketa kortxete artean erakutsiko da 'Bilaketa:'-ren ondoren.  "
-"Enter sakatuz karaktere berririk sartu gabe aurreko bilaketa berriz burutuko "
-"du.  "
+" Алдыңғы іздеу жолы іздеу сұрауынан кейін жақша ішінде көрсетіледі. Ешқандай "
+"мәтін енгізбей Enter басу алдыңғы іздеуді орындайды.  "
 
 #: src/help.c:63
 msgid ""
@@ -1449,10 +1452,10 @@ msgid ""
 " The following function keys are available in Search mode:\n"
 "\n"
 msgstr ""
-"Testurik aukeratua baduzu markarekin eta ondoren bilatu edo ordezkatzen "
-"baduzu, aukeratutako testuan egingo da.\n"
+"Егер сіз белгі арқылы мәтінді таңдап, содан кейін алмастыру үшін іздесеңіз, "
+"тек таңдалған мәтіндегі сәйкестіктер алмастырылады.\n"
 "\n"
-" Honako funtzio teklak daude Bilaketa moduan:\n"
+" Іздеу режимінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:69
@@ -1463,12 +1466,19 @@ msgid ""
 "prompt, and press Enter.\n"
 "\n"
 msgstr ""
+"=== Алмастыру ===\n"
+"\n"
+" Алдыңғы сұрауда тергеніңізді алмастыруы тиіс таңбаларды теріп, Enter "
+"басыңыз.\n"
+"\n"
 
 #: src/help.c:72 src/help.c:136 src/help.c:177
 msgid ""
 " The following function keys are available at this prompt:\n"
 "\n"
 msgstr ""
+" Бұл сұрауда келесі функциялық пернелер қолжетімді:\n"
+"\n"
 
 #: src/help.c:76
 msgid ""
@@ -1481,12 +1491,12 @@ msgid ""
 " The following function keys are available in Go To Line mode:\n"
 "\n"
 msgstr ""
-"Joan lerrora laguntza testua\n"
+"Жолға өту командасының көмек мәтіні\n"
 "\n"
-" Sartu joan nahi duzun lerroaren zenbakia eta sakatu enter.  Sartutakoa "
-"baina lerro gutxiago badaude fitxategiko azkeneko lerroan jarriko zaitu.\n"
+" Өткіңіз келетін жол нөмірін енгізіп, Enter басыңыз. Егер файлдағы жолдар "
+"саны сіз енгізген нөмірден аз болса, сіз файлдың соңғы жолына бағытталасыз.\n"
 "\n"
-" Honako funtzio teklak daude joan lerrora moduan:\n"
+" Жолға өту режимінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:85
@@ -1501,16 +1511,16 @@ msgid ""
 "Meta-F toggle, or a nanorc file, inserting a file will cause it to be loaded "
 "into a separate buffer (use Meta-< and > to switch between file buffers).  "
 msgstr ""
-"Txertatu fitxategia laguntza testua\n"
+"Файлды кірістіру көмек мәтіні\n"
 "\n"
-" Idatzi buffer-ean uneko kurtsorearen posizioan txertatu nahi duzun "
-"fitxategiaren izena.\n"
+" Ағымдағы курсор орнындағы файл буферіне кірістірілетін файлдың атын "
+"теріңіз.\n"
 "\n"
-" Nano buffer anintz erabiltzeko euskarriarekin konpialtu baduzu, eta buffer "
-"anitzak aktibatuak badituzu -F edo --multibuffer komando-banderak erabiliz, "
-"Meta-F, edo nanorc fitxategi baten bidez, fitxategi berri bat txertatzeak "
-"beste buffer batean kargatzen du (erabili Meta-< edo > buffer-ez "
-"aldatzeko).  "
+" Егер сіз nano-ны бірнеше файл буферін қолдаумен құрастырсаңыз және -F "
+"немесе --multibuffer командалық жол тулары, Meta-F ауыстырғышы немесе nanorc "
+"файлы арқылы бірнеше файл буферін іске қоссаңыз, файлды кірістіру оның бөлек "
+"буферге жүктелуіне әкеледі (файл буферлері арасында ауысу үшін Meta-< және > "
+"қолданыңыз).  "
 
 #: src/help.c:94
 msgid ""
@@ -1520,10 +1530,10 @@ msgid ""
 " The following function keys are available in Insert File mode:\n"
 "\n"
 msgstr ""
-"Beste buffer garbi bat behar baduzu, ez sartu fitxategi izenik, edo idatzi "
-"existitzen ez den fitxategi izen bat eta sakatu enter.\n"
+"Егер сізге тағы бір бос буфер керек болса, файл атын енгізбеңіз немесе "
+"сұрауда жоқ файл атын теріп, Enter басыңыз.\n"
 "\n"
-" Honako funtzio teklak daude eskuragarri fitxategi txertaketa moduan:\n"
+" Файлды кірістіру режимінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:100
@@ -1541,15 +1551,17 @@ msgid ""
 " The following function keys are available in Write File mode:\n"
 "\n"
 msgstr ""
-"Fitxategi idazketarako laguntza testua\n"
+"Файлды жазу көмек мәтіні\n"
 "\n"
-" Idatzi uneko fitxategiaren izena eta sakatu enter gordetzeko.\n"
+" Ағымдағы файлды сақтағыңыз келетін атауды теріп, файлды сақтау үшін Enter "
+"басыңыз.\n"
 "\n"
-" Testuaren zatiren bat markatua badaukazu, galdetu egingo zaizu ea zati hori "
-"fitxategi ezberdin batean gorde nahi duzun.  Gainidazketa arazoak ekiditeko "
-"ez da izaten uneko fitxategiaren izena lehenetsia modu hontan.\n"
+" Егер сіз белгі арқылы мәтінді таңдасаңыз, сізге тек таңдалған бөлікті бөлек "
+"файлға сақтау ұсынылады. Ағымдағы файлды оның тек бір бөлігімен кездейсоқ "
+"қайта жазып алу қаупін азайту үшін, бұл режимде ағымдағы файл атауы бастапқы "
+"мән болып табылмайды.\n"
 "\n"
-" Honako funtzio teklak daude eskuragarri fitxategia idatzi moduan:\n"
+" Файлды жазу режимінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:114
@@ -1565,16 +1577,16 @@ msgid ""
 " The following function keys are available in the file browser:\n"
 "\n"
 msgstr ""
-"Fitxategi nabigatzailearen laguntza testua\n"
+"Файл браузерінің көмек мәтіні\n"
 "\n"
-" Fitxategi arakatzailea direktorio estrukturatik nabigatzeko eta bertako "
-"idazteko edo irakurtzeko fitxategi bat aukeratzeko erabiltzen da.  Norabide "
-"teklak edo Gor/Ber-Orria erabili daitezke nabigatzeko, eta S edo Enter "
-"fitxategia aukeratzeko edo aukeratutako direktoriora sartzeko.  Maila bat "
-"gora egiteko, aukeratu \"..\" izena duen direktorioa fitxategi zerrendaren "
-"goian.\n"
+" Файл браузері оқу немесе жазу үшін файлды таңдау мақсатында бума құрылымын "
+"көрнекі түрде шолу үшін қолданылады. Файлдарды шолу үшін бағдарша пернелерін "
+"немесе Page Up/Down қолдануға болады, ал таңдалған файлды таңдау немесе "
+"таңдалған бумаға кіру үшін S немесе Enter басыңыз. Бір деңгейге жоғары "
+"көтерілу үшін файлдар тізімінің жоғарғы жағындағы «..» деп аталатын буманы "
+"таңдаңыз.\n"
 "\n"
-" Honako funtzio teklak daude eskuragarri fitxategi nabigatzaile moduan:\n"
+" Файл браузерінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:127
@@ -1590,6 +1602,15 @@ msgid ""
 "search.\n"
 "\n"
 msgstr ""
+"Браузердегі іздеу командасының көмек мәтіні\n"
+"\n"
+" Іздегіңіз келетін сөздерді немесе таңбаларды енгізіп, Enter басыңыз. Егер "
+"сіз енгізген мәтін табылса, экран ең жақын сәйкестік орнына дейін "
+"жаңартылады.\n"
+"\n"
+" Алдыңғы іздеу жолы іздеу сұрауынан кейін жақша ішінде көрсетіледі. Ешқандай "
+"мәтін енгізбей Enter басу алдыңғы іздеуді орындайды.\n"
+"\n"
 
 #: src/help.c:140
 msgid ""
@@ -1603,15 +1624,14 @@ msgid ""
 " The following function keys are available in Browser Go To Directory mode:\n"
 "\n"
 msgstr ""
-"Nabigatzaileko joan direktoriora laguntza testua\n"
+"Браузердегі бумаға өту көмек мәтіні\n"
 "\n"
-" Sartu nabigatu nahi duzun direktorioaren izena.\n"
+" Шолғыңыз келетін буманың атын енгізіңіз.\n"
 "\n"
-" Tab betetzea ezgaitu ez bada, TAB tekla erabili dezakezu automatikoki "
-"betetzeko direktorio izena.\n"
+" Егер таб арқылы толықтыру сөндірілмеген болса, бума атын автоматты түрде "
+"(тырысып) толықтыру үшін Tab пернесін қолдануға болады.\n"
 "\n"
-" Honako funtzio teklak gaituak daude Nabigatzaileko joan direktoriora "
-"moduan:\n"
+" Браузердегі бумаға өту режимінде келесі функциялық пернелер қолжетімді:\n"
 "\n"
 
 #: src/help.c:153
@@ -1627,6 +1647,16 @@ msgid ""
 " The following function keys are available in Spell Check mode:\n"
 "\n"
 msgstr ""
+"Емлені тексеру көмек мәтіні\n"
+"\n"
+" Емлені тексеруші ағымдағы файлдағы барлық мәтіннің емлесін тексереді. "
+"Белгісіз сөз кездескенде, ол белгіленіп, оны алмастыруды түзетуге болады. "
+"Содан кейін ол ағымдағы файлдағы берілген қате жазылған сөздің әрбір "
+"кездесуін немесе, егер сіз мәтінді белгімен таңдасаңыз, таңдалған мәтіндегі "
+"сәйкестіктерді алмастыруды сұрайды.\n"
+"\n"
+" Емлені тексеру режимінде келесі функциялық пернелер қолжетімді:\n"
+"\n"
 
 #: src/help.c:168
 msgid ""
@@ -1637,6 +1667,12 @@ msgid ""
 "by '|' (the pipe symbol), the current contents of the buffer (or marked "
 "region) will be piped to the command.  "
 msgstr ""
+"Команданы орындау көмек мәтіні\n"
+"\n"
+" Бұл режим қоршам арқылы орындалған команданың шығысын ағымдағы буферге "
+"(немесе жаңа буферге) кірістіруге мүмкіндік береді. Егер команданың алдында "
+"«|» (пайп таңбасы) тұрса, буфердің ағымдағы мазмұны (немесе белгіленген "
+"аймақ) командаға пайп арқылы жіберіледі.  "
 
 #: src/help.c:174
 msgid ""
@@ -1646,6 +1682,12 @@ msgid ""
 "put the editor to sleep.\n"
 "\n"
 msgstr ""
+"Егер сізге жай ғана басқа бос буфер керек болса, ешқандай команда "
+"енгізбеңіз.\n"
+"\n"
+" Сондай-ақ, төрт сайманның бірін таңдауға, буфердің үлкен бөлігін қиып алуға "
+"немесе редакторды ұйқы режиміне қоюға болады.\n"
+"\n"
 
 #: src/help.c:180
 msgid ""
@@ -1656,12 +1698,20 @@ msgid ""
 "PageDown you can switch to earlier and later messages.\n"
 "\n"
 msgstr ""
+"=== Линтер ===\n"
+"\n"
+" Бұл режимде күй жолағында қате хабарламасы немесе ескерту көрсетіледі және "
+"курсор файлдағы тиісті орынға қойылады. PageUp және PageDown пернелерімен "
+"алдыңғы және кейінгі хабарламаларға ауыса аласыз.\n"
+"\n"
 
 #: src/help.c:185
 msgid ""
 " The following function keys are available in Linter mode:\n"
 "\n"
 msgstr ""
+" Линтер режимінде келесі функциялық пернелер қолжетімді:\n"
+"\n"
 
 #: src/help.c:192
 msgid ""
@@ -1674,14 +1724,14 @@ msgid ""
 "showing the file being edited.  The status line is the third line from the "
 "bottom and shows important messages.  "
 msgstr ""
-"Nano-ren laguntza testu nagusia\n"
+"Негізгі nano көмек мәтіні\n"
 "\n"
-" Nano editorea UW Pico testu editorearen errestasun eta funtzionalitateak "
-"emulatzeko diseinatua dago.  Lau dira editorearen sekzio nagusiak: Goiko "
-"lerroak programaren bertsioa uneko fitxategiaren izena eta modifikatua ala "
-"ez izan den. Ondoren editorearen leiho nagusia editatzen ari den fitxategia "
-"erakutsiz.  Egoera lerroa da hirugarrena eta informazio garrantzitsuak "
-"ematen ditu.  "
+" nano редакторы UW Pico мәтіндік редакторының функционалдығы мен қолдану "
+"жеңілдігін қайталауға арналған. Редактордың төрт негізгі бөлімі бар. Жоғарғы "
+"жол бағдарлама нұсқасын, түзетіліп жатқан ағымдағы файл атын және файлдың "
+"өзгертілген-өзгертілмегенін көрсетеді. Келесі бөлім — түзетіліп жатқан "
+"файлды көрсететін негізгі редактор терезесі. Күй жолы — төменнен үшінші жол "
+"және маңызды хабарламаларды көрсетеді.  "
 
 #: src/help.c:202
 msgid ""
@@ -1692,6 +1742,13 @@ msgid ""
 "twice.  Meta-key sequences are notated with 'M-' and can be entered using "
 "either the Alt, Cmd, or Esc key, depending on your keyboard setup.  "
 msgstr ""
+"Төменгі екі жол редакторда ең жиі қолданылатын жарлықтарды көрсетеді.\n"
+"\n"
+" Жарлықтар келесідей жазылады: Control-пернелер тізбегі «^» таңбасымен "
+"белгіленеді және оларды Ctrl пернесін қолдану немесе Esc пернесін екі рет "
+"басу арқылы енгізуге болады. Meta-пернелер тізбегі «M-» деп белгіленеді және "
+"пернетақта баптауларыңызға байланысты Alt, Cmd немесе Esc пернелерінің бірін "
+"қолдану арқылы енгізіледі.  "
 
 #: src/help.c:209
 msgid ""
@@ -1701,19 +1758,19 @@ msgid ""
 "keys are shown in parentheses:\n"
 "\n"
 msgstr ""
-"Gainera, Eskape-tekla bi aldiz sakatuz eta 000-tik 255-rainoko zenbaki bat "
-"sartuz gero, ASCII taulan duen karakterea txertatuko du.  Hauek dira "
-"editoreko leiho nagusian erabili daitezkeen teklak.  Bestelako teklak "
-"parentesi artean erakusten dira:\n"
+"Сондай-ақ, Esc пернесін екі рет басып, содан кейін 000-нан 255-ке дейінгі үш "
+"таңбалы ондық санды теру тиісті мәні бар таңбаны енгізеді. Негізгі редактор "
+"терезесінде келесі пернелер қолжетімді. Баламалы пернелер жақша ішінде "
+"көрсетілген:\n"
 "\n"
 
 #: src/help.c:241 src/help.c:313
 msgid "enable/disable"
-msgstr "gaitu/ezgaitu"
+msgstr "іске қосу/сөндіру"
 
 #: src/help.c:585 src/nano.c:1672
 msgid "^W = Ctrl+W    M-W = Alt+W"
-msgstr ""
+msgstr "^W = Ctrl+W    M-W = Alt+W"
 
 #: src/history.c:237
 #, c-format
@@ -1721,6 +1778,8 @@ msgid ""
 "Unable to create directory %s: %s\n"
 "It is required for saving/loading search history or cursor positions.\n"
 msgstr ""
+"«%s» бумасын жасау мүмкін емес: %s\n"
+"Ол іздеу тарихын немесе курсор орындарын сақтау/жүктеу үшін қажет.\n"
 
 #: src/history.c:244
 #, c-format
@@ -1728,37 +1787,39 @@ msgid ""
 "Path %s is not a directory and needs to be.\n"
 "Nano will be unable to load or save search history or cursor positions.\n"
 msgstr ""
+"«%s» жолы бума емес, бірақ бума болуы тиіс.\n"
+"Nano іздеу тарихын немесе курсор орындарын жүктей немесе сақтай алмайды.\n"
 
 #: src/history.c:337 src/history.c:474
 #, c-format
 msgid "Cannot limit permissions on %s: %s"
-msgstr ""
+msgstr "«%s» рұқсаттарын шектеу мүмкін емес: %s"
 
 #. TRANSLATORS: The %s is the name of an option.
 #: src/move.c:703 src/move.c:727
 #, c-format
 msgid "Not possible with '%s'"
-msgstr ""
+msgstr "'%s' арқылы мүмкін емес."
 
 #: src/nano.c:201
 msgid "Key is invalid in view mode"
-msgstr ""
+msgstr "Перне қарау режимінде жарамсыз"
 
 #: src/nano.c:208
 msgid "This function is disabled in restricted mode"
-msgstr ""
+msgstr "Бұл функция шектелген режимде сөндірулі"
 
 #: src/nano.c:223
 msgid "To suspend, type ^T^Z"
-msgstr ""
+msgstr "Уақытша тоқтату үшін ^T^Z теріңіз"
 
 #: src/nano.c:312
 msgid "No file name"
-msgstr ""
+msgstr "Файл аты жоқ"
 
 #: src/nano.c:314
 msgid "Save modified buffer? "
-msgstr ""
+msgstr "Өзгертілген буферді сақтау керек пе? "
 
 #: src/nano.c:339
 #, c-format
@@ -1766,6 +1827,8 @@ msgid ""
 "\n"
 "Too many .save files\n"
 msgstr ""
+"\n"
+".save файлдары тым көп\n"
 
 #: src/nano.c:341
 #, c-format
@@ -1774,7 +1837,7 @@ msgid ""
 "Buffer written to %s\n"
 msgstr ""
 "\n"
-"Bufferra hemen idatzia: %s\n"
+"Буфер %s ішіне жазылды\n"
 
 #: src/nano.c:492
 #, c-format
@@ -1782,6 +1845,8 @@ msgid ""
 "Usage: nano [OPTIONS] [[+LINE[,COLUMN]] FILE]...\n"
 "\n"
 msgstr ""
+"Қолданылуы: nano [ОПЦИЯЛАР] [[+ЖОЛ[,БАҒАН]] ФАЙЛ]...\n"
+"\n"
 
 #. TRANSLATORS: The next two strings are part of the --help output.
 #. * It's best to keep its lines within 80 characters.
@@ -1791,6 +1856,9 @@ msgid ""
 "To place the cursor on a specific line of a file, put the line number with\n"
 "a '+' before the filename.  The column number can be added after a comma.\n"
 msgstr ""
+"Курсорды файлдың белгілі бір жолына қою үшін файл атының алдына\n"
+"«+» белгісімен жол нөмірін қойыңыз. Баған нөмірін үтірден кейін қосуға "
+"болады.\n"
 
 #: src/nano.c:498
 #, c-format
@@ -1798,1308 +1866,1308 @@ msgid ""
 "When a filename is '-', nano reads data from standard input.\n"
 "\n"
 msgstr ""
+"Файл аты «-» болса, nano деректерді стандартты енгізуден оқиды.\n"
+"\n"
 
 #. TRANSLATORS: The next three are column headers of the --help output.
 #: src/nano.c:500
 msgid "Option"
-msgstr ""
+msgstr "Опция"
 
 #: src/nano.c:500
 msgid "Long option"
-msgstr ""
+msgstr "Ұзын опция"
 
 #: src/nano.c:500
 msgid "Meaning"
-msgstr ""
+msgstr "Мағынасы"
 
 #. TRANSLATORS: The next forty or so strings are option descriptions
 #. * for the --help output.  Try to keep them at most 40 characters.
 #: src/nano.c:503
 msgid "Enable smart home key"
-msgstr "Gaitu 'smart home' tekla"
+msgstr "Ақылды Home пернесін іске қосу"
 
 #: src/nano.c:505
 msgid "Save backups of existing files"
-msgstr "Gorde existitzen diren fitxategien babeskopiak"
+msgstr "Бар файлдардың архивтік көшірмелерін сақтау"
 
 #: src/nano.c:506
 msgid "-C <dir>"
-msgstr "-C <dir>"
+msgstr "-C <бума>"
 
 #: src/nano.c:506
 msgid "--backupdir=<dir>"
-msgstr "--backupdir=<dir>"
+msgstr "--backupdir=<бума>"
 
 #: src/nano.c:507
 msgid "Directory for saving unique backup files"
-msgstr "Babeskopia fitxategiak idazteko direktorioa"
+msgstr "Бірегей архивтік файлдарды сақтауға арналған бума"
 
 #: src/nano.c:510
 msgid "Use bold instead of reverse video text"
-msgstr "Erabili lodia alderantzizko testua beharrean"
+msgstr "Инверсияланған мәтін орнына жуан қаріпті қолдану"
 
 #: src/nano.c:512
 msgid "Convert typed tabs to spaces"
-msgstr "Bihurtu idatzitako tabuladoreak zuriuneetara"
+msgstr "Терілген табтарды бос орындарға түрлендіру"
 
 #: src/nano.c:517
 msgid "Read a file into a new buffer by default"
-msgstr ""
+msgstr "Әдетте файлды жаңа буферге оқу"
 
 #: src/nano.c:520
 msgid "Use (vim-style) lock files"
-msgstr ""
+msgstr "(vim-стиліндегі) құлыптау файлдарын қолдану"
 
 #: src/nano.c:525
 msgid "Save & reload old search/replace strings"
-msgstr ""
+msgstr "Ескі іздеу/алмастыру жолдарын сақтау және қайта жүктеу"
 
 #: src/nano.c:528
 msgid "Don't look at nanorc files"
-msgstr "Ez begiratu nanorc fitxategietan"
+msgstr "nanorc файлдарына қарамау"
 
 #: src/nano.c:531
 msgid "-J <number>"
-msgstr ""
+msgstr "-J <сан>"
 
 #: src/nano.c:531
 msgid "--guidestripe=<number>"
-msgstr ""
+msgstr "--guidestripe=<сан>"
 
 #: src/nano.c:532
 msgid "Show a guiding bar at this column"
-msgstr ""
+msgstr "Осы бағанда бағыттаушы сызықты көрсету"
 
 #: src/nano.c:535
 msgid "Fix numeric keypad key confusion problem"
-msgstr "Konpondu zenbakizko teklatu nahaste arazoak"
+msgstr "Сандық пернетақта пернелерінің қайшылық мәселесін түзету"
 
 #: src/nano.c:538
 msgid "Don't add an automatic newline"
-msgstr ""
+msgstr "Автоматты жаңа жол таңбасын қоспау"
 
 #: src/nano.c:542
 msgid "Trim tail spaces when hard-wrapping"
-msgstr ""
+msgstr "Қатаң тасымалдау кезінде соңғы бос орындарды қиып жіберу"
 
 #: src/nano.c:546
 msgid "Don't convert files from DOS/Mac format"
-msgstr "Ez bihurtu DOS/Mac formatuko fitxategiak"
+msgstr "Файлдарды DOS/Mac пішімінен түрлендірмеу"
 
 #: src/nano.c:548
 msgid "Leading whitespace means new paragraph"
-msgstr ""
+msgstr "Бастапқы бос орын жаңа абзацты білдіреді"
 
 #: src/nano.c:553
 msgid "Save & restore position of the cursor"
-msgstr ""
+msgstr "Курсор орнын сақтау және қалпына келтіру"
 
 #: src/nano.c:556
 msgid "-Q <regex>"
-msgstr ""
+msgstr "-Q <regex>"
 
 #: src/nano.c:556
 msgid "--quotestr=<regex>"
-msgstr ""
+msgstr "--quotestr=<regex>"
 
 #. TRANSLATORS: This refers to email quoting,
 #. * like the > in: > quoted text.
 #: src/nano.c:559
 msgid "Regular expression to match quoting"
-msgstr ""
+msgstr "Дәйексөздерге сәйкес келетін тұрақты өрнек"
 
 #: src/nano.c:562
 msgid "Restrict access to the filesystem"
-msgstr ""
+msgstr "Файлдық жүйеге қол жеткізуді шектеу"
 
 #: src/nano.c:564
 msgid "Display overlong lines on multiple rows"
-msgstr ""
+msgstr "Ұзын жолдарды бірнеше қатарда көрсету"
 
 #: src/nano.c:565
 msgid "-T <number>"
-msgstr ""
+msgstr "-T <сан>"
 
 #: src/nano.c:565
 msgid "--tabsize=<number>"
-msgstr ""
+msgstr "--tabsize=<сан>"
 
 #: src/nano.c:566
 msgid "Make a tab this number of columns wide"
-msgstr ""
+msgstr "Табты осы баған санындай кеңдікте жасау"
 
 #: src/nano.c:568
 msgid "Wipe status bar upon next keystroke"
-msgstr ""
+msgstr "Келесі перне басылғанда күй жолағын тазалау"
 
 #: src/nano.c:569
 msgid "Print version information and exit"
-msgstr "Bertsioaren informazioa inprimatu eta irten"
+msgstr "Нұсқа ақпаратын шығару және шығу"
 
 #: src/nano.c:572
 msgid "Detect word boundaries more accurately"
-msgstr "Aurkitu hitz amaierak zehatzago aurkitu"
+msgstr "Сөз шекараларын дәлірек анықтау"
 
 #: src/nano.c:573
 msgid "-X <string>"
-msgstr ""
+msgstr "-X <жол>"
 
 #: src/nano.c:573
 msgid "--wordchars=<string>"
-msgstr ""
+msgstr "--wordchars=<жол>"
 
 #: src/nano.c:574
 msgid "Which other characters are word parts"
-msgstr ""
+msgstr "Сөз бөліктері болып табылатын басқа таңбалар"
 
 #: src/nano.c:577
 msgid "-Y <name>"
-msgstr ""
+msgstr "-Y <атау>"
 
 #: src/nano.c:577
 msgid "--syntax=<name>"
-msgstr ""
+msgstr "--syntax=<атау>"
 
 #: src/nano.c:578
 msgid "Syntax definition to use for coloring"
-msgstr ""
+msgstr "Түрлі-түсті белгілеу үшін қолданылатын синтаксис анықтамасы"
 
 #: src/nano.c:581
 msgid "Let Bsp and Del erase a marked region"
-msgstr ""
+msgstr "Bsp және Del пернелеріне белгіленген аймақты өшіруге рұқсат беру"
 
 #: src/nano.c:582
 msgid "When soft-wrapping, do it at whitespace"
-msgstr ""
+msgstr "Жұмсақ тасымалдау кезінде оны бос орындарда жасау"
 
 #: src/nano.c:585
 msgid "Automatically hard-wrap overlong lines"
-msgstr ""
+msgstr "Ұзын жолдарды автоматты түрде қатаң тасымалдау"
 
 #: src/nano.c:587
 msgid "Constantly show cursor position"
-msgstr "Erakutsi beti kurtsorearen posizioa"
+msgstr "Курсор орнын тұрақты көрсету"
 
 #: src/nano.c:589
 msgid "Fix Backspace/Delete confusion problem"
-msgstr "Konpondu atzera tekla/ezabatu nahaste arazoak"
+msgstr "Backspace/Delete қайшылық мәселесін түзету"
 
 #: src/nano.c:591
 msgid "Keep the line below the title bar empty"
-msgstr ""
+msgstr "Тақырып жолағының астындағы жолды бос ұстау"
 
 #: src/nano.c:594
 msgid "-f <file>"
-msgstr ""
+msgstr "-f <файл>"
 
 #: src/nano.c:594
 msgid "--rcfile=<file>"
-msgstr ""
+msgstr "--rcfile=<файл>"
 
 #: src/nano.c:595
 msgid "Use only this file for configuring nano"
-msgstr ""
+msgstr "nano-ны баптау үшін тек осы файлды қолдану"
 
 #: src/nano.c:598
 msgid "Show cursor in file browser & help text"
-msgstr ""
+msgstr "Файл браузері мен көмек мәтінінде курсорды көрсету"
 
 #: src/nano.c:600
 msgid "Show this help text and exit"
-msgstr ""
+msgstr "Осы көмек мәтінін көрсету және шығу"
 
 #: src/nano.c:602
 msgid "Automatically indent new lines"
-msgstr "Automatikoki indentatu lerro berriak"
+msgstr "Жаңа жолдарды автоматты түрде шегіндіру"
 
 #: src/nano.c:603
 msgid "Scroll per half-screen, not per line"
-msgstr ""
+msgstr "Жол бойынша емес, жарты экран бойынша айналдыру"
 
 #: src/nano.c:604
 msgid "Cut from cursor to end of line"
-msgstr "Moztu kurtsoretik lerro amaierara"
+msgstr "Курсордан жол соңына дейін қиып алу"
 
 #: src/nano.c:607
 msgid "Show line numbers in front of the text"
-msgstr ""
+msgstr "Мәтін алдында жол нөмірлерін көрсету"
 
 #: src/nano.c:610
 msgid "Enable the use of the mouse"
-msgstr "Gaitu xaguaren erabilera"
+msgstr "Тышқанды қолдануды іске қосу"
 
 #: src/nano.c:613
 msgid "Do not read the file (only write it)"
-msgstr ""
+msgstr "Файлды оқымау (тек жазу)"
 
 #: src/nano.c:616
 msgid "-o <dir>"
-msgstr "-o <dir>"
+msgstr "-o <бума>"
 
 #: src/nano.c:616
 msgid "--operatingdir=<dir>"
-msgstr "--operatingdir=<dir>"
+msgstr "--operatingdir=<бума>"
 
 #: src/nano.c:617
 msgid "Set operating directory"
-msgstr "Ezarri eragiketa direktorioa"
+msgstr "Жұмыс бумасын орнату"
 
 #: src/nano.c:619
 msgid "Preserve XON (^Q) and XOFF (^S) keys"
-msgstr "Mantendu XON (^Q) eta XOFF (^S) teklak"
+msgstr "XON (^Q) және XOFF (^S) пернелерін сақтау"
 
 #: src/nano.c:621
 msgid "Show a position+portion indicator"
-msgstr ""
+msgstr "Орын+бөлік индикаторын көрсету"
 
 #: src/nano.c:624
 msgid "-r <number>"
-msgstr ""
+msgstr "-r <сан>"
 
 #: src/nano.c:624
 msgid "--fill=<number>"
-msgstr ""
+msgstr "--fill=<сан>"
 
 #: src/nano.c:625
 msgid "Set width for hard-wrap and justify"
-msgstr ""
+msgstr "Қатаң тасымалдау және туралау үшін енді орнату"
 
 #: src/nano.c:629
 msgid "-s <program>"
-msgstr ""
+msgstr "-s <бағдарлама>"
 
 #: src/nano.c:629
 msgid "--speller=<program>"
-msgstr ""
+msgstr "--speller=<бағдарлама>"
 
 #: src/nano.c:630
 msgid "Use this alternative spell checker"
-msgstr ""
+msgstr "Осы баламалы емле тексерушіні қолдану"
 
 #: src/nano.c:632
 msgid "Save changes on exit, don't prompt"
-msgstr ""
+msgstr "Шығу кезінде өзгерістерді сұраусыз сақтау"
 
 #: src/nano.c:634
 msgid "Save a file by default in Unix format"
-msgstr ""
+msgstr "Файлды әдетте Unix пішімінде сақтау"
 
 #: src/nano.c:636
 msgid "View mode (read-only)"
-msgstr "Ikuskatze modua (irakurri bakarrik)"
+msgstr "Қарау режимі (тек оқу үшін)"
 
 #: src/nano.c:638
 msgid "Don't hard-wrap long lines [default]"
-msgstr ""
+msgstr "Ұзын жолдарды қатаң тасымалдамау [бастапқы]"
 
 #: src/nano.c:640
 msgid "Don't show the two help lines"
-msgstr "Ez erakutsi bi laguntza lerroak"
+msgstr "Екі көмек жолын көрсетпеу"
 
 #: src/nano.c:642
 msgid "Make Ctrl+Right stop at word ends"
-msgstr ""
+msgstr "Ctrl+Оң жақ бағдаршаны сөз соңында тоқтайтын қылу"
 
 #: src/nano.c:645
 msgid "List the names of available syntaxes"
-msgstr ""
+msgstr "Қолжетімді синтаксистер тізімін көрсету"
 
 #: src/nano.c:648
 msgid "Also try magic to determine syntax"
-msgstr ""
+msgstr "Синтаксисті анықтау үшін magic қолданып көру"
 
 #: src/nano.c:651
 msgid "Accept 'filename:linenumber' notation"
-msgstr ""
+msgstr "«файл_аты:жол_нөмірі» жазбасын қабылдау"
 
 #: src/nano.c:652
 msgid "Show some states on the title bar"
-msgstr ""
+msgstr "Тақырып жолағында кейбір күйлерді көрсету"
 
 #: src/nano.c:653
 msgid "Show a feedback bar at the bottom"
-msgstr ""
+msgstr "Төменгі жағында кері байланыс жолағын көрсету"
 
 #: src/nano.c:654
 msgid "Hide all bars, use whole terminal"
-msgstr ""
+msgstr "Барлық жолақтарды жасыру, бүкіл терминалды қолдану"
 
 #: src/nano.c:655
 msgid "Scroll only the current line sideways"
-msgstr ""
+msgstr "Тек ағымдағы жолды бүйір жаққа айналдыру"
 
 #: src/nano.c:657
 msgid "Use better-known key bindings"
-msgstr ""
+msgstr "Көбірек танымал пернелер тіркесімін қолдану"
 
 #: src/nano.c:667
 #, c-format
 msgid " GNU nano, version %s\n"
-msgstr ""
+msgstr " GNU nano, %s нұсқасы\n"
 
 #. TRANSLATORS: The %s is the year of the latest release.
 #: src/nano.c:671
 #, c-format
 msgid " (C) %s the Free Software Foundation and various contributors\n"
-msgstr ""
+msgstr " (C) %s Еркін бағдарламалық қамтама қоры және түрлі үлес қосушылар\n"
 
 #: src/nano.c:673
 #, c-format
 msgid " Compiled options:"
-msgstr " Konpilazio aukerak:"
+msgstr " Құрастыру опциялары:"
 
 #: src/nano.c:808
 #, c-format
 msgid "Available syntaxes:\n"
-msgstr ""
+msgstr "Қолжетімді синтаксистер:\n"
 
 #: src/nano.c:855
 msgid "Could not reconnect stdin to keyboard\n"
-msgstr ""
+msgstr "stdin-ді пернетақтаға қайта қосу мүмкін болмады\n"
 
 #: src/nano.c:873
 #, c-format
 msgid "Reading data from keyboard; type ^D or ^D^D to finish.\n"
-msgstr ""
+msgstr "Деректер пернетақтадан оқылуда; аяқтау үшін ^D немесе ^D^D теріңіз.\n"
 
 #: src/nano.c:883
 #, c-format
 msgid "Failed to open stdin: %s"
-msgstr ""
+msgstr "stdin ашылмады: %s"
 
 #: src/nano.c:965
 msgid "Received SIGHUP or SIGTERM\n"
-msgstr "SIGHUP edo SIGTERM jaso da\n"
+msgstr "SIGHUP немесе SIGTERM алынды\n"
 
 #: src/nano.c:972
 #, c-format
 msgid "Sorry! Nano crashed!  Code: %d.  Please report a bug.\n"
 msgstr ""
+"Кешіріңіз! Nano апатты жағдайда тоқтады! Код: %d. Қате туралы хабарлаңыз.\n"
 
 #: src/nano.c:988
 #, c-format
 msgid "Use \"fg\" to return to nano.\n"
-msgstr "Erabili \"fg\" nano-ra itzultzeko.\n"
+msgstr "Nano-ға оралу үшін «fg» қолданыңыз.\n"
 
 #: src/nano.c:1131
 msgid "Current syntax determines Tab"
-msgstr ""
+msgstr "Ағымдағы синтаксис Табты анықтайды"
 
 #: src/nano.c:1159
 msgid "enabled"
-msgstr "gaitua"
+msgstr "іске қосулы"
 
 #: src/nano.c:1159
 msgid "disabled"
-msgstr "ez gaitua"
+msgstr "сөндірулі"
 
 #. TRANSLATORS: This refers to a sequence of escape codes
 #. * (from the keyboard) that nano does not recognize.
 #: src/nano.c:1302
 msgid "Unknown sequence"
-msgstr ""
+msgstr "Белгісіз тізбек"
 
 #: src/nano.c:1305 src/rcfile.c:826
 #, c-format
 msgid "Unknown function: %s"
-msgstr ""
+msgstr "Белгісіз функция: %s"
 
 #: src/nano.c:1307
 msgid "Missing }"
-msgstr ""
+msgstr "«}» жетіспейді"
 
 #. TRANSLATORS: This refers to an unbound function key.
 #: src/nano.c:1312
 #, c-format
 msgid "Unbound key: F%i"
-msgstr ""
+msgstr "Байланбаған перне: F%i"
 
 #: src/nano.c:1315
 msgid "Unbound key"
-msgstr ""
+msgstr "Байланбаған перне"
 
 #: src/nano.c:1319
 #, c-format
 msgid "Unbindable key: M-^%c"
-msgstr ""
+msgstr "Байланбайтын перне: M-^%c"
 
 #: src/nano.c:1324 src/nano.c:1327 src/nano.c:1331 src/nano.c:1334
 #, c-format
 msgid "Unbound key: %s%c"
-msgstr ""
+msgstr "Байланбаған перне: %s%c"
 
 #: src/nano.c:1329
 msgid "Unbindable key: ^["
-msgstr ""
+msgstr "Байланбайтын перне: ^["
 
 #: src/nano.c:1469
 msgid "Flawed paste"
-msgstr ""
+msgstr "Қате кірістіру"
 
 #: src/nano.c:1937 src/rcfile.c:1685
 #, c-format
 msgid "Guide column \"%s\" is invalid"
-msgstr ""
+msgstr "«%s» бағыттаушы бағаны жарамсыз"
 
 #: src/nano.c:1983 src/rcfile.c:1690
 #, c-format
 msgid "Requested tab size \"%s\" is invalid"
-msgstr "Eskatutako \"%s\" tab tamainua baliogabea da"
+msgstr "Сұралған «%s» таб өлшемі жарамсыз"
 
 #: src/nano.c:2087 src/rcfile.c:1635
 #, c-format
 msgid "Requested fill size \"%s\" is invalid"
-msgstr "Eskatutako \"%s\" betetze tamainua baliogabea da"
+msgstr "Сұралған «%s» толтыру өлшемі жарамсыз"
 
 #: src/nano.c:2162
 #, c-format
 msgid "Type '%s -h' for a list of available options.\n"
-msgstr ""
+msgstr "Қолжетімді опциялар тізімі үшін «%s -h» теріңіз.\n"
 
 #: src/nano.c:2364
 #, c-format
 msgid "Bad quoting regex \"%s\": %s\n"
-msgstr ""
+msgstr "Дәйексөздің «%s» тұрақты өрнегі қате: %s\n"
 
 #: src/nano.c:2532
 #, c-format
 msgid "Invalid search modifier '%c'"
-msgstr ""
+msgstr "Іздеудің «%c» модификаторы жарамсыз"
 
 #: src/nano.c:2543
 msgid "Empty search string"
-msgstr ""
+msgstr "Іздеу жолы бос"
 
 #: src/nano.c:2552 src/search.c:809
 msgid "Invalid line or column number"
-msgstr ""
+msgstr "Жол немесе баған нөмірі жарамсыз"
 
 #: src/nano.c:2588
 msgid "Invalid number\n"
-msgstr ""
+msgstr "Жарамсыз сан\n"
 
 #: src/nano.c:2634
 msgid "Standard input is not a terminal\n"
-msgstr ""
+msgstr "Стандартты енгізу терминал емес\n"
 
 #: src/nano.c:2653
 msgid "Can open just one file\n"
-msgstr ""
+msgstr "Тек бір файлды ашуға болады\n"
 
 #: src/nano.c:2671
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
-msgstr ""
+msgstr "nano-ға қош келдіңіз. Негізгі көмек алу үшін Ctrl+G теріңіз."
 
 #: src/nano.c:2718
 msgid "Byte Order Mark"
-msgstr ""
+msgstr "Байттар ретінің белгісі (BOM)"
 
 #. TRANSLATORS: For the next three strings, specify the starting letters
 #. * of the translations for "Yes"/"No"/"All".  The first letter of each of
 #. * these strings MUST be a single-byte letter; others may be multi-byte.
 #: src/prompt.c:670
 msgid "Yy"
-msgstr "BbYy"
+msgstr "Yy"
 
 #: src/prompt.c:671
 msgid "Nn"
-msgstr "EeNn"
+msgstr "Nn"
 
 #: src/prompt.c:672
 msgid "Aa"
-msgstr "GgAaDd"
+msgstr "Aa"
 
 #: src/prompt.c:698
 msgid "Yes"
-msgstr "Bai"
+msgstr "Иә"
 
 #: src/prompt.c:702
 msgid "No"
-msgstr "Ez"
+msgstr "Жоқ"
 
 #: src/prompt.c:707
 msgid "All"
-msgstr "Guztiak"
+msgstr "Барлығы"
 
 #: src/rcfile.c:192
 #, c-format
 msgid "Mistakes in '%s'"
-msgstr ""
+msgstr "«%s» ішіндегі қателер"
 
 #: src/rcfile.c:196
 msgid "Problems with history file"
-msgstr ""
+msgstr "Тарих файлындағы мәселелер"
 
 #: src/rcfile.c:200
 #, c-format
 msgid "Error in %s on line %zu: "
-msgstr ""
+msgstr "%s ішіндегі %zu жолдағы қате: "
 
 #: src/rcfile.c:573
 #, c-format
 msgid "Argument '%s' has an unterminated \""
-msgstr "'%s' argumentuak amaitu gabeko \" bat dauka"
+msgstr "«%s» аргументінде аяқталмаған «\"» бар"
 
 #: src/rcfile.c:594 src/rcfile.c:605
 msgid "Regex strings must begin and end with a \" character"
-msgstr "Regex kateak \" karaktearekin hasi eta amaitu behar dute"
+msgstr "Тұрақты өрнек жолдары «\"» таңбасымен басталып, аяқталуы тиіс"
 
 #: src/rcfile.c:610
 msgid "Empty regex string"
-msgstr ""
+msgstr "Тұрақты өрнек жолы бос"
 
 #: src/rcfile.c:635 src/search.c:45
 #, c-format
 msgid "Bad regex \"%s\": %s"
-msgstr "\"%s\" regex okerra: %s"
+msgstr "«%s» тұрақты өрнегі қате: %s"
 
 #: src/rcfile.c:655
 msgid "Missing syntax name"
-msgstr "Sintaxiaren izena falta da"
+msgstr "Синтаксис атауы жетіспейді"
 
 #: src/rcfile.c:663
 msgid "Unpaired quote in syntax name"
-msgstr ""
+msgstr "Синтаксис атауындағы жұпсыз дәйексөз"
 
 #: src/rcfile.c:675
 msgid "The \"none\" syntax is reserved"
-msgstr "\"none\" sintaxia erreserbaturik dago"
+msgstr "«none» синтаксисі резервтелген"
 
 #: src/rcfile.c:706
 msgid "The \"default\" syntax does not accept extensions"
-msgstr ""
+msgstr "«default» синтаксисі кеңейтулерді қабылдамайды"
 
 #: src/rcfile.c:724
 #, c-format
 msgid "Syntax \"%s\" has no color commands"
-msgstr "\"%s\" sintaxiak ez dauka kolore komandorik"
+msgstr "«%s» синтаксисінде түс командалары жоқ"
 
 #: src/rcfile.c:757
 msgid "Missing key name"
-msgstr ""
+msgstr "Перне атауы жетіспейді"
 
 #: src/rcfile.c:774 src/rcfile.c:781
 #, c-format
 msgid "Key name %s is invalid"
-msgstr ""
+msgstr "«%s» перне атауы жарамсыз"
 
 #: src/rcfile.c:790
 msgid "Must specify a function to bind the key to"
-msgstr ""
+msgstr "Пернені байлау үшін функцияны көрсету керек"
 
 #. TRANSLATORS: Do not translate the word "all".
 #: src/rcfile.c:801
 msgid "Must specify a menu (or \"all\") in which to bind/unbind the key"
-msgstr ""
+msgstr "Пернені байлау/ажырату үшін мәзірді (немесе «all») көрсету керек"
 
 #: src/rcfile.c:808
 #, c-format
 msgid "Unknown menu: %s"
-msgstr ""
+msgstr "Белгісіз мәзір: %s"
 
 #: src/rcfile.c:865
 #, c-format
 msgid "Function '%s' does not exist in menu '%s'"
-msgstr ""
+msgstr "«%s» функциясы «%s» мәзірінде жоқ"
 
 #: src/rcfile.c:876
 #, c-format
 msgid "Keystroke %s may not be rebound"
-msgstr ""
+msgstr "«%s» пернелер тіркесімін қайта байлау мүмкін емес шығар"
 
 #: src/rcfile.c:967 src/rcfile.c:1538
 #, c-format
 msgid "Command \"%s\" not understood"
-msgstr "Ez da \"%s\" komandoa ulertu"
+msgstr "«%s» командасы түсініксіз"
 
 #: src/rcfile.c:994
 msgid "Path is too long"
-msgstr ""
+msgstr "Жол тым ұзын"
 
 #: src/rcfile.c:1008
 #, c-format
 msgid "Error expanding %s: %s"
-msgstr ""
+msgstr "«%s» жаю қатесі: %s"
 
 #: src/rcfile.c:1078 src/rcfile.c:1089
 #, c-format
 msgid "Color '%s' takes no prefix"
-msgstr ""
+msgstr "«%s» түсі префикс қабылдамайды"
 
 #: src/rcfile.c:1097
 #, c-format
 msgid "Color \"%s\" not understood"
-msgstr ""
+msgstr "«%s» түсі түсініксіз"
 
 #: src/rcfile.c:1113 src/rcfile.c:1124
 msgid "An attribute requires a subsequent comma"
-msgstr ""
+msgstr "Атрибут кейінгі үтірді талап етеді"
 
 #: src/rcfile.c:1168
 msgid "Missing color name"
-msgstr "Kolorearen izena falta da"
+msgstr "Түс атауы жетіспейді"
 
 #: src/rcfile.c:1179 src/rcfile.c:1279
 #, c-format
 msgid "Missing regex string after '%s' command"
-msgstr ""
+msgstr "«%s» командасынан кейін тұрақты өрнек жолы жетіспейді"
 
 #: src/rcfile.c:1205
 msgid "\"start=\" requires a corresponding \"end=\""
-msgstr "\"start=\"-k \"end=\" behar du"
+msgstr "«start=» командасы тиісті «end=» командасын талап етеді"
 
 #: src/rcfile.c:1268 src/rcfile.c:1518
 #, c-format
 msgid "A '%s' command requires a preceding 'syntax' command"
-msgstr ""
+msgstr "«%s» командасы алдында «syntax» командасын талап етеді"
 
 #: src/rcfile.c:1274
 #, c-format
 msgid "The \"default\" syntax does not accept '%s' regexes"
-msgstr ""
+msgstr "«default» синтаксисі «%s» тұрақты өрнектерін қабылдамайды"
 
 #: src/rcfile.c:1321
 #, c-format
 msgid "Missing argument after '%s'"
-msgstr ""
+msgstr "«%s»-ден кейін аргумент жетіспейді"
 
 #: src/rcfile.c:1331
 #, c-format
 msgid "Argument of '%s' lacks closing \""
-msgstr ""
+msgstr "«%s» аргументінде жабылатын «\"» жоқ"
 
 #: src/rcfile.c:1381
 #, c-format
 msgid "No key is bound to function '%s' in menu '%s'.  Exiting.\n"
-msgstr ""
+msgstr "«%s» мәзірінде «%s» функциясына ешқандай перне байланбаған. Шығу.\n"
 
 #: src/rcfile.c:1383
 msgid ""
 "If needed, use nano with the -I option to adjust your nanorc settings.\n"
 msgstr ""
+"Қажет болса, nanorc баптауларын реттеу үшін nano-ны -I опциясымен "
+"қолданыңыз.\n"
 
 #: src/rcfile.c:1450
 #, c-format
 msgid "Could not find syntax \"%s\" to extend"
-msgstr ""
+msgstr "Кеңейту үшін «%s» синтаксисі табылмады"
 
 #: src/rcfile.c:1507
 #, c-format
 msgid "Command \"%s\" not allowed in included file"
-msgstr "\"%s\" komandoa ez dago baimendua fitxategia barne moduan"
+msgstr "Қосылған файлда «%s» командасына рұқсат жоқ"
 
 #: src/rcfile.c:1550
 msgid "Missing option"
-msgstr ""
+msgstr "Опция жетіспейді"
 
 #: src/rcfile.c:1564
 #, c-format
 msgid "Unknown option: %s"
-msgstr ""
+msgstr "Белгісіз опция: %s"
 
 #: src/rcfile.c:1579
 #, c-format
 msgid "Cannot unset option \"%s\""
-msgstr ""
+msgstr "«%s» опциясының мәнін алып тастау мүмкін емес"
 
 #: src/rcfile.c:1584
 #, c-format
 msgid "Option \"%s\" requires an argument"
-msgstr "\"%s\" aukerak argumentu bat behar du"
+msgstr "«%s» опциясы аргументті талап етеді"
 
 #: src/rcfile.c:1596
 msgid "Argument is not a valid multibyte string"
-msgstr ""
+msgstr "Аргумент жарамды көпбайтты жол емес"
 
 #: src/rcfile.c:1643 src/rcfile.c:1661 src/rcfile.c:1666
 msgid "Non-blank characters required"
-msgstr "Ez-hutsune karaktereak behar dira"
+msgstr "Бос емес таңбалар талап етіледі"
 
 #: src/rcfile.c:1645
 msgid "Even number of characters required"
-msgstr ""
+msgstr "Жұп санды таңбалар талап етіледі"
 
 #: src/rcfile.c:1650
 msgid "Two single-column characters required"
-msgstr "Bi zutabe-bakar karaktere behar dira"
+msgstr "Екі бірбағанды таңба талап етіледі"
 
 #: src/rcfile.c:1741
 msgid "Specified rcfile does not exist\n"
-msgstr ""
+msgstr "Көрсетілген rcfile жоқ\n"
 
 #: src/rcfile.c:1760
 msgid "I can't find my home directory!  Wah!"
-msgstr "Ezin dut nire etxe direktorioa aurkitu!  Outx!"
+msgstr "Мен үй бумамды таба алмай жатырмын! Ойбай!"
 
 #. TRANSLATORS: The next four modify the search prompt.
 #: src/search.c:102
 msgid " [Case Sensitive]"
-msgstr "[May/Min]"
+msgstr " [Регистрге сезімтал]"
 
 #: src/search.c:103
 msgid " [Regexp]"
-msgstr "[Regexp]"
+msgstr " [Тұр. өрн.]"
 
 #: src/search.c:107
 msgid " (to replace) in selection"
-msgstr " (aldatzeko) aukeraketan"
+msgstr " (алмастыру үшін) таңдалғанда"
 
 #: src/search.c:109
 msgid " (to replace)"
-msgstr "(aldatzeko)"
+msgstr " (алмастыру үшін)"
 
 #. TRANSLATORS: This is shown when searching takes
 #. * more than half a second.
 #: src/search.c:235 src/search.c:308
 msgid "Searching..."
-msgstr ""
+msgstr "Ізделуде..."
 
 #: src/search.c:414
 #, c-format
 msgid "\"%.*s%s\" not found"
-msgstr "\"%.*s%s\" ez da aurkitu"
+msgstr "«%.*s%s» табылмады"
 
 #. TRANSLATORS: This is a prompt.
 #: src/search.c:606
 msgid "Replace this instance?"
-msgstr "Instantsia hau aldatu?"
+msgstr "Осы дананы алмастыру керек пе?"
 
 #. TRANSLATORS: This is a prompt.
 #: src/search.c:717
 msgid "Replace with"
-msgstr "Aldatu honekin"
+msgstr "Келесімен алмастыру"
 
 #: src/search.c:747
 #, c-format
 msgid "Replaced %zd occurrence"
 msgid_plural "Replaced %zd occurrences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%zd сәйкестік алмастырылды"
 
 #. TRANSLATORS: This is a prompt.
 #: src/search.c:786
 msgid "Enter line number, column number"
-msgstr "Lerroaren zenbakia, zutabe zenbakia sartu"
+msgstr "Жол нөмірін, баған нөмірін енгізіңіз"
 
 #: src/search.c:964
 msgid "Not a bracket"
-msgstr "Ez da hori giltza"
+msgstr "Жақша емес"
 
 #: src/search.c:1007
 msgid "No matching bracket"
-msgstr "Ez dago giltz egokirik"
+msgstr "Сәйкес жақша жоқ"
 
 #: src/search.c:1026
 msgid "Placed anchor"
-msgstr ""
+msgstr "Зәкір қойылды"
 
 #: src/search.c:1028
 msgid "Removed anchor"
-msgstr ""
+msgstr "Зәкір алынды"
 
 #: src/search.c:1047
 msgid "Jumped to anchor"
-msgstr ""
+msgstr "Зәкірге өтті"
 
 #: src/search.c:1049
 msgid "This is the only anchor"
-msgstr ""
+msgstr "Бұл жалғыз зәкір"
 
 #: src/search.c:1051
 msgid "There are no anchors"
-msgstr ""
+msgstr "Ешқандай зәкір жоқ"
 
 #: src/text.c:47
 msgid "Mark Set"
-msgstr "Marka aukeratua"
+msgstr "Белгі қойылды"
 
 #: src/text.c:50
 msgid "Mark Unset"
-msgstr "Markatu ez hautatua"
+msgstr "Белгі алынды"
 
 #: src/text.c:380
 msgid "Commenting is not supported for this file type"
-msgstr ""
+msgstr "Бұл файл түрі үшін түсіндірмелерге қолдау көрсетілмейді"
 
 #: src/text.c:390
 msgid "Cannot comment past end of file"
-msgstr ""
+msgstr "Файл соңынан кейін түсіндірме жасау мүмкін емес"
 
 #: src/text.c:511
 msgid "Nothing to undo"
-msgstr ""
+msgstr "Болдырмайтын ештеңе жоқ"
 
 #. TRANSLATORS: The next thirteen strings describe actions
 #. * that are undone or redone.  They are all nouns, not verbs.
 #: src/text.c:522 src/text.c:582 src/text.c:707 src/text.c:767
 msgid "addition"
-msgstr ""
+msgstr "қосу"
 
 #: src/text.c:530 src/text.c:719
 msgid "line break"
-msgstr ""
+msgstr "жол үзілімі"
 
 #: src/text.c:547 src/text.c:729
 msgid "deletion"
-msgstr ""
+msgstr "өшіру"
 
 #: src/text.c:557 src/text.c:735
 msgid "line join"
-msgstr ""
+msgstr "жолдарды біріктіру"
 
 #: src/text.c:574 src/text.c:751
 msgid "replacement"
-msgstr ""
+msgstr "алмастыру"
 
 #: src/text.c:592 src/text.c:771
 msgid "erasure"
-msgstr ""
+msgstr "өшіріп тастау"
 
 #. TRANSLATORS: Remember: these are nouns, NOT verbs.
 #: src/text.c:598 src/text.c:776
 msgid "cut"
-msgstr ""
+msgstr "қиып алу"
 
 #: src/text.c:602 src/text.c:780
 msgid "paste"
-msgstr ""
+msgstr "кірістіру"
 
 #: src/text.c:609 src/text.c:784
 msgid "insertion"
-msgstr ""
+msgstr "енгізу"
 
 #: src/text.c:638 src/text.c:807
 msgid "indent"
-msgstr ""
+msgstr "шегініс арттыру"
 
 #: src/text.c:642 src/text.c:811
 msgid "unindent"
-msgstr ""
+msgstr "шегініс азайту"
 
 #: src/text.c:647 src/text.c:816
 msgid "comment"
-msgstr ""
+msgstr "түсіндірме қосу"
 
 #: src/text.c:651 src/text.c:820
 msgid "uncomment"
-msgstr ""
+msgstr "түсіндірме алу"
 
 #: src/text.c:659
 #, c-format
 msgid "Undid %s"
-msgstr ""
+msgstr "«%s» болдырмалды"
 
 #: src/text.c:694
 msgid "Nothing to redo"
-msgstr ""
+msgstr "Қайталайтын ештеңе жоқ"
 
 #: src/text.c:828
 #, c-format
 msgid "Redid %s"
-msgstr ""
+msgstr "«%s» қайталанды"
 
 #. TRANSLATORS: This one goes with Undid/Redid messages.
 #: src/text.c:1780 src/text.c:2001
 msgid "justification"
-msgstr ""
+msgstr "туралау"
 
 #: src/text.c:1791 src/text.c:2130
 msgid "Selection is empty"
-msgstr ""
+msgstr "Таңдалған аймақ бос"
 
 #: src/text.c:2005
 msgid "Justified selection"
-msgstr ""
+msgstr "Таңдалған аймақ тураланды"
 
 #: src/text.c:2009
 msgid "Justified file"
-msgstr ""
+msgstr "Файл тураланды"
 
 #: src/text.c:2011
 msgid "Justified paragraph"
-msgstr ""
+msgstr "Абзац тураланды"
 
 #: src/text.c:2133
 msgid "Buffer is empty"
-msgstr ""
+msgstr "Буфер бос"
 
 #: src/text.c:2145
 msgid "Invoking formatter..."
-msgstr ""
+msgstr "Пішімдеуші шақырылуда..."
 
 #: src/text.c:2182 src/text.c:2762
 #, c-format
 msgid "Error invoking '%s'"
-msgstr ""
+msgstr "«%s» шақыру қатесі"
 
 #: src/text.c:2186
 #, c-format
 msgid "Program '%s' complained"
-msgstr ""
+msgstr "«%s» бағдарламасы қате жіберді"
 
 #: src/text.c:2194
 msgid "Nothing changed"
-msgstr ""
+msgstr "Ештеңе өзгерген жоқ"
 
 #. TRANSLATORS: The next two go with Undid/Redid messages.
 #: src/text.c:2219
 msgid "spelling correction"
-msgstr ""
+msgstr "емле түзету"
 
 #: src/text.c:2219
 msgid "formatting"
-msgstr ""
+msgstr "пішімдеу"
 
 #: src/text.c:2237 src/text.c:2533
 msgid "Finished checking spelling"
-msgstr "Zuzenketa ortografikoa bukatu da"
+msgstr "Емлені тексеру аяқталды"
 
 #: src/text.c:2239
 msgid "Buffer has been processed"
-msgstr ""
+msgstr "Буфер өңделді"
 
 #: src/text.c:2283
 #, c-format
 msgid "Unfindable word: %s"
-msgstr ""
+msgstr "Табылмайтын сөз: %s"
 
 #. TRANSLATORS: This is a prompt.
 #: src/text.c:2302
 msgid "Edit a replacement"
-msgstr "Ordezkoa editatu"
+msgstr "Алмастыруды түзету"
 
 #. TRANSLATORS: Shown after fixing misspellings in one word.
 #: src/text.c:2315
 msgid "Next word..."
-msgstr ""
+msgstr "Келесі сөз..."
 
 #: src/text.c:2368
 msgid "Invoking spell checker..."
-msgstr ""
+msgstr "Емле тексеруші шақырылуда..."
 
 #: src/text.c:2453 src/text.c:2673
 msgid "Could not get size of pipe buffer"
-msgstr "Ezin izan da hodi buffer-aren tamainua lortu"
+msgstr "Пайп буферінің өлшемін алу мүмкін болмады"
 
 #: src/text.c:2527
 msgid "Error invoking \"uniq\""
-msgstr "Errorea \"uniq\"-i deitzen"
+msgstr "«uniq» шақыру қатесі"
 
 #: src/text.c:2529
 msgid "Error invoking \"sort\""
-msgstr "Errorea \"sort\"-i deitzen"
+msgstr "«sort» шақыру қатесі"
 
 #: src/text.c:2531
 msgid "Error invoking \"spell\""
-msgstr "Errorea \"spell\"-i deitzen"
+msgstr "«spell» шақыру қатесі"
 
 #: src/text.c:2608
 msgid "No linter is defined for this type of file"
-msgstr ""
+msgstr "Бұл файл түрі үшін линтер анықталмаған"
 
 #: src/text.c:2618
 msgid "Save modified buffer before linting?"
-msgstr ""
+msgstr "Линтерді бастамас бұрын өзгертілген буферді сақтау керек пе?"
 
 #: src/text.c:2635
 msgid "Invoking linter..."
-msgstr ""
+msgstr "Линтер шақырылуда..."
 
 #: src/text.c:2774
 #, c-format
 msgid "Got 0 parsable lines from command: %s"
-msgstr ""
+msgstr "Командадан 0 өңделетін жол алынды: %s"
 
 #: src/text.c:2813
 #, c-format
 msgid "This message is for unopened file %s, open it in a new buffer?"
 msgstr ""
+"Бұл хабарлама ашылмаған «%s» файлы үшін, оны жаңа буферде ашу керек пе?"
 
 #: src/text.c:2852
 msgid "No messages for this file"
-msgstr ""
+msgstr "Бұл файл үшін хабарламалар жоқ"
 
 #: src/text.c:2902
 msgid "At first message"
-msgstr ""
+msgstr "Бірінші хабарламада"
 
 #: src/text.c:2912
 msgid "At last message"
-msgstr ""
+msgstr "Соңғы хабарламада"
 
 #: src/text.c:2957
 msgid "No formatter is defined for this type of file"
-msgstr ""
+msgstr "Бұл файл түрі үшін пішімдеуші анықталмаған"
 
 #: src/text.c:3031
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
-msgstr ""
+msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
 #: src/text.c:3032
 msgid "In Selection:  "
-msgstr "Aukeraketan:  "
+msgstr "Таңдалған аймақта:  "
 
 #: src/text.c:3033
 msgid "line"
 msgid_plural "lines"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "жол"
 
 #: src/text.c:3034
 msgid "word"
 msgid_plural "words"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "сөз"
 
 #: src/text.c:3035
 msgid "character"
 msgid_plural "characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "таңба"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
 #: src/text.c:3053
 msgid "Verbatim Input"
-msgstr "Sarrera literala"
+msgstr "Сол күйінде енгізу"
 
 #. TRANSLATORS: An invalid verbatim Unicode code was typed.
 #: src/text.c:3077
 msgid "Invalid code"
-msgstr ""
+msgstr "Жарамсыз код"
 
 #. TRANSLATORS: Shown when no text is directly left of the cursor.
 #: src/text.c:3163
 msgid "No word fragment"
-msgstr ""
+msgstr "Сөз фрагменті жоқ"
 
 #: src/text.c:3267
 msgid "No further matches"
-msgstr ""
+msgstr "Басқа сәйкестіктер жоқ"
 
 #. TRANSLATORS: Shown when there are zero possible completions.
 #: src/text.c:3270
 msgid "No matches"
-msgstr ""
+msgstr "Сәйкестіктер жоқ"
 
 #: src/utils.c:288 src/utils.c:299
 msgid "Nano is out of memory!\n"
-msgstr ""
+msgstr "Nano-да жад таусылды!\n"
 
 #: src/winio.c:98
 msgid "Recording a macro..."
-msgstr ""
+msgstr "Макрос жазылуда..."
 
 #: src/winio.c:108
 msgid "Stopped recording"
-msgstr ""
+msgstr "Жазу тоқтатылды"
 
 #: src/winio.c:128
 msgid "Cannot run macro while recording"
-msgstr ""
+msgstr "Жазу кезінде макросты орындау мүмкін емес"
 
 #: src/winio.c:134
 msgid "Macro is empty"
-msgstr ""
+msgstr "Макрос бос"
 
 #: src/winio.c:149
 msgid "Too much input at once\n"
-msgstr ""
+msgstr "Бірден тым көп мәлімет енгізілді\n"
 
 #: src/winio.c:262
 msgid "Too many errors from stdin\n"
-msgstr ""
+msgstr "stdin-нен тым көп қателер\n"
 
 #. TRANSLATORS: This is shown while a six-digit hexadecimal
 #. * Unicode character code (%s) is being typed in.
 #: src/winio.c:1424
 #, c-format
 msgid "Unicode Input: %s"
-msgstr ""
+msgstr "Unicode енгізу: %s"
 
 #. TRANSLATORS: The next five are "labels" in the title bar.
 #: src/winio.c:2040
 msgid "Linting --"
-msgstr ""
+msgstr "Линтерлеу --"
 
 #: src/winio.c:2046
 msgid "DIR:"
-msgstr "DIR:"
+msgstr "БУМА:"
 
 #: src/winio.c:2067
 msgid "View"
-msgstr "Ikusi"
+msgstr "Қарау"
 
 #: src/winio.c:2073 src/winio.c:2077
 msgid "Modified"
-msgstr "Aldatua"
+msgstr "Өзгертілген"
 
 #: src/winio.c:2075
 msgid "Restricted"
-msgstr ""
+msgstr "Шектелген"
 
 #: src/winio.c:2181
 msgid "(nameless)"
-msgstr ""
+msgstr "(атаусыз)"
 
 #: src/winio.c:2213
 #, c-format
 msgid " (%zu line)"
 msgid_plural " (%zu lines)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " (%zu жол)"
 
 #: src/winio.c:2215
 #, c-format
 msgid " (%zu line, %s)"
 msgid_plural " (%zu lines, %s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " (%zu жол, %s)"
 
 #: src/winio.c:3541
 #, c-format
 msgid "line %*zd/%zd (%2d%%), col %2zu/%2zu (%3d%%), char %*zu/%zu (%2d%%)"
-msgstr ""
+msgstr "жол %*zd/%zd (%2d%%), баған %2zu/%2zu (%3d%%), таңба %*zu/%zu (%2d%%)"
 
 #: src/winio.c:3695
 msgid "The nano text editor"
-msgstr "Nano textu editorea"
+msgstr "The nano text editor"
 
 #: src/winio.c:3696
 msgid "version"
-msgstr "bertsioa"
+msgstr "нұсқасы"
 
 #: src/winio.c:3697
 msgid "Brought to you by:"
-msgstr "Zuretzako hauek egina:"
+msgstr "Ұсынғандар:"
 
 #: src/winio.c:3698
 msgid "Special thanks to:"
-msgstr "Esker bereziak:"
+msgstr "Ерекше алғыс:"
 
 #: src/winio.c:3699
 msgid "The Free Software Foundation"
-msgstr "The Free Software Foundation"
+msgstr "Еркін бағдарламалық қамтама қоры (FSF)"
 
 #: src/winio.c:3700
 msgid "the many translators and the TP"
-msgstr ""
+msgstr "көптеген аудармашылар мен TP"
 
 #: src/winio.c:3701
 msgid "For ncurses:"
-msgstr "ncurses-entzat:"
+msgstr "ncurses үшін:"
 
 #: src/winio.c:3702
 msgid "and anyone else we forgot..."
-msgstr "eta ahaztu dugun baten bat..."
+msgstr "және біз ұмытып кеткен басқа да жандарға..."
 
 #: src/winio.c:3703
 msgid "Thank you for using nano!"
-msgstr "Mila esker nano erabiltzeagatik!"
+msgstr "nano-ны қолданғаныңызға рақмет!"
 
 #: lib/getopt.c:283
 #, c-format
 msgid "%s: option '%s%s' is ambiguous\n"
-msgstr ""
+msgstr "%s: «%s%s» опциясы екіұшты\n"
 
 #: lib/getopt.c:289
 #, c-format
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
-msgstr ""
+msgstr "%s: «%s%s» опциясы екіұшты; нұсқалар:"
 
 #: lib/getopt.c:323
 #, c-format
 msgid "%s: unrecognized option '%s%s'\n"
-msgstr ""
+msgstr "%s: танылмаған «%s%s» опциясы\n"
 
 #: lib/getopt.c:349
 #, c-format
 msgid "%s: option '%s%s' doesn't allow an argument\n"
-msgstr ""
+msgstr "%s: «%s%s» опциясы аргументті талап етпейді\n"
 
 #: lib/getopt.c:364
 #, c-format
 msgid "%s: option '%s%s' requires an argument\n"
-msgstr ""
+msgstr "%s: «%s%s» опциясы аргументті талап етеді\n"
 
 #: lib/getopt.c:624
 #, c-format
 msgid "%s: invalid option -- '%c'\n"
-msgstr ""
+msgstr "%s: жарамсыз опция -- «%c»\n"
 
 #: lib/getopt.c:639 lib/getopt.c:685
 #, c-format
 msgid "%s: option requires an argument -- '%c'\n"
-msgstr ""
+msgstr "%s: опция аргументті талап етеді -- «%c»\n"
 
 #: lib/regcomp.c:122
 msgid "Success"
-msgstr ""
+msgstr "Сәтті аяқталды"
 
 #: lib/regcomp.c:125
 msgid "No match"
-msgstr ""
+msgstr "Сәйкестік жоқ"
 
 #: lib/regcomp.c:128
 msgid "Invalid regular expression"
-msgstr ""
+msgstr "Жарамсыз тұрақты өрнек"
 
 #: lib/regcomp.c:131
 msgid "Invalid collation character"
-msgstr ""
+msgstr "Жарамсыз салыстыру таңбасы"
 
 #: lib/regcomp.c:134
 msgid "Invalid character class name"
-msgstr ""
+msgstr "Таңба класының атауы жарамсыз"
 
 #: lib/regcomp.c:137
 msgid "Trailing backslash"
-msgstr ""
+msgstr "Соңындағы кері қиғаш сызық"
 
 #: lib/regcomp.c:140
 msgid "Invalid back reference"
-msgstr ""
+msgstr "Кері сілтеме жарамсыз"
 
 #: lib/regcomp.c:143
 msgid "Unmatched [, [^, [:, [., or [="
-msgstr ""
+msgstr "Жұпсыз [, [^, [:, [., немесе [="
 
 #: lib/regcomp.c:146
 msgid "Unmatched ( or \\("
-msgstr ""
+msgstr "Жұпсыз ( немесе \\("
 
 #: lib/regcomp.c:149
 msgid "Unmatched \\{"
-msgstr ""
+msgstr "Жұпсыз \\{"
 
 #: lib/regcomp.c:152
 msgid "Invalid content of \\{\\}"
-msgstr ""
+msgstr "\\{\\} мазмұны жарамсыз"
 
 #: lib/regcomp.c:155
 msgid "Invalid range end"
-msgstr ""
+msgstr "Ауқым соңы жарамсыз"
 
 #: lib/regcomp.c:158
 msgid "Memory exhausted"
-msgstr ""
+msgstr "Жад таусылды"
 
 #: lib/regcomp.c:161
 msgid "Invalid preceding regular expression"
-msgstr ""
+msgstr "Алдыңғы тұрақты өрнек жарамсыз"
 
 #: lib/regcomp.c:164
 msgid "Premature end of regular expression"
-msgstr ""
+msgstr "Тұрақты өрнек мезгілінен бұрын аяқталды"
 
 #: lib/regcomp.c:167
 msgid "Regular expression too big"
-msgstr ""
+msgstr "Тұрақты өрнек тым үлкен"
 
 #: lib/regcomp.c:170
 msgid "Unmatched ) or \\)"
-msgstr ""
+msgstr "Жұпсыз ) немесе \\)"
 
 #: lib/regcomp.c:650
 msgid "No previous regular expression"
-msgstr ""
+msgstr "Алдыңғы тұрақты өрнек жоқ"
