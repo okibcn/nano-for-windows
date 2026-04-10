@@ -8,7 +8,7 @@ comment "#"
 color ,red " +	+"
 
 # Nano's release motto, then name plus version.
-color italic,lime "\<[Nn]ano [1-8]\.[0-9][-.[:alnum:]]* "[^"]+""
+color italic,lime "\<[Nn]ano [1-9]\.[0-9][-.[:alnum:]]* "[^"]+""
 color brightred "\<(GNU )?[Nn]ano [1-9]\.[0-9][-.[:alnum:]]*\>"
 
 # Dates
