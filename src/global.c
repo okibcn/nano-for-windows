@@ -1167,13 +1167,13 @@ void shortcut_init(void)
 	 * reduplicating the current file, and the third is not allowed as it
 	 * would write to a file not specified on the command line. */
 	if (!ISSET(RESTRICTED)) {
+		add_to_funcs(back_it_up, MWRITEFILE,
+				N_("Backup File"), WHENHELP(backup_gist), TOGETHER);
+
 		add_to_funcs(append_it, MWRITEFILE,
 				N_("Append"), WHENHELP(append_gist), TOGETHER);
 		add_to_funcs(prepend_it, MWRITEFILE,
-				N_("Prepend"), WHENHELP(prepend_gist), TOGETHER);
-
-		add_to_funcs(back_it_up, MWRITEFILE,
-				N_("Backup File"), WHENHELP(backup_gist), BLANKAFTER);
+				N_("Prepend"), WHENHELP(prepend_gist), BLANKAFTER);
 	}
 
 	add_to_funcs(flip_convert, MINSERTFILE,
@@ -1546,12 +1546,12 @@ void shortcut_init(void)
 		add_to_sclist(MWRITEFILE, "^Q", 0, discard_buffer, 0);
 #ifndef NANO_TINY
 	add_to_sclist(MWRITEFILE, "M-D", 0, dos_format, 0);
-	/* Only when not in restricted mode, allow Appending, Prepending,
-	 * making backups, and executing a command. */
+	/* Only when not in restricted mode, allow making backups,
+	 * appending, prepending, and executing a command. */
 	if (!ISSET(RESTRICTED) && !ISSET(VIEW_MODE)) {
+		add_to_sclist(MWRITEFILE, "M-B", 0, back_it_up, 0);
 		add_to_sclist(MWRITEFILE, "M-A", 0, append_it, 0);
 		add_to_sclist(MWRITEFILE, "M-P", 0, prepend_it, 0);
-		add_to_sclist(MWRITEFILE, "M-B", 0, back_it_up, 0);
 		add_to_sclist(MINSERTFILE|MEXECUTE, "^X", 0, flip_execute, 0);
 	}
 	add_to_sclist(MINSERTFILE, "M-N", 0, flip_convert, 0);
