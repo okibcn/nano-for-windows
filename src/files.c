@@ -1898,11 +1898,11 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 			}
 		}
 #endif
-			if (putc('\n', thefile) == EOF) {
-				statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
-				fclose(thefile);
-				goto cleanup_and_exit;
-			}
+		if (putc('\n', thefile) == EOF) {
+			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			fclose(thefile);
+			goto cleanup_and_exit;
+		}
 
 		line = line->next;
 		lineswritten++;
