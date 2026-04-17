@@ -251,7 +251,7 @@ selected through dragging by holding down the Shift key.
 When reading in a file with \fB^R\fR, insert it into a new buffer by default.
 .TP
 .B set noconvert
-Don't convert files from DOS/Mac format.
+Don't convert files from DOS format.
 .TP
 .B set nohelp
 Don't display the two help lines at the bottom of the screen.
@@ -976,13 +976,10 @@ empty buffer.
 .TP
 .B flipconvert
 When reading in a file, toggles between converting and not converting
-it from DOS/Mac format.  Converting is the default.
+it from DOS format.  Converting is the default.
 .TP
 .B dosformat
-When writing a file, switches to writing a DOS format (CR/LF).
-.TP
-.B macformat
-When writing a file, switches to writing a Mac format.
+When writing a file, switches to writing DOS format (CR+LF line endings).
 .TP
 .B append
 When writing a file, appends to the end instead of overwriting.

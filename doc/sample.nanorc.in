@@ -114,7 +114,7 @@
 ## a separate buffer).
 # set multibuffer
 
-## Don't convert files from DOS/Mac format.
+## Don't convert files from DOS format.
 # set noconvert
 
 ## Don't display the helpful shortcut lists at the bottom of the screen.
@@ -195,7 +195,7 @@
 ## Snip whitespace at the end of lines when justifying or hard-wrapping.
 # set trimblanks
 
-## Save files by default in Unix format (also when they were DOS or Mac).
+## Save files always in Unix format (also when they were DOS).
 # set unix
 
 ## The two single-column characters used to display the first characters

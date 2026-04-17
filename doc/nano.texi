@@ -519,7 +519,7 @@ hard-wrapping occurs or when text is justified.
 
 @item -N
 @itemx --noconvert
-Disable automatic conversion of files from DOS/Mac format.
+Disable automatic conversion of files from DOS format.
 
 @item -O
 @itemx --bookstyle
@@ -1129,7 +1129,7 @@ cursor, set the mark (with two clicks), or execute shortcuts.
 When reading in a file with @kbd{^R}, insert it into a new buffer by default.
 
 @item set noconvert
-Don't convert files from DOS/Mac format.
+Don't convert files from DOS format.
 
 @item set nohelp
 Don't display the help lists at the bottom of the screen.
@@ -1860,13 +1860,10 @@ empty buffer.
 
 @item flipconvert
 When reading in a file, toggles between converting and not converting
-it from DOS/Mac format.  Converting is the default.
+it from DOS format.  Converting is the default.
 
 @item dosformat
-When writing a file, switches to writing a DOS format (CR/LF).
-
-@item macformat
-When writing a file, switches to writing a Mac format.
+When writing a file, switches to writing DOS format (CR+LF line endings).
 
 @item append
 When writing a file, appends to the end instead of overwriting.
