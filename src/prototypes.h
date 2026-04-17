@@ -680,7 +680,6 @@ void goto_dir(void);
 void do_nothing(void);
 void do_toggle(void);
 void dos_format(void);
-void mac_format(void);
 void append_it(void);
 void prepend_it(void);
 void back_it_up(void);

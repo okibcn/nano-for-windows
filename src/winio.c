@@ -2213,7 +2213,7 @@ void minibar(void)
 			sprintf(number_of_lines, P_(" (%zu line)", " (%zu lines)", count), count);
 		else
 			sprintf(number_of_lines, P_(" (%zu line, %s)", " (%zu lines, %s)", count),
-								count, (openfile->fmt == DOS_FILE) ? "DOS" : "Mac");
+										count, _("DOS"));
 		tallywidth = breadth(number_of_lines);
 		if (namewidth + tallywidth + 11 < COLS)
 			waddstr(footwin, number_of_lines);

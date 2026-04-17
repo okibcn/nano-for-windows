@@ -281,7 +281,7 @@
 
 /* Enumeration types. */
 typedef enum {
-	UNSPECIFIED, NIX_FILE, DOS_FILE, MAC_FILE
+	UNSPECIFIED, NIX_FILE, DOS_FILE
 } format_type;
 
 typedef enum {
@@ -584,7 +584,7 @@ typedef struct openfilestruct {
 	bool softmark;
 		/* Whether a marked region was made by holding Shift. */
 	format_type fmt;
-		/* The file's format -- Unix or DOS or Mac. */
+		/* The file's format -- Unix or DOS. */
 	char *lock_filename;
 		/* The path of the lockfile, if we created one. */
 	undostruct *undotop;

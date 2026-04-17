@@ -322,7 +322,6 @@ void goto_dir(void)  {;}
 void do_nothing(void)  {;}
 void do_toggle(void)  {;}
 void dos_format(void)  {;}
-void mac_format(void)  {;}
 void append_it(void)  {;}
 void prepend_it(void)  {;}
 void back_it_up(void)  {;}
@@ -701,7 +700,6 @@ void shortcut_init(void)
 #endif
 #ifndef NANO_TINY
 	const char *dos_gist = N_("Toggle the use of DOS format");
-	const char *mac_gist = N_("Toggle the use of Mac format");
 	const char *append_gist = N_("Toggle appending");
 	const char *prepend_gist = N_("Toggle prepending");
 	const char *backup_gist = N_("Toggle backing up of the original file");
@@ -712,7 +710,7 @@ void shortcut_init(void)
 	const char *older_command_gist = N_("Recall the previous command");
 	const char *newer_command_gist = N_("Recall the next command");
 #endif
-	const char *convert_gist = N_("Do not convert from DOS/Mac format");
+	const char *convert_gist = N_("Do not convert from DOS format");
 #endif
 #ifdef ENABLE_MULTIBUFFER
 	const char *newbuffer_gist = N_("Toggle the use of a new buffer");
@@ -1163,8 +1161,6 @@ void shortcut_init(void)
 #ifndef NANO_TINY
 	add_to_funcs(dos_format, MWRITEFILE,
 			N_("DOS Format"), WHENHELP(dos_gist), TOGETHER);
-	add_to_funcs(mac_format, MWRITEFILE,
-			N_("Mac Format"), WHENHELP(mac_gist), TOGETHER);
 
 	/* If we're using restricted mode, the Append, Prepend, and Backup toggles
 	 * are disabled.  The first and second are not useful as they only allow
@@ -1550,7 +1546,6 @@ void shortcut_init(void)
 		add_to_sclist(MWRITEFILE, "^Q", 0, discard_buffer, 0);
 #ifndef NANO_TINY
 	add_to_sclist(MWRITEFILE, "M-D", 0, dos_format, 0);
-	add_to_sclist(MWRITEFILE, "M-M", 0, mac_format, 0);
 	/* Only when not in restricted mode, allow Appending, Prepending,
 	 * making backups, and executing a command. */
 	if (!ISSET(RESTRICTED) && !ISSET(VIEW_MODE)) {

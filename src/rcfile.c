@@ -420,8 +420,6 @@ keystruct *strtosc(const char *input)
 #ifndef NANO_TINY
 	else if (!strcmp(input, "dosformat"))
 		s->func = dos_format;
-	else if (!strcmp(input, "macformat"))
-		s->func = mac_format;
 	else if (!strcmp(input, "append"))
 		s->func = append_it;
 	else if (!strcmp(input, "prepend"))

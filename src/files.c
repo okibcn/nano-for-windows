@@ -543,8 +543,7 @@ void mention_name_and_linecount(void)
 		/* TRANSLATORS: First %s is file name, second %s is file format. */
 		statusline(HUSH, P_("%s -- %zu line (%s)", "%s -- %zu lines (%s)", count),
 						openfile->filename[0] == '\0' ?
-						_("New Buffer") : tail(openfile->filename), count,
-						openfile->fmt == DOS_FILE ? _("DOS") : _("Mac"));
+						_("New Buffer") : tail(openfile->filename), count, _("DOS"));
 	else
 #endif
 		statusline(HUSH, P_("%s -- %zu line", "%s -- %zu lines", count),
@@ -675,7 +674,7 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 		/* Whether the file is writable (in case we care). */
 #ifndef NANO_TINY
 	format_type format = NIX_FILE;
-		/* The type of line ending the file uses: Unix, DOS, or Mac. */
+		/* The type of line ending the file uses: Unix or DOS. */
 
 	if (undoable)
 		add_undo(INSERT, NULL);
@@ -709,21 +708,15 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 		if (control_C_was_pressed)
 			break;
 
-		/* When the byte before the current one is a CR and automatic format
-		 * conversion has not been switched off, then strip this CR when it's
-		 * before a LF OR when the file is in Mac format.  Also, when this is
-		 * the first line break, make a note of the format. */
 		if (input == '\n') {
 #ifndef NANO_TINY
+			/* When automatic format conversion is not off, strip a CR before
+			 * a LF.  And set the format when this is the first line break. */
 			if (len > 0 && buf[len - 1] == '\r' && !ISSET(NO_CONVERT)) {
 				if (num_lines == 0)
 					format = DOS_FILE;
 				len--;
 			}
-		} else if ((num_lines == 0 || format == MAC_FILE) &&
-					len > 0 && buf[len - 1] == '\r' && !ISSET(NO_CONVERT)) {
-			format = MAC_FILE;
-			len--;
 #endif
 		} else {
 			/* Store the byte. */
@@ -751,13 +744,6 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 
 		/* Reset the length in preparation for the next line. */
 		len = 0;
-
-#ifndef NANO_TINY
-		/* If it was a Mac line, then store the byte after the \r
-		 * as the first byte of the next line. */
-		if (input != '\n')
-			buf[len++] = input;
-#endif
 	}
 
 	errornumber = errno;
@@ -796,29 +782,8 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 	if (len == 0)
 		bottomline->data = copy_of("");
 	else {
-#ifndef NANO_TINY
-		bool mac_line_needs_newline = FALSE;
-
-		/* If the final character is a CR and file conversion isn't disabled,
-		 * strip this CR and indicate that an extra blank line is needed. */
-		if (buf[len - 1] == '\r' && !ISSET(NO_CONVERT)) {
-			if (num_lines == 0)
-				format = MAC_FILE;
-			buf[--len] = '\0';
-			mac_line_needs_newline = TRUE;
-		}
-#endif
-		/* Store the data of the final line. */
 		bottomline->data = encode_data(buf, len);
 		num_lines++;
-
-#ifndef NANO_TINY
-		if (mac_line_needs_newline) {
-			bottomline->next = make_new_node(bottomline);
-			bottomline = bottomline->next;
-			bottomline->data = copy_of("");
-		}
-#endif
 	}
 
 	free(buf);
@@ -834,12 +799,8 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 	else if ((ISSET(ZERO) || ISSET(MINIBAR)) && !(we_are_running && undoable))
 		;  /* No blurb for new buffers with --zero or --mini. */
 #ifndef NANO_TINY
-	else if (format == MAC_FILE)
-		/* TRANSLATORS: Keep the next three messages at most 78 characters. */
-		statusline(REMARK, P_("Read %zu line (converted from Mac format)",
-						"Read %zu lines (converted from Mac format)",
-						num_lines), num_lines);
 	else if (format == DOS_FILE)
+		/* TRANSLATORS: Keep the next two messages at most 78 characters. */
 		statusline(REMARK, P_("Read %zu line (converted from DOS format)",
 						"Read %zu lines (converted from DOS format)",
 						num_lines), num_lines);
@@ -1929,15 +1890,13 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 		}
 
 #ifndef NANO_TINY
-		if (openfile->fmt == DOS_FILE || openfile->fmt == MAC_FILE) {
+		if (openfile->fmt == DOS_FILE) {
 			if (putc('\r', thefile) == EOF) {
 				statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
 				fclose(thefile);
 				goto cleanup_and_exit;
 			}
 		}
-
-		if (openfile->fmt != MAC_FILE)
 #endif
 			if (putc('\n', thefile) == EOF) {
 				statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
@@ -2155,8 +2114,7 @@ int write_it_out(bool exiting, bool withprompt)
 		int response = 0;
 		int choice = NO;
 #ifndef NANO_TINY
-		const char *formatstr = (openfile->fmt == DOS_FILE) ? _(" [DOS Format]") :
-						(openfile->fmt == MAC_FILE) ? _(" [Mac Format]") : "";
+		const char *formatstr = (openfile->fmt == DOS_FILE) ? _(" [DOS Format]") : "";
 		const char *backupstr = ISSET(MAKE_BACKUP) ? _(" [Backup]") : "";
 
 		/* When the mark is on, offer to write the selection to disk, but
@@ -2222,9 +2180,6 @@ int write_it_out(bool exiting, bool withprompt)
 #ifndef NANO_TINY
 		if (function == dos_format) {
 			openfile->fmt = (openfile->fmt == DOS_FILE) ? NIX_FILE : DOS_FILE;
-			continue;
-		} else if (function == mac_format) {
-			openfile->fmt = (openfile->fmt == MAC_FILE) ? NIX_FILE : MAC_FILE;
 			continue;
 		} else if (function == back_it_up && !ISSET(RESTRICTED)) {
 			TOGGLE(MAKE_BACKUP);

@@ -543,7 +543,7 @@ void usage(void)
 #endif
 #ifndef NANO_TINY
 	print_opt("-N", "--noconvert",
-					N_("Don't convert files from DOS/Mac format"));
+					N_("Don't convert files from DOS format"));
 	print_opt("-O", "--bookstyle",
 					N_("Leading whitespace means new paragraph"));
 #endif
