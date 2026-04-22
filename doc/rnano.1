@@ -27,24 +27,37 @@ rnano \- a restricted nano
 
 .SH DESCRIPTION
 \fBrnano\fR runs the \fBnano\fR editor in restricted mode.  This allows
-editing only the specified file or files, and doesn't allow the user
-access to the filesystem nor to a command shell.
+editing only the \fIfile\fR (or files) specified on the command line.
 .sp
 In restricted mode, \fBnano\fR will:
+.RS 4
 .IP \[bu] 2
 not make backups;
+.IP \[bu]
+not read nor write the history files;
 .IP \[bu]
 not allow suspending;
 .IP \[bu]
 not allow spell checking;
 .IP \[bu]
-not read nor write the history files;
+not allow running any command in the shell;
 .IP \[bu]
 not allow saving the current buffer under a different name;
 .IP \[bu]
 not allow inserting another file or opening a new buffer;
 .IP \[bu]
 not allow appending or prepending to any file.
+.RE
+.sp
+As an exception, before the specified file or files, the nanorc files are
+read, to allow customization.  If customization should not be allowed,
+use option \fB\-I\fR (\fB\-\-ignorercfiles\fR) as well.
+.sp
+When no \fIfile\fR is specified on the command line, the user may save
+the contents that they type into the new buffer under any name, except
+that existing files may not be overwritten.  If the places where this
+new file may be created should be limited, then additionally use the
+option \fB\-o\fR (\fB\-\-operatingdir\fR).
 
 .SH OPTIONS
 .TP

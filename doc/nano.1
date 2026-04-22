@@ -207,13 +207,24 @@ This makes it possible to rejustify blocks of quoted text when composing
 email, and to rewrap blocks of line comments when writing source code.
 .TP
 .BR \-R ", " \-\-restricted
-Restricted mode: don't read or write to any file not specified on the
-command line.  This means: don't read or write history files;
-don't allow suspending; don't allow spell checking;
-don't allow a file to be appended to, prepended to, or saved under a
-different name if it already has one; and don't make backup files.
+Read and write only the file (or files) specified on the command line.
+This means: don't read or write the history files; don't allow suspending;
+don't allow spell checking; don't allow executing any command in the shell;
+don't allow the current buffer to be saved under a different name; don't
+allow appending or prepending to any file; and don't make backup files.
+.sp
+As an exception, before the specified file or files, the nanorc files are
+read, to allow customization.  If customization should not be allowed,
+use option \fB\-I\fR (\fB\-\-ignorercfiles\fR) as well.
+.sp
+When no \fIfile\fR is specified on the command line, restricted mode
+allows you to save the contents that you type into the new buffer
+under any name, except that existing files may not be overwritten.
+If the places where this new file may be created should be limited,
+then use option \fB\-o\fR (\fB\-\-operatingdir\fR) as well.
+.sp
 Restricted mode can also be activated by invoking \fBnano\fR
-with any name beginning with 'r' (e.g.\& "rnano").
+with a name beginning with 'r' (e.g.\& \fBrnano\fR).
 .TP
 .BR \-S ", " \-\-softwrap
 Display over multiple screen rows lines that exceed the screen's width.
