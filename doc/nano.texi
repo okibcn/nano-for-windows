@@ -1095,7 +1095,7 @@ Display line numbers to the left of the text area.
 (Any line with an anchor additionally gets a mark in the margin.)
 
 @item set locking
-Enable vim-style lock-files for when editing files.
+Use vim-style lock-files when editing files.
 
 @item set magic
 When neither the file's name nor its first line give a clue,
