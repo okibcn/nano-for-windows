@@ -38,7 +38,7 @@ instead of scrolling only the current line by a large step.
 If you prefer the old behavior, you can use \fB\-\-solo\fR on the
 command line or \fBset \%solosidescroll\fR in your \fInanorc\fR.
 .sp
-Also since version 9.0, keystrokes \fBM-<\fR and \fBM->\fR have
+Also since version 9.0, keystrokes \fBM\-<\fR and \fBM\->\fR have
 been reassigned to the \fBscrollleft\fR and \fBscrollright\fR functions.
 If you want those keystrokes to do what they did before version 9.0,
 add these two lines at the end of your \fInanorc\fR file:
@@ -805,26 +805,26 @@ Goes one line down (in the editor or browser).
 .TP
 .B scrollleft
 Scrolls the viewport a tabsize to the left, when possible.
-(This function is bound by default to \fBM-<\fR.)
+(This function is bound by default to \fBM\-<\fR.)
 .TP
 .B scrollright
 Scrolls the viewport a tabsize to the right.  When needed to keep
 the cursor visible, it is moved to a longer line in the viewport.
 If there is no sufficiently longer line, no scroll is made.
-(This function is bound by default to \fBM->\fR.)
+(This function is bound by default to \fBM\->\fR.)
 .TP
 .B scrollup
 Scrolls the viewport up one row (meaning that the text slides down)
 while keeping the cursor in the same text position, if possible.
-(This function is bound by default to \fBM-Up\fR.
-If \fBM-Up\fR does nothing on your Linux console, see the FAQ:
+(This function is bound by default to \fBM\-Up\fR.
+If \fBM\-Up\fR does nothing on your Linux console, see the FAQ:
 .UR https://nano\-editor.org/dist/latest/faq.html#4.1
 .UE .)
 .TP
 .B scrolldown
 Scrolls the viewport down one row (meaning that the text slides up)
 while keeping the cursor in the same text position, if possible.
-(This function is bound by default to \fBM-Down\fR.)
+(This function is bound by default to \fBM\-Down\fR.)
 .TP
 .B center
 Scrolls the line with the cursor to the middle of the viewport.
