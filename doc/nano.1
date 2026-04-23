@@ -143,7 +143,7 @@ For the interface, use bold instead of reverse video.
 This can be overridden for specific elements by setting the options
 \fB\%titlecolor\fR, \fB\%statuscolor\fR, \fB\%promptcolor\fR,
 \fB\%minicolor\fR, \fB\%keycolor\fR, \fB\%numbercolor\fR, and/or
-\fB\%selectedcolor\fR in your nanorc file.  See \fBnanorc\fR(5).
+\fB\%selectedcolor\fR in your \fInanorc\fR file.  See \fBnanorc\fR(5).
 .TP
 .BR \-E ", " \-\-tabstospaces
 Convert each typed tab to spaces \[em] to the number of spaces
@@ -204,14 +204,14 @@ This makes it possible to rejustify blocks of quoted text when composing
 email, and to rewrap blocks of line comments when writing source code.
 .TP
 .BR \-R ", " \-\-restricted
-Read and write only the file (or files) specified on the command line.
+Read and write only the \fIfile\fR (or files) specified on the command line.
 This means: don't read or write the history files; don't allow suspending;
 don't allow spell checking; don't allow executing any command in the shell;
 don't allow the current buffer to be saved under a different name; don't
 allow appending or prepending to any file; and don't make backup files.
 .sp
-As an exception, before the specified file or files, the nanorc files are
-read, to allow customization.  If customization should not be allowed,
+As an exception, before the specified file or files, the \fInanorc\fR files
+are read, to allow customization.  If customization should not be allowed,
 use option \fB\-I\fR (\fB\-\-ignorercfiles\fR) as well.
 .sp
 When no \fIfile\fR is specified on the command line, restricted mode
@@ -286,7 +286,7 @@ Do not use the line below the title bar, leaving it entirely blank.
 .TP
 .BI \-f " file\fR, " \-\-rcfile= file
 Read only this \fIfile\fR for setting nano's options, instead of reading
-both the system-wide and the user's nanorc files.
+both the system-wide and the user's \fInanorc\fR files.
 .TP
 .BR \-g ", " \-\-showcursor
 Make the cursor visible in the file browser (putting it on the
@@ -463,12 +463,12 @@ When \fB\-\-rcfile\fR is given, \fBnano\fR reads just the specified file
 for setting its options and syntaxes and key bindings.  Without that
 option, \fBnano\fR reads two configuration files: first the system's
 \fInanorc\fR (if it exists), and then the user's \fInanorc\fR (if it
-exists), either \fI\[ti]/.nanorc\fR or \fI$XDG_CONFIG_HOME/nano/nanorc\fR
-or \fI\[ti]/.config/nano/nanorc\fR, whichever is encountered first.  See
+exists), either \fI\%\[ti]/.nanorc\fR or \fI\%$XDG_CONFIG_HOME/\:nano/\:nanorc\fR
+or \fI\%\[ti]/.config/\:nano/\:nanorc\fR, whichever is encountered first.  See
 .BR nanorc (5)
 for more information on the possible contents of those files.
 .sp
-See \fI/usr/share/nano/\fR and \fI/usr/share/nano/extra/\fR
+See \fI/usr/\:share/\:nano/\fR and \fI/usr/\:share/\:nano/\:extra/\fR
 for available syntax-coloring definitions.
 
 .SH EXIT STATUS
@@ -485,7 +485,7 @@ The last open buffer was discarded (with \fB^O^Q\fR or \fB^X^Q\fR).
 .SH NOTES
 Suspension is enabled by default, reachable via \fB^T^Z\fR.
 (If you want a plain \fB^Z\fR to suspend nano, add
-\fBbind ^Z suspend main\fR to your nanorc.)
+\fBbind ^Z suspend main\fR to your \fInanorc\fR.)
 .sp
 At a Yes-No prompt, \fB^Y\fR can be used for "Yes", \fB^N\fR for "No",
 and \fB^A\fR for "All".
@@ -520,7 +520,7 @@ Please report any other bugs that you encounter via:
 .br
 .IR https://savannah.gnu.org/bugs/?group=nano .
 .sp
-When nano crashes, it saves any modified buffers to emergency .save files.
+When nano crashes, it saves any modified buffers to emergency \fI.save\fR files.
 If you are able to reproduce the crash and you want to get a backtrace, define
 the environment variable \fBNANO_NOCATCH\fR.
 
