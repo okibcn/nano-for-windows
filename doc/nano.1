@@ -169,9 +169,9 @@ text.  (The color of the stripe can be changed with \fBset \%stripecolor\fR
 in your \fInanorc\fR file.)
 .TP
 .BR \-K ", " \-\-rawsequences
-Interpret escape sequences directly, instead of asking \fB\%ncurses\fR
+Interpret escape sequences directly, instead of asking \fI\%ncurses\fR
 to translate them.  (If you need this option to get some keys to work
-properly, it means that the \fB\%terminfo\fR terminal description that
+properly, it means that the \fI\%terminfo\fR terminal description that
 is used does not fully match the actual behavior of your terminal.
 This can happen when you ssh into a BSD machine, for example.)
 Using this option disables \fBnano\fR's mouse support.
@@ -380,7 +380,7 @@ List the names of the available syntaxes and exit.
 .TP
 .BR \-! ", " \-\-magic
 When neither the file's name nor its first line give a clue,
-try using libmagic to determine the applicable syntax.
+try using \fI\%libmagic\fR to determine the applicable syntax.
 .TP
 .BR \-@ ", " \-\-colonparsing
 When a filename given on the command line ends in a colon plus digits

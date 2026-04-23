@@ -205,8 +205,8 @@ Enable vim-style lock-files for when editing files.
 .TP
 .B set magic
 When neither the file's name nor its first line give a clue,
-try using libmagic to determine the applicable syntax.
-(Calling libmagic can be relatively time consuming.
+try using \fI\%libmagic\fR to determine the applicable syntax.
+(Calling \fI\%libmagic\fR can be relatively time consuming.
 It is therefore not done by default.)
 .TP
 .BI "set matchbrackets """ characters """"
@@ -303,9 +303,9 @@ This makes it possible to rejustify blocks of quoted text when composing
 email, and to rewrap blocks of line comments when writing source code.
 .TP
 .B set rawsequences
-Interpret escape sequences directly, instead of asking \fB\%ncurses\fR
+Interpret escape sequences directly, instead of asking \fIn\%curses\fR
 to translate them.  (If you need this option to get some keys to work
-properly, it means that the \fB\%terminfo\fR terminal description that is used
+properly, it means that the \fI\%terminfo\fR terminal description that is used
 does not fully match the actual behavior of your terminal.  This can
 happen when you ssh into a BSD machine, for example.)
 Using this option disables \fBnano\fR's mouse support.
@@ -510,9 +510,9 @@ to determine whether this syntax should be used for it.
 .BI "magic """ regex """ " \fR...
 If no \fIfileregex\fR matched and no \fBheader\fR regex matched
 either, then compare this \fIregex\fR (or regexes) against the
-result of querying the \fBmagic\fR database about the current
+result of querying the \fImagic\fR database about the current
 file, to determine whether this syntax should be used for it.
-(This querying is done only when \fBlibmagic\fR is actually installed
+(This querying is done only when \fI\%libmagic\fR is actually installed
 on the system and \fB\-\-magic\fR or \fBset \%magic\fR was given.)
 .TP
 .BI formatter " program " \fR[ "argument " \fR...]
