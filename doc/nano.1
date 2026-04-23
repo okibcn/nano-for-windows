@@ -131,7 +131,7 @@ already at that position, it jumps to the true beginning of the line.
 .TP
 .BR \-B ", " \-\-backup
 When saving a file, back up the previous version of it, using the current
-filename suffixed with a tilde (\fB~\fR).
+filename suffixed with a tilde (\fB\[ti]\fR).
 .TP
 .BI \-C " directory\fR, " \-\-backupdir= directory
 Make and keep not just one backup file, but make and keep a uniquely numbered
@@ -463,8 +463,8 @@ When \fB\-\-rcfile\fR is given, \fBnano\fR reads just the specified file
 for setting its options and syntaxes and key bindings.  Without that
 option, \fBnano\fR reads two configuration files: first the system's
 \fInanorc\fR (if it exists), and then the user's \fInanorc\fR (if it
-exists), either \fI~/.nanorc\fR or \fI$XDG_CONFIG_HOME/nano/nanorc\fR
-or \fI~/.config/nano/nanorc\fR, whichever is encountered first.  See
+exists), either \fI\[ti]/.nanorc\fR or \fI$XDG_CONFIG_HOME/nano/nanorc\fR
+or \fI\[ti]/.config/nano/nanorc\fR, whichever is encountered first.  See
 .BR nanorc (5)
 for more information on the possible contents of those files.
 .sp
