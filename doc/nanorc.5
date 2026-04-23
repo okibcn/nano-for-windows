@@ -70,7 +70,7 @@ four lines at the end of your \fInanorc\fR file:
 The configuration file accepts a series of \fBset\fR and \fBunset\fR
 commands, which can be used to configure nano on startup without using
 command-line options.  Additionally, there are some commands to define
-syntax highlighting and to rebind keys \(em see the two separate sections
+syntax highlighting and to rebind keys \[em] see the two separate sections
 on those.  \fBnano\fR reads one command per line.
 All commands and keywords should be written in lowercase.
 .sp
@@ -109,7 +109,7 @@ the file's name.
 .TP
 .B set backupdir \fIdirectory\fR
 Make and keep not just one backup file, but make and keep a uniquely
-numbered one every time a file is saved \(em when backups are enabled
+numbered one every time a file is saved \[em] when backups are enabled
 with \fBset \%backup\fR or \fB\-\-backup\fR or \fB\-B\fR.
 The uniquely numbered files are stored in the specified \fIdirectory\fR.
 .TP
@@ -128,10 +128,10 @@ beginning of a paragraph (unless auto-indenting is on).
 Set the characters treated as closing brackets when justifying
 paragraphs.  This may not include blank characters.  Only closing
 punctuation (see \fBset punct\fR), optionally followed by the specified
-closing brackets, can end sentences.  The default value is "\fB\(dq')>]}\fR".
+closing brackets, can end sentences.  The default value is "\fB\[dq]')>]}\fR".
 .TP
 .B set breaklonglines
-Automatically hard-wrap the current line when it becomes overlong \(em
+Automatically hard-wrap the current line when it becomes overlong \[em]
 that is: when it becomes wider than the value given with \fBset fill\fR
 (which defaults to the width of the terminal minus eight).
 .TP
@@ -352,7 +352,7 @@ current line sideways by a large amount, instead of scrolling all visible lines
 sideways by just the amount needed to keep the cursor in view.
 This latter whole-window smooth sideways scrolling is the new default behavior.
 The single-line jerky sideways scrolling enabled by this option was the old
-behavior \(em the only behavior that \fBnano\fR knew.
+behavior \[em] the only behavior that \fBnano\fR knew.
 .TP
 .B set speller """\fIprogram\fR [\fIargument \fR...]\fB"""
 Use the given \fIprogram\fR to do spell checking and correcting, instead of
@@ -384,7 +384,7 @@ Use a tab size of \fInumber\fR columns.  The value of \fInumber\fR must be
 greater than 0.  The default value is \fB8\fR.
 .TP
 .B set tabstospaces
-Convert each typed tab to spaces \(em to the number of spaces
+Convert each typed tab to spaces \[em] to the number of spaces
 that a tab at that position would take up.
 (Note: pasted tabs are not converted.)
 .TP
@@ -405,7 +405,7 @@ other valid (but unprefixable) color names are:
 .BR \%orange ", " \%latte ", " \%rosy ", " beet ", " plum ", " sea ", " sky ,
 .BR slate ", " teal ", " sage ", " brown ", " \%ocher ", " sand ", " \%tawny ,
 .BR brick ", " \%crimson ", and " \%normal
-\(em where \fB\%normal\fR means the default foreground or background color.
+\[em] where \fB\%normal\fR means the default foreground or background color.
 On such emulators, the color may also be specified as a three-digit hexadecimal
 number prefixed with \fB#\fR, with the digits representing the amounts of red,
 green, and blue, respectively.  This tells \fBnano\fR to select from the
@@ -555,7 +555,7 @@ other valid (but unprefixable) color names are:
 .BR \%orange ", " \%latte ", " \%rosy ", " beet ", " plum ", " sea ", " sky ,
 .BR slate ", " teal ", " sage ", " brown ", " \%ocher ", " sand ", " \%tawny ,
 .BR brick ", " \%crimson ", and " \%normal
-\(em where \fB\%normal\fR means the default foreground or background color.
+\[em] where \fB\%normal\fR means the default foreground or background color.
 On such emulators, the color may also be specified as a three-digit hexadecimal
 number prefixed with \fB#\fR, with the digits representing the amounts of red,
 green, and blue, respectively.  This tells \fBnano\fR to select from the
@@ -593,7 +593,7 @@ Extend the syntax previously defined as \fIname\fR with another
 \fI\%command\fR.  This allows adding a new \fB\%color\fR, \fB\%icolor\fR,
 \fB\%header\fR, \fB\%magic\fR, \fB\%formatter\fR, \fB\%linter\fR,
 \fB\%comment\fR, or \fB\%tabgives\fR
-command to an already defined syntax \(em useful when you want to
+command to an already defined syntax \[em] useful when you want to
 slightly improve a syntax defined in one of the system-installed
 files (which normally are not writable).
 
@@ -687,11 +687,11 @@ Inserts a file into the current buffer (at the current cursor position),
 or into a new buffer when option \fBmultibuffer\fR is set.
 .TP
 .B whereis
-Starts a forward search for text in the current buffer \(em or for filenames
+Starts a forward search for text in the current buffer \[em] or for filenames
 matching a string in the current list in the file browser.
 .TP
 .B wherewas
-Starts a backward search for text in the current buffer \(em or for filenames
+Starts a backward search for text in the current buffer \[em] or for filenames
 matching a string in the current list in the file browser.
 .TP
 .B findprevious
@@ -744,7 +744,7 @@ and characters in the current buffer (or in the marked region).
 .TP
 .B execute
 Prompts for a program to execute.  The program's output is inserted
-into the current buffer \(em or into a new buffer when \fBM\-F\fR is toggled.
+into the current buffer \[em] or into a new buffer when \fBM\-F\fR is toggled.
 When the program's name is preceded by a pipe symbol (\fB|\fR), then the
 current buffer (or the marked region) is piped to the program, and the
 output of the program replaces the buffer (or the marked region).
@@ -919,7 +919,7 @@ Deletes the character under the cursor.
 Deletes the character before the cursor.
 .TP
 .B recordmacro
-Starts the recording of keystrokes \(em the keystrokes are stored
+Starts the recording of keystrokes \[em] the keystrokes are stored
 as a macro.  When already recording, the recording is stopped.
 .TP
 .B runmacro
@@ -1034,7 +1034,7 @@ Toggles the smartness of the Home key.
 .TP
 .B autoindent
 Toggles whether a newly created line will contain the same amount of leading
-whitespace as the preceding line \(em or as the next line if the preceding line
+whitespace as the preceding line \[em] or as the next line if the preceding line
 is the beginning of a paragraph.
 .TP
 .B cutfromcursor
