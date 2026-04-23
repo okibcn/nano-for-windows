@@ -1890,7 +1890,10 @@ bool write_file(const char *name, FILE *thefile, bool normal,
 		}
 
 		/* Write the newline (preceded with a carriage return for a DOS file). */
-		if ((openfile->fmt == DOS_FILE && putc('\r', thefile) == EOF) ||
+		if (
+#ifndef NANO_TINY
+			(openfile->fmt == DOS_FILE && putc('\r', thefile) == EOF) ||
+#endif
 											putc('\n', thefile) == EOF) {
 			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
 			fclose(thefile);
