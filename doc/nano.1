@@ -32,7 +32,7 @@ Since version 9.0, all lines are scrolled horizontally together
 (when the cursor approaches the edge), by just the amount needed,
 instead of scrolling only the current line by a large step.
 If you prefer the old behavior, you can use \fB--solo\fR on the
-command line or \fBset solosidescroll\fR in your \fInanorc\fR.
+command line or \fBset \%solosidescroll\fR in your \fInanorc\fR.
 .sp
 Also since version 9.0, keystrokes \fBM-<\fR and \fBM->\fR have
 been reassigned to the `scrollleft` and `scrollright` functions.
@@ -121,9 +121,6 @@ the built-in help (\fB^G\fR) lists all the available ones.
 The default key bindings can be changed via a \fInanorc\fR file \(em see
 .BR nanorc (5).
 
-.\" Never hyphenate these:
-.hw ncurses terminfo
-
 .SH OPTIONS
 .TP
 .BR \-A ", " \-\-smarthome
@@ -172,9 +169,9 @@ text.  (The color of the stripe can be changed with \fBset \%stripecolor\fR
 in your \fInanorc\fR file.)
 .TP
 .BR \-K ", " \-\-rawsequences
-Interpret escape sequences directly, instead of asking \fBncurses\fR
+Interpret escape sequences directly, instead of asking \fB\%ncurses\fR
 to translate them.  (If you need this option to get some keys to work
-properly, it means that the \fBterminfo\fR terminal description that
+properly, it means that the \fB\%terminfo\fR terminal description that
 is used does not fully match the actual behavior of your terminal.
 This can happen when you ssh into a BSD machine, for example.)
 Using this option disables \fBnano\fR's mouse support.
@@ -447,7 +444,7 @@ Furthermore, \fB^A\fR sets the mark, \fB^B\fR searches backward,
 \fB^D\fR searches previous, \fB^R\fR makes replacements,
 \fB^P\fR shows the position, \fB^T\fR goes to a line,
 \fB^W\fR writes out a file, and \fB^E\fR executes a command.
-Note that this option overrides option \fB\-p\fR (\fB\-\-preserve\fR).
+Note that this option overrides option \fB\-p\fR (\fB\-\-\%preserve\fR).
 
 .SH TOGGLES
 Several of the above options can be switched on and off also while

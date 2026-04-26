@@ -36,7 +36,7 @@ Since version 9.0, all lines are scrolled horizontally together
 (when the cursor approaches the edge), by just the amount needed,
 instead of scrolling only the current line by a large step.
 If you prefer the old behavior, you can use \fB--solo\fR on the
-command line or \fBset solosidescroll\fR in your \fInanorc\fR.
+command line or \fBset \%solosidescroll\fR in your \fInanorc\fR.
 .sp
 Also since version 9.0, keystrokes \fBM-<\fR and \fBM->\fR have
 been reassigned to the `scrollleft` and `scrollright` functions.
@@ -65,9 +65,6 @@ four lines at the end of your \fInanorc\fR file:
 .B bind M\-B linter main
 .RE
 .sp
-
-.\" Never hyphenate these:
-.hw ncurses terminfo
 
 .SH OPTIONS
 The configuration file accepts a series of \fBset\fR and \fBunset\fR
@@ -113,7 +110,7 @@ the file's name.
 .B set backupdir \fIdirectory\fR
 Make and keep not just one backup file, but make and keep a uniquely
 numbered one every time a file is saved \(em when backups are enabled
-with \fBset backup\fR or \fB\-\-backup\fR or \fB\-B\fR.
+with \fBset \%backup\fR or \fB\-\-backup\fR or \fB\-B\fR.
 The uniquely numbered files are stored in the specified \fIdirectory\fR.
 .TP
 .B set boldtext
@@ -180,7 +177,7 @@ See \fBset \%titlecolor\fR for more details.
 .TP
 .B set guidestripe \fInumber
 Draw a vertical stripe at the given column, to help judge the width of the
-text.  (The color of the stripe can be changed with \fBset stripecolor\fR.)
+text.  (The color of the stripe can be changed with \fBset \%stripecolor\fR.)
 .TP
 .B set historylog
 Save the last hundred search strings and replacement strings and
@@ -225,15 +222,15 @@ for the status bar.  In this "mini bar" the filename is shown
 on the left, followed by an asterisk if the buffer has been modified.
 On the right are displayed the current line and column number, the
 code of the character under the cursor (in Unicode format: U+xxxx),
-the same flags as are shown by \fBset stateflags\fR, and a percentage
+the same flags as are shown by \fBset \%stateflags\fR, and a percentage
 that expresses how far the cursor is into the file (linewise).
 When a file is loaded or saved, and also when switching between buffers,
 the number of lines in the buffer is displayed after the filename.
 This number is cleared upon the next keystroke, or replaced with an
 [i/n] counter when multiple buffers are open.
 The line plus column numbers and the character code are displayed only when
-\fBset constantshow\fR is used, and can be toggled on and off with \fBM\-C\fR.
-The state flags are displayed only when \fBset stateflags\fR is used.
+\fBset \%constantshow\fR is used, and can be toggled on and off with \fBM\-C\fR.
+The state flags are displayed only when \fBset \%stateflags\fR is used.
 .TP
 .B set minicolor \fR[\fBbold,\fR][\fBitalic,\fR]\fIfgcolor\fB,\fIbgcolor\fR
 Use this color combination for the mini bar.
@@ -262,7 +259,7 @@ Don't automatically add a newline when a text does not end with one.
 .TP
 .B set nowrap
 Deprecated option since it has become the default setting.
-When needed, use \fBunset breaklonglines\fR instead.
+When needed, use \fBunset \%breaklonglines\fR instead.
 .TP
 .B set numbercolor \fR[\fBbold,\fR][\fBitalic,\fR]\fIfgcolor\fB,\fIbgcolor\fR
 Use this color combination for line numbers.
@@ -289,7 +286,7 @@ See \fBset \%titlecolor\fR for more details.
 Set the characters treated as closing punctuation when justifying
 paragraphs.  This may not include blank characters.  Only the
 specified closing punctuation, optionally followed by closing brackets
-(see \fBset brackets\fR), can end sentences.  The default value is "\fB!.?\fR".
+(see \fBset \%brackets\fR), can end sentences.  The default value is "\fB!.?\fR".
 .TP
 .B set quickblank
 Make status-bar messages disappear after 1 keystroke instead of after 20.
@@ -306,9 +303,9 @@ This makes it possible to rejustify blocks of quoted text when composing
 email, and to rewrap blocks of line comments when writing source code.
 .TP
 .B set rawsequences
-Interpret escape sequences directly, instead of asking \fBncurses\fR
+Interpret escape sequences directly, instead of asking \fB\%ncurses\fR
 to translate them.  (If you need this option to get some keys to work
-properly, it means that the \fBterminfo\fR terminal description that is used
+properly, it means that the \fB\%terminfo\fR terminal description that is used
 does not fully match the actual behavior of your terminal.  This can
 happen when you ssh into a BSD machine, for example.)
 Using this option disables \fBnano\fR's mouse support.
@@ -347,7 +344,7 @@ already at that position, it jumps to the true beginning of the line.
 .B set softwrap
 Display lines that exceed the screen's width over multiple screen lines.
 (You can make this soft-wrapping occur at whitespace instead of rudely at
-the screen's edge, by using also \fBset atblanks\fR.)
+the screen's edge, by using also \fBset \%atblanks\fR.)
 .TP
 .B set solosidescroll
 When the cursor approaches the right edge of the edit window, scroll only the
@@ -426,7 +423,7 @@ hard-wrapping occurs or when text is justified.
 .B set unix
 Save a file by default in Unix format.  This overrides nano's
 default behavior of saving a file in the format that it had.
-(This option has no effect when you also use \fBset noconvert\fR.)
+(This option has no effect when you also use \fBset \%noconvert\fR.)
 .TP
 .BI "set whitespace """ characters """"
 Set the two characters used to indicate the presence of tabs and
@@ -516,7 +513,7 @@ either, then compare this \fIregex\fR (or regexes) against the
 result of querying the \fBmagic\fR database about the current
 file, to determine whether this syntax should be used for it.
 (This querying is done only when \fBlibmagic\fR is actually installed
-on the system and \fB\-\-magic\fR or \fBset magic\fR was given.)
+on the system and \fB\-\-magic\fR or \fBset \%magic\fR was given.)
 .TP
 .BI formatter " program " \fR[ "argument " \fR...]
 Run the given \fIprogram\fR on the full contents of the current buffer.
@@ -754,7 +751,7 @@ output of the program replaces the buffer (or the marked region).
 .TP
 .B speller
 Invokes a spell-checking program, either the default \fBhunspell\fR(1) or GNU
-\fBspell\fR(1), or the one defined by \fB\-\-speller\fR or \fBset speller\fR.
+\fBspell\fR(1), or the one defined by \fB\-\-speller\fR or \fBset \%speller\fR.
 .TP
 .B formatter
 Invokes a full-buffer-processing program (if the active syntax defines one).
@@ -887,7 +884,7 @@ number of lines forward or backward.
 .TP
 .B findbracket
 Moves the cursor to the bracket (or brace or parenthesis, etc.\&) that matches
-(pairs) with the one under the cursor.  See \fBset matchbrackets\fR.
+(pairs) with the one under the cursor.  See \fBset \%matchbrackets\fR.
 .TP
 .B anchor
 Places an anchor at the current line, or removes it when already present.
