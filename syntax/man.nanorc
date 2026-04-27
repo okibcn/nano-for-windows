@@ -16,7 +16,7 @@ color brightblue "^\.((B[IR]?|I[BR]?|RB|RI|SB|SM|SY|OP) |YS$)"
 # Inline type faces.
 color magenta "\\f[BIPR]"
 # Some escapes:
-color purple "\\([%&:e~]|\(e[mn])"
+color purple "\\([%&:e~]|\(e[mn]|\[..\])"
 # Hyphenation control.
 color yellow "^\.(hc|hla|hlm|hw|hy)"
 # Relative margins, hyperlinks, and various other stuff.
