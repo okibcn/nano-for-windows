@@ -1403,12 +1403,12 @@ Use the given @var{program} to do a syntax check on the current buffer.
 @item comment "@var{string}"
 Use the given string for commenting and uncommenting lines.
 If the string contains a vertical bar or pipe character (@t{|}),
-this designates bracket-style comments; for example, @t{"/*|*/"} for
+this designates bracket-style comments; for example, "@t{/*|*/}" for
 CSS files.  The characters before the pipe are prepended to the line and the
 characters after the pipe are appended at the end of the line.  If no pipe
-character is present, the full string is prepended; for example, @t{"#"} for
-Python files.  If empty double quotes are specified, the comment/uncomment
-functions are disabled; for example, @t{""} for JSON.
+character is present, the full string is prepended; for example, "@t{#}"
+for Python files.  If nothing is specified between the double quotes, then
+the comment/uncomment function is disabled; for example, "" for JSON.
 The default value is "@t{#}".
 
 @item tabgives "@var{string}"
