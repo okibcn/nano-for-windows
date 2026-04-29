@@ -559,7 +559,7 @@ If the places where this new file may be created should be limited,
 then use option @option{-o} (@option{--operatingdir}) as well.
 
 Restricted mode can also be activated by invoking @command{nano} with
-a name beginning with @code{r} (e.g.@: @command{rnano}).
+a name beginning with @code{r} (for example: @command{rnano}).
 
 @item -S
 @itemx --softwrap
@@ -1827,7 +1827,7 @@ Replays the keystrokes of the last recorded macro.
 Undoes the last performed text action (add text, delete text, etc).
 
 @item redo
-Redoes the last undone action (i.e., it undoes an undo).
+Redoes the last undone action (that is: it undoes an undo).
 
 @item refresh
 Refreshes the screen.
