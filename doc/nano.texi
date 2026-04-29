@@ -682,7 +682,7 @@ dragging by holding down the Shift key.
 @itemx --noread
 Treat any name given on the command line as a new file.  This allows
 @command{nano} to write to named pipes: it starts with a blank buffer,
-and writes to the pipe when the user saves the "file".  This way
+and writes to the pipe when the user saves the “file”.  This way
 @command{nano} can be used as an editor in combination with for instance
 @command{gpg} without having to write sensitive data to disk first.
 
@@ -699,7 +699,7 @@ Note that option @option{-/} (@option{--modernbindings}) overrides this.
 
 @item -q
 @itemx --indicator
-Display a "scrollbar" on the righthand side of the edit window.
+Display a “scrollbar” on the righthand side of the edit window.
 It shows the position of the viewport in the buffer
 and how much of the buffer is covered by the viewport.
 
@@ -795,7 +795,7 @@ filename in the center of the title bar.
 @itemx --minibar
 Suppress the title bar and instead show information about
 the current buffer at the bottom of the screen, in the space
-for the status bar.  In this "mini bar" the filename is shown
+for the status bar.  In this “mini bar” the filename is shown
 on the left, followed by an asterisk if the buffer has been modified.
 On the right are displayed the current line and column number, the
 code of the character under the cursor (in Unicode format: U+xxxx),
@@ -1048,7 +1048,7 @@ Save the last hundred search strings and replacement strings and
 executed commands, so they can be easily reused in later sessions.
 
 @item set indicator
-Display a "scrollbar" on the righthand side of the edit window.
+Display a “scrollbar” on the righthand side of the edit window.
 It shows the position of the viewport in the buffer
 and how much of the buffer is covered by the viewport.
 
@@ -1113,7 +1113,7 @@ The default value is "@t{(<[@{)>]@}}".
 @item set minibar
 Suppress the title bar and instead show information about
 the current buffer at the bottom of the screen, in the space
-for the status bar.  In this "mini bar" the filename is shown
+for the status bar.  In this “mini bar” the filename is shown
 on the left, followed by an asterisk if the buffer has been modified.
 On the right are displayed the current line and column number, the
 code of the character under the cursor (in Unicode format: U+xxxx),
@@ -1216,7 +1216,7 @@ Regular expressions in @command{nano} are of the extended type (ERE).
 Save a changed buffer automatically on exit (@kbd{^X}); don't prompt.
 
 @item set scrollercolor @var{fgcolor},@var{bgcolor}
-Use this color combination for the indicator alias "scrollbar".
+Use this color combination for the indicator alias “scrollbar”.
 @xref{@code{set keycolor}} for valid color names.
 
 @item set selectedcolor [bold,][italic,]@var{fgcolor},@var{bgcolor}
@@ -1880,7 +1880,7 @@ When writing a file, switches to writing DOS format (CR+LF line endings).
 When writing a file, appends to the end instead of overwriting.
 
 @item prepend
-When writing a file, 'prepends' (writes at the beginning) instead of overwriting.
+When writing a file, “prepends” (writes at the beginning) instead of overwriting.
 
 @item backup
 When writing a file, creates a backup of the current file.
