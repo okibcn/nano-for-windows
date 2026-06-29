@@ -2183,10 +2183,10 @@ int write_it_out(bool exiting, bool withprompt)
 
 			if (openfile->filename[0] == '\0')
 				do_warning = name_exists;
+			else if (full_answer && full_filename)
+				do_warning = (strcmp(full_answer, full_filename) != 0);
 			else
-				do_warning = (strcmp((full_answer == NULL) ?
-								answer : full_answer, (full_filename == NULL) ?
-								openfile->filename : full_filename) != 0);
+				do_warning = (strcmp(answer, openfile->filename) != 0);
 
 			free(full_filename);
 			free(full_answer);
