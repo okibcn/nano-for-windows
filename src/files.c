@@ -2050,8 +2050,7 @@ int write_it_out(bool exiting, bool withprompt)
 {
 	char *given;
 		/* The filename we offer, or what the user typed so far. */
-	bool maychange = (openfile->filename[0] == '\0');
-		/* Whether it's okay to save the buffer under a different name. */
+	bool confirm_namechange = (openfile->filename[0] != '\0');
 	writing_type method = OVERWRITE;
 #ifdef ENABLE_EXTRA
 	static bool did_credits = FALSE;
@@ -2201,14 +2200,14 @@ int write_it_out(bool exiting, bool withprompt)
 					continue;
 				}
 
-				if (!maychange) {
+				if (confirm_namechange) {
 #ifndef NANO_TINY
 					if (exiting || !openfile->mark)
 #endif
 					{
 						if (ask_user(YESORNO, _("Save file under DIFFERENT NAME? ")) != YES)
 							continue;
-						maychange = TRUE;
+						confirm_namechange = FALSE;
 					}
 				}
 
