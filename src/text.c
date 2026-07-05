@@ -2539,7 +2539,7 @@ void do_spell(void)
 {
 	FILE *stream;
 	char *temp_name;
-	bool okay;
+	bool okay = FALSE;
 
 	ran_a_tool = TRUE;
 
@@ -2548,16 +2548,12 @@ void do_spell(void)
 
 	temp_name = safe_tempfile(&stream);
 
-	if (temp_name == NULL) {
-		statusline(ALERT, _("Error writing temp file: %s"), strerror(errno));
-		return;
-	}
-
 #ifndef NANO_TINY
-	if (openfile->mark)
+	if (temp_name && openfile->mark)
 		okay = write_region_to_file(temp_name, stream, SPECIAL);
 	else
 #endif
+	if (temp_name)
 		okay = write_file(temp_name, stream, SPECIAL, NONOTES);
 
 	if (!okay) {
