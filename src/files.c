@@ -1521,10 +1521,10 @@ void init_backup_dir(void)
  * closed by this function, `out` is closed only if `close_out` is true. */
 int copy_file(FILE *inn, FILE *out, bool close_out)
 {
-	int retval = 0;
+	int (*conclude)(FILE *) = (close_out) ? fclose : fflush;
 	char buf[BUFSIZ];
 	size_t charsread;
-	int (*flush_out_fnc)(FILE *) = (close_out) ? fclose : fflush;
+	int retval = 0;
 
 	do {
 		charsread = fread(buf, 1, BUFSIZ, inn);
@@ -1540,7 +1540,7 @@ int copy_file(FILE *inn, FILE *out, bool close_out)
 
 	if (fclose(inn) == EOF)
 		retval = -3;
-	if (flush_out_fnc(out) == EOF)
+	if (conclude(out) == EOF)
 		retval = 4;
 
 	return retval;
@@ -1649,7 +1649,7 @@ bool make_backup_of(char *realname, struct stat fileinfo)
 
 	/* Since this backup is a newly created file, explicitly sync it to
 	 * permanent storage before starting to write out the actual file. */
-	if (fflush(backup_file) == EOF || fsync(fileno(backup_file)) < 0) {
+	if (fsync(fileno(backup_file)) < 0) {
 		fclose(backup_file);
 		goto problem;
 	}
