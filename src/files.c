@@ -1752,9 +1752,8 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 
 	/* When prepending, first copy the existing file to a temporary file. */
 	if (method == PREPEND) {
-		FILE *source = NULL;
-		FILE *target = NULL;
-		int verdict;
+		FILE *source, *target;
+		int verdict = 5;
 
 		if (is_existing_file && S_ISFIFO(fileinfo.st_mode)) {
 			statusline(ALERT, _("Error writing %s: %s"), realname, "FIFO");
@@ -1770,13 +1769,10 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 
 		tempname = safe_tempfile(&target);
 
-		if (tempname == NULL) {
-			statusline(ALERT, _("Error writing temp file: %s"), strerror(errno));
+		if (tempname)
+			verdict = copy_file(source, target, TRUE);
+		else
 			fclose(source);
-			goto cleanup_and_exit;
-		}
-
-		verdict = copy_file(source, target, TRUE);
 
 		if (verdict < 0) {
 			statusline(ALERT, _("Error reading %s: %s"), realname, strerror(errno));
@@ -1884,15 +1880,10 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 	/* When prepending, append the temporary file to what we wrote above. */
 	if (method == PREPEND) {
 		FILE *source = fopen(tempname, "rb");
-		int verdict;
+		int verdict = -5;
 
-		if (source == NULL) {
-			statusline(ALERT, _("Error reading temp file: %s"), strerror(errno));
-			fclose(thefile);
-			goto cleanup_and_exit;
-		}
-
-		verdict = copy_file(source, thefile, FALSE);
+		if (source)
+			verdict = copy_file(source, thefile, FALSE);
 
 		if (verdict < 0) {
 			statusline(ALERT, _("Error reading temp file: %s"), strerror(errno));
