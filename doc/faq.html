@@ -46,7 +46,7 @@
   <a href="#4.1">4.1. Alt+Up does nothing on a Linux console. How can I make it scroll?</a><br>
   <a href="#4.2">4.2. How can I make Ctrl+Shift+Left/Right select words on urxvt?</a><br>
   <a href="#4.3">4.3. How do I remove an unwanted Byte Order Mark?</a><br>
-  <a href="#4.4">4.4. With what keystroke can I paste text from the clipboard into nano?</a><br>
+  <a href="#4.4">4.4. Where did Ctrl+T in the Search menu go?</a><br>
   <a href="#4.5">4.5. How do I select text for or paste text from the clipboard when nano's mouse support is turned on?</a><br>
   <a href="#4.6">4.6. When I paste text into a document, each line gets indented further than the last. Why? And how can I stop this?</a><br>
   <a href="#4.7">4.7. When I paste from Windows into a remote nano, nano rewraps the lines. What gives?</a><br>
@@ -222,8 +222,12 @@
 <h3 id="4.3">4.3. How do I remove an unwanted Byte Order Mark?</h3>
 <blockquote><p>To check whether a file contains a Byte Order Mark (BOM), open the file and type <b>Ctrl+Home</b>. If there is a BOM, the status bar will tell you so. Now type <b>Delete</b> to remove the BOM, and <b>^S</b> to save the file.</p>
   <p>If you've accidentally deleted a Byte Order Mark from a file that needs it, and you want to restore it, then type: <b>Ctrl+Home Alt+V feff Enter</b>. Verify that the BOM is back with <b>Ctrl+Home</b>, and save the file with <b>^S</b>.  (Note that on Unix, files should not contain a BOM.)</p></blockquote>
-<h3 id="4.4">4.4. With what keystroke can I paste text from the clipboard into nano?</h3>
-<blockquote><p>In most desktop environments <b>Shift+Insert</b> pastes the contents of the clipboard.</p></blockquote>
+<h3 id="4.4">4.4. Where did Ctrl+T in the Search menu go?</h3>
+<blockquote><p>The <b>Ctrl+T</b> toggles in the Search and GotoLine menus were removed because they were ugly.  If you want them, add this to your nanorc file:</p>
+<pre>
+    bind ^T "{cancel}{gotoline}" search
+    bind ^T "{cancel}{whereis}" gotoline</pre>
+<p>But since nano's birth there have been direct keystrokes for jumping to a line number: <b>Ctrl+/</b> and <b>Alt+G</b>.</p></blockquote>
 <h3 id="4.5">4.5. How do I select text for or paste text from the clipboard when nano's mouse support is turned on?</h3>
 <blockquote><p>Try holding down the Shift key and selecting or pasting the text as you normally would.</p></blockquote>
 <h3 id="4.6">4.6. When I paste text into a document, each line gets indented further than the last. Why? And how can I stop this?</h3>
