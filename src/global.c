@@ -313,6 +313,7 @@ void get_older_item(void)  {;}
 void get_newer_item(void)  {;}
 #endif
 void flip_replace(void)  {;}
+void flip_goto(void)  {;}
 #ifdef ENABLE_BROWSER
 void to_files(void)  {;}
 void goto_dir(void)  {;}
@@ -1501,6 +1502,8 @@ void shortcut_init(void)
 	add_to_sclist(MWHEREIS|MREPLACE, "M-R", 0, regexp_void, 0);
 	add_to_sclist(MWHEREIS|MREPLACE, "M-B", 0, backwards_void, 0);
 	add_to_sclist(MWHEREIS|MREPLACE, "^R", 0, flip_replace, 0);
+	/* Add this blind keystroke for long-time users. */
+	add_to_sclist(MWHEREIS|MGOTOLINE, "^T", 0, flip_goto, 0);
 #ifdef ENABLE_HISTORIES
 	add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "^P", 0, get_older_item, 0);
 	add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "^N", 0, get_newer_item, 0);

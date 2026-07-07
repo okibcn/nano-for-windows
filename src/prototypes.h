@@ -669,6 +669,7 @@ void get_older_item(void);
 void get_newer_item(void);
 #endif
 void flip_replace(void);
+void flip_goto(void);
 #ifdef ENABLE_BROWSER
 void to_files(void);
 void goto_dir(void);

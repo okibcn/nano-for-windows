@@ -153,6 +153,9 @@ void search_init(bool replacing, bool retain_answer)
 				napms(600);
 			} else
 				replacing = !replacing;
+		} else if (function == flip_goto) {
+			ask_for_line_and_column(answer);
+			break;
 		} else
 			break;
 	}
@@ -777,6 +780,13 @@ void ask_for_line_and_column(char *provided)
 					/* TRANSLATORS: This is a prompt. */
 					_("Enter line number, column number"));
 	int doublesign = 0;
+
+	/* When switching to Search, retain what the user typed so far. */
+	if (func_from_key(response) == flip_goto) {
+		UNSET(BACKWARDS_SEARCH);
+		search_init(FALSE, TRUE);
+		return;
+	}
 
 	/* When cancelled or blank, or when a function was run, we're done. */
 	if (response < 0) {
