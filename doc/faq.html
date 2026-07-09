@@ -223,11 +223,11 @@
 <blockquote><p>To check whether a file contains a Byte Order Mark (BOM), open the file and type <b>Ctrl+Home</b>. If there is a BOM, the status bar will tell you so. Now type <b>Delete</b> to remove the BOM, and <b>^S</b> to save the file.</p>
   <p>If you've accidentally deleted a Byte Order Mark from a file that needs it, and you want to restore it, then type: <b>Ctrl+Home Alt+V feff Enter</b>. Verify that the BOM is back with <b>Ctrl+Home</b>, and save the file with <b>^S</b>.  (Note that on Unix, files should not contain a BOM.)</p></blockquote>
 <h3 id="4.4">4.4. Where did Ctrl+T in the Search menu go?</h3>
-<blockquote><p>The <b>Ctrl+T</b> toggles in the Search and GotoLine menus were removed because they were ugly.  If you want them, add this to your nanorc file:</p>
+<blockquote><p>Actually, the <b>Ctrl+T</b> toggle is still there &mdash; it's just not listed in the help lines nor in the help text, and the function it executes cannot be rebound to another key.  If you do want to use another key, you can emulate the rebinding with something like this in your .nanorc:</p>
 <pre>
-    bind ^T "{cancel}{gotoline}" search
-    bind ^T "{cancel}{whereis}" gotoline</pre>
-<p>But since nano's birth there have been direct keystrokes for jumping to a line number: <b>Ctrl+/</b> and <b>Alt+G</b>.</p></blockquote>
+    bind ^E "{cancel}{gotoline}" search
+    bind ^E "{cancel}{whereis}" gotoline</pre>
+<p>But since forever there are also direct keystrokes for jumping to a line number: <b>Ctrl+/</b> and <b>Alt+G</b> in the main menu.</p></blockquote>
 <h3 id="4.5">4.5. How do I select text for or paste text from the clipboard when nano's mouse support is turned on?</h3>
 <blockquote><p>Try holding down the Shift key and selecting or pasting the text as you normally would.</p></blockquote>
 <h3 id="4.6">4.6. When I paste text into a document, each line gets indented further than the last. Why? And how can I stop this?</h3>
