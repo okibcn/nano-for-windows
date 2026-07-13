@@ -85,9 +85,9 @@ bool is_cntrl_char(const char *c)
 	if (using_utf8)
 		return ((c[0] & 0xE0) == 0 || c[0] == DEL_CODE ||
 				((signed char)c[0] == -62 && (signed char)c[1] < -96));
-	else
 #endif
-		return ((*c & 0x60) == 0 || *c == DEL_CODE);
+
+	return ((*c & 0x60) == 0 || *c == DEL_CODE);
 }
 
 /* Return TRUE when the given character is a punctuation character. */
@@ -124,8 +124,9 @@ bool is_word_char(const char *c, bool allow_punct)
 
 		symbol[symlen] = '\0';
 		return (strstr(word_chars, symbol) != NULL);
-	} else
-		return FALSE;
+	}
+
+	return FALSE;
 }
 
 /* Return the visible representation of control character c. */
@@ -137,8 +138,8 @@ char control_rep(const signed char c)
 		return '=';
 	else if (c < 0)
 		return c + 224;
-	else
-		return c + 64;
+
+	return c + 64;
 }
 
 /* Return the visible representation of multibyte control character c. */
@@ -154,9 +155,10 @@ char control_mbrep(const char *c, bool isdata)
 			return control_rep(c[0]);
 		else
 			return control_rep(c[1]);
-	} else
+	}
 #endif
-		return control_rep(*c);
+
+	return control_rep(*c);
 }
 
 #ifdef ENABLE_UTF8
@@ -278,7 +280,8 @@ int char_length(const char *pointer)
 			return 4;
 	}
 #endif
-		return 1;
+
+	return 1;
 }
 
 /* Return the number of (multibyte) characters in the given string. */
@@ -384,9 +387,10 @@ size_t step_left(const char *buf, size_t pos)
 		}
 
 		return before - charlen;
-	} else
+	}
 #endif
-		return (pos == 0 ? 0 : pos - 1);
+
+	return (pos == 0 ? 0 : pos - 1);
 }
 
 /* Return the index in buf of the beginning of the multibyte character
@@ -448,9 +452,10 @@ int mbstrncasecmp(const char *s1, const char *s2, size_t n)
 		}
 
 		return (n > 0) ? ((unsigned char)*s1 - (unsigned char)*s2) : 0;
-	} else
+	}
 #endif
-		return strncasecmp(s1, s2, n);
+
+	return strncasecmp(s1, s2, n);
 }
 
 /* This function is equivalent to strcasestr() for multibyte strings. */
@@ -468,9 +473,10 @@ char *mbstrcasestr(const char *haystack, const char *needle)
 		}
 
 		return NULL;
-	} else
+	}
 #endif
-		return (char *)strcasestr(haystack, needle);
+
+	return (char *)strcasestr(haystack, needle);
 }
 
 /* This function is equivalent to strstr(), except in that it scans the
@@ -538,9 +544,10 @@ char *mbrevstrcasestr(const char *haystack, const char *needle,
 
 			pointer = haystack + step_left(haystack, pointer - haystack);
 		}
-	} else
+	}
 #endif
-		return revstrcasestr(haystack, needle, pointer);
+
+	return revstrcasestr(haystack, needle, pointer);
 }
 
 #if !defined(NANO_TINY) || defined(ENABLE_JUSTIFY)
@@ -575,9 +582,10 @@ const char *mbstrchr(const char *string, const char *chr)
 			return NULL;
 
 		return (char *)string;
-	} else
+	}
 #endif
-		return strchr(string, *chr);
+
+	return strchr(string, *chr);
 }
 #endif /* !NANO_TINY || ENABLE_JUSTIFY */
 
