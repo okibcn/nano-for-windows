@@ -1084,7 +1084,11 @@ void add_undo(undo_type action, const char *message)
 #endif
 		break;
 	default:
+#ifdef DEBUG
 		die("Bad undo type -- please report a bug\n");
+#else
+		break;
+#endif
 	}
 
 	openfile->last_action = action;
@@ -1133,8 +1137,10 @@ void update_undo(undo_type action)
 	char *textposition;
 	int charlen;
 
+#ifdef DEBUG
 	if (u->type != action)
 		die("Mismatching undo type -- please report a bug\n");
+#endif
 
 	u->newsize = openfile->totsize;
 
@@ -1215,7 +1221,11 @@ void update_undo(undo_type action)
 		u->tail_x = openfile->current_x;
 		break;
 	default:
+#ifdef DEBUG
 		die("Bad undo type -- please report a bug\n");
+#else
+		break;
+#endif
 	}
 }
 #endif /* !NANO_TINY */
