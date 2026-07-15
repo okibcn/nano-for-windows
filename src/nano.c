@@ -2156,6 +2156,10 @@ int main(int argc, char **argv)
 	set_up_sigwinch_handler();
 #endif
 
+	/* Nano is a visual editor -- it needs a screen. */
+	if (!isatty(STDOUT_FILENO))
+		die(_("Standard output is not a terminal\n"));
+
 	/* Curses needs TERM; if it is unset, try falling back to a VT220. */
 	if (getenv("TERM") == NULL)
 		putenv("TERM=vt220");
