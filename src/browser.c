@@ -387,7 +387,7 @@ char *browse(char *path)
 		 * were in before backing up to "..". */
 	size_t old_selected;
 		/* The number of the selected file before the current selected file. */
-	DIR *dir;
+	DIR *dir = NULL;
 		/* The directory whose contents we are showing. */
 	char *chosen = NULL;
 		/* The name of the file that the user picked, or NULL if none. */
