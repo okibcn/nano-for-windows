@@ -787,7 +787,7 @@ void parse_binding(char *ptr, bool dobind)
 	}
 
 	menuptr = ptr;
-	ptr = parse_next_word(ptr);
+	parse_next_word(ptr);
 
 	if (menuptr[0] == '\0') {
 		/* TRANSLATORS: Do not translate the word "all". */
@@ -980,7 +980,7 @@ void parse_includes(char *ptr)
 	pattern = ptr;
 	if (*pattern == '"')
 		pattern++;
-	ptr = parse_argument(ptr);
+	parse_argument(ptr);
 
 	if (strlen(pattern) > PATH_MAX) {
 		jot_error(N_("Path is too long"));
@@ -1578,7 +1578,7 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		argument = ptr;
 		if (*argument == '"')
 			argument++;
-		ptr = parse_argument(ptr);
+		parse_argument(ptr);
 
 #ifdef ENABLE_UTF8
 		/* When in a UTF-8 locale, ignore arguments with invalid sequences. */
