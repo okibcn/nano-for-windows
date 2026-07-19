@@ -122,8 +122,8 @@ void unlink_node(linestruct *line)
 	if (line->next)
 		line->next->prev = line->prev;
 
-	/* Update filebot when removing a node at the end of file. */
-	if (openfile && openfile->filebot == line)
+	/* When deleting the node at end-of-buffer... */
+	if (line == openfile->filebot)
 		openfile->filebot = line->prev;
 
 	delete_node(line);
