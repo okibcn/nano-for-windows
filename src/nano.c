@@ -513,7 +513,7 @@ void usage(void)
 #endif
 #ifdef ENABLE_MULTIBUFFER
 	if (!ISSET(RESTRICTED))
-		print_opt("-F", "--multibuffer", N_("Read a file into a new buffer by default"));
+		print_opt("-F", "--newbuffer", N_("Read a file into a new buffer by default"));
 #endif
 #ifndef NANO_TINY
 	print_opt("-G", "--locking", N_("Use (vim-style) lock files"));
@@ -1744,7 +1744,8 @@ int main(int argc, char **argv)
 	const struct option long_options[] = {
 		{"boldtext", 0, NULL, 'D'},
 #ifdef ENABLE_MULTIBUFFER
-		{"multibuffer", 0, NULL, 'F'},
+		{"multibuffer", 0, NULL, 'F'},  /* Deprecated; remove in 2031. */
+		{"newbuffer", 0, NULL, 'F'},
 #endif
 #ifdef ENABLE_NANORC
 		{"ignorercfiles", 0, NULL, 'I'},
