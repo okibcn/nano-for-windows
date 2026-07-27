@@ -244,8 +244,9 @@ clicks), and execute shortcuts.  The mouse works in the X Window
 System, and on the console when gpm is running.  Text can still be
 selected through dragging by holding down the Shift key.
 .TP
-.B set multibuffer
+.B set newbuffer
 When reading in a file with \fB^R\fR, insert it into a new buffer by default.
+(The old form of this option, \fBset \%multibuffer\fR, is deprecated.)
 .TP
 .B set noconvert
 Don't convert files from DOS format.
@@ -684,7 +685,7 @@ Writes the current file to disk without prompting.
 .TP
 .B insert
 Inserts a file into the current buffer (at the current cursor position),
-or into a new buffer when option \fB\%multibuffer\fR is set.
+or into a new buffer when option \fB\%newbuffer\fR is set.
 .TP
 .B whereis
 Starts a forward search for text in the current buffer \[em] or for filenames

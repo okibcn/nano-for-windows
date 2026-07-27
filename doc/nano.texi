@@ -476,8 +476,9 @@ that a tab at that position would take up.
 (Note: pasted tabs are not converted.)
 
 @item -F
-@itemx --multibuffer
+@itemx --newbuffer
 Read a file into a new buffer by default.
+(The old form of this option, @option{--multibuffer}, is deprecated.)
 
 @item -G
 @itemx --locking
@@ -1136,8 +1137,9 @@ Use this color combination for the mini bar.
 Enable mouse support, so that mouse clicks can be used to place the
 cursor, set the mark (with two clicks), or execute shortcuts.
 
-@item set multibuffer
+@item set newbuffer
 When reading in a file with @kbd{^R}, insert it into a new buffer by default.
+(The old form of this option, @code{set multibuffer}, is deprecated.)
 
 @item set noconvert
 Don't convert files from DOS format.
@@ -1582,7 +1584,7 @@ Writes the current file to disk without prompting.
 
 @item insert
 Inserts a file into the current buffer (at the current cursor position),
-or into a new buffer when option @code{multibuffer} is set.
+or into a new buffer when option @code{newbuffer} is set.
 
 @item whereis
 Starts a forward search for text in the current buffer --- or for filenames

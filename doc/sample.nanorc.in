@@ -110,9 +110,8 @@
 ## X Window System, and on the console when gpm is running.
 # set mouse
 
-## Switch on multiple file buffers (inserting a file will put it into
-## a separate buffer).
-# set multibuffer
+## With ^R, insert a file into a separate buffer by default.
+# set newbuffer
 
 ## Don't convert files from DOS format.
 # set noconvert
@@ -328,7 +327,7 @@
 # bind ^S savefile main
 # bind ^W writeout main
 # bind ^O insert main
-# set multibuffer
+# set newbuffer
 # bind ^H help all
 # bind ^H exit help
 # bind ^F whereis all
