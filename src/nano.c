@@ -1902,7 +1902,7 @@ int main(int argc, char **argv)
 #endif
 #ifdef ENABLE_MULTIBUFFER
 			case 'F':
-				SET(MULTIBUFFER);
+				SET(NEW_BUFFER);
 				break;
 #endif
 #ifndef NANO_TINY
@@ -2639,7 +2639,7 @@ int main(int argc, char **argv)
 		if (more_than_one)
 			mention_name_and_linecount();
 		if (ISSET(VIEW_MODE))
-			SET(MULTIBUFFER);
+			SET(NEW_BUFFER);
 	}
 #else
 	if (optind < argc)

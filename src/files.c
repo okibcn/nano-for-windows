@@ -1047,7 +1047,7 @@ void execute_command(const char *command)
 		cutbuffer = NULL;
 
 #ifdef ENABLE_MULTIBUFFER
-		if (ISSET(MULTIBUFFER)) {
+		if (ISSET(NEW_BUFFER)) {
 			openfile = openfile->prev;
 			if (openfile->mark)
 				copy_marked_region();
@@ -1082,7 +1082,7 @@ void execute_command(const char *command)
 		close(to_fd[1]);
 
 #ifdef ENABLE_MULTIBUFFER
-		if (ISSET(MULTIBUFFER))
+		if (ISSET(NEW_BUFFER))
 			openfile = openfile->next;
 #endif
 		free_lines(cutbuffer);
@@ -1104,7 +1104,7 @@ void execute_command(const char *command)
 	else
 		read_file(stream, 0, "pipe", TRUE);
 
-	if (should_pipe && !ISSET(MULTIBUFFER)) {
+	if (should_pipe && !ISSET(NEW_BUFFER)) {
 		if (was_lineno)
 			goto_line_posx(was_lineno, 0);
 		add_undo(COUPLE_END, N_("filtering"));
@@ -1151,7 +1151,7 @@ void insert_a_file_or(bool execute)
 	char *given = copy_of("");
 		/* The last answer the user typed at the status-bar prompt. */
 #ifdef ENABLE_MULTIBUFFER
-	bool was_multibuffer = ISSET(MULTIBUFFER);
+	bool was_multibuffer = ISSET(NEW_BUFFER);
 #endif
 
 	/* Display newlines in filenames as ^J. */
@@ -1170,7 +1170,7 @@ void insert_a_file_or(bool execute)
 #ifndef NANO_TINY
 		if (execute) {
 #ifdef ENABLE_MULTIBUFFER
-			if (ISSET(MULTIBUFFER))
+			if (ISSET(NEW_BUFFER))
 				/* TRANSLATORS: The next six messages are prompts. */
 				msg = _("Command to execute in new buffer");
 			else
@@ -1180,7 +1180,7 @@ void insert_a_file_or(bool execute)
 #endif
 		{
 #ifdef ENABLE_MULTIBUFFER
-			if (ISSET(MULTIBUFFER))
+			if (ISSET(NEW_BUFFER))
 #ifndef NANO_TINY
 				if ISSET(NO_CONVERT)
 					msg = _("File to read unconverted into new buffer [from %s]");
@@ -1209,7 +1209,7 @@ void insert_a_file_or(bool execute)
 
 		/* If we're in multibuffer mode and the filename or command is
 		 * blank, open a new buffer instead of canceling. */
-		if (response == -1 || (response == -2 && !ISSET(MULTIBUFFER))) {
+		if (response == -1 || (response == -2 && !ISSET(NEW_BUFFER))) {
 			statusbar(_("Cancelled"));
 			break;
 		} else {
@@ -1227,7 +1227,7 @@ void insert_a_file_or(bool execute)
 			if (function == flip_newbuffer) {
 				/* Allow toggling only when not in view mode. */
 				if (!ISSET(VIEW_MODE))
-					TOGGLE(MULTIBUFFER);
+					TOGGLE(NEW_BUFFER);
 				else
 					beep();
 				continue;
@@ -1262,14 +1262,14 @@ void insert_a_file_or(bool execute)
 			}
 #endif
 			/* If we don't have a file yet, go back to the prompt. */
-			if (response != 0 && (!ISSET(MULTIBUFFER) || response != -2))
+			if (response != 0 && (!ISSET(NEW_BUFFER) || response != -2))
 				continue;
 
 #ifndef NANO_TINY
 			if (execute) {
 #ifdef ENABLE_MULTIBUFFER
 				/* When in multibuffer mode, first open a blank buffer. */
-				if (ISSET(MULTIBUFFER))
+				if (ISSET(NEW_BUFFER))
 					open_buffer("", TRUE);
 #endif
 				/* If the command is not empty, execute it and read its output
@@ -1283,7 +1283,7 @@ void insert_a_file_or(bool execute)
 
 #ifdef ENABLE_MULTIBUFFER
 				/* If this is a new buffer, put the cursor at the top. */
-				if (ISSET(MULTIBUFFER)) {
+				if (ISSET(NEW_BUFFER)) {
 					openfile->current = openfile->filetop;
 					openfile->current_x = 0;
 					openfile->placewewant = 0;
@@ -1294,10 +1294,10 @@ void insert_a_file_or(bool execute)
 			} else
 #endif /* !NANO_TINY */
 				/* Read the file into either current buffer or new buffer. */
-				open_buffer(answer, ISSET(MULTIBUFFER));
+				open_buffer(answer, ISSET(NEW_BUFFER));
 
 #ifdef ENABLE_MULTIBUFFER
-			if (ISSET(MULTIBUFFER)) {
+			if (ISSET(NEW_BUFFER)) {
 #ifdef ENABLE_HISTORIES
 				if (ISSET(POSITIONLOG)) {
 #ifndef NANO_TINY
@@ -1326,9 +1326,9 @@ void insert_a_file_or(bool execute)
 
 #ifdef ENABLE_MULTIBUFFER
 	if (was_multibuffer)
-		SET(MULTIBUFFER);
+		SET(NEW_BUFFER);
 	else
-		UNSET(MULTIBUFFER);
+		UNSET(NEW_BUFFER);
 #endif
 }
 

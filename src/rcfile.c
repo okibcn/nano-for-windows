@@ -64,8 +64,8 @@ static const rcoption rcopts[] = {
 	{"mouse", USE_MOUSE},
 #endif
 #ifdef ENABLE_MULTIBUFFER
-	{"multibuffer", MULTIBUFFER},  /* Deprecated; remove in 2031. */
-	{"newbuffer", MULTIBUFFER},
+	{"multibuffer", NEW_BUFFER},  /* Deprecated; remove in 2031. */
+	{"newbuffer", NEW_BUFFER},
 #endif
 	{"nohelp", NO_HELP},
 	{"nonewlines", NO_NEWLINES},
