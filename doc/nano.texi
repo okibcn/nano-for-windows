@@ -1865,8 +1865,8 @@ When executing a command, toggles whether the current buffer (or marked
 region) is piped to the command.
 
 @item flipnewbuffer
-Toggles between inserting into the current buffer and into a new
-empty buffer.
+When reading in a file or executing a command, toggles between inserting
+the result into the current buffer and into a new empty buffer.
 
 @item flipconvert
 When reading in a file, toggles between converting and not converting
