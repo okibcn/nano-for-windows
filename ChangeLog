@@ -1,3 +1,47 @@
+Changes between v9.1 and v9.2:
+------------------------------
+
+Benno Schulenberg (35):
+      bindings: add a blind ^T toggle in the WhereIs and GotoLine menus
+      bump version numbers and add a news item for the 9.2 release
+      copyright: update the years for significantly changed files
+      docs: add a reference to the texi manual, via `info` and online
+      docs: explicitly mention in the man page how to save and exit
+      docs: fix a typo in NEWS
+      docs: implement the renaming of --multibuffer to --newbuffer
+      docs: improve the description of the `flipnewbuffer` bindable function
+      docs: in the FAQ, adjust the description of the Ctrl+T toggle
+      docs: in the FAQ, adjust the wording in the item about multiple buffers
+      docs: mention in the FAQ how to get the ^W^T combo back
+      docs: reword and reshuffle the line about saving-and-exiting
+      docs: say thanks to the Italian, Kazakh, and Arabic translators
+      files: compare either only full names or bare names, not full with bare
+      gnulib: update to its current upstream state
+      options: add --newbuffer as a more fitting synonym of --multibuffer
+      screen: do a full refresh for Shift+Home and Shift+End when needed
+      startup: do not crash when a section of a history file is overlong
+      tweaks: adjust the style of a comment and the order of a comparison
+      tweaks: avoid a false positive when doing static analysis
+      tweaks: don't call unlink_node() nor splice_node() for history items
+      tweaks: don't renumber all history items -- "renumber" only the last
+      tweaks: drop an unneeded null-dereference guard
+      tweaks: drop four null-dereference guards that are no longer needed
+      tweaks: drop several unneeded elses, and correct an indentation
+      tweaks: drop three assignments of function results, as they are not used
+      tweaks: elide an auxiliary variable that is no longer needed
+      tweaks: elide an unneeded auxiliary variable
+      tweaks: exclude three error checks from a normal build
+      tweaks: invert two ifs, to reduce duplication of code
+      tweaks: rename a variable while inverting its logic
+      tweaks: rename the internal flag, to match the new name of the option
+      tweaks: replace an if with an else
+      tweaks: reshuffle two declarations and rename the function in one of them
+      tweaks: treat temp file for speller in similar way as for formatter
+
+Vincent Yang (1):
+      startup: quit when standard output is not a TTY, to avoid user confusion
+
+
 Changes between v9.0 and v9.1:
 ------------------------------
 

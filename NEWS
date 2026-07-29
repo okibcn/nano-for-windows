@@ -1,3 +1,9 @@
+2026.07.31 - GNU nano 9.2 "Alquézar"
+• Nano refuses to start when standard output is not a terminal.
+• Options --newbuffer and 'set newbuffer' were added as better
+  synonyms of --multibuffer and 'set multibuffer'.
+• Legacy keystroke pairs ^W^T and ^/^T are recognized again.
+
 2026.06.23 - GNU nano 9.1 "met een hongerig paard aan ons been"
 • When searching, the viewport is placed snug left where possible.
 • The ability to read and write files in old Mac format was removed
