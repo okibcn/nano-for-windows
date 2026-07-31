@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nano 8.0-pre1\n"
 "Report-Msgid-Bugs-To: nano-devel@gnu.org\n"
-"POT-Creation-Date: 2026-06-23 07:31+0200\n"
+"POT-Creation-Date: 2026-07-31 08:17+0200\n"
 "PO-Revision-Date: 2024-04-14 14:41+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -39,11 +39,11 @@ msgstr "(thmục cha)"
 msgid "(huge)"
 msgstr "(lớn)"
 
-#: src/browser.c:269 src/browser.c:274 src/search.c:254
+#: src/browser.c:269 src/browser.c:274 src/search.c:257
 msgid "Search Wrapped"
 msgstr "Tìm Toàn bộ"
 
-#: src/browser.c:281 src/search.c:438
+#: src/browser.c:281 src/search.c:441
 msgid "This is the only occurrence"
 msgstr "Đây là lần xảy ra duy nhất"
 
@@ -58,13 +58,13 @@ msgid " [Backwards]"
 msgstr " [Ngược lại]"
 
 #: src/browser.c:322 src/browser.c:563 src/files.c:1120 src/files.c:1213
-#: src/files.c:2110 src/nano.c:321 src/search.c:113 src/search.c:289
-#: src/search.c:723 src/search.c:783 src/text.c:2622 src/text.c:2829
+#: src/files.c:2100 src/nano.c:321 src/search.c:113 src/search.c:292
+#: src/search.c:726 src/search.c:793 src/text.c:2628 src/text.c:2835
 #: src/winio.c:103
 msgid "Cancelled"
 msgstr "Bị hủy bỏ"
 
-#: src/browser.c:349 src/search.c:373
+#: src/browser.c:349 src/search.c:376
 msgid "No current search pattern"
 msgstr "Không có mẫu tìm kiếm hiện tại"
 
@@ -93,9 +93,9 @@ msgstr "Không thể đi ra bên ngoài của %s"
 msgid "Can't move up a directory"
 msgstr "Không thể nhảy lên một thư mục"
 
-#: src/browser.c:616 src/files.c:877 src/files.c:883 src/files.c:1767
-#: src/files.c:1782 src/history.c:263 src/history.c:291 src/history.c:398
-#: src/history.c:452 src/rcfile.c:924 src/rcfile.c:1709
+#: src/browser.c:616 src/files.c:877 src/files.c:883 src/files.c:1766
+#: src/files.c:1778 src/history.c:264 src/history.c:292 src/history.c:399
+#: src/history.c:453 src/rcfile.c:925 src/rcfile.c:1710
 #, c-format
 msgid "Error reading %s: %s"
 msgstr "Gặp lỗi khi đọc %s: %s"
@@ -206,12 +206,12 @@ msgstr "Thư mục “%s” không ghi được"
 msgid "Can't read file from outside of %s"
 msgstr "Không thể chèn tập tin từ bên ngoài của %s"
 
-#: src/files.c:409 src/rcfile.c:900
+#: src/files.c:409 src/rcfile.c:901
 #, c-format
 msgid "'%s' is a directory"
 msgstr ""
 
-#: src/files.c:414 src/rcfile.c:901
+#: src/files.c:414 src/rcfile.c:902
 #, c-format
 msgid "'%s' is a device file"
 msgstr ""
@@ -238,7 +238,7 @@ msgid "%s -- %zu line (%s)"
 msgid_plural "%s -- %zu lines (%s)"
 msgstr[0] "%s -- %zu dòng (%s)"
 
-#: src/files.c:543 src/files.c:548 src/global.c:1132 src/winio.c:2058
+#: src/files.c:543 src/files.c:548 src/global.c:1133 src/winio.c:2058
 msgid "New Buffer"
 msgstr "Bộ nhớ đệm mới"
 
@@ -256,7 +256,7 @@ msgstr[0] "%s -- %zu dòng"
 msgid "No more open file buffers"
 msgstr "Không còn bộ đệm mở tập tin nữa"
 
-#: src/files.c:770 src/files.c:875 src/files.c:1820
+#: src/files.c:770 src/files.c:875 src/files.c:1816
 msgid "Interrupted"
 msgstr "Bị ngắt"
 
@@ -295,13 +295,13 @@ msgstr "Đang đọc từ FIFO..."
 msgid "Reading..."
 msgstr "Đang đọc..."
 
-#: src/files.c:994 src/text.c:2355 src/text.c:2630
+#: src/files.c:994 src/text.c:2365 src/text.c:2636
 #, c-format
 msgid "Could not create pipe: %s"
 msgstr "Không thể tạo đường ống: %s"
 
-#: src/files.c:1035 src/files.c:1079 src/text.c:2169 src/text.c:2435
-#: src/text.c:2665
+#: src/files.c:1035 src/files.c:1079 src/text.c:2179 src/text.c:2445
+#: src/text.c:2671
 #, c-format
 msgid "Could not fork: %s"
 msgstr "Không thể tạo tiến trình con: %s"
@@ -408,998 +408,997 @@ msgstr "Không thể tạo bản sao lưu dự phòng: %s"
 msgid "Can't write outside of %s"
 msgstr "Không ghi được ra bên ngoài của %s"
 
-#: src/files.c:1760 src/files.c:1822 src/files.c:1833 src/files.c:1854
-#: src/files.c:1874 src/files.c:1902 src/files.c:1913 src/files.c:1920
-#: src/history.c:330 src/history.c:341 src/history.c:344 src/history.c:469
-#: src/history.c:483 src/history.c:497 src/history.c:503
+#: src/files.c:1759 src/files.c:1818 src/files.c:1829 src/files.c:1850
+#: src/files.c:1870 src/files.c:1893 src/files.c:1904 src/files.c:1911
+#: src/history.c:331 src/history.c:342 src/history.c:345 src/history.c:470
+#: src/history.c:484 src/history.c:498 src/history.c:504
 #, c-format
 msgid "Error writing %s: %s"
 msgstr "Gặp lỗi khi ghi %s: %s"
 
-#: src/files.c:1774 src/files.c:1786 src/text.c:2552 src/text.c:2564
-#: src/text.c:2980
+#: src/files.c:1782 src/text.c:2570 src/text.c:2986
 #, c-format
 msgid "Error writing temp file: %s"
 msgstr "Gặp lỗi khi ghi tập tin tạm thời: %s"
 
-#: src/files.c:1793
+#: src/files.c:1789
 msgid "Writing to FIFO..."
 msgstr "Đang ghi vào FIFO..."
 
-#: src/files.c:1840
+#: src/files.c:1836
 msgid "Writing..."
 msgstr "Đang ghi..."
 
-#: src/files.c:1890 src/files.c:1898
+#: src/files.c:1889
 #, c-format
 msgid "Error reading temp file: %s"
 msgstr "Gặp lỗi khi ghi tập tin tạm thời: %s"
 
 #. TRANSLATORS: This warns for data loss when the disk is full.
-#: src/files.c:1927
+#: src/files.c:1918
 msgid "File on disk has been truncated!"
 msgstr "Tập tin trên đĩa đã bị cắt ngắn!"
 
 #. TRANSLATORS: This is a suggestion to the user,
 #. * where "resume" means resuming from suspension.
 #. * Try to keep this at most 76 characters.
-#: src/files.c:1932
+#: src/files.c:1923
 msgid "Maybe ^T^Z, make room on disk, resume, then ^S^X"
 msgstr "Có lẽ ^T^Z, tạo không gian trên đĩa, lấy lại, sau đó ^S^X"
 
-#: src/files.c:1992
+#: src/files.c:1983
 #, c-format
 msgid "Wrote %zu line"
 msgid_plural "Wrote %zu lines"
 msgstr[0] "Đã ghi %zu dòng"
 
-#: src/files.c:2075
+#: src/files.c:2065
 msgid " [DOS Format]"
 msgstr " [Định dạng DOS]"
 
-#: src/files.c:2076
+#: src/files.c:2066
 msgid " [Backup]"
 msgstr " [Sao lưu dự phòng]"
 
 #. TRANSLATORS: The next six strings are prompts.
-#: src/files.c:2083
+#: src/files.c:2073
 msgid "Prepend Selection to File"
 msgstr "Thêm lựa chọn vào trước Tập tin"
 
-#: src/files.c:2084
+#: src/files.c:2074
 msgid "Append Selection to File"
 msgstr "Thêm lựa chọn vào sau Tập tin"
 
-#: src/files.c:2085
+#: src/files.c:2075
 msgid "Write Selection to File"
 msgstr "Lưu lựa chọn vào một tập tin"
 
 #. TRANSLATORS: Next three prompts are analogous to the above three.
-#: src/files.c:2088
+#: src/files.c:2078
 msgid "Prepend to File"
 msgstr ""
 
-#: src/files.c:2088
+#: src/files.c:2078
 msgid "Append to File"
 msgstr ""
 
-#: src/files.c:2091
+#: src/files.c:2081
 msgid "Write to File"
 msgstr ""
 
 #. TRANSLATORS: Concisely say the screen is too small.
-#: src/files.c:2168 src/nano.c:1087 src/nano.c:1096
+#: src/files.c:2158 src/nano.c:1087 src/nano.c:1096
 msgid "Too tiny"
 msgstr "Quá bé"
 
 #. TRANSLATORS: Restricted mode forbids overwriting.
-#: src/files.c:2200
+#: src/files.c:2190
 msgid "File exists -- cannot overwrite"
 msgstr "Tập tin đã sẵn có -- không thể ghi đè"
 
-#: src/files.c:2209
+#: src/files.c:2199
 msgid "Save file under DIFFERENT NAME? "
 msgstr "Ghi tập tin bằng TÊN MỚI? "
 
-#: src/files.c:2216
+#: src/files.c:2206
 #, c-format
 msgid "File \"%s\" exists; OVERWRITE? "
 msgstr "Tập tin \"%s\" đã có sẵn, GHI ĐÈ LÊN? "
 
-#: src/files.c:2240
+#: src/files.c:2230
 msgid "File on disk has changed"
 msgstr "Tập tin trên đĩa đã bị thay đổi"
 
 #. TRANSLATORS: Try to keep this at most 76 characters.
-#: src/files.c:2243
+#: src/files.c:2233
 msgid "File was modified since you opened it; continue saving? "
 msgstr "Tập tin bị sửa đổi kể từ lần bạn mở cuối cùng, có tiếp tục lưu không? "
 
-#: src/files.c:2618
+#: src/files.c:2608
 msgid "(more)"
 msgstr "(còn nữa)"
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
-#: src/global.c:574
+#: src/global.c:575
 msgid "Exit"
 msgstr "Thoát"
 
-#: src/global.c:575
+#: src/global.c:576
 msgid "Close"
 msgstr "Đóng"
 
 #. TRANSLATORS: The next long series of strings are shortcut descriptions;
 #. * they are best kept shorter than 56 characters, but may be longer.
-#: src/global.c:583
+#: src/global.c:584
 msgid "Cancel the current function"
 msgstr "Hủy hàm hiện tại"
 
-#: src/global.c:584
+#: src/global.c:585
 msgid "Display this help text"
 msgstr "Hiển thị trợ giúp này"
 
-#: src/global.c:585
+#: src/global.c:586
 msgid "Close the current buffer / Exit from nano"
 msgstr "Đóng bộ đệm tập tin hiện tại / Thoát khỏi nano"
 
-#: src/global.c:587
+#: src/global.c:588
 msgid "Write the current buffer (or the marked region) to disk"
 msgstr "Ghi bộ đệm tập tin hiện tại (hoặc vùng đã đánh dấu) lên đĩa"
 
-#: src/global.c:589
+#: src/global.c:590
 msgid "Insert another file into current buffer (or into new buffer)"
 msgstr ""
 "Chèn tập tin khác vào bộ nhớ đệm tập tin hiện tại (hoặc vào một bộ đệm mới)"
 
-#: src/global.c:591
+#: src/global.c:592
 msgid "Search forward for a string or a regular expression"
 msgstr "Tìm tiếp một chuỗi hay biểu thức chính quy"
 
-#: src/global.c:593
+#: src/global.c:594
 msgid "Search backward for a string or a regular expression"
 msgstr "Tìm chiều ngược một chuỗi hay biểu thức chính quy"
 
-#: src/global.c:595
+#: src/global.c:596
 msgid "Cut current line (or marked region) and store it in cutbuffer"
 msgstr "Cắt dòng hiện tại (hoặc vùng đã đánh dấu) và ghi nó vào bộ đệm cắt"
 
-#: src/global.c:597
+#: src/global.c:598
 msgid "Copy current line (or marked region) and store it in cutbuffer"
 msgstr ""
 "Sao chép dòng hiện tại (hoặc vùng đã đánh dấu) và ghi nó vào bộ đệm cắt"
 
-#: src/global.c:599
+#: src/global.c:600
 msgid "Paste the contents of cutbuffer at current cursor position"
 msgstr "Dán nội dùng của bộ đệm cắt vào vị trí con trỏ hiện tại"
 
-#: src/global.c:600
+#: src/global.c:601
 msgid "Display the position of the cursor"
 msgstr "Hiển thị vị trí con trỏ"
 
-#: src/global.c:602
+#: src/global.c:603
 msgid "Invoke the spell checker, if available"
 msgstr "Gọi trình kiểm tra chính tả, nếu có thể"
 
-#: src/global.c:604
+#: src/global.c:605
 msgid "Replace a string or a regular expression"
 msgstr "Thay thế một chuỗi hay biểu thức chính quy"
 
-#: src/global.c:605
+#: src/global.c:606
 msgid "Go to line and column number"
 msgstr "Chuyển tới dòng và cột có số thứ tự đưa ra"
 
-#: src/global.c:607
+#: src/global.c:608
 msgid "Go to the matching bracket"
 msgstr "Tới dấu ngoặc tương ứng"
 
-#: src/global.c:608
+#: src/global.c:609
 msgid "Mark text starting from the cursor position"
 msgstr "Đánh dấu văn bản bắt đầu tại vị trí con trỏ"
 
-#: src/global.c:609
+#: src/global.c:610
 msgid "Throw away the current line (or marked region)"
 msgstr "Vứt dòng hiện tại (hoặc dòng đánh dấu) đi"
 
-#: src/global.c:610
+#: src/global.c:611
 msgid "Indent the current line (or marked lines)"
 msgstr "Thụt lề dòng hiện tại (hoặc dòng đánh dấu)"
 
-#: src/global.c:611
+#: src/global.c:612
 msgid "Unindent the current line (or marked lines)"
 msgstr "Bỏ thụt lề dòng hiện tại (hoặc dòng đánh dấu)"
 
-#: src/global.c:612
+#: src/global.c:613
 msgid "Undo the last operation"
 msgstr "Hủy bước vừa mới làm"
 
-#: src/global.c:613
+#: src/global.c:614
 msgid "Redo the last undone operation"
 msgstr "Làm lại bước vừa mới được hủy"
 
-#: src/global.c:615
+#: src/global.c:616
 msgid "Go back one character"
 msgstr "Lùi lại một ký tự"
 
-#: src/global.c:616
+#: src/global.c:617
 msgid "Go forward one character"
 msgstr "Đi tiếp một ký tự"
 
-#: src/global.c:617
+#: src/global.c:618
 msgid "Go back one word"
 msgstr "Lùi lại một từ"
 
-#: src/global.c:618
+#: src/global.c:619
 msgid "Go forward one word"
 msgstr "Đi tiếp một từ"
 
-#: src/global.c:619
+#: src/global.c:620
 msgid "Go to previous line"
 msgstr "Về dòng kế trước"
 
-#: src/global.c:620
+#: src/global.c:621
 msgid "Go to next line"
 msgstr "Tới dòng kế tiếp"
 
-#: src/global.c:621
+#: src/global.c:622
 msgid "Go to beginning of current line"
 msgstr "Về đầu của dòng hiện tại"
 
-#: src/global.c:622
+#: src/global.c:623
 msgid "Go to end of current line"
 msgstr "Tới cuối của dòng hiện tại"
 
-#: src/global.c:623
+#: src/global.c:624
 msgid "Go to previous block of text"
 msgstr "Về khối văn bản kế trước"
 
-#: src/global.c:624
+#: src/global.c:625
 msgid "Go to next block of text"
 msgstr "Về khối văn bản kế tiếp"
 
-#: src/global.c:627
+#: src/global.c:628
 msgid "Go to beginning of paragraph; then of previous paragraph"
 msgstr "Về đầu của đoạn văn này; rồi về đầu của đoạn văn trước"
 
-#: src/global.c:629
+#: src/global.c:630
 msgid "Go just beyond end of paragraph; then of next paragraph"
 msgstr ""
 "Tới đúng sau cuối của đoạn văn này; rồi tới đúng sau cuối của đoạn văn sau"
 
-#: src/global.c:632
+#: src/global.c:633
 msgid "Go to first row in the viewport"
 msgstr "Chuyển tới dòng đầu tiên trong ô xem này"
 
-#: src/global.c:633
+#: src/global.c:634
 msgid "Go to last row in the viewport"
 msgstr "Chuyển tới dòng cuối cùng trong ô xem này"
 
-#: src/global.c:634
+#: src/global.c:635
 msgid "Center the line where the cursor is"
 msgstr "Căn giữa dòng mà con trỏ nằm đó"
 
-#: src/global.c:635
+#: src/global.c:636
 msgid "Push the cursor line to the center, then top, then bottom"
 msgstr ""
 
-#: src/global.c:637
+#: src/global.c:638
 msgid "Go one screenful up"
 msgstr "Đi lên một màn hình"
 
-#: src/global.c:638
+#: src/global.c:639
 msgid "Go one screenful down"
 msgstr "Đi xuống một màn hình"
 
-#: src/global.c:639
+#: src/global.c:640
 msgid "Go to the first line of the file"
 msgstr "Về dòng đầu của tập tin"
 
-#: src/global.c:640
+#: src/global.c:641
 msgid "Go to the last line of the file"
 msgstr "Tới dòng cuối của tập tin"
 
-#: src/global.c:642
+#: src/global.c:643
 msgid "Scroll the viewport a tabsize to the left"
 msgstr ""
 
-#: src/global.c:643
+#: src/global.c:644
 msgid "Scroll the viewport a tabsize to the right"
 msgstr ""
 
-#: src/global.c:647
+#: src/global.c:648
 msgid "Scroll up one line without moving the cursor textually"
 msgstr "Cuộn lên một dòng nhưng giữ nguyên vị trí con trỏ"
 
-#: src/global.c:649
+#: src/global.c:650
 msgid "Scroll down one line without moving the cursor textually"
 msgstr "Cuộn xuống một dòng nhưng giữ nguyên vị trí con trỏ"
 
-#: src/global.c:652
+#: src/global.c:653
 msgid "Switch to the previous file buffer"
 msgstr "Chuyển tới bộ đệm tập tin trước"
 
-#: src/global.c:653
+#: src/global.c:654
 msgid "Switch to the next file buffer"
 msgstr "Chuyển tới bộ đệm tập tin tiếp theo"
 
-#: src/global.c:655
+#: src/global.c:656
 msgid "Insert the next keystroke verbatim"
 msgstr "Chèn ký tự kế tiếp đúng nguyên văn"
 
-#: src/global.c:656
+#: src/global.c:657
 msgid "Insert a tab at the cursor position (or indent marked lines)"
 msgstr ""
 "Chèn một ký tự tab tại vị trí con trỏ (hoặc các dòng được đánh dấu thụt lề)"
 
-#: src/global.c:657
+#: src/global.c:658
 msgid "Insert a newline at the cursor position"
 msgstr "Chèn một ký tự dòng mới tại vị trí con trỏ"
 
-#: src/global.c:658
+#: src/global.c:659
 msgid "Delete the character under the cursor"
 msgstr "Xóa ký tự nằm dưới con trỏ"
 
-#: src/global.c:660
+#: src/global.c:661
 msgid "Delete the character to the left of the cursor"
 msgstr "Xóa ký tự ở bên trái con trỏ"
 
-#: src/global.c:663
+#: src/global.c:664
 msgid "Delete backward from cursor to word start"
 msgstr "Xóa từ vị trí con trỏ ngược tới đầu từ"
 
-#: src/global.c:665
+#: src/global.c:666
 msgid "Delete forward from cursor to next word start"
 msgstr "Xóa từ vị trí con trỏ tới bắt đầu từ kế tiếp"
 
-#: src/global.c:667
+#: src/global.c:668
 msgid "Cut from the cursor position to the end of the file"
 msgstr "Cắt từ vị trí con trỏ tới cuối tập tin"
 
-#: src/global.c:670
+#: src/global.c:671
 msgid "Justify the current paragraph"
 msgstr "Sắp chữ đúng hàng cho đoạn văn hiện tại"
 
-#: src/global.c:671
+#: src/global.c:672
 msgid "Justify the entire file"
 msgstr "Sắp chữ đúng hàng cho cả tập tin"
 
-#: src/global.c:675
+#: src/global.c:676
 msgid "Count the number of lines, words, and characters"
 msgstr "Đếm số dòng, số từ, và số ký tự"
 
-#: src/global.c:676
+#: src/global.c:677
 msgid "Suspend the editor (return to the shell)"
 msgstr "Ngưng trình soạn thảo (quay trở lại hệ vỏ)"
 
-#: src/global.c:678
+#: src/global.c:679
 msgid "Refresh (redraw) the current screen"
 msgstr "Cập nhật (vẽ lại) màn hình hiện tại"
 
-#: src/global.c:680
+#: src/global.c:681
 msgid "Try and complete the current word"
 msgstr "Thử và điền nốt từ hiện tại"
 
-#: src/global.c:684
+#: src/global.c:685
 msgid "Comment/uncomment the current line (or marked lines)"
 msgstr "Đổi dòng hiện tại hay đã đánh dấu thành chú thích/hoặc thôi"
 
-#: src/global.c:686
+#: src/global.c:687
 msgid "Save file without prompting"
 msgstr "Lưu tập tin mà không cần hỏi"
 
-#: src/global.c:687
+#: src/global.c:688
 msgid "Search next occurrence backward"
 msgstr "Tìm chỗ khớp kế trước"
 
-#: src/global.c:688
+#: src/global.c:689
 msgid "Search next occurrence forward"
 msgstr "Tìm chỗ khớp phía trước"
 
-#: src/global.c:690
+#: src/global.c:691
 msgid "Start/stop recording a macro"
 msgstr "Bắt đầu hoặc dừng ghi một vĩ lệnh"
 
-#: src/global.c:691
+#: src/global.c:692
 msgid "Run the last recorded macro"
 msgstr "Chạy vĩ lệnh được ghi cuối cùng"
 
-#: src/global.c:692
+#: src/global.c:693
 msgid "Place or remove an anchor at the current line"
 msgstr "Đặt hay xóa điểm neo tại dòng hiện tại"
 
-#: src/global.c:693
+#: src/global.c:694
 msgid "Jump backward to the nearest anchor"
 msgstr "Nhảy ngược đến vị trí gần điểm neo nhất"
 
-#: src/global.c:694
+#: src/global.c:695
 msgid "Jump forward to the nearest anchor"
 msgstr "Nhảy tiếp đến vị trí gần điểm neo nhất"
 
-#: src/global.c:696
+#: src/global.c:697
 msgid "Toggle the case sensitivity of the search"
 msgstr "Bật/tắt phân biệt chữ HOA/thường khi tìm kiếm"
 
-#: src/global.c:697
+#: src/global.c:698
 msgid "Reverse the direction of the search"
 msgstr "Đảo ngược hướng tìm"
 
-#: src/global.c:698
+#: src/global.c:699
 msgid "Toggle the use of regular expressions"
 msgstr "Bật/tắt khả năng sử dụng biểu thức chính quy"
 
-#: src/global.c:700
+#: src/global.c:701
 msgid "Recall the previous search/replace string"
 msgstr "Xem lại chuỗi tìm kiếm/thay thế trước"
 
-#: src/global.c:701
+#: src/global.c:702
 msgid "Recall the next search/replace string"
 msgstr "Xem lại chuỗi tìm kiếm/thay thế kế"
 
-#: src/global.c:704
+#: src/global.c:705
 msgid "Toggle the use of DOS format"
 msgstr "Bật/tắt khả năng sử dụng định dạng DOS"
 
-#: src/global.c:705
+#: src/global.c:706
 msgid "Toggle appending"
 msgstr "Bật/tắt khả năng phụ thêm"
 
-#: src/global.c:706
+#: src/global.c:707
 msgid "Toggle prepending"
 msgstr "Bật/tắt khả năng thêm vào trước"
 
-#: src/global.c:707
+#: src/global.c:708
 msgid "Toggle backing up of the original file"
 msgstr "Bật/tắt khả năng sao lưu tập tin gốc"
 
-#: src/global.c:708
+#: src/global.c:709
 msgid "Execute a function or an external command"
 msgstr "Thực hiện một hàm hoặc một câu lệnh bên ngoài"
 
-#: src/global.c:710
+#: src/global.c:711
 msgid "Pipe the current buffer (or marked region) to the command"
 msgstr "Chuyển bằng đường ống bộ đệm hiện tại (hoặc vùng đã đánh dấu) đến lệnh"
 
-#: src/global.c:712
+#: src/global.c:713
 msgid "Recall the previous command"
 msgstr "Gọi lại lệnh kế trước"
 
-#: src/global.c:713
+#: src/global.c:714
 msgid "Recall the next command"
 msgstr "Gọi lại lệnh kế tiếp"
 
-#: src/global.c:715
+#: src/global.c:716
 msgid "Do not convert from DOS format"
 msgstr ""
 
-#: src/global.c:718
+#: src/global.c:719
 msgid "Toggle the use of a new buffer"
 msgstr "Bật/tắt khả năng sử dụng bộ đệm mới"
 
-#: src/global.c:720
+#: src/global.c:721
 msgid "Close buffer without saving it"
 msgstr "Đóng bộ đệm dữ liệu mà không ghi lại nó"
 
-#: src/global.c:722
+#: src/global.c:723
 msgid "Go to file browser"
 msgstr "Đi tới trình duyệt tập tin"
 
-#: src/global.c:723
+#: src/global.c:724
 msgid "Exit from the file browser"
 msgstr "Thoát khỏi trình duyệt tập tin"
 
-#: src/global.c:724
+#: src/global.c:725
 msgid "Go to the first file in the list"
 msgstr "Chuyển tới dòng đầu tiên của danh sách"
 
-#: src/global.c:725
+#: src/global.c:726
 msgid "Go to the last file in the list"
 msgstr "Chuyển tới dòng cuối cùng của danh sách"
 
-#: src/global.c:726
+#: src/global.c:727
 msgid "Go to the previous file in the list"
 msgstr "Chuyển tới tập tin đằng trước trong danh sách"
 
-#: src/global.c:727
+#: src/global.c:728
 msgid "Go to the next file in the list"
 msgstr "Chuyển tới tập tin đằng sau trong danh sách"
 
-#: src/global.c:729
+#: src/global.c:730
 msgid "Go to lefthand column"
 msgstr "Chuyển tới cột tay trái"
 
-#: src/global.c:730
+#: src/global.c:731
 msgid "Go to righthand column"
 msgstr "Chuyển tới cột tay phải"
 
-#: src/global.c:731
+#: src/global.c:732
 msgid "Go to first row in this column"
 msgstr "Chuyển tới dòng đầu tiên trong cột này"
 
-#: src/global.c:732
+#: src/global.c:733
 msgid "Go to last row in this column"
 msgstr "Chuyển tới dòng cuối cùng trong cột này"
 
-#: src/global.c:734
+#: src/global.c:735
 msgid "Search forward for a string"
 msgstr "Tìm tiếp cho một chuỗi"
 
-#: src/global.c:735
+#: src/global.c:736
 msgid "Search backward for a string"
 msgstr "Tìm ngược lại cho  một chuỗi"
 
-#: src/global.c:736
+#: src/global.c:737
 msgid "Refresh the file list"
 msgstr "Lấy danh sách tập tin"
 
-#: src/global.c:737
+#: src/global.c:738
 msgid "Go to directory"
 msgstr "Đi tới thư mục"
 
-#: src/global.c:740
+#: src/global.c:741
 msgid "Invoke the linter, if available"
 msgstr "Gọi phần mềm kiểm chuẩn, nếu có"
 
-#: src/global.c:741
+#: src/global.c:742
 msgid "Go to previous linter msg"
 msgstr "Đến lời nhắn kiểm chuẩn kế trước"
 
-#: src/global.c:742
+#: src/global.c:743
 msgid "Go to next linter msg"
 msgstr "Đến lời nhắn kiểm chuẩn kế"
 
-#: src/global.c:746
+#: src/global.c:747
 msgid "Invoke a program to format/arrange/manipulate the buffer"
 msgstr "Gội một chương trình thực hện định dạng/dàn xếp/thao tác bộ đệm"
 
 #. TRANSLATORS: Try to keep the next thirteen strings at most 10 characters.
-#: src/global.c:764
+#: src/global.c:765
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/global.c:768 src/prompt.c:706
+#: src/global.c:769 src/prompt.c:706
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: src/global.c:788
+#: src/global.c:789
 msgid "Write Out"
 msgstr "Ghi lại"
 
-#: src/global.c:796
+#: src/global.c:797
 msgid "Read File"
 msgstr "Đọc T.tin"
 
-#: src/global.c:800 src/global.c:839
+#: src/global.c:801 src/global.c:840
 msgid "Justify"
 msgstr "Sắp hàng"
 
-#: src/global.c:806 src/global.c:900 src/global.c:1116
+#: src/global.c:807 src/global.c:901 src/global.c:1117
 msgid "Refresh"
 msgstr "Cập nhật"
 
-#: src/global.c:811 src/global.c:903
+#: src/global.c:812 src/global.c:904
 msgid "Where Is"
 msgstr "Tìm kiếm"
 
-#: src/global.c:814 src/global.c:876
+#: src/global.c:815 src/global.c:877
 msgid "Replace"
 msgstr "Thay thế"
 
-#: src/global.c:827
+#: src/global.c:828
 msgid "Cut"
 msgstr "Cắt"
 
-#: src/global.c:830
+#: src/global.c:831
 msgid "Paste"
 msgstr "Dán"
 
-#: src/global.c:835 src/global.c:1108
+#: src/global.c:836 src/global.c:1109
 msgid "Execute"
 msgstr "Thực hiện lệnh"
 
 #. TRANSLATORS: This refers to the position of the cursor.
-#: src/global.c:845
+#: src/global.c:846
 msgid "Location"
 msgstr "Vị trí"
 
-#: src/global.c:851 src/global.c:1018
+#: src/global.c:852 src/global.c:1019
 msgid "Go To Line"
 msgstr "Tới dòng"
 
 #. TRANSLATORS: Try to keep the next four strings at most 12 characters.
-#: src/global.c:857
+#: src/global.c:858
 msgid "Undo"
 msgstr "Hủy bước"
 
-#: src/global.c:859
+#: src/global.c:860
 msgid "Redo"
 msgstr "Hoàn lại"
 
-#: src/global.c:862
+#: src/global.c:863
 msgid "Set Mark"
 msgstr "Đặt Dấu"
 
-#: src/global.c:864 src/global.c:1052
+#: src/global.c:865 src/global.c:1053
 msgid "Copy"
 msgstr "Chép"
 
 #. TRANSLATORS: Try to keep the next four strings at most 16 characters.
-#: src/global.c:869
+#: src/global.c:870
 msgid "Case sensitive"
 msgstr ""
 
-#: src/global.c:871
+#: src/global.c:872
 msgid "Reg.expression"
 msgstr ""
 
-#: src/global.c:873
+#: src/global.c:874
 msgid "Backwards"
 msgstr "Ngược lại"
 
-#: src/global.c:878
+#: src/global.c:879
 msgid "No Replace"
 msgstr "Không thay"
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
-#: src/global.c:883 src/global.c:888
+#: src/global.c:884 src/global.c:889
 msgid "Older"
 msgstr "Cũ hơn"
 
-#: src/global.c:885 src/global.c:890
+#: src/global.c:886 src/global.c:891
 msgid "Newer"
 msgstr "Mới hơn"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
-#: src/global.c:897
+#: src/global.c:898
 msgid "Go To Dir"
 msgstr "Tới ThMục"
 
 #. TRANSLATORS: This starts a backward search.
-#: src/global.c:905 src/global.c:924
+#: src/global.c:906 src/global.c:925
 msgid "Where Was"
 msgstr "Tìm ngược"
 
 #. TRANSLATORS: This refers to searching the preceding occurrence.
-#: src/global.c:908 src/global.c:928
+#: src/global.c:909 src/global.c:929
 msgid "Previous"
 msgstr "Kế trước"
 
-#: src/global.c:910 src/global.c:930
+#: src/global.c:911 src/global.c:931
 msgid "Next"
 msgstr "Kế tiếp"
 
-#: src/global.c:920
+#: src/global.c:921
 msgid "To Bracket"
 msgstr "Đặt Ngoặc"
 
 #. TRANSLATORS: This means move the cursor one character back.
-#: src/global.c:935 src/global.c:940
+#: src/global.c:936 src/global.c:941
 msgid "Back"
 msgstr "Lùi"
 
-#: src/global.c:937 src/global.c:942
+#: src/global.c:938 src/global.c:943
 msgid "Forward"
 msgstr "Kế tiếp"
 
 #. TRANSLATORS: Try to keep the next four strings at most 13 characters.
-#: src/global.c:948
+#: src/global.c:949
 msgid "Prev Word"
 msgstr "Từ trước"
 
-#: src/global.c:950
+#: src/global.c:951
 msgid "Next Word"
 msgstr "Từ kế"
 
 #. TRANSLATORS: These two mean: "to beginning of line", "to end of line".
-#: src/global.c:954
+#: src/global.c:955
 msgid "Home"
 msgstr "Nhà"
 
-#: src/global.c:956
+#: src/global.c:957
 msgid "End"
 msgstr "Cuối"
 
 #. TRANSLATORS: Try to keep the next two strings at most 13 characters.
-#: src/global.c:960
+#: src/global.c:961
 msgid "Scroll Left"
 msgstr ""
 
-#: src/global.c:962
+#: src/global.c:963
 msgid "Scroll Right"
 msgstr ""
 
 #. TRANSLATORS: Try to keep the next two strings at most 10 characters.
-#: src/global.c:967
+#: src/global.c:968
 msgid "Prev Line"
 msgstr "Dòng trước"
 
-#: src/global.c:969
+#: src/global.c:970
 msgid "Next Line"
 msgstr "Dòng kế"
 
 #. TRANSLATORS: Try to keep the next four strings at most 13 characters.
-#: src/global.c:973
+#: src/global.c:974
 msgid "Scroll Up"
 msgstr "Cuộn lên"
 
-#: src/global.c:975
+#: src/global.c:976
 msgid "Scroll Down"
 msgstr "Cuộn xuống"
 
-#: src/global.c:979
+#: src/global.c:980
 msgid "Prev Block"
 msgstr "Khối trước"
 
-#: src/global.c:981
+#: src/global.c:982
 msgid "Next Block"
 msgstr "Khối sau"
 
 #. TRANSLATORS: Try to keep these two strings at most 23 characters.
-#: src/global.c:985
+#: src/global.c:986
 msgid "Start of Paragraph"
 msgstr ""
 
-#: src/global.c:987
+#: src/global.c:988
 msgid "End of Paragraph"
 msgstr "Cuối đoạn"
 
-#: src/global.c:992 src/global.c:1215
+#: src/global.c:993 src/global.c:1216
 msgid "Top Row"
 msgstr "Dòng đỉnh"
 
-#: src/global.c:994 src/global.c:1217
+#: src/global.c:995 src/global.c:1218
 msgid "Bottom Row"
 msgstr "Dòng đáy"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
-#: src/global.c:999 src/global.c:1200
+#: src/global.c:1000 src/global.c:1201
 msgid "Prev Page"
 msgstr "TrangTrước"
 
-#: src/global.c:1001 src/global.c:1202
+#: src/global.c:1002 src/global.c:1203
 msgid "Next Page"
 msgstr "Trang kế"
 
-#: src/global.c:1004
+#: src/global.c:1005
 msgid "First Line"
 msgstr "Dòng đầu"
 
-#: src/global.c:1006
+#: src/global.c:1007
 msgid "Last Line"
 msgstr "Dòng cuối"
 
 #. TRANSLATORS: Try to keep these two strings at most 14 characters.
-#: src/global.c:1011
+#: src/global.c:1012
 msgid "Prev File"
 msgstr "Tệp Trước"
 
-#: src/global.c:1013
+#: src/global.c:1014
 msgid "Next File"
 msgstr "Tệp Sau"
 
 #. TRANSLATORS: The next four strings are names of keyboard keys.
-#: src/global.c:1023
+#: src/global.c:1024
 msgid "Tab"
 msgstr "Tab"
 
-#: src/global.c:1025
+#: src/global.c:1026
 msgid "Enter"
 msgstr "Enter"
 
-#: src/global.c:1028
+#: src/global.c:1029
 msgid "Backspace"
 msgstr "Xóa lùi"
 
-#: src/global.c:1030
+#: src/global.c:1031
 msgid "Delete"
 msgstr "Xóa"
 
 #. TRANSLATORS: The next two strings refer to deleting words.
-#: src/global.c:1035
+#: src/global.c:1036
 msgid "Chop Left"
 msgstr "Cắt Trái"
 
-#: src/global.c:1037
+#: src/global.c:1038
 msgid "Chop Right"
 msgstr "Cắt Phải"
 
-#: src/global.c:1039 src/global.c:1183
+#: src/global.c:1040 src/global.c:1184
 msgid "Cut Till End"
 msgstr "CắtĐếnCuối"
 
-#: src/global.c:1044 src/global.c:1149
+#: src/global.c:1045 src/global.c:1150
 msgid "Full Justify"
 msgstr "Sắp Hàng Đủ"
 
-#: src/global.c:1049
+#: src/global.c:1050
 msgid "Word Count"
 msgstr "Đếm từ"
 
-#: src/global.c:1056
+#: src/global.c:1057
 msgid "Verbatim"
 msgstr "Đúng nguyên văn"
 
-#: src/global.c:1063
+#: src/global.c:1064
 msgid "Indent"
 msgstr "Thụt lề"
 
-#: src/global.c:1065
+#: src/global.c:1066
 msgid "Unindent"
 msgstr "Bỏ thụt lề"
 
-#: src/global.c:1069
+#: src/global.c:1070
 msgid "Comment Lines"
 msgstr "Thành ghi chú"
 
-#: src/global.c:1073
+#: src/global.c:1074
 msgid "Complete"
 msgstr "Điền nốt"
 
-#: src/global.c:1078
+#: src/global.c:1079
 msgid "Record"
 msgstr "Ghi lại"
 
-#: src/global.c:1080
+#: src/global.c:1081
 msgid "Run Macro"
 msgstr "Chạy vĩ lệnh"
 
 #. TRANSLATORS: This refers to deleting a line or marked region.
-#: src/global.c:1084
+#: src/global.c:1085
 msgid "Zap"
 msgstr "Zap"
 
-#: src/global.c:1087
+#: src/global.c:1088
 msgid "Anchor"
 msgstr "Điểm neo"
 
-#: src/global.c:1089
+#: src/global.c:1090
 msgid "Up to anchor"
 msgstr "Nhảy lên điểm neo trên"
 
-#: src/global.c:1091
+#: src/global.c:1092
 msgid "Down to anchor"
 msgstr "Xuống điểm neo dưới"
 
 #. TRANSLATORS: Try to keep the next four strings at most 10 characters.
-#: src/global.c:1095 src/global.c:1141
+#: src/global.c:1096 src/global.c:1142
 msgid "Spell Check"
 msgstr "Kiểm tra chính tả"
 
-#: src/global.c:1099 src/global.c:1145
+#: src/global.c:1100 src/global.c:1146
 msgid "Linter"
 msgstr "Kiểm chuẩn"
 
-#: src/global.c:1103 src/global.c:1153
+#: src/global.c:1104 src/global.c:1154
 msgid "Formatter"
 msgstr "Bđịnh dạng"
 
-#: src/global.c:1111 src/global.c:1186
+#: src/global.c:1112 src/global.c:1187
 msgid "Suspend"
 msgstr "Ngưng"
 
-#: src/global.c:1120
+#: src/global.c:1121
 msgid "Center"
 msgstr "Canh giữa"
 
-#: src/global.c:1122
+#: src/global.c:1123
 msgid "Cycle"
 msgstr ""
 
-#: src/global.c:1126
+#: src/global.c:1127
 msgid "Save"
 msgstr "Lưu"
 
-#: src/global.c:1136
+#: src/global.c:1137
 msgid "Pipe Text"
 msgstr "VBản ra ống"
 
-#: src/global.c:1158
+#: src/global.c:1159
 msgid "DOS Format"
 msgstr "Định dạng DOS"
 
-#: src/global.c:1166
+#: src/global.c:1167
 msgid "Backup File"
 msgstr "Tập tin Sao lưu dự phòng"
 
-#: src/global.c:1169
+#: src/global.c:1170
 msgid "Append"
 msgstr "Phụ thêm"
 
-#: src/global.c:1171
+#: src/global.c:1172
 msgid "Prepend"
 msgstr "Thêm vào trước"
 
-#: src/global.c:1175
+#: src/global.c:1176
 msgid "No Conversion"
 msgstr "Không chuyển đổi"
 
-#: src/global.c:1180
+#: src/global.c:1181
 msgid "Execute Command"
 msgstr "Thực hiện lệnh"
 
-#: src/global.c:1190
+#: src/global.c:1191
 msgid "Discard buffer"
 msgstr "Loại bỏ bộ đệm"
 
 #. TRANSLATORS: This invokes the file browser.
-#: src/global.c:1197
+#: src/global.c:1198
 msgid "Browse"
 msgstr "Duyệt"
 
-#: src/global.c:1205
+#: src/global.c:1206
 msgid "First File"
 msgstr "Tệp đầu"
 
-#: src/global.c:1207
+#: src/global.c:1208
 msgid "Last File"
 msgstr "Tệp cuối"
 
-#: src/global.c:1211
+#: src/global.c:1212
 msgid "Left Column"
 msgstr "Cột trái"
 
-#: src/global.c:1213
+#: src/global.c:1214
 msgid "Right Column"
 msgstr "Cột phải"
 
 #. TRANSLATORS: The next two strings may be up to 37 characters each.
-#: src/global.c:1224
+#: src/global.c:1225
 msgid "Previous Linter message"
 msgstr "Lời nhắn kiểm chuẩn kế trước"
 
-#: src/global.c:1226
+#: src/global.c:1227
 msgid "Next Linter message"
 msgstr "Lời nhắn kiểm chuẩn kế"
 
 #. TRANSLATORS: The next thirteen strings are toggle descriptions;
 #. * they are best kept shorter than 40 characters, but may be longer.
-#: src/global.c:1617
+#: src/global.c:1620
 msgid "Hidden interface"
 msgstr "Ẩn giao diện"
 
-#: src/global.c:1619
+#: src/global.c:1622
 msgid "Help mode"
 msgstr "Chế độ Trợ giúp"
 
-#: src/global.c:1621
+#: src/global.c:1624
 msgid "Constant cursor position display"
 msgstr "Hiển thị ví trí cố định của con trỏ"
 
-#: src/global.c:1623
+#: src/global.c:1626
 msgid "Soft wrapping of overlong lines"
 msgstr "Ngắt mềm những dòng dài"
 
-#: src/global.c:1625
+#: src/global.c:1628
 msgid "Line numbering"
 msgstr "Đánh số dòng"
 
-#: src/global.c:1627
+#: src/global.c:1630
 msgid "Whitespace display"
 msgstr "Hiển thị khoảng trắng"
 
-#: src/global.c:1629
+#: src/global.c:1632
 msgid "Color syntax highlighting"
 msgstr "Tô sáng cú pháp"
 
-#: src/global.c:1631
+#: src/global.c:1634
 msgid "Smart home key"
 msgstr "Phím home khéo"
 
-#: src/global.c:1633
+#: src/global.c:1636
 msgid "Auto indent"
 msgstr "Tự thụt lề"
 
-#: src/global.c:1635
+#: src/global.c:1638
 msgid "Cut to end"
 msgstr "Cắt tới cuối"
 
-#: src/global.c:1637
+#: src/global.c:1640
 msgid "Hard wrapping of overlong lines"
 msgstr "Ngắt cứng những dòng dài"
 
-#: src/global.c:1639
+#: src/global.c:1642
 msgid "Conversion of typed tabs to spaces"
 msgstr "Chuyển các tab thành dấu cách"
 
-#: src/global.c:1641
+#: src/global.c:1644
 msgid "Mouse support"
 msgstr "Hỗ trợ chuột"
 
@@ -1738,7 +1737,7 @@ msgstr "bật/tắt"
 msgid "^W = Ctrl+W    M-W = Alt+W"
 msgstr "^W = Ctrl+W    M-W = Alt+W"
 
-#: src/history.c:237
+#: src/history.c:238
 #, c-format
 msgid ""
 "Unable to create directory %s: %s\n"
@@ -1747,7 +1746,7 @@ msgstr ""
 "Không thể tạo thư mục %s: %s\n"
 "Nó là yêu cầu cho tải/ghi lịch sử tìm kiếm hay vị trí của con trỏ.\n"
 
-#: src/history.c:244
+#: src/history.c:245
 #, c-format
 msgid ""
 "Path %s is not a directory and needs to be.\n"
@@ -1756,7 +1755,7 @@ msgstr ""
 "Đường dẫn “%s” không phải là thư mục và cần phải thế.\n"
 "Nano sẽ không thể tải hay ghi lịch sử tìm kiếm hay vị trí con trỏ chuột.\n"
 
-#: src/history.c:337 src/history.c:475
+#: src/history.c:338 src/history.c:476
 #, c-format
 msgid "Cannot limit permissions on %s: %s"
 msgstr "Không thể giới hạn quyền trên %s: %s"
@@ -2234,7 +2233,7 @@ msgstr "bị tắt"
 msgid "Unknown sequence"
 msgstr "Chuỗi chưa biết"
 
-#: src/nano.c:1293 src/rcfile.c:818
+#: src/nano.c:1293 src/rcfile.c:819
 #, c-format
 msgid "Unknown function: %s"
 msgstr "Hàn chưa biết: %s"
@@ -2271,61 +2270,65 @@ msgstr "Thôi ràng buộc phím: ^["
 msgid "Flawed paste"
 msgstr ""
 
-#: src/nano.c:1925 src/rcfile.c:1675
+#: src/nano.c:1926 src/rcfile.c:1676
 #, c-format
 msgid "Guide column \"%s\" is invalid"
 msgstr "Cột hướng dẫn “%s” không hợp lệ"
 
-#: src/nano.c:1971 src/rcfile.c:1680
+#: src/nano.c:1972 src/rcfile.c:1681
 #, c-format
 msgid "Requested tab size \"%s\" is invalid"
 msgstr "Yêu cầu một kích thước tab “%s” không hợp lệ"
 
-#: src/nano.c:2075 src/rcfile.c:1625
+#: src/nano.c:2076 src/rcfile.c:1626
 #, c-format
 msgid "Requested fill size \"%s\" is invalid"
 msgstr "Yêu cầu một kích thước tô đầy “%s” không hợp lệ"
 
-#: src/nano.c:2150
+#: src/nano.c:2151
 #, c-format
 msgid "Type '%s -h' for a list of available options.\n"
 msgstr "Gõ “%s -h” để biết danh sách các tùy chọn sẵn có.\n"
 
-#: src/nano.c:2352
+#: src/nano.c:2162
+msgid "Standard output is not a terminal\n"
+msgstr ""
+
+#: src/nano.c:2357
 #, c-format
 msgid "Bad quoting regex \"%s\": %s\n"
 msgstr "Trích dẫn biểu thức chính quy sai “%s”: %s\n"
 
-#: src/nano.c:2520
+#: src/nano.c:2525
 #, c-format
 msgid "Invalid search modifier '%c'"
 msgstr "Bổ nghĩa tìm kiếm'%c' không hợp lệ"
 
-#: src/nano.c:2531
+#: src/nano.c:2536
 msgid "Empty search string"
 msgstr "Chuỗi tìm kiếm trống rỗng"
 
-#: src/nano.c:2540 src/search.c:794
+#: src/nano.c:2545 src/search.c:804
 msgid "Invalid line or column number"
 msgstr "Sai số thứ tự dòng hoặc cột"
 
-#: src/nano.c:2576
+#: src/nano.c:2581
 msgid "Invalid number\n"
 msgstr ""
 
-#: src/nano.c:2622
+#: src/nano.c:2627
 msgid "Standard input is not a terminal\n"
 msgstr "Đầu vào tiêu chuẩn không phải là thiết bị cuối\n"
 
-#: src/nano.c:2641
+#: src/nano.c:2646
 msgid "Can open just one file\n"
 msgstr "Chỉ có thể mở một tập tin thôi\n"
 
-#: src/nano.c:2659
+#: src/nano.c:2664
 msgid "Welcome to nano.  For basic help, type Ctrl+G."
 msgstr "Chào đón bạn dùng nano. Để xem trợ giúp cơ bản, hãy gõ Ctrl+G."
 
-#: src/nano.c:2706
+#: src/nano.c:2711
 msgid "Byte Order Mark"
 msgstr ""
 
@@ -2356,217 +2359,217 @@ msgstr "Không"
 msgid "All"
 msgstr "Tất cả"
 
-#: src/rcfile.c:192
+#: src/rcfile.c:193
 #, c-format
 msgid "Mistakes in '%s'"
 msgstr "Sai trong “%s”"
 
-#: src/rcfile.c:196
+#: src/rcfile.c:197
 msgid "Problems with history file"
 msgstr "Gặp trục trặc với tập tin lịch sử"
 
-#: src/rcfile.c:200
+#: src/rcfile.c:201
 #, c-format
 msgid "Error in %s on line %zu: "
 msgstr "Có lỗi trong %s trên dòng %zu: "
 
-#: src/rcfile.c:567
+#: src/rcfile.c:568
 #, c-format
 msgid "Argument '%s' has an unterminated \""
 msgstr "Đối số “%s” chưa được \" kết thúc"
 
-#: src/rcfile.c:588 src/rcfile.c:598
+#: src/rcfile.c:589 src/rcfile.c:599
 msgid "Regex strings must begin and end with a \" character"
 msgstr "Biểu thức chính quy phải bắt đầu và kết thúc bởi một ký tự \""
 
-#: src/rcfile.c:603
+#: src/rcfile.c:604
 msgid "Empty regex string"
 msgstr "Chuỗi biểu thức chính quy trống rỗng"
 
-#: src/rcfile.c:628 src/search.c:45
+#: src/rcfile.c:629 src/search.c:45
 #, c-format
 msgid "Bad regex \"%s\": %s"
 msgstr "Biểu thức chính quy sai “%s”: %s"
 
-#: src/rcfile.c:648
+#: src/rcfile.c:649
 msgid "Missing syntax name"
 msgstr "Thiếu tên cú pháp"
 
-#: src/rcfile.c:656
+#: src/rcfile.c:657
 msgid "Unpaired quote in syntax name"
 msgstr "Dấu trích dẫn không đủ cặp trong tên cú pháp"
 
-#: src/rcfile.c:668
+#: src/rcfile.c:669
 msgid "The \"none\" syntax is reserved"
 msgstr "Cú pháp “none” là được để dành dùng trong tương lai"
 
-#: src/rcfile.c:699
+#: src/rcfile.c:700
 msgid "The \"default\" syntax does not accept extensions"
 msgstr "Cú pháp “default” không chấp nhận phần mở rộng"
 
-#: src/rcfile.c:717
+#: src/rcfile.c:718
 #, c-format
 msgid "Syntax \"%s\" has no color commands"
 msgstr "Cú pháp “%s” không có câu lệnh màu"
 
-#: src/rcfile.c:750
+#: src/rcfile.c:751
 msgid "Missing key name"
 msgstr "Thiếu tên phím"
 
-#: src/rcfile.c:767 src/rcfile.c:774
+#: src/rcfile.c:768 src/rcfile.c:775
 #, c-format
 msgid "Key name %s is invalid"
 msgstr "Tên phím “%s” không hợp lệ"
 
-#: src/rcfile.c:783
+#: src/rcfile.c:784
 msgid "Must specify a function to bind the key to"
 msgstr "Phải ghi rõ hàm ràng buộc với tổ hợp phím"
 
 #. TRANSLATORS: Do not translate the word "all".
-#: src/rcfile.c:794
+#: src/rcfile.c:795
 msgid "Must specify a menu (or \"all\") in which to bind/unbind the key"
 msgstr ""
 "Phải chỉ định một trình đơn (hoặc \"all\") để mà ràng buộc hay không vào phím"
 
-#: src/rcfile.c:800
+#: src/rcfile.c:801
 #, c-format
 msgid "Unknown menu: %s"
 msgstr "Không hiểu trình đơn: %s"
 
-#: src/rcfile.c:857
+#: src/rcfile.c:858
 #, c-format
 msgid "Function '%s' does not exist in menu '%s'"
 msgstr "Chức năng “%s” không tồn tại trong trình đơn “%s”"
 
-#: src/rcfile.c:867
+#: src/rcfile.c:868
 #, c-format
 msgid "Keystroke %s may not be rebound"
 msgstr "Tiếc là không cho phép dùng tổ hợp phím “%s”"
 
-#: src/rcfile.c:958 src/rcfile.c:1528
+#: src/rcfile.c:959 src/rcfile.c:1529
 #, c-format
 msgid "Command \"%s\" not understood"
 msgstr "Không hiểu câu lệnh “%s”"
 
-#: src/rcfile.c:986
+#: src/rcfile.c:987
 msgid "Path is too long"
 msgstr "Đường dẫn quá dài"
 
-#: src/rcfile.c:1000
+#: src/rcfile.c:1001
 #, c-format
 msgid "Error expanding %s: %s"
 msgstr "Gặp lỗi khi khải triển %s: %s"
 
-#: src/rcfile.c:1070 src/rcfile.c:1081
+#: src/rcfile.c:1071 src/rcfile.c:1082
 #, c-format
 msgid "Color '%s' takes no prefix"
 msgstr "Màu '%s' không nhận tiền tố"
 
-#: src/rcfile.c:1089
+#: src/rcfile.c:1090
 #, c-format
 msgid "Color \"%s\" not understood"
 msgstr "Không hiểu màu “%s”"
 
-#: src/rcfile.c:1105 src/rcfile.c:1116
+#: src/rcfile.c:1106 src/rcfile.c:1117
 msgid "An attribute requires a subsequent comma"
 msgstr "Một thuộc tính yêu cầu một dấu phẩy theo sau"
 
-#: src/rcfile.c:1160
+#: src/rcfile.c:1161
 msgid "Missing color name"
 msgstr "Thiếu tên màu"
 
-#: src/rcfile.c:1171 src/rcfile.c:1271
+#: src/rcfile.c:1172 src/rcfile.c:1272
 #, c-format
 msgid "Missing regex string after '%s' command"
 msgstr "Thiếu chuỗi biểu thức chính quy sau lệnh “%s”"
 
-#: src/rcfile.c:1197
+#: src/rcfile.c:1198
 msgid "\"start=\" requires a corresponding \"end=\""
 msgstr "“start=” (bắt đầu) thì yêu cầu một phần “end=” (kết thúc) tương ứng"
 
-#: src/rcfile.c:1260 src/rcfile.c:1509
+#: src/rcfile.c:1261 src/rcfile.c:1510
 #, c-format
 msgid "A '%s' command requires a preceding 'syntax' command"
 msgstr "Một lệnh “%s” cần có lệnh “syntax” đi trước"
 
-#: src/rcfile.c:1266
+#: src/rcfile.c:1267
 #, c-format
 msgid "The \"default\" syntax does not accept '%s' regexes"
 msgstr "Cú pháp “default” không chấp nhận biểu thức chính quy “%s”"
 
-#: src/rcfile.c:1313
+#: src/rcfile.c:1314
 #, c-format
 msgid "Missing argument after '%s'"
 msgstr "Thiếu tham số sau “%s”"
 
-#: src/rcfile.c:1323
+#: src/rcfile.c:1324
 #, c-format
 msgid "Argument of '%s' lacks closing \""
 msgstr "Đối số của “%s” thiếu \" kết thúc"
 
-#: src/rcfile.c:1373
+#: src/rcfile.c:1374
 #, c-format
 msgid "No key is bound to function '%s' in menu '%s'.  Exiting.\n"
 msgstr ""
 "Chưa có phím nào tổ hợp cùng hàm “%s” trong trình đơn “%s”. Nên thoát ra.\n"
 
-#: src/rcfile.c:1375
+#: src/rcfile.c:1376
 msgid ""
 "If needed, use nano with the -I option to adjust your nanorc settings.\n"
 msgstr ""
 "Nếu cần, hãy sử dụng trình soạn thảo nano với tùy chọn “-I” để điều chỉnh "
 "cài đặt nanorc của bạn.\n"
 
-#: src/rcfile.c:1442
+#: src/rcfile.c:1443
 #, c-format
 msgid "Could not find syntax \"%s\" to extend"
 msgstr "Không thể tìm thấy cú pháp “%s” để khai triển"
 
-#: src/rcfile.c:1499
+#: src/rcfile.c:1500
 #, c-format
 msgid "Command \"%s\" not allowed in included file"
 msgstr "Lệnh “%s” không được phép trong tập tin đã bao gồm"
 
-#: src/rcfile.c:1540
+#: src/rcfile.c:1541
 msgid "Missing option"
 msgstr "Thiếu tùy chọn"
 
-#: src/rcfile.c:1554
+#: src/rcfile.c:1555
 #, c-format
 msgid "Unknown option: %s"
 msgstr "Không hiểu tùy chọn: %s"
 
-#: src/rcfile.c:1569
+#: src/rcfile.c:1570
 #, c-format
 msgid "Cannot unset option \"%s\""
 msgstr "Không thể bỏ đặt tùy chọn “%s”"
 
-#: src/rcfile.c:1574
+#: src/rcfile.c:1575
 #, c-format
 msgid "Option \"%s\" requires an argument"
 msgstr "Tùy chọn “%s” cần một tham số"
 
-#: src/rcfile.c:1586
+#: src/rcfile.c:1587
 msgid "Argument is not a valid multibyte string"
 msgstr "Tham số không phải là một chuỗi đa byte hợp lệ"
 
-#: src/rcfile.c:1633 src/rcfile.c:1651 src/rcfile.c:1656
+#: src/rcfile.c:1634 src/rcfile.c:1652 src/rcfile.c:1657
 msgid "Non-blank characters required"
 msgstr "Yêu cầu các ký tự không phải khoảng trắng"
 
-#: src/rcfile.c:1635
+#: src/rcfile.c:1636
 msgid "Even number of characters required"
 msgstr "Yêu cầu số lượng các ký tự phải chẵn"
 
-#: src/rcfile.c:1640
+#: src/rcfile.c:1641
 msgid "Two single-column characters required"
 msgstr "Yêu cầu hai ký tự một cột"
 
-#: src/rcfile.c:1731
+#: src/rcfile.c:1732
 msgid "Specified rcfile does not exist\n"
 msgstr "Tập tin rcfile đã cho không tồn tại\n"
 
-#: src/rcfile.c:1750
+#: src/rcfile.c:1751
 msgid "I can't find my home directory!  Wah!"
 msgstr "Tôi không thể tìm thấy thư mục cá nhân của mình!"
 
@@ -2589,61 +2592,61 @@ msgstr " (thay thế)"
 
 #. TRANSLATORS: This is shown when searching takes
 #. * more than half a second.
-#: src/search.c:230 src/search.c:303
+#: src/search.c:233 src/search.c:306
 msgid "Searching..."
 msgstr "Đang tìm kiếm..."
 
-#: src/search.c:412
+#: src/search.c:415
 #, c-format
 msgid "\"%.*s%s\" not found"
 msgstr "Không tìm thấy “%.*s%s”"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:598
+#: src/search.c:601
 msgid "Replace this instance?"
 msgstr "Thay thế minh dụ này?"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:709
+#: src/search.c:712
 msgid "Replace with"
 msgstr "Thay thế bằng"
 
-#: src/search.c:739
+#: src/search.c:742
 #, c-format
 msgid "Replaced %zd occurrence"
 msgid_plural "Replaced %zd occurrences"
 msgstr[0] "Đã thay thế %zd lần"
 
 #. TRANSLATORS: This is a prompt.
-#: src/search.c:778
+#: src/search.c:781
 msgid "Enter line number, column number"
 msgstr "Nhập số thứ tự dòng, cột"
 
-#: src/search.c:948
+#: src/search.c:958
 msgid "Not a bracket"
 msgstr "Không phải ngoặc đơn"
 
-#: src/search.c:990
+#: src/search.c:1000
 msgid "No matching bracket"
 msgstr "Không có ngoặc đơn tương ứng"
 
-#: src/search.c:1009
+#: src/search.c:1019
 msgid "Placed anchor"
 msgstr "Đã đặt điểm neo"
 
-#: src/search.c:1011
+#: src/search.c:1021
 msgid "Removed anchor"
 msgstr "Đã xóa điểm neo"
 
-#: src/search.c:1030
+#: src/search.c:1040
 msgid "Jumped to anchor"
 msgstr "Nhảy tới điểm neo"
 
-#: src/search.c:1032
+#: src/search.c:1042
 msgid "This is the only anchor"
 msgstr "Đây là điểm neo duy nhất"
 
-#: src/search.c:1034
+#: src/search.c:1044
 msgid "There are no anchors"
 msgstr "Không có điểm neo nào"
 
@@ -2737,178 +2740,178 @@ msgid "Redid %s"
 msgstr "Làm lại %s"
 
 #. TRANSLATORS: This one goes with Undid/Redid messages.
-#: src/text.c:1772 src/text.c:1992
+#: src/text.c:1782 src/text.c:2002
 msgid "justification"
 msgstr "sắp thẳng"
 
-#: src/text.c:1783 src/text.c:2121
+#: src/text.c:1793 src/text.c:2131
 msgid "Selection is empty"
 msgstr "Vùng chọn trống rỗng"
 
-#: src/text.c:1996
+#: src/text.c:2006
 msgid "Justified selection"
 msgstr "Đã căn hàng vùng chọn"
 
-#: src/text.c:2000
+#: src/text.c:2010
 msgid "Justified file"
 msgstr "Căn hàng cho cả tập tin"
 
-#: src/text.c:2002
+#: src/text.c:2012
 msgid "Justified paragraph"
 msgstr "Canh hàng cho đoạn văn"
 
-#: src/text.c:2124
+#: src/text.c:2134
 msgid "Buffer is empty"
 msgstr "Bộ nhớ đệm trống rỗng"
 
-#: src/text.c:2136
+#: src/text.c:2146
 msgid "Invoking formatter..."
 msgstr "Đang gọi bộ định dạng..."
 
-#: src/text.c:2173 src/text.c:2524 src/text.c:2526 src/text.c:2528
-#: src/text.c:2769
+#: src/text.c:2183 src/text.c:2534 src/text.c:2536 src/text.c:2538
+#: src/text.c:2775
 #, c-format
 msgid "Error invoking '%s'"
 msgstr "Lỗi gọi “%s”"
 
-#: src/text.c:2177
+#: src/text.c:2187
 #, c-format
 msgid "Program '%s' complained"
 msgstr "Chương trình '%s' đã than phiền"
 
-#: src/text.c:2185
+#: src/text.c:2195
 msgid "Nothing changed"
 msgstr "Không có gì thay đổi"
 
 #. TRANSLATORS: The next two go with Undid/Redid messages.
-#: src/text.c:2210
+#: src/text.c:2220
 msgid "spelling correction"
 msgstr "sửa chính tả"
 
-#: src/text.c:2210
+#: src/text.c:2220
 msgid "formatting"
 msgstr "đang định dạng"
 
-#: src/text.c:2228 src/text.c:2532
+#: src/text.c:2238 src/text.c:2542
 msgid "Finished checking spelling"
 msgstr "Hoàn thành việc kiểm tra chính tả"
 
-#: src/text.c:2230
+#: src/text.c:2240
 msgid "Buffer has been processed"
 msgstr "Bộ nhớ đệm đã được xử lý"
 
-#: src/text.c:2274
+#: src/text.c:2284
 #, c-format
 msgid "Unfindable word: %s"
 msgstr "Không thể tìm từ: %s"
 
 #. TRANSLATORS: This is a prompt.
-#: src/text.c:2293
+#: src/text.c:2303
 msgid "Edit a replacement"
 msgstr "Sửa chuỗi thay thế"
 
 #. TRANSLATORS: Shown after fixing misspellings in one word.
-#: src/text.c:2306
+#: src/text.c:2316
 msgid "Next word..."
 msgstr "Từ kế..."
 
-#: src/text.c:2359
+#: src/text.c:2369
 msgid "Invoking spell checker..."
 msgstr "Gọi trình kiểm tra chính tả..."
 
-#: src/text.c:2444 src/text.c:2674
+#: src/text.c:2454 src/text.c:2680
 msgid "Could not get size of pipe buffer"
 msgstr "Không lấy được kích thước của bộ đệm đường ống"
 
-#: src/text.c:2530 src/text.c:2779
+#: src/text.c:2540 src/text.c:2785
 #, c-format
 msgid "Error reading pipe: %s"
 msgstr ""
 
-#: src/text.c:2609
+#: src/text.c:2615
 msgid "No linter is defined for this type of file"
 msgstr "Không có kiểm chuẩn cho kiểu này của tập tin"
 
-#: src/text.c:2619
+#: src/text.c:2625
 msgid "Save modified buffer before linting?"
 msgstr "Ghi lại bộ đệm đã sửa trước khi kiểm chuẩn?"
 
-#: src/text.c:2636
+#: src/text.c:2642
 msgid "Invoking linter..."
 msgstr "Đang gọi bộ kiểm chuẩn..."
 
-#: src/text.c:2784
+#: src/text.c:2790
 #, c-format
 msgid "Got 0 parsable lines from command: %s"
 msgstr "Nhận được 0 dòng có thể phân tích từ lệnh: %s"
 
-#: src/text.c:2822
+#: src/text.c:2828
 #, c-format
 msgid "This message is for unopened file %s, open it in a new buffer?"
 msgstr ""
 "Lời nhắn này là dành cho tập tin %s chưa được mở, mở nó trong bộ đệm mới?"
 
-#: src/text.c:2861
+#: src/text.c:2867
 msgid "No messages for this file"
 msgstr "Không có lời nhắn cho tập tin này"
 
-#: src/text.c:2911
+#: src/text.c:2917
 msgid "At first message"
 msgstr "Tại thông báo đầu"
 
-#: src/text.c:2921
+#: src/text.c:2927
 msgid "At last message"
 msgstr "Tại thông báo cuối"
 
-#: src/text.c:2966
+#: src/text.c:2972
 msgid "No formatter is defined for this type of file"
 msgstr "Không có bộ làm đẹp cho kiểu tập tin này"
 
-#: src/text.c:3040
+#: src/text.c:3046
 #, c-format
 msgid "%s%zd %s,  %zu %s,  %zu %s"
 msgstr "%s%zd %s,  %zu %s,  %zu %s"
 
-#: src/text.c:3041
+#: src/text.c:3047
 msgid "In Selection:  "
 msgstr "Trong lựa chọn:  "
 
-#: src/text.c:3042
+#: src/text.c:3048
 msgid "line"
 msgid_plural "lines"
 msgstr[0] "dòng"
 
-#: src/text.c:3043
+#: src/text.c:3049
 msgid "word"
 msgid_plural "words"
 msgstr[0] "từ"
 
-#: src/text.c:3044
+#: src/text.c:3050
 msgid "character"
 msgid_plural "characters"
 msgstr[0] "ký tự"
 
 #. TRANSLATORS: Shown when the next keystroke will be inserted verbatim.
-#: src/text.c:3062
+#: src/text.c:3068
 msgid "Verbatim Input"
 msgstr "Dữ liệu nhập nguyên bản"
 
 #. TRANSLATORS: An invalid verbatim Unicode code was typed.
-#: src/text.c:3086
+#: src/text.c:3092
 msgid "Invalid code"
 msgstr "Mã không hợp lệ"
 
 #. TRANSLATORS: Shown when no text is directly left of the cursor.
-#: src/text.c:3172
+#: src/text.c:3178
 msgid "No word fragment"
 msgstr "Không mảnh chữ nào"
 
-#: src/text.c:3275
+#: src/text.c:3281
 msgid "No further matches"
 msgstr "Không tìm thấy thêm kết quả nào khớp"
 
 #. TRANSLATORS: Shown when there are zero possible completions.
-#: src/text.c:3278
+#: src/text.c:3284
 msgid "No matches"
 msgstr "Không tìm thấy"
 
@@ -2984,44 +2987,44 @@ msgid " (%zu line, %s)"
 msgid_plural " (%zu lines, %s)"
 msgstr[0] " (%zu dòng, %s)"
 
-#: src/winio.c:3532
+#: src/winio.c:3531
 #, c-format
 msgid "line %*zd/%zd (%2d%%), col %2zu/%2zu (%3d%%), char %*zu/%zu (%2d%%)"
 msgstr "dòng %*zd/%zd (%2d%%), cột %2zu/%2zu (%3d%%), kýtự %*zu/%zu (%2d%%)"
 
-#: src/winio.c:3686
+#: src/winio.c:3685
 msgid "The nano text editor"
 msgstr "Trình soạn thảo văn bản nano"
 
-#: src/winio.c:3687
+#: src/winio.c:3686
 msgid "version"
 msgstr "phiên bản"
 
-#: src/winio.c:3688
+#: src/winio.c:3687
 msgid "Brought to you by:"
 msgstr "Được đem tới bởi:"
 
-#: src/winio.c:3689
+#: src/winio.c:3688
 msgid "Special thanks to:"
 msgstr "Đặc biệt cảm ơn:"
 
-#: src/winio.c:3690
+#: src/winio.c:3689
 msgid "The Free Software Foundation"
 msgstr "Tổ chức Phần mềm Tự do (FSF)"
 
-#: src/winio.c:3691
+#: src/winio.c:3690
 msgid "the many translators and the TP"
 msgstr "nhiều người dịch thuật và TP"
 
-#: src/winio.c:3692
+#: src/winio.c:3691
 msgid "For ncurses:"
 msgstr "Dành cho ncurses:"
 
-#: src/winio.c:3693
+#: src/winio.c:3692
 msgid "and anyone else we forgot..."
 msgstr "và những người khác mà chúng tôi quên..."
 
-#: src/winio.c:3694
+#: src/winio.c:3693
 msgid "Thank you for using nano!"
 msgstr "Cảm ơn bạn đã dùng nano!"
 
