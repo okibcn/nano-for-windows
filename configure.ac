@@ -480,6 +480,9 @@ AC_CHECK_LIB([$CURSES_LIB_NAME], [set_escdelay],
 AC_CHECK_LIB([$CURSES_LIB_NAME], [key_defined],
 			 [AC_DEFINE(HAVE_KEY_DEFINED, 1, [Define this if your curses library has the key_defined() function.])],
 			 [], [$CURSES_LIB])
+AC_CHECK_LIB([$CURSES_LIB_NAME], [define_key],
+			 [AC_DEFINE(HAVE_DEFINE_KEY, 1, [Define this if your curses library has the define_key() function.])],
+			 [], [$CURSES_LIB])
 
 LIBS="$LIBS $CURSES_LIB"
 

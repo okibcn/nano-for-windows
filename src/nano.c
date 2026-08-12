@@ -2489,9 +2489,11 @@ int main(int argc, char **argv)
 	shiftaltup = get_keycode("kUP4", SHIFT_ALT_UP);
 	shiftaltdown = get_keycode("kDN4", SHIFT_ALT_DOWN);
 
+#ifdef HAVE_DEFINE_KEY
 	/* Tell ncurses to transform bracketed-paste sequences into keycodes. */
 	define_key("\e[200~", START_OF_PASTE);
 	define_key("\e[201~", END_OF_PASTE);
+#endif
 #endif
 	mousefocusin = get_keycode("kxIN", FOCUS_IN);
 	mousefocusout = get_keycode("kxOUT", FOCUS_OUT);
