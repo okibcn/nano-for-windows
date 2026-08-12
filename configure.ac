@@ -87,7 +87,7 @@ fi
 
 dnl Checks for header files.
 
-AC_CHECK_HEADERS(libintl.h limits.h pwd.h termios.h sys/param.h)
+AC_CHECK_HEADERS(libintl.h limits.h pwd.h term.h termios.h sys/param.h)
 
 dnl Checks for options.
 

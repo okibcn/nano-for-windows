@@ -24,7 +24,9 @@
 #include <ctype.h>
 #include <string.h>
 #include <strings.h>
+#ifdef HAVE_TERM_H
 #include <term.h>
+#endif
 
 /* Global variables. */
 #ifndef NANO_TINY
@@ -748,9 +750,13 @@ void shortcut_init(void)
 #endif
 #endif /* ENABLE_HELP */
 
+#ifdef HAVE_TERM_H
 	/* If Backspace is not ^H, then ^H can be used for Help. */
 	char *bsp_string = tgetstr("kb", NULL);
 	char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
+#else
+	char *help_key = "^N";
+#endif
 
 #ifdef ENABLE_HELP
 #define WHENHELP(description)  description
