@@ -752,10 +752,10 @@ void shortcut_init(void)
 
 #ifdef HAVE_TERM_H
 	/* If Backspace is not ^H, then ^H can be used for Help. */
-	char *bsp_string = tgetstr("kb", NULL);
-	char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
+	const char *bsp_string = tgetstr("kb", NULL);
+	const char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
 #else
-	char *help_key = "^N";
+	const char *help_key = "^N";
 #endif
 
 #ifdef ENABLE_HELP
