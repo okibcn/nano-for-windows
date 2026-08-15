@@ -232,6 +232,8 @@ int currmenu = MMOST;
 		/* The currently active menu, initialized to a dummy value. */
 keystruct *sclist = NULL;
 		/* The start of the shortcuts list. */
+keystruct *tailsc;
+		/* The last shortcut in the list. */
 funcstruct *allfuncs = NULL;
 		/* The start of the functions list. */
 funcstruct *tailfunc;
@@ -433,10 +435,6 @@ void show_curses_version(void)
 void add_to_sclist(int menus, const char *scstring, const int keycode,
 						void (*function)(void), int toggle)
 {
-	static keystruct *tailsc;
-#ifndef NANO_TINY
-	static int counter = 0;
-#endif
 	keystruct *sc = nmalloc(sizeof(keystruct));
 
 	/* Start the list, or tack on the next item. */
@@ -444,22 +442,31 @@ void add_to_sclist(int menus, const char *scstring, const int keycode,
 		sclist = sc;
 	else
 		tailsc->next = sc;
-	sc->next = NULL;
 
 	/* Fill in the data. */
 	sc->menus = menus;
 	sc->func = function;
-#ifndef NANO_TINY
-	sc->toggle = toggle;
-	/* When not the same toggle as the previous one, increment the ID. */
-	if (toggle)
-		sc->ordinal = (tailsc->toggle == toggle) ? counter : ++counter;
-#endif
 	sc->keystr = scstring;
 	sc->keycode = (keycode ? keycode : keycode_from_string(scstring));
+	sc->toggle = 0;
+	sc->ordinal = 0;
+	sc->next = NULL;
 
 	tailsc = sc;
 }
+
+#ifndef NANO_TINY
+/* Add a toggling key combo to the linked list of shortcuts. */
+void add_toggle(const char *scstring, int flag)
+{
+	int number = tailsc->ordinal + (tailsc->toggle == flag ? 0 : 1);
+
+	add_to_sclist(flag != NO_HELP ? MMAIN : (MMOST|MBROWSER|MYESNO) & ~MFINDINHELP,
+					scstring, 0, do_toggle, flag);
+	tailsc->toggle = flag;
+	tailsc->ordinal = number;
+}
+#endif
 
 /* Return the first shortcut in the list of shortcuts that
  * matches the given function in the given menu. */
@@ -1475,30 +1482,30 @@ void shortcut_init(void)
 
 #ifndef NANO_TINY
 	/* Group of "Appearance" toggles. */
-	add_to_sclist(MMAIN, "M-Z", 0, do_toggle, ZERO);
-	add_to_sclist((MMOST|MBROWSER|MYESNO) & ~MFINDINHELP, "M-X", 0, do_toggle, NO_HELP);
-	add_to_sclist(MMAIN, "M-C", 0, do_toggle, CONSTANT_SHOW);
-	add_to_sclist(MMAIN, "M-S", 0, do_toggle, SOFTWRAP);
-	add_to_sclist(MMAIN, "M-$", 0, do_toggle, SOFTWRAP);  /* Legacy keystroke. */
+	add_toggle("M-Z", ZERO);
+	add_toggle("M-X", NO_HELP);
+	add_toggle("M-C", CONSTANT_SHOW);
+	add_toggle("M-S", SOFTWRAP);
+	add_toggle("M-$", SOFTWRAP);  /* Legacy keystroke. */
 #ifdef ENABLE_LINENUMBERS
-	add_to_sclist(MMAIN, "M-N", 0, do_toggle, LINE_NUMBERS);
-	add_to_sclist(MMAIN, "M-#", 0, do_toggle, LINE_NUMBERS);  /* Legacy keystroke. */
+	add_toggle("M-N", LINE_NUMBERS);
+	add_toggle("M-#", LINE_NUMBERS);  /* Legacy keystroke. */
 #endif
-	add_to_sclist(MMAIN, "M-P", 0, do_toggle, WHITESPACE_DISPLAY);
+	add_toggle("M-P", WHITESPACE_DISPLAY);
 #ifdef ENABLE_COLOR
-	add_to_sclist(MMAIN, "M-Y", 0, do_toggle, NO_SYNTAX);
+	add_toggle("M-Y", NO_SYNTAX);
 #endif
 
 	/* Group of "Behavior" toggles. */
-	add_to_sclist(MMAIN, "M-H", 0, do_toggle, SMART_HOME);
-	add_to_sclist(MMAIN, "M-I", 0, do_toggle, AUTOINDENT);
-	add_to_sclist(MMAIN, "M-K", 0, do_toggle, CUT_FROM_CURSOR);
+	add_toggle("M-H", SMART_HOME);
+	add_toggle("M-I", AUTOINDENT);
+	add_toggle("M-K", CUT_FROM_CURSOR);
 #ifdef ENABLE_WRAPPING
-	add_to_sclist(MMAIN, "M-L", 0, do_toggle, BREAK_LONG_LINES);
+	add_toggle("M-L", BREAK_LONG_LINES);
 #endif
-	add_to_sclist(MMAIN, "M-O", 0, do_toggle, TABS_TO_SPACES);
+	add_toggle("M-O", TABS_TO_SPACES);
 #ifdef ENABLE_MOUSE
-	add_to_sclist(MMAIN, "M-M", 0, do_toggle, USE_MOUSE);
+	add_toggle("M-M", USE_MOUSE);
 #endif
 #endif /* !NANO_TINY */
 
