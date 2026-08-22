@@ -423,7 +423,7 @@ int keycode_from_string(const char *keystring)
 }
 
 #if defined(ENABLE_EXTRA) && defined(NCURSES_VERSION_PATCH)
-/* Report the version of ncurses that nano is linked against. */
+/* Report the version of ncurses that nano was built against. */
 void show_curses_version(void)
 {
 	statusline(NOTICE, "ncurses-%i.%i, patch %li", NCURSES_VERSION_MAJOR,
@@ -455,11 +455,12 @@ void add_to_sclist(int menus, const char *scstring, const int keycode,
 }
 
 #ifndef NANO_TINY
+#define ALMOST_ALL  ((MMOST|MBROWSER|MYESNO) & ~MFINDINHELP)
+
 /* Add a toggling key combo to the linked list of shortcuts. */
 void add_toggle(const char *scstring, int flag)
 {
-	add_to_sclist(flag != NO_HELP ? MMAIN : (MMOST|MBROWSER|MYESNO) & ~MFINDINHELP,
-							scstring, 0, do_toggle);
+	add_to_sclist(flag == NO_HELP ? ALMOST_ALL : MMAIN, scstring, 0, do_toggle);
 	tailsc->toggle = flag;
 }
 #endif
