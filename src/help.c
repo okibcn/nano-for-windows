@@ -294,19 +294,11 @@ void help_init(void)
 	}
 
 #ifndef NANO_TINY
-	/* And the toggles... */
+	/* In the main help text, show the toggles in their original order. */
 	if (currmenu == MMAIN) {
-		int maximum = 0, counter = 0;
-
-		/* First see how many toggles there are. */
-		for (s = sclist; s != NULL; s = s->next)
-			maximum = (s->toggle && s->ordinal > maximum) ? s->ordinal : maximum;
-
-		/* Now show them in the original order. */
-		while (counter < maximum) {
-			counter++;
+		for (int flag = ZERO; flag <= USE_MOUSE; flag++) {
 			for (s = sclist; s != NULL; s = s->next)
-				if (s->toggle && s->ordinal == counter) {
+				if (s->toggle == flag) {
 					ptr += sprintf(ptr, "%s\t\t %s %s\n", (s->menus & MMAIN ? s->keystr : ""),
 								_(epithet_of_flag(s->toggle)), _("enable/disable"));
 					/* Add a blank like between two groups. */

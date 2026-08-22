@@ -872,15 +872,6 @@ void parse_binding(char *ptr, bool dobind)
 		return;
 	}
 
-#ifndef NANO_TINY
-	/* If this is a toggle, find and copy its sequence number. */
-	if (newsc->func == do_toggle) {
-		for (keystruct *s = sclist; s != NULL; s = s->next)
-			if (s->func == do_toggle && s->toggle == newsc->toggle)
-				newsc->ordinal = s->ordinal;
-	} else
-		newsc->ordinal = 0;
-#endif
 	/* Add the new shortcut at the start of the list. */
 	newsc->next = sclist;
 	sclist = newsc;

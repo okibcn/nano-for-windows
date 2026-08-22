@@ -633,9 +633,6 @@ typedef struct keystruct {
 #ifndef NANO_TINY
 	int toggle;
 		/* If a toggle, what we're toggling. */
-	int ordinal;
-		/* The how-manieth toggle this is, in order to be able to
-		 * keep them in sequence. */
 #endif
 #ifdef ENABLE_NANORC
 	char *expansion;

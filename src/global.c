@@ -449,7 +449,6 @@ void add_to_sclist(int menus, const char *scstring, const int keycode,
 	sc->keystr = scstring;
 	sc->keycode = (keycode ? keycode : keycode_from_string(scstring));
 	sc->toggle = 0;
-	sc->ordinal = 0;
 	sc->next = NULL;
 
 	tailsc = sc;
@@ -459,12 +458,9 @@ void add_to_sclist(int menus, const char *scstring, const int keycode,
 /* Add a toggling key combo to the linked list of shortcuts. */
 void add_toggle(const char *scstring, int flag)
 {
-	int number = tailsc->ordinal + (tailsc->toggle == flag ? 0 : 1);
-
 	add_to_sclist(flag != NO_HELP ? MMAIN : (MMOST|MBROWSER|MYESNO) & ~MFINDINHELP,
 							scstring, 0, do_toggle);
 	tailsc->toggle = flag;
-	tailsc->ordinal = number;
 }
 #endif
 
