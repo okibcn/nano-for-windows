@@ -1481,12 +1481,12 @@ void shortcut_init(void)
 	add_toggle("M-Z", ZERO);
 	add_toggle("M-X", NO_HELP);
 	add_toggle("M-C", CONSTANT_SHOW);
-	add_toggle("M-S", SOFTWRAP);
-	add_toggle("M-$", SOFTWRAP);  /* Legacy keystroke. */
 #ifdef ENABLE_LINENUMBERS
 	add_toggle("M-N", LINE_NUMBERS);
 	add_toggle("M-#", LINE_NUMBERS);  /* Legacy keystroke. */
 #endif
+	add_toggle("M-S", SOFTWRAP);
+	add_toggle("M-$", SOFTWRAP);  /* Legacy keystroke. */
 	add_toggle("M-P", WHITESPACE_DISPLAY);
 #ifdef ENABLE_COLOR
 	add_toggle("M-Y", NO_SYNTAX);
@@ -1631,10 +1631,10 @@ const char *epithet_of_flag(int flag)
 			return N_("Help mode");
 		case CONSTANT_SHOW:
 			return N_("Constant cursor position display");
-		case SOFTWRAP:
-			return N_("Soft wrapping of overlong lines");
 		case LINE_NUMBERS:
 			return N_("Line numbering");
+		case SOFTWRAP:
+			return N_("Soft wrapping of overlong lines");
 		case WHITESPACE_DISPLAY:
 			return N_("Whitespace display");
 		case NO_SYNTAX:

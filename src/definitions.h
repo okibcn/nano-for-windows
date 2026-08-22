@@ -333,8 +333,8 @@ enum {
 	ZERO,			/* The thirteen togglable flags should come first... */
 	NO_HELP,
 	CONSTANT_SHOW,
-	SOFTWRAP,
 	LINE_NUMBERS,
+	SOFTWRAP,
 	WHITESPACE_DISPLAY,
 	NO_SYNTAX,
 	SMART_HOME,
