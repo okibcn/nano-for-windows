@@ -12,7 +12,7 @@ color brightmagenta "^[[:blank:]]*[[:alpha:]_][[:alnum:]_]*:[[:blank:]]*$"
 color normal ":[[:blank:]]*$"
 
 # Types and related keywords.
-color green "\<(bool|char|double|enum|float|int|short|(un)?signed|struct|union|void|((u_?)?int(8|16|32|64)|[[:lower:]][[:lower:]_]*)_t)\>"
+color green "\<(bool|char|double|enum|float|int|long|short|(un)?signed|struct|union|void|((u_?)?int(8|16|32|64)|[[:lower:]][[:lower:]_]*)_t)\>"
 color green "\<(align(as|of)|auto|const(eval|expr|init)?|extern|inline|register|restrict|sizeof|static(_assert)?|thread_local|typedef|typeof(_unqual)?|volatile)\>"
 color green "\<(_(Align(as|of)|Atomic|BitInt|Bool|Complex|Decimal(32|64|128)|Generic|Imaginary|Noreturn|Static_assert|Thread_local))\>"
 color green "\<(class|explicit|final|friend|mutable|namespace|override|private|protected|public|template|this|typename|using|virtual)\>"
