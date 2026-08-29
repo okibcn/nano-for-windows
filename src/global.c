@@ -1478,7 +1478,7 @@ void shortcut_init(void)
 #endif
 
 #ifndef NANO_TINY
-	/* Group of "Appearance" toggles. */
+	/* Grouplet of four "Interface" toggles. */
 	add_toggle("M-Z", ZERO);
 	add_toggle("M-X", NO_HELP);
 	add_toggle("M-C", CONSTANT_SHOW);
@@ -1486,21 +1486,22 @@ void shortcut_init(void)
 	add_toggle("M-N", LINE_NUMBERS);
 	add_toggle("M-#", LINE_NUMBERS);  /* Legacy keystroke. */
 #endif
-	add_toggle("M-S", SOFTWRAP);
-	add_toggle("M-$", SOFTWRAP);  /* Legacy keystroke. */
+	/* Grouplet of three "Appearance" toggles. */
 	add_toggle("M-P", WHITESPACE_DISPLAY);
 #ifdef ENABLE_COLOR
 	add_toggle("M-Y", NO_SYNTAX);
 #endif
-
-	/* Group of "Behavior" toggles. */
-	add_toggle("M-H", SMART_HOME);
-	add_toggle("M-I", AUTOINDENT);
-	add_toggle("M-K", CUT_FROM_CURSOR);
+	add_toggle("M-S", SOFTWRAP);
+	add_toggle("M-$", SOFTWRAP);  /* Legacy keystroke. */
 #ifdef ENABLE_WRAPPING
+	/* Grouplet of three "Behavior" toggles. */
 	add_toggle("M-L", BREAK_LONG_LINES);
 #endif
 	add_toggle("M-O", TABS_TO_SPACES);
+	add_toggle("M-I", AUTOINDENT);
+	/* Grouplet of three "Effect" toggles. */
+	add_toggle("M-H", SMART_HOME);
+	add_toggle("M-K", CUT_FROM_CURSOR);
 #ifdef ENABLE_MOUSE
 	add_toggle("M-M", USE_MOUSE);
 #endif
@@ -1634,22 +1635,22 @@ const char *epithet_of_flag(int flag)
 			return N_("Constant cursor position display");
 		case LINE_NUMBERS:
 			return N_("Line numbering");
-		case SOFTWRAP:
-			return N_("Soft wrapping of overlong lines");
 		case WHITESPACE_DISPLAY:
 			return N_("Whitespace display");
 		case NO_SYNTAX:
 			return N_("Color syntax highlighting");
-		case SMART_HOME:
-			return N_("Smart home key");
-		case AUTOINDENT:
-			return N_("Auto indent");
-		case CUT_FROM_CURSOR:
-			return N_("Cut to end");
+		case SOFTWRAP:
+			return N_("Soft wrapping of overlong lines");
 		case BREAK_LONG_LINES:
 			return N_("Hard wrapping of overlong lines");
 		case TABS_TO_SPACES:
 			return N_("Conversion of typed tabs to spaces");
+		case AUTOINDENT:
+			return N_("Auto indent");
+		case SMART_HOME:
+			return N_("Smart home key");
+		case CUT_FROM_CURSOR:
+			return N_("Cut to end");
 		case USE_MOUSE:
 			return N_("Mouse support");
 		default:

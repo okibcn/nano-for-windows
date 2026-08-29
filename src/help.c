@@ -301,8 +301,8 @@ void help_init(void)
 				if (s->toggle == flag) {
 					ptr += sprintf(ptr, "%s\t\t %s %s\n", (s->menus & MMAIN ? s->keystr : ""),
 								_(epithet_of_flag(s->toggle)), _("enable/disable"));
-					/* Add blank line in two places to separate three groups. */
-					if (s->toggle == LINE_NUMBERS || s->toggle == NO_SYNTAX)
+					/* Add blank line in three places to separate four grouplets. */
+					if (s->toggle == LINE_NUMBERS || s->toggle == SOFTWRAP || s->toggle == AUTOINDENT)
 						ptr += sprintf(ptr, "\n");
 					break;
 				}
