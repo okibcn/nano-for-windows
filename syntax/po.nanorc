@@ -32,7 +32,7 @@ color slate "^msgctxt.*"
 # Reminders.
 color brightwhite,yellow "\<(FIXME|TODO|XXX)\>"
 # Obsolete strings.
-color red "#~.*"
+color red "^#~.*"
 # Stray control codes.
 color bold,pink,red "[[:cntrl:]]"
 # Tabs.
