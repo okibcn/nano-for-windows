@@ -37,11 +37,6 @@
 #define BRANDING  PACKAGE_STRING
 #endif
 
-/* When having an older ncurses, then most likely libvte is older too. */
-#if defined(NCURSES_VERSION_PATCH) && (NCURSES_VERSION_PATCH < 20200212)
-#define USING_OLDER_LIBVTE  yes
-#endif
-
 static int *key_buffer = NULL;
 		/* A buffer for the keystrokes that haven't been handled yet. */
 static int *nextcodes = NULL;
@@ -2389,12 +2384,6 @@ void statusline(message_type importance, const char *msg, ...)
 		waddstr(footwin, " ]");
 	wattroff(footwin, colorpair);
 
-#ifdef USING_OLDER_LIBVTE
-	/* Defeat a VTE/Konsole bug, where the cursor can go off-limits. */
-	if (ISSET(CONSTANT_SHOW) && ISSET(NO_HELP))
-		wmove(footwin, 0, 0);
-#endif
-
 	/* Push the message to the screen straightaway. */
 	wrefresh(footwin);
 
@@ -2755,18 +2744,6 @@ void draw_row(int row, const char *converted, linestruct *line, size_t from_col)
 		if (*(converted + target_x)) {
 			charlen = collect_char(converted + target_x, striped_char);
 			target_column = wideness(converted, target_x);
-#ifdef USING_OLDER_LIBVTE
-		} else if (target_column + 1 == editwincols) {
-			/* Defeat a VTE bug -- see https://sv.gnu.org/bugs/?55896. */
-#ifdef ENABLE_UTF8
-			if (using_utf8) {
-				striped_char[0] = '\xC2';
-				striped_char[1] = '\xA0';
-				charlen = 2;
-			} else
-#endif
-				striped_char[0] = '.';
-#endif
 		} else
 			striped_char[0] = ' ';
 
