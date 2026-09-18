@@ -2494,9 +2494,12 @@ int main(int argc, char **argv)
 	define_key("\e[200~", START_OF_PASTE);
 	define_key("\e[201~", END_OF_PASTE);
 #endif
-#endif
+#endif /* NANO_TINY */
+
+#if (NCURSES_VERSION_PATCH > 20230506) && (NCURSES_VERSION_PATCH < 20231028)
 	mousefocusin = get_keycode("kxIN", FOCUS_IN);
 	mousefocusout = get_keycode("kxOUT", FOCUS_OUT);
+#endif
 
 	/* Disable the type-ahead checking that ncurses normally does. */
 	typeahead(-1);

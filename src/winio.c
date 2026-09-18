@@ -1260,9 +1260,11 @@ int parse_kbinput(WINDOW *frame)
 	}
 #endif /* __linux__ */
 
+#if (NCURSES_VERSION_PATCH > 20230506) && (NCURSES_VERSION_PATCH < 20231028)
 	/* Spurious codes from VTE -- see https://sv.gnu.org/bugs/?64578. */
 	if (keycode == mousefocusin || keycode == mousefocusout)
 		return ERR;
+#endif
 
 	switch (keycode) {
 		case KEY_SLEFT:
