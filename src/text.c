@@ -2603,7 +2603,9 @@ void do_linter(void)
 	int lint_status, lint_fd[2];
 	pid_t pid_lint;
 	bool helpless = ISSET(NO_HELP);
-	lintstruct *lints = NULL, *tmplint = NULL, *curlint = NULL;
+	lintstruct *curlint = NULL;
+	lintstruct *lints = NULL;
+	lintstruct *tmplint;
 	time_t last_wait = 0;
 
 	ran_a_tool = TRUE;
@@ -3001,8 +3003,9 @@ void count_lines_words_and_characters(void)
 	size_t was_x = openfile->current_x;
 	linestruct *topline, *botline;
 	size_t top_x, bot_x;
-	size_t words = 0, chars = 0;
 	ssize_t lines = 0;
+	size_t words = 0;
+	size_t chars = 0;
 
 	/* Set the start and end point of the area to measure: either the marked
 	 * region or the whole buffer.  Then compute the number of characters. */
@@ -3098,8 +3101,9 @@ void do_verbatim_input(void)
 /* Return a copy of the found completion candidate. */
 char *copy_completion(char *text)
 {
+	size_t length = 0;
+	size_t index = 0;
 	char *word;
-	size_t length = 0, index = 0;
 
 	/* Find the end of the candidate word to get its length. */
 	while (is_word_char(&text[length], FALSE))

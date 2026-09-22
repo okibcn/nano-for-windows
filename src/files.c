@@ -1419,7 +1419,8 @@ char *check_writable_directory(const char *path)
 char *safe_tempfile(FILE **stream)
 {
 	const char *env_dir = getenv("TMPDIR");
-	char *tempdir = NULL, *tempfile_name = NULL;
+	char *tempdir = NULL;
+	char *tempfile_name;
 	char *extension;
 	int descriptor;
 
