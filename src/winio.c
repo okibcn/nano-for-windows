@@ -2151,9 +2151,8 @@ void titlebar(const char *path)
 /* Draw a bar at the bottom with some minimal state information. */
 void minibar(void)
 {
-	char *thename = NULL, *number_of_lines = NULL, *ranking = NULL;
+	char *thename = NULL;
 	char *location = nmalloc(44);
-	char *hexadecimal = nmalloc(9);
 	char *successor = NULL;
 	size_t namewidth, placewidth;
 	size_t tallywidth = 0;
@@ -2199,8 +2198,8 @@ void minibar(void)
 	 * otherwise, when there are multiple buffers, display an [x/n] counter. */
 	if (report_size && COLS > 35) {
 		size_t count = openfile->filebot->lineno - (openfile->filebot->data[0] == '\0');
+		char *number_of_lines = nmalloc(64);
 
-		number_of_lines = nmalloc(49);
 		if (openfile->fmt == NIX_FILE || openfile->fmt == UNSPECIFIED)
 			sprintf(number_of_lines, P_(" (%zu line)", " (%zu lines)", count), count);
 		else
@@ -2211,14 +2210,17 @@ void minibar(void)
 			waddstr(footwin, number_of_lines);
 		else
 			tallywidth = 0;
+		free(number_of_lines);
 		report_size = FALSE;
 	}
 #ifdef ENABLE_MULTIBUFFER
 	else if (openfile->next != openfile && COLS > 35) {
-		ranking = nmalloc(24);
+		char *ranking = nmalloc(24);
+
 		sprintf(ranking, " [%i/%i]", buffer_number(openfile), buffer_number(startfile->prev));
 		if (namewidth + placewidth + breadth(ranking) + 32 < COLS)
 			waddstr(footwin, ranking);
+		free(ranking);
 	}
 #endif
 
@@ -2230,6 +2232,7 @@ void minibar(void)
 	 * plus the codes of up to two succeeding zero-width characters. */
 	if (ISSET(CONSTANT_SHOW) && namewidth + tallywidth + 28 < COLS) {
 		char *this_position = openfile->current->data + openfile->current_x;
+		char *hexadecimal = nmalloc(9);
 
 		if (*this_position == '\0')
 			sprintf(hexadecimal, openfile->current->next ?
@@ -2264,6 +2267,7 @@ void minibar(void)
 		} else
 			successor = NULL;
 #endif
+		free(hexadecimal);
 	}
 
 	/* Display the state of three flags, and the state of macro and mark. */
@@ -2285,11 +2289,8 @@ void minibar(void)
 	wattroff(footwin, interface_color_pair[MINI_INFOBAR]);
 	wrefresh(footwin);
 
-	free(number_of_lines);
-	free(hexadecimal);
 	free(location);
 	free(thename);
-	free(ranking);
 }
 #endif /* NANO_TINY */
 
