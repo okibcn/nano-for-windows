@@ -2605,7 +2605,7 @@ void do_linter(void)
 	bool helpless = ISSET(NO_HELP);
 	lintstruct *curlint = NULL;
 	lintstruct *lints = NULL;
-	lintstruct *tmplint;
+	lintstruct *lastone;
 	time_t last_wait = 0;
 
 	ran_a_tool = TRUE;
@@ -2744,10 +2744,10 @@ void do_linter(void)
 							}
 
 							parsesuccess = TRUE;
-							tmplint = curlint;
+							lastone = curlint;
 							curlint = nmalloc(sizeof(lintstruct));
 							curlint->next = NULL;
-							curlint->prev = tmplint;
+							curlint->prev = lastone;
 							if (curlint->prev)
 								curlint->prev->next = curlint;
 							curlint->filename = copy_of(filename);
@@ -2776,11 +2776,11 @@ void do_linter(void)
 	if (!WIFEXITED(lint_status) || WEXITSTATUS(lint_status) > 2) {
 		statusline(ALERT, _("Error invoking '%s'"), openfile->syntax->linter);
 		for (curlint = lints; curlint != NULL;) {
-			tmplint = curlint;
+			lastone = curlint;
 			curlint = curlint->next;
-			free(tmplint->msg);
-			free(tmplint->filename);
-			free(tmplint);
+			free(lastone->msg);
+			free(lastone->filename);
+			free(lastone);
 		}
 		return;
 	} else if (bytesread < 0) {
@@ -2803,7 +2803,7 @@ void do_linter(void)
 	titlebar(NULL);
 	bottombars(MLINTER);
 
-	tmplint = NULL;
+	lastone = NULL;
 	curlint = lints;
 
 	while (TRUE) {
@@ -2851,11 +2851,11 @@ void do_linter(void)
 								curlint->prev->next = curlint->next;
 							if (curlint->next)
 								curlint->next->prev = curlint->prev;
-							tmplint = curlint;
+							lastone = curlint;
 							curlint = curlint->next;
-							free(tmplint->msg);
-							free(tmplint->filename);
-							free(tmplint);
+							free(lastone->msg);
+							free(lastone->filename);
+							free(lastone);
 						} else {
 							if (restlint == NULL)
 								restlint = curlint;
@@ -2878,7 +2878,7 @@ void do_linter(void)
 #endif
 		}
 
-		if (tmplint != curlint) {
+		if (lastone != curlint) {
 			/* Put the cursor at the reported position, but don't go beyond EOL
 			 * when the second number is a column number instead of an index. */
 			goto_line_posx(curlint->lineno, curlint->colno - 1);
@@ -2904,13 +2904,13 @@ void do_linter(void)
 			continue;
 #endif
 		function = func_from_key(kbinput);
-		tmplint = curlint;
+		lastone = curlint;
 
 		if (function == do_cancel || function == do_enter) {
 			wipe_statusbar();
 			break;
 		} else if (function == do_help) {
-			tmplint = NULL;
+			lastone = NULL;
 			do_help();
 		} else if (function == do_page_up || function == to_prev_block) {
 			if (curlint->prev)
@@ -2937,11 +2937,11 @@ void do_linter(void)
 	}
 
 	for (curlint = lints; curlint != NULL;) {
-		tmplint = curlint;
+		lastone = curlint;
 		curlint = curlint->next;
-		free(tmplint->msg);
-		free(tmplint->filename);
-		free(tmplint);
+		free(lastone->msg);
+		free(lastone->filename);
+		free(lastone);
 	}
 
 	if (helpless) {
