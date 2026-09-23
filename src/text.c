@@ -2590,6 +2590,18 @@ void do_spell(void)
 #endif /* ENABLE_SPELLER */
 
 #ifdef ENABLE_LINTER
+/* Free the given lint record, and return a pointer to the next. */
+lintstruct* free_one_lint(lintstruct *thisone)
+{
+	lintstruct *nextone = thisone->next;
+
+	free(thisone->msg);
+	free(thisone->filename);
+	free(thisone);
+
+	return nextone;
+}
+
 /* Run a linting program on the current buffer. */
 void do_linter(void)
 {
@@ -2775,13 +2787,8 @@ void do_linter(void)
 
 	if (!WIFEXITED(lint_status) || WEXITSTATUS(lint_status) > 2) {
 		statusline(ALERT, _("Error invoking '%s'"), openfile->syntax->linter);
-		for (curlint = lints; curlint != NULL;) {
-			lastone = curlint;
-			curlint = curlint->next;
-			free(lastone->msg);
-			free(lastone->filename);
-			free(lastone);
-		}
+		for (curlint = lints; curlint != NULL;)
+			curlint = free_one_lint(curlint);
 		return;
 	} else if (bytesread < 0) {
 		statusline(ALERT, _("Error reading pipe: %s"), strerror(errornumber));
@@ -2851,11 +2858,7 @@ void do_linter(void)
 								curlint->prev->next = curlint->next;
 							if (curlint->next)
 								curlint->next->prev = curlint->prev;
-							lastone = curlint;
-							curlint = curlint->next;
-							free(lastone->msg);
-							free(lastone->filename);
-							free(lastone);
+							curlint = free_one_lint(curlint);
 						} else {
 							if (restlint == NULL)
 								restlint = curlint;
@@ -2936,13 +2939,8 @@ void do_linter(void)
 			beep();
 	}
 
-	for (curlint = lints; curlint != NULL;) {
-		lastone = curlint;
-		curlint = curlint->next;
-		free(lastone->msg);
-		free(lastone->filename);
-		free(lastone);
-	}
+	for (curlint = lints; curlint != NULL;)
+		curlint = free_one_lint(curlint);
 
 	if (helpless) {
 		SET(NO_HELP);
