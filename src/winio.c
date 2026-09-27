@@ -1359,6 +1359,12 @@ int parse_kbinput(WINDOW *frame)
 		case KEY_FRESH:
 #endif
 			return ERR;    /* Ignore this keystroke. */
+
+		default:
+			if (keycode == operatorslash)  return '/';
+			if (keycode == operatorstar)   return '*';
+			if (keycode == operatorminus)  return '-';
+			if (keycode == operatorplus)   return '+';
 	}
 
 	return keycode;

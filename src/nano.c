@@ -2500,6 +2500,10 @@ int main(int argc, char **argv)
 	mousefocusin = get_keycode("kxIN", FOCUS_IN);
 	mousefocusout = get_keycode("kxOUT", FOCUS_OUT);
 #endif
+	operatorslash = get_keycode("kpDIV", ERR);
+	operatorstar  = get_keycode("kpMUL", ERR);
+	operatorminus = get_keycode("kpSUB", ERR);
+	operatorplus  = get_keycode("kpADD", ERR);
 
 	/* Disable the type-ahead checking that ncurses normally does. */
 	typeahead(-1);

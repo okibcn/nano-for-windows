@@ -88,6 +88,8 @@ extern int shiftaltleft, shiftaltright;
 extern int shiftaltup, shiftaltdown;
 #endif
 extern int mousefocusin, mousefocusout;
+extern int operatorslash, operatorstar;
+extern int operatorminus, operatorplus;
 
 #ifdef ENABLED_WRAPORJUSTIFY
 extern ssize_t fill;

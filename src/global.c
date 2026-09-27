@@ -123,6 +123,8 @@ int altinsert, altdelete;
 int shiftaltleft, shiftaltright, shiftaltup, shiftaltdown;
 #endif
 int mousefocusin, mousefocusout;
+int operatorslash, operatorstar;
+int operatorminus, operatorplus;
 
 #ifdef ENABLED_WRAPORJUSTIFY
 ssize_t fill = -COLUMNS_FROM_EOL;
