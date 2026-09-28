@@ -1260,12 +1260,6 @@ int parse_kbinput(WINDOW *frame)
 	}
 #endif /* __linux__ */
 
-#if (NCURSES_VERSION_PATCH > 20230506) && (NCURSES_VERSION_PATCH < 20231028)
-	/* Spurious codes from VTE -- see https://sv.gnu.org/bugs/?64578. */
-	if (keycode == mousefocusin || keycode == mousefocusout)
-		return ERR;
-#endif
-
 	switch (keycode) {
 		case KEY_SLEFT:
 			shift_held = TRUE;
@@ -1361,6 +1355,11 @@ int parse_kbinput(WINDOW *frame)
 			return ERR;    /* Ignore this keystroke. */
 
 		default:
+#if (NCURSES_VERSION_PATCH > 20230506) && (NCURSES_VERSION_PATCH < 20231028)
+			/* Two spurious codes -- see https://sv.gnu.org/bugs/?64578. */
+			if (keycode == mousefocusin)   return ERR;
+			if (keycode == mousefocusout)  return ERR;
+#endif
 			if (keycode == operatorslash)  return '/';
 			if (keycode == operatorstar)   return '*';
 			if (keycode == operatorminus)  return '-';
