@@ -2497,8 +2497,8 @@ int main(int argc, char **argv)
 #endif /* NANO_TINY */
 
 #if (NCURSES_VERSION_PATCH > 20230506) && (NCURSES_VERSION_PATCH < 20231028)
-	mousefocusin = get_keycode("kxIN", FOCUS_IN);
-	mousefocusout = get_keycode("kxOUT", FOCUS_OUT);
+	mousefocusin = get_keycode("kxIN", ERR);
+	mousefocusout = get_keycode("kxOUT", ERR);
 #endif
 	operatorslash = get_keycode("kpDIV", ERR);
 	operatorstar  = get_keycode("kpMUL", ERR);

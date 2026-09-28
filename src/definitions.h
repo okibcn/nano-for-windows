@@ -214,9 +214,6 @@
 #define SHIFT_DELETE    0x45D
 #define SHIFT_TAB       0x45F
 
-#define FOCUS_IN   0x491
-#define FOCUS_OUT  0x499
-
 /* Custom keycodes for signaling the start and end of a bracketed paste. */
 #define START_OF_PASTE  0x4B5
 #define END_OF_PASTE    0x4BE
