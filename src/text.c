@@ -2755,10 +2755,8 @@ void do_linter(void)
 
 							lastone = curlint;
 							curlint = nmalloc(sizeof(lintstruct));
-							curlint->next = NULL;
 							curlint->prev = lastone;
-							if (curlint->prev)
-								curlint->prev->next = curlint;
+							curlint->next = NULL;
 							curlint->filename = copy_of(filename);
 							curlint->lineno = linenumber;
 							curlint->colno = colnumber;
@@ -2766,6 +2764,8 @@ void do_linter(void)
 
 							if (lints == NULL)
 								lints = curlint;
+							else
+								lastone->next = curlint;
 						}
 					}
 				}
