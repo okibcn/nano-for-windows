@@ -2610,7 +2610,7 @@ void do_linter(void)
 	size_t buffersize, totalread;
 	ssize_t bytesread;
 	long pipesize;
-	pid_t pid_lint;
+	pid_t thepid;
 	int lint_fd[2], lint_status, errornumber;;
 	bool helpless = ISSET(NO_HELP);
 	lintstruct *curlint = NULL;
@@ -2654,7 +2654,7 @@ void do_linter(void)
 	statusbar(_("Invoking linter..."));
 
 	/* Fork a process to run the linter in. */
-	if ((pid_lint = fork()) == 0) {
+	if ((thepid = fork()) == 0) {
 		char **lintargs = NULL;
 
 		/* Redirect standard output and standard error into the pipe. */
@@ -2679,7 +2679,7 @@ void do_linter(void)
 	close(lint_fd[1]);
 
 	/* If the child process was not forked successfully... */
-	if (pid_lint < 0) {
+	if (thepid < 0) {
 		statusline(ALERT, _("Could not fork: %s"), strerror(errno));
 		close(lint_fd[0]);
 		return;
@@ -2780,7 +2780,7 @@ void do_linter(void)
 	free(lintings);
 
 	/* Process the end of the linting process. */
-	waitpid(pid_lint, &lint_status, 0);
+	waitpid(thepid, &lint_status, 0);
 
 	if (!WIFEXITED(lint_status) || WEXITSTATUS(lint_status) > 2) {
 		statusline(ALERT, _("Error invoking '%s'"), openfile->syntax->linter);
