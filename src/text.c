@@ -2611,7 +2611,6 @@ void do_linter(void)
 	size_t buffersize, totalread;
 	ssize_t bytesread;
 	int errornumber;
-	bool parsesuccess = FALSE;
 	int lint_status, lint_fd[2];
 	pid_t pid_lint;
 	bool helpless = ISSET(NO_HELP);
@@ -2755,7 +2754,6 @@ void do_linter(void)
 									colnumber = strtol(colstring, NULL, 10);
 							}
 
-							parsesuccess = TRUE;
 							lastone = curlint;
 							curlint = nmalloc(sizeof(lintstruct));
 							curlint->next = NULL;
@@ -2795,7 +2793,7 @@ void do_linter(void)
 		return;
 	}
 
-	if (!parsesuccess) {
+	if (!lints) {
 		statusline(REMARK, _("Got 0 parsable lines from command: %s"), openfile->syntax->linter);
 		return;
 	}
