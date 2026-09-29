@@ -2794,7 +2794,7 @@ void do_linter(void)
 	}
 
 	if (!lints) {
-		statusline(REMARK, _("Got 0 parsable lines from command: %s"), openfile->syntax->linter);
+		statusline(REMARK, _("Zero messages from '%s'"), openfile->syntax->linter);
 		return;
 	}
 
