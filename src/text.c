@@ -2607,12 +2607,11 @@ void do_linter(void)
 {
 #if defined(HAVE_FORK) && defined(HAVE_WAITPID)
 	char *lintings, *pointer, *onelint;
-	long pipesize;
 	size_t buffersize, totalread;
 	ssize_t bytesread;
-	int errornumber;
-	int lint_status, lint_fd[2];
+	long pipesize;
 	pid_t pid_lint;
+	int lint_fd[2], lint_status, errornumber;;
 	bool helpless = ISSET(NO_HELP);
 	lintstruct *curlint = NULL;
 	lintstruct *lints = NULL;
