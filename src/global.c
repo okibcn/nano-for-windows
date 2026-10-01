@@ -450,7 +450,9 @@ void add_to_sclist(int menus, const char *scstring, const int keycode,
 	sc->func = function;
 	sc->keystr = scstring;
 	sc->keycode = (keycode ? keycode : keycode_from_string(scstring));
+#ifndef NANO_TINY
 	sc->toggle = 0;
+#endif
 	sc->next = NULL;
 
 	tailsc = sc;
