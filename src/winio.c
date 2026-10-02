@@ -1053,13 +1053,16 @@ int parse_kbinput(WINDOW *frame)
 				return FOREIGN_SEQUENCE;
 			}
 #endif
-			else if (keycode < 0x20 && !last_escape_was_alone)
+			else if (keycode < 0x20 && !last_escape_was_alone) {
 				meta_key = TRUE;
+				return keycode;
+			}
 		} else if (waiting_codes == 0 || nextcodes[0] == ESC_CODE ||
 								(keycode != 'O' && keycode != '[')) {
 			if ('A' <= keycode && keycode <= 'Z' && !shifted_metas)
 				keycode |= 0x20;
 			meta_key = TRUE;
+			return keycode;
 		} else
 			keycode = parse_escape_sequence(keycode);
 	} else {
