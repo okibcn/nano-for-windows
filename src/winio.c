@@ -2175,7 +2175,7 @@ void minibar(void)
 
 	if (openfile->filename[0]) {
 		as_an_at = FALSE;
-		thename = display_string(openfile->filename, 0, COLS, FALSE, FALSE);
+		thename = copy_of(openfile->filename);
 	} else
 		thename = copy_of(_("(nameless)"));
 
