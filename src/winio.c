@@ -2177,9 +2177,6 @@ void minibar(void)
 	namewidth = breadth(thename);
 	as_an_at = FALSE;
 
-	sprintf(location, "%zi,%zi", openfile->current->lineno, xplustabs() + 1);
-	placewidth = strlen(location);
-
 	/* If the file name is relatively long, drop the side spaces. */
 	if (namewidth + 19 > COLS)
 		padding = 0;
@@ -2199,6 +2196,9 @@ void minibar(void)
 		waddstr(footwin, openfile->modified ? " *" : "  ");
 		free(stagename);
 	}
+
+	sprintf(location, "%zi,%zi", openfile->current->lineno, xplustabs() + 1);
+	placewidth = strlen(location);
 
 	/* Right after reading or writing a file, display its number of lines;
 	 * otherwise, when there are multiple buffers, display an [x/n] counter. */
