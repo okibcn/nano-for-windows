@@ -2173,15 +2173,12 @@ void minibar(void)
 	wattron(footwin, interface_color_pair[MINI_INFOBAR]);
 	mvwprintw(footwin, 0, 0, "%*s", COLS, " ");
 
-	if (openfile->filename[0]) {
-		as_an_at = FALSE;
-		thename = copy_of(openfile->filename);
-	} else
-		thename = copy_of(_("(nameless)"));
+	thename = copy_of(*openfile->filename ? openfile->filename : _("(nameless)"));
+	namewidth = breadth(thename);
+	as_an_at = FALSE;
 
 	sprintf(location, "%zi,%zi", openfile->current->lineno, xplustabs() + 1);
 	placewidth = strlen(location);
-	namewidth = breadth(thename);
 
 	/* If the file name is relatively long, drop the side spaces. */
 	if (namewidth + 19 > COLS)
