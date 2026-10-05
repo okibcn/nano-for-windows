@@ -2190,16 +2190,17 @@ void minibar(void)
 	/* Display the name of the current file (dottifying it if it doesn't fit),
 	 * plus a star when the file has been modified. */
 	if (COLS > 4) {
-		if (namewidth > COLS - 2) {
-			char *shortname = display_string(thename, namewidth - COLS + 5,
-												COLS - 5, FALSE, FALSE);
-			mvwaddstr(footwin, 0, 0, "...");
-			waddstr(footwin, shortname);
-			free(shortname);
-		} else
-			mvwaddstr(footwin, 0, padding, thename);
+		char *stagename;
 
+		wmove(footwin, 0, padding);
+		if (namewidth > COLS - 2) {
+			waddstr(footwin, "...");
+			stagename = display_string(thename, namewidth - COLS + 5, COLS - 5, FALSE, FALSE);
+		} else
+			stagename = display_string(thename, 0, COLS - 2, FALSE, FALSE);
+		waddstr(footwin, stagename);
 		waddstr(footwin, openfile->modified ? " *" : "  ");
+		free(stagename);
 	}
 
 	/* Right after reading or writing a file, display its number of lines;
