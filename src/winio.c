@@ -2165,9 +2165,6 @@ void minibar(void)
 	size_t namewidth, placewidth;
 	size_t tallywidth = 0;
 	size_t padding = 2;
-#ifdef ENABLE_UTF8
-	wchar_t widecode;
-#endif
 
 	/* Draw a colored bar over the full width of the screen. */
 	wattron(footwin, interface_color_pair[MINI_INFOBAR]);
@@ -2239,6 +2236,9 @@ void minibar(void)
 	if (ISSET(CONSTANT_SHOW) && namewidth + tallywidth + 28 < COLS) {
 		char *this_position = openfile->current->data + openfile->current_x;
 		char *hexadecimal = nmalloc(9);
+#ifdef ENABLE_UTF8
+		wchar_t widecode;
+#endif
 
 		if (*this_position == '\0')
 			sprintf(hexadecimal, openfile->current->next ?
