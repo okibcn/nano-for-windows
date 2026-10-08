@@ -2251,20 +2251,20 @@ void minibar(void)
 
 #ifdef ENABLE_UTF8
 		if (using_utf8 && *this_position) {
-		successor = this_position + char_length(this_position);
-
-		if (is_zerowidth(successor) && mbtowide(&widecode, successor) > 0) {
-			sprintf(hexadecimal, "|%04X", (int)widecode);
-			waddstr(footwin, hexadecimal);
-
-			successor += char_length(successor);
+			successor = this_position + char_length(this_position);
 
 			if (is_zerowidth(successor) && mbtowide(&widecode, successor) > 0) {
 				sprintf(hexadecimal, "|%04X", (int)widecode);
 				waddstr(footwin, hexadecimal);
-			}
-		} else
-			successor = NULL;
+
+				successor += char_length(successor);
+
+				if (is_zerowidth(successor) && mbtowide(&widecode, successor) > 0) {
+					sprintf(hexadecimal, "|%04X", (int)widecode);
+					waddstr(footwin, hexadecimal);
+				}
+			} else
+				successor = NULL;
 		}
 #endif
 		free(hexadecimal);
