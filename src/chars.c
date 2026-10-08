@@ -359,11 +359,10 @@ size_t step_left(const char *buf, size_t pos)
 {
 #ifdef ENABLE_UTF8
 	if (using_utf8) {
-		size_t before, charlen = 0;
+		size_t charlen = 0;
+		size_t before = 0;
 
-		if (pos < 4)
-			before = 0;
-		else {
+		if (pos > 3) {
 			const char *ptr = buf + pos;
 
 			/* Probe for a valid starter byte in the preceding four bytes. */
