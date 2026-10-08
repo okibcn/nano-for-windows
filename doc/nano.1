@@ -308,8 +308,10 @@ line is the beginning of a paragraph).
 Scroll the buffer contents per half-screen instead of per line.
 .TP
 .BR \-k ", " \-\-cutfromcursor
-Make the 'Cut Text' command (normally \fB^K\fR) cut from the current cursor
-position to the end of the line, instead of cutting the entire line.
+Make the 'Cut' command (\fB^K\fR) cut from the cursor to end-of-line,
+instead of cutting the entire line.
+When the cursor is already at end-of-line, then the linebreak
+itself is cut.
 .TP
 .BR \-l ", " \-\-linenumbers
 Display line numbers to the left of the text area.
