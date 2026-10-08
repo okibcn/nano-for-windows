@@ -2239,7 +2239,7 @@ void minibar(void)
 		else if (*this_position == '\n')
 			sprintf(hexadecimal, "  0x00");
 #ifdef ENABLE_UTF8
-		else if ((unsigned char)*this_position < 0x80 && using_utf8)
+		else if (using_utf8 && (unsigned char)*this_position < 0x80)
 			sprintf(hexadecimal, "U+%04X", (unsigned char)*this_position);
 		else if (using_utf8 && mbtowide(&widecode, this_position) > 0)
 			sprintf(hexadecimal, "U+%04X", (int)widecode);
@@ -2250,10 +2250,10 @@ void minibar(void)
 		mvwaddstr(footwin, 0, COLS - 23, hexadecimal);
 
 #ifdef ENABLE_UTF8
+		if (using_utf8 && *this_position) {
 		successor = this_position + char_length(this_position);
 
-		if (*this_position && *successor && is_zerowidth(successor) &&
-								mbtowide(&widecode, successor) > 0) {
+		if (is_zerowidth(successor) && mbtowide(&widecode, successor) > 0) {
 			sprintf(hexadecimal, "|%04X", (int)widecode);
 			waddstr(footwin, hexadecimal);
 
@@ -2265,6 +2265,7 @@ void minibar(void)
 			}
 		} else
 			successor = NULL;
+		}
 #endif
 		free(hexadecimal);
 	}
