@@ -1046,13 +1046,6 @@ int parse_kbinput(WINDOW *frame)
 			else if (keycode == KEY_BACKSPACE || keycode == '\b' || keycode == DEL_CODE)
 				return CONTROL_SHIFT_DELETE;
 #endif
-#ifdef ENABLE_UTF8
-			else if (0xC0 <= keycode && keycode <= 0xFF && using_utf8) {
-				while (waiting_codes && 0x80 <= nextcodes[0] && nextcodes[0] <= 0xBF)
-					get_input(NULL);
-				return FOREIGN_SEQUENCE;
-			}
-#endif
 			else if (keycode < 0x20 && !last_escape_was_alone) {
 				meta_key = TRUE;
 				return keycode;
