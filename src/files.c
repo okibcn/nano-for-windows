@@ -1551,7 +1551,7 @@ int copy_file(FILE *inn, FILE *out, bool close_out)
 /* Create a backup of an existing file.  If the user did not request backups,
  * make a temporary one (trying first in the directory of the original file,
  * then in the user's home directory).  Return TRUE if the save can proceed. */
-bool make_backup_of(char *realname, struct stat fileinfo)
+bool make_backup_of(const char *realname, struct stat fileinfo)
 {
 	FILE *original = NULL, *backup_file = NULL;
 	struct timespec filetimes[2];
