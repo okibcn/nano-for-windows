@@ -1551,7 +1551,7 @@ int copy_file(FILE *inn, FILE *out, bool close_out)
 /* Create a backup of an existing file.  If the user did not request backups,
  * make a temporary one (trying first in the directory of the original file,
  * then in the user's home directory).  Return TRUE if the save can proceed. */
-bool make_backup_of(const char *realname, struct stat fileinfo)
+bool make_backup_of(const char *filename, struct stat fileinfo)
 {
 	FILE *original = NULL, *backup_file = NULL;
 	struct timespec filetimes[2];
@@ -1566,10 +1566,10 @@ bool make_backup_of(const char *realname, struct stat fileinfo)
 	 * by appending a tilde to the original file name.  Otherwise,
 	 * we create a numbered backup in the specified directory. */
 	if (backup_dir == NULL) {
-		backupname = nmalloc(strlen(realname) + 2);
-		sprintf(backupname, "%s~", realname);
+		backupname = nmalloc(strlen(filename) + 2);
+		sprintf(backupname, "%s~", filename);
 	} else {
-		char *thename = get_full_path(realname);
+		char *thename = get_full_path(filename);
 
 		/* If we have a valid absolute path, replace each slash
 		 * in this full path with an exclamation mark.  Otherwise,
@@ -1579,7 +1579,7 @@ bool make_backup_of(const char *realname, struct stat fileinfo)
 				if (thename[i] == '/')
 					thename[i] = '!';
 		} else
-			thename = copy_of(tail(realname));
+			thename = copy_of(tail(filename));
 
 		backupname = nmalloc(strlen(backup_dir) + strlen(thename) + 1);
 		sprintf(backupname, "%s%s", backup_dir, thename);
@@ -1633,7 +1633,7 @@ bool make_backup_of(const char *realname, struct stat fileinfo)
 	}
 #endif
 
-	original = fopen(realname, "rb");
+	original = fopen(filename, "rb");
 
 	/* If opening succeeded, copy the existing file to the backup. */
 	if (original)
@@ -1678,8 +1678,8 @@ bool make_backup_of(const char *realname, struct stat fileinfo)
 		warn_and_briefly_pause(_("Trying again in your home directory"));
 		currmenu = MMOST;
 
-		backupname = nmalloc(strlen(homedir) + strlen(tail(realname)) + 9);
-		sprintf(backupname, "%s/%s~XXXXXX", homedir, tail(realname));
+		backupname = nmalloc(strlen(homedir) + strlen(tail(filename)) + 9);
+		sprintf(backupname, "%s/%s~XXXXXX", homedir, tail(filename));
 
 		descriptor = mkstemp(backupname);
 		backup_file = NULL;
@@ -1713,7 +1713,7 @@ bool make_backup_of(const char *realname, struct stat fileinfo)
  * append or prepend to the given file, instead of overwriting it.
  * If `annotate` is TRUE for writing a normal file, then set filename
  * and stat info.  Return TRUE on success, and FALSE otherwise. */
-bool write_file(const char *realname, FILE *thefile, writing_type method, bool annotate)
+bool write_file(const char *filename, FILE *thefile, writing_type method, bool annotate)
 {
 #ifndef NANO_TINY
 	bool is_existing_file;
@@ -1735,18 +1735,18 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 #ifdef ENABLE_OPERATINGDIR
 	/* If we're writing a temporary file, we're probably going outside
 	 * the operating directory, so skip the operating directory test. */
-	if (normal && operating_dir && outside_of_confinement(realname, FALSE)) {
+	if (normal && operating_dir && outside_of_confinement(filename, FALSE)) {
 		statusline(ALERT, _("Can't write outside of %s"), operating_dir);
 		goto cleanup_and_exit;
 	}
 #endif
 #ifndef NANO_TINY
 	/* Check whether the file (at the end of the symlink) exists. */
-	is_existing_file = normal && stat(realname, &fileinfo) == 0;
+	is_existing_file = normal && stat(filename, &fileinfo) == 0;
 
 	/* Make a backup only for a file that exists and is a regular file. */
 	if (ISSET(MAKE_BACKUP) && is_existing_file && !S_ISFIFO(fileinfo.st_mode))
-		if (!make_backup_of(realname, fileinfo))
+		if (!make_backup_of(filename, fileinfo))
 			goto cleanup_and_exit;
 
 	/* When prepending, first copy the existing file to a temporary file. */
@@ -1755,14 +1755,14 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 		int verdict = 5;
 
 		if (is_existing_file && S_ISFIFO(fileinfo.st_mode)) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, "FIFO");
+			statusline(ALERT, _("Error writing %s: %s"), filename, "FIFO");
 			goto cleanup_and_exit;
 		}
 
-		source = fopen(realname, "rb");
+		source = fopen(filename, "rb");
 
 		if (source == NULL) {
-			statusline(ALERT, _("Error reading %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error reading %s: %s"), filename, strerror(errno));
 			goto cleanup_and_exit;
 		}
 
@@ -1774,7 +1774,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			fclose(source);
 
 		if (verdict < 0) {
-			statusline(ALERT, _("Error reading %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error reading %s: %s"), filename, strerror(errno));
 			unlink(tempname);
 			goto cleanup_and_exit;
 		} else if (verdict > 0) {
@@ -1800,7 +1800,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 #endif
 
 		/* Now open the file.  Use O_EXCL for an emergency file. */
-		descriptor = open(realname, O_WRONLY | O_CREAT | ((method == APPEND) ?
+		descriptor = open(filename, O_WRONLY | O_CREAT | ((method == APPEND) ?
 					O_APPEND : (normal ? O_TRUNC : O_EXCL)), permissions);
 
 #ifndef NANO_TINY
@@ -1814,7 +1814,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			if (errno == EINTR || errno == 0)
 				statusline(ALERT, _("Interrupted"));
 			else
-				statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+				statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 #ifndef NANO_TINY
 			if (tempname)
 				unlink(tempname);
@@ -1825,7 +1825,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 		thefile = fdopen(descriptor, (method == APPEND) ? "ab" : "wb");
 
 		if (thefile == NULL) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 			close(descriptor);
 			goto cleanup_and_exit;
 		}
@@ -1846,7 +1846,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 		recode_NUL_to_LF(line->data, data_len);
 
 		if (wrote < data_len) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 			fclose(thefile);
 			goto cleanup_and_exit;
 		}
@@ -1866,7 +1866,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			(openfile->fmt == DOS_FILE && putc('\r', thefile) == EOF) ||
 #endif
 											putc('\n', thefile) == EOF) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 			fclose(thefile);
 			goto cleanup_and_exit;
 		}
@@ -1889,7 +1889,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			fclose(thefile);
 			goto cleanup_and_exit;
 		} else if (verdict > 0) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 			fclose(thefile);
 			goto cleanup_and_exit;
 		}
@@ -1900,14 +1900,14 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 	if (!is_existing_file || !S_ISFIFO(fileinfo.st_mode))
 		/* Ensure the data has reached the disk before reporting it as written. */
 		if (fflush(thefile) == EOF || fsync(fileno(thefile)) < 0) {
-			statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+			statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 			fclose(thefile);
 			goto cleanup_and_exit;
 		}
 #endif
 
 	if (fclose(thefile) == EOF) {
-		statusline(ALERT, _("Error writing %s: %s"), realname, strerror(errno));
+		statusline(ALERT, _("Error writing %s: %s"), filename, strerror(errno));
 
   cleanup_and_exit:
 #ifndef NANO_TINY
@@ -1920,7 +1920,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			 * where "resume" means resuming from suspension.
 			 * Try to keep this at most 76 characters. */
 			statusline(ALERT, _("Maybe ^T^Z, make room on disk, resume, then ^S^X"));
-			stat_with_alloc(realname, &openfile->statinfo);
+			stat_with_alloc(filename, &openfile->statinfo);
 		}
 #endif
 		free(tempname);
@@ -1931,7 +1931,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 	if (annotate && method == OVERWRITE) {
 		/* If the filename was changed, write a new lockfile when needed,
 		 * and check whether it means a different syntax gets used. */
-		if (strcmp(openfile->filename, realname) != 0) {
+		if (strcmp(openfile->filename, filename) != 0) {
 #ifndef NANO_TINY
 			if (openfile->lock_filename) {
 				delete_lockfile(openfile->lock_filename);
@@ -1939,9 +1939,9 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 			}
 
 			if (ISSET(LOCKING))
-				openfile->lock_filename = do_lockfile(realname, FALSE);
+				openfile->lock_filename = do_lockfile(filename, FALSE);
 #endif
-			openfile->filename = mallocstrcpy(openfile->filename, realname);
+			openfile->filename = mallocstrcpy(openfile->filename, filename);
 #ifdef ENABLE_COLOR
 			syntaxtype *was_syntax = openfile->syntax;
 
@@ -1962,7 +1962,7 @@ bool write_file(const char *realname, FILE *thefile, writing_type method, bool a
 		}
 #ifndef NANO_TINY
 		/* Get or update the stat info to reflect the current state. */
-		stat_with_alloc(realname, &openfile->statinfo);
+		stat_with_alloc(filename, &openfile->statinfo);
 
 		/* Record at which point in the undo stack the buffer was saved. */
 		openfile->last_saved = openfile->current_undo;
