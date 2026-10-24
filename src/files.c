@@ -1713,7 +1713,7 @@ bool make_backup_of(char *realname, struct stat fileinfo)
  * append or prepend to the given file, instead of overwriting it.
  * If `annotate` is TRUE for writing a normal file, then set filename
  * and stat info.  Return TRUE on success, and FALSE otherwise. */
-bool write_file(const char *name, FILE *thefile, writing_type method, bool annotate)
+bool write_file(const char *realname, FILE *thefile, writing_type method, bool annotate)
 {
 #ifndef NANO_TINY
 	bool is_existing_file;
@@ -1721,8 +1721,6 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 	struct stat fileinfo;
 		/* The status fields filled in by statting the file. */
 #endif
-	char *realname = expand_leading_tilde(name);
-		/* The filename after tilde expansion. */
 	int descriptor = 0;
 		/* The descriptor that gets assigned when opening the file. */
 	char *tempname = NULL;
@@ -1926,7 +1924,6 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 		}
 #endif
 		free(tempname);
-		free(realname);
 		return FALSE;
 	}
 
@@ -1984,7 +1981,6 @@ bool write_file(const char *name, FILE *thefile, writing_type method, bool annot
 		statusline(REMARK, P_("Wrote %zu line", "Wrote %zu lines", lineswritten), lineswritten);
 
 	free(tempname);
-	free(realname);
 
 	return TRUE;
 }
@@ -2258,6 +2254,8 @@ int write_it_out(bool exiting, bool withprompt)
 		free(given);
 		break;
 	}
+
+	answer = free_and_assign(answer, expand_leading_tilde(answer));
 
 #ifndef NANO_TINY
 	/* When the mark is on (and we've prompted for a name and we're
