@@ -582,7 +582,7 @@ typedef struct openfilestruct {
 		/* The file's format -- Unix or DOS. */
 	struct stat *statinfo;
 		/* The file's stat information from when it was opened or last saved. */
-	char *lock_filename;
+	char *lockfilename;
 		/* The path of the lockfile, if we created one. */
 	undostruct *undotop;
 		/* The top of the undo list. */

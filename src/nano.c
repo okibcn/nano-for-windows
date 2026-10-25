@@ -267,8 +267,8 @@ void finish(void)
 void close_and_go(void)
 {
 #ifndef NANO_TINY
-	if (openfile->lock_filename)
-		delete_lockfile(openfile->lock_filename);
+	if (openfile->lockfilename)
+		delete_lockfile(openfile->lockfilename);
 #endif
 #ifdef ENABLE_HISTORIES
 	if (ISSET(POSITIONLOG) && openfile->filename[0])
@@ -370,8 +370,8 @@ void die(const char *msg, ...)
 	while (openfile) {
 #ifndef NANO_TINY
 		/* If the current buffer has a lock file, remove it. */
-		if (openfile->lock_filename)
-			delete_lockfile(openfile->lock_filename);
+		if (openfile->lockfilename)
+			delete_lockfile(openfile->lockfilename);
 #endif
 		/* When modified, save the current buffer.  But not when in restricted
 		 * mode, as it would write a file not mentioned on the command line. */

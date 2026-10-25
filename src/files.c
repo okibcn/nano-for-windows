@@ -96,7 +96,7 @@ void make_new_buffer(void)
 	openfile->last_action = OTHER;
 
 	openfile->statinfo = NULL;
-	openfile->lock_filename = NULL;
+	openfile->lockfilename = NULL;
 #endif
 #ifdef ENABLE_MULTIBUFFER
 	openfile->errormessage = NULL;
@@ -440,7 +440,7 @@ bool open_buffer(const char *filename, bool new_one)
 #endif
 					return FALSE;
 				} else
-					openfile->lock_filename = thelocksname;
+					openfile->lockfilename = thelocksname;
 			}
 #endif /* NANO_TINY */
 		}
@@ -492,8 +492,8 @@ void set_modified(void)
 	titlebar(NULL);
 
 #ifndef NANO_TINY
-	if (openfile->lock_filename)
-		write_lockfile(openfile->lock_filename, openfile->filename, TRUE);
+	if (openfile->lockfilename)
+		write_lockfile(openfile->lockfilename, openfile->filename, TRUE);
 #endif
 }
 
@@ -601,7 +601,7 @@ void close_buffer(void)
 	free_lines(orphan->filetop);
 #ifndef NANO_TINY
 	free(orphan->statinfo);
-	free(orphan->lock_filename);
+	free(orphan->lockfilename);
 	/* Free the undo stack. */
 	discard_until(NULL);
 #endif
@@ -1927,13 +1927,13 @@ bool write_file(const char *filename, FILE *thefile, writing_type method, bool a
 		 * and check whether it means a different syntax gets used. */
 		if (strcmp(openfile->filename, filename) != 0) {
 #ifndef NANO_TINY
-			if (openfile->lock_filename) {
-				delete_lockfile(openfile->lock_filename);
-				free(openfile->lock_filename);
+			if (openfile->lockfilename) {
+				delete_lockfile(openfile->lockfilename);
+				free(openfile->lockfilename);
 			}
 
 			if (ISSET(LOCKING))
-				openfile->lock_filename = do_lockfile(filename, FALSE);
+				openfile->lockfilename = do_lockfile(filename, FALSE);
 #endif
 			openfile->filename = mallocstrcpy(openfile->filename, filename);
 #ifdef ENABLE_COLOR
