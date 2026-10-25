@@ -387,7 +387,7 @@ bool open_buffer(const char *filename, bool new_one)
 	struct stat fileinfo;
 	int descriptor = 0;
 		/* Code 0 means new file, -1 means failure, and else it's the fd. */
-	FILE *f;
+	FILE *stream;
 
 	/* Display newlines in filenames as ^J. */
 	as_an_at = FALSE;
@@ -448,13 +448,13 @@ bool open_buffer(const char *filename, bool new_one)
 
 	/* If we have a filename and are not in NOREAD mode, open the file. */
 	if (*filename && !ISSET(NOREAD_MODE))
-		descriptor = open_file(filename, new_one, &f);
+		descriptor = open_file(filename, new_one, &stream);
 
 	/* If we've successfully opened an existing file, read it in. */
 	if (descriptor > 0) {
 		install_handler_for_Ctrl_C();
 
-		read_file(f, descriptor, filename, !new_one);
+		read_file(stream, descriptor, filename, !new_one);
 
 		restore_handler_for_Ctrl_C();
 
@@ -632,10 +632,10 @@ char *encode_data(char *text, size_t length)
 /* The number of bytes by which we expand the line buffer while reading. */
 #define LUMPSIZE  120
 
-/* Read the given open file f into the current buffer.  filename should be
- * set to the name of the file.  undoable means that undo records should be
+/* Read the open file `stream` into the current buffer.  `filename` should be
+ * set to the name of the file.  `undoable` means that undo records should be
  * created and that the file does not need to be checked for writability. */
-void read_file(FILE *f, int fd, const char *filename, bool undoable)
+void read_file(FILE *stream, int fd, const char *filename, bool undoable)
 {
 	ssize_t was_lineno = openfile->current->lineno;
 		/* The line number where we start the insertion. */
@@ -681,7 +681,7 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 #ifdef HAVE_FLOCKFILE
 	/* Lock the file before starting to read it, to avoid the overhead
 	 * of locking it for each single byte that we read from it. */
-	flockfile(f);
+	flockfile(stream);
 #else
 # define getc_unlocked  getc
 #endif
@@ -689,7 +689,7 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 	control_C_was_pressed = FALSE;
 
 	/* Read in the entire file, byte by byte, line by line. */
-	while ((onevalue = getc_unlocked(f)) != EOF) {
+	while ((onevalue = getc_unlocked(stream)) != EOF) {
 		char input = (char)onevalue;
 
 		if (control_C_was_pressed)
@@ -737,7 +737,7 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 
 #ifdef HAVE_FUNLOCKFILE
 	/* We are done with the file, unlock it. */
-	funlockfile(f);
+	funlockfile(stream);
 #endif
 
 #ifndef NANO_TINY
@@ -753,13 +753,13 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 #endif
 
 	/* If there was a real error during the reading, let the user know. */
-	if (ferror(f) && errornumber != EINTR && errornumber != 0)
+	if (ferror(stream) && errornumber != EINTR && errornumber != 0)
 		statusline(ALERT, "%s", strerror(errornumber));
 
 	if (control_C_was_pressed)
 		statusline(ALERT, _("Interrupted"));
 
-	fclose(f);
+	fclose(stream);
 
 	if (fd > 0 && !undoable && !ISSET(VIEW_MODE))
 		writable = (access(filename, W_OK) == 0);
@@ -820,8 +820,8 @@ void read_file(FILE *f, int fd, const char *filename, bool undoable)
 /* Open the file with the given name.  If the file does not exist, display
  * "New File" if new_one is TRUE, and say "File not found" otherwise.
  * Return 0 if we say "New File", -1 upon failure, and the obtained file
- * descriptor otherwise.  The opened filestream is returned in *f. */
-int open_file(const char *filename, bool new_one, FILE **f)
+ * descriptor otherwise.  The opened filestream is returned in *stream. */
+int open_file(const char *filename, bool new_one, FILE **stream)
 {
 	char *full_filename = get_full_path(filename);
 	struct stat fileinfo;
@@ -867,9 +867,9 @@ int open_file(const char *filename, bool new_one, FILE **f)
 			statusline(ALERT, _("Error reading %s: %s"), filename, strerror(errno));
 	} else {
 		/* The file is A-OK.  Associate a stream with it. */
-		*f = fdopen(fd, "rb");
+		*stream = fdopen(fd, "rb");
 
-		if (*f == NULL) {
+		if (*stream == NULL) {
 			statusline(ALERT, _("Error reading %s: %s"), filename, strerror(errno));
 			close(fd);
 			fd = -1;
