@@ -2281,7 +2281,7 @@ void do_savefile(void)
  * Return an allocated string containing the expanded path. */
 char *expand_leading_tilde(const char *path)
 {
-	char *tilded, *retval;
+	char *home, *detilded;
 	size_t i = 1;
 
 	if (*path != '~' || path[1] == '\0')
@@ -2293,31 +2293,31 @@ char *expand_leading_tilde(const char *path)
 
 	if (i == 1) {
 		get_homedir();
-		tilded = copy_of(homedir);
+		home = copy_of(homedir);
 	} else {
 #ifdef HAVE_PWD_H
 		const struct passwd *userdata;
 
-		tilded = measured_copy(path, i);
+		home = measured_copy(path, i);
 
 		do {
 			userdata = getpwent();
-		} while (userdata && strcmp(userdata->pw_name, tilded + 1) != 0);
+		} while (userdata && strcmp(userdata->pw_name, home + 1) != 0);
 		endpwent();
 
 		if (userdata)
-			tilded = mallocstrcpy(tilded, userdata->pw_dir);
+			home = mallocstrcpy(home, userdata->pw_dir);
 #else
-		tilded = copy_of("");
+		home = copy_of("");
 #endif
 	}
 
-	retval = nmalloc(strlen(tilded) + strlen(path + i) + 1);
-	sprintf(retval, "%s%s", tilded, path + i);
+	detilded = nmalloc(strlen(home) + strlen(path + i) + 1);
+	sprintf(detilded, "%s%s", home, path + i);
 
-	free(tilded);
+	free(home);
 
-	return retval;
+	return detilded;
 }
 
 #if defined(ENABLE_TABCOMP) || defined(ENABLE_BROWSER)
