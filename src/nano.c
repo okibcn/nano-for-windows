@@ -2564,7 +2564,8 @@ int main(int argc, char **argv)
 		} else
 #endif
 		{
-			char *filename = argv[optind++];
+			char *filename = expand_leading_tilde(argv[optind++]);
+			bool opened;
 #ifndef NANO_TINY
 			struct stat fileinfo;
 
@@ -2591,7 +2592,10 @@ int main(int argc, char **argv)
 				}
 			}
 #endif
-			if (!open_buffer(filename, TRUE))
+			opened = open_buffer(filename, TRUE);
+			free(filename);
+
+			if (!opened)
 				continue;
 		}
 

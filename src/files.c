@@ -384,8 +384,6 @@ bool has_valid_path(const char *filename)
  * into a new buffer when requested, otherwise into the existing buffer. */
 bool open_buffer(const char *filename, bool new_one)
 {
-	char *realname;
-		/* The filename after tilde expansion. */
 	struct stat fileinfo;
 	int descriptor = 0;
 		/* Code 0 means new file, -1 means failure, and else it's the fd. */
@@ -401,33 +399,27 @@ bool open_buffer(const char *filename, bool new_one)
 	}
 #endif
 
-	realname = expand_leading_tilde(filename);
-
 	/* Don't try to open directories, character files, or block files. */
-	if (*filename && stat(realname, &fileinfo) == 0) {
+	if (*filename && stat(filename, &fileinfo) == 0) {
 		if (S_ISDIR(fileinfo.st_mode)) {
-			statusline(ALERT, _("'%s' is a directory"), realname);
-			free(realname);
+			statusline(ALERT, _("'%s' is a directory"), filename);
 			return FALSE;
 		}
 		if (S_ISCHR(fileinfo.st_mode) || S_ISBLK(fileinfo.st_mode)) {
-			statusline(ALERT, _("'%s' is a device file"), realname);
-			free(realname);
+			statusline(ALERT, _("'%s' is a device file"), filename);
 			return FALSE;
 		}
 #ifdef NANO_TINY
 		if (S_ISFIFO(fileinfo.st_mode)) {
-			statusline(ALERT, _("'%s' is a FIFO"), realname);
-			free(realname);
+			statusline(ALERT, _("'%s' is a FIFO"), filename);
 			return FALSE;
 		}
 #elif defined(HAVE_GETEUID)
 		if (new_one && !(fileinfo.st_mode & (S_IWUSR|S_IWGRP|S_IWOTH)) && geteuid() == ROOT_UID)
-			statusline(ALERT, _("'%s' is meant to be read-only"), realname);
+			statusline(ALERT, _("'%s' is meant to be read-only"), filename);
 #endif
 	} else if (*filename && filename[strlen(filename) - 1] == '/') {
-		statusline(ALERT, _("'%s' is an invalid filename"), realname);
-		free(realname);
+		statusline(ALERT, _("'%s' is an invalid filename"), filename);
 		return FALSE;
 	}
 
@@ -436,17 +428,16 @@ bool open_buffer(const char *filename, bool new_one)
 	if (new_one) {
 		make_new_buffer();
 
-		if (has_valid_path(realname)) {
+		if (has_valid_path(filename)) {
 #ifndef NANO_TINY
 			if (ISSET(LOCKING) && !ISSET(VIEW_MODE) && *filename) {
-				char *thelocksname = do_lockfile(realname, TRUE);
+				char *thelocksname = do_lockfile(filename, TRUE);
 
 				/* When not overriding an existing lock, discard the buffer. */
 				if (thelocksname == SKIPTHISFILE) {
 #ifdef ENABLE_MULTIBUFFER
 					close_buffer();
 #endif
-					free(realname);
 					return FALSE;
 				} else
 					openfile->lock_filename = thelocksname;
@@ -457,25 +448,25 @@ bool open_buffer(const char *filename, bool new_one)
 
 	/* If we have a filename and are not in NOREAD mode, open the file. */
 	if (*filename && !ISSET(NOREAD_MODE))
-		descriptor = open_file(realname, new_one, &f);
+		descriptor = open_file(filename, new_one, &f);
 
 	/* If we've successfully opened an existing file, read it in. */
 	if (descriptor > 0) {
 		install_handler_for_Ctrl_C();
 
-		read_file(f, descriptor, realname, !new_one);
+		read_file(f, descriptor, filename, !new_one);
 
 		restore_handler_for_Ctrl_C();
 
 #ifndef NANO_TINY
 		if (openfile->statinfo == NULL)
-			stat_with_alloc(realname, &openfile->statinfo);
+			stat_with_alloc(filename, &openfile->statinfo);
 #endif
 	}
 
 	/* For a new buffer, store filename and put cursor at start of buffer. */
 	if (descriptor >= 0 && new_one) {
-		openfile->filename = mallocstrcpy(openfile->filename, realname);
+		openfile->filename = mallocstrcpy(openfile->filename, filename);
 		openfile->current = openfile->filetop;
 		openfile->current_x = 0;
 		openfile->placewewant = 0;
@@ -487,7 +478,6 @@ bool open_buffer(const char *filename, bool new_one)
 		find_and_prime_applicable_syntax();
 #endif
 
-	free(realname);
 	return TRUE;
 }
 
@@ -1293,8 +1283,12 @@ void insert_a_file_or(bool execute)
 #endif
 			} else
 #endif /* !NANO_TINY */
+			{
+				answer = free_and_assign(answer, expand_leading_tilde(answer));
+
 				/* Read the file into either current buffer or new buffer. */
 				open_buffer(answer, ISSET(NEW_BUFFER));
+			}
 
 #ifdef ENABLE_MULTIBUFFER
 			if (ISSET(NEW_BUFFER)) {
