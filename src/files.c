@@ -823,18 +823,10 @@ void read_file(FILE *stream, int fd, const char *filename, bool undoable)
  * descriptor otherwise.  The opened filestream is returned in *stream. */
 int open_file(const char *filename, bool new_one, FILE **stream)
 {
-	char *full_filename = get_full_path(filename);
 	struct stat fileinfo;
 	int fd;
 
-	/* If the absolute path is unusable (due to some component's permissions),
-	 * try the given path instead (as it is probably relative). */
-	if (full_filename == NULL || stat(full_filename, &fileinfo) < 0)
-		full_filename = mallocstrcpy(full_filename, filename);
-
-	if (stat(full_filename, &fileinfo) < 0) {
-		free(full_filename);
-
+	if (stat(filename, &fileinfo) < 0) {
 		if (new_one) {
 			statusline(REMARK, _("New File"));
 			return 0;
@@ -853,7 +845,7 @@ int open_file(const char *filename, bool new_one, FILE **stream)
 #endif
 
 	/* Try opening the file. */
-	fd = open(full_filename, O_RDONLY);
+	fd = open(filename, O_RDONLY);
 
 #ifndef NANO_TINY
 	restore_handler_for_Ctrl_C();
@@ -876,8 +868,6 @@ int open_file(const char *filename, bool new_one, FILE **stream)
 		} else if (!ISSET(ZERO) || we_are_running)
 			statusbar(_("Reading..."));
 	}
-
-	free(full_filename);
 
 	return fd;
 }
