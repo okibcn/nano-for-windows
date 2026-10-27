@@ -532,18 +532,17 @@ void reload_positions_if_needed(void)
  * current buffer.  If no existing entry is found, add a new one at the top. */
 void update_positions_register(void)
 {
-	char *fullpath = get_full_path(openfile->filename);
 	positionstruct *previous = NULL;
 	positionstruct *item;
 
-	if (fullpath == NULL)
+	if (openfile->fullname == NULL)
 		return;
 
 	reload_positions_if_needed();
 
 	/* Look for a matching filename in the list. */
 	for (item = positions_register; item != NULL; item = item->next) {
-		if (!strcmp(item->filename, fullpath))
+		if (!strcmp(item->filename, openfile->fullname))
 			break;
 		previous = item;
 	}
@@ -551,7 +550,7 @@ void update_positions_register(void)
 	/* If no match was found, make a new node; otherwise, unlink the match. */
 	if (item == NULL) {
 		item = nmalloc(sizeof(positionstruct));
-		item->filename = copy_of(fullpath);
+		item->filename = copy_of(openfile->fullname);
 		item->anchors = NULL;
 	} else if (previous)
 		previous->next = item->next;
@@ -568,8 +567,6 @@ void update_positions_register(void)
 	free(item->anchors);
 	item->anchors = stringify_anchors();
 
-	free(fullpath);
-
 	save_positions_register();
 }
 
@@ -577,19 +574,16 @@ void update_positions_register(void)
  * recorded positions.  If yes, restore the relevant cursor position. */
 void restore_cursor_position_if_any(void)
 {
-	char *fullpath = get_full_path(openfile->filename);
 	positionstruct *item;
 
-	if (fullpath == NULL)
+	if (openfile->fullname == NULL)
 		return;
 
 	reload_positions_if_needed();
 
 	item = positions_register;
-	while (item && strcmp(item->filename, fullpath) != 0)
+	while (item && strcmp(item->filename, openfile->fullname) != 0)
 		item = item->next;
-
-	free(fullpath);
 
 	if (item && item->anchors)
 		restore_anchors(item->anchors);

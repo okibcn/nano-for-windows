@@ -2150,22 +2150,19 @@ int write_it_out(bool exiting, bool withprompt)
 #endif
 
 		if (method == OVERWRITE) {
+			char *full_answer = get_full_path(answer);
 			bool name_exists, do_warning;
-			char *full_answer, *full_filename;
 			struct stat fileinfo;
 
-			full_answer = get_full_path(answer);
-			full_filename = get_full_path(openfile->filename);
 			name_exists = (stat((full_answer == NULL) ? answer : full_answer, &fileinfo) == 0);
 
 			if (openfile->filename[0] == '\0')
 				do_warning = name_exists;
-			else if (full_answer && full_filename)
-				do_warning = (strcmp(full_answer, full_filename) != 0);
+			else if (full_answer && openfile->fullname)
+				do_warning = (strcmp(full_answer, openfile->fullname) != 0);
 			else
 				do_warning = (strcmp(answer, openfile->filename) != 0);
 
-			free(full_filename);
 			free(full_answer);
 
 			if (do_warning) {

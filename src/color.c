@@ -159,16 +159,11 @@ void find_and_prime_applicable_syntax(void)
 	/* If no syntax-override string was specified, or it didn't match,
 	 * try finding a syntax based on the filename (extension). */
 	if (sntx == NULL && !inhelp) {
-		char *fullname = get_full_path(openfile->filename);
-
-		if (fullname == NULL)
-			fullname = mallocstrcpy(fullname, openfile->filename);
+		char *thename = (openfile->fullname) ? openfile->fullname : openfile->filename;
 
 		for (sntx = syntaxes; sntx != NULL; sntx = sntx->next)
-			if (found_in_list(sntx->extensions, fullname))
+			if (found_in_list(sntx->extensions, thename))
 				break;
-
-		free(fullname);
 	}
 
 	/* If the filename didn't match anything, try the first line. */
