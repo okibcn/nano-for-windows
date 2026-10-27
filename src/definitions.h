@@ -545,7 +545,9 @@ typedef struct positionstruct {
 
 typedef struct openfilestruct {
 	char *filename;
-		/* The file's name. */
+		/* The file's name as given by the user (but with tilde expanded). */
+	char *fullname;
+		/* The canonical absolute path of the file, when determinable. */
 	linestruct *filetop;
 		/* The file's first line. */
 	linestruct *filebot;

@@ -65,6 +65,7 @@ void make_new_buffer(void)
 	openfile = newnode;
 
 	openfile->filename = copy_of("");
+	openfile->fullname = NULL;
 
 	openfile->filetop = make_new_node(NULL);
 	openfile->filetop->data = copy_of("");
@@ -444,6 +445,9 @@ bool open_buffer(const char *filename, bool new_one)
 			}
 #endif /* NANO_TINY */
 		}
+
+		if (*filename)
+			openfile->fullname = get_full_path(filename);
 	}
 
 	/* If we have a filename and are not in NOREAD mode, open the file. */
@@ -1926,6 +1930,8 @@ bool write_file(const char *filename, FILE *thefile, writing_type method, bool a
 				openfile->lockfilename = do_lockfile(filename, FALSE);
 #endif
 			openfile->filename = mallocstrcpy(openfile->filename, filename);
+			free(openfile->fullname);
+			openfile->fullname = get_full_path(filename);
 #ifdef ENABLE_COLOR
 			syntaxtype *was_syntax = openfile->syntax;
 
