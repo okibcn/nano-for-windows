@@ -555,20 +555,20 @@ typedef struct openfilestruct {
 	linestruct *edittop;
 		/* The current top of the edit window for this file. */
 	linestruct *current;
-		/* The current line for this file. */
-	size_t totsize;
-		/* The file's total number of characters. */
+		/* The line where the cursor is in this file. */
+	size_t current_x;
+		/* The byte position of the cursor in the current line. */
+	size_t placewewant;
+		/* The preferred column for the cursor when moving vertically. */
 	size_t firstcolumn;
 		/* The starting column of the top line of the edit window.
 		 * When not in softwrap mode, it's always zero. */
-	size_t current_x;
-		/* The file's x-coordinate position. */
-	size_t placewewant;
-		/* The preferred column for the cursor. */
 	size_t brink;
 		/* From which column the edit window is drawn (when panning). */
 	ssize_t cursor_row;
 		/* The row in the edit window that the cursor is on. */
+	size_t totsize;
+		/* The file's total number of characters. */
 #ifdef ENABLE_WRAPPING
 	linestruct *spillage_line;
 		/* The line for prepending stuff to during automatic hard-wrapping. */

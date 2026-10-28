@@ -1920,18 +1920,17 @@ bool write_file(const char *filename, FILE *thefile, writing_type method, bool a
 		/* If the filename was changed, write a new lockfile when needed,
 		 * and check whether it means a different syntax gets used. */
 		if (strcmp(openfile->filename, filename) != 0) {
+			openfile->filename = mallocstrcpy(openfile->filename, filename);
+			free(openfile->fullname);
+			openfile->fullname = get_full_path(filename);
 #ifndef NANO_TINY
 			if (openfile->lockfilename) {
 				delete_lockfile(openfile->lockfilename);
 				free(openfile->lockfilename);
 			}
-
 			if (ISSET(LOCKING))
 				openfile->lockfilename = do_lockfile(filename, FALSE);
 #endif
-			openfile->filename = mallocstrcpy(openfile->filename, filename);
-			free(openfile->fullname);
-			openfile->fullname = get_full_path(filename);
 #ifdef ENABLE_COLOR
 			syntaxtype *was_syntax = openfile->syntax;
 
@@ -2204,8 +2203,7 @@ int write_it_out(bool exiting, bool withprompt)
 			}
 #ifndef NANO_TINY
 			/* Complain if the file exists, the name hasn't changed,
-			 * and the stat information we had before does not match
-			 * what we have now. */
+			 * and the old stat info doesn't match the current info. */
 			else if (name_exists && openfile->statinfo &&
 						(openfile->statinfo->st_mtime < fileinfo.st_mtime ||
 						openfile->statinfo->st_dev != fileinfo.st_dev ||
@@ -2218,7 +2216,7 @@ int write_it_out(bool exiting, bool withprompt)
 								"since you opened it; continue saving? "));
 				wipe_statusbar();
 
-				/* When in tool mode and not called by 'savefile',
+				/* When doing save-at-exit and not called by 'savefile',
 				 * overwrite the file right here when requested. */
 				if (ISSET(SAVE_ON_EXIT) && withprompt) {
 					free(given);
