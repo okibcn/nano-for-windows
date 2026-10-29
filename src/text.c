@@ -2616,6 +2616,7 @@ void do_linter(void)
 	lintstruct *curlint = NULL;
 	lintstruct *lints = NULL;
 	lintstruct *lastone;
+	char *fullname = NULL;
 	time_t last_wait = 0;
 
 	ran_a_tool = TRUE;
@@ -2813,22 +2814,18 @@ void do_linter(void)
 	while (TRUE) {
 		int kbinput;
 		functionptrtype function;
-#ifndef NANO_TINY
-		struct stat lintfileinfo;
 
-		if (stat(curlint->filename, &lintfileinfo) == 0 &&
-					(openfile->statinfo == NULL ||
-					openfile->statinfo->st_ino != lintfileinfo.st_ino)) {
+		fullname = free_and_assign(fullname, get_full_path(curlint->filename));
+
+		if (openfile->fullname && fullname && strcmp(openfile->fullname, fullname) != 0) {
 #ifdef ENABLE_MULTIBUFFER
 			const openfilestruct *started_at = openfile;
 
-			openfile = openfile->next;
-			while (openfile != started_at && (openfile->statinfo == NULL ||
-						openfile->statinfo->st_ino != lintfileinfo.st_ino))
-				openfile = openfile->next;
+			do { openfile = openfile->next;
+			} while (openfile != started_at && (openfile->fullname == NULL ||
+								strcmp(openfile->fullname, fullname) != 0));
 
-			if (openfile->statinfo == NULL ||
-						openfile->statinfo->st_ino != lintfileinfo.st_ino) {
+			if (openfile == started_at) {
 				char *msg = nmalloc(1024 + strlen(curlint->filename));
 				int choice;
 
@@ -2878,7 +2875,6 @@ void do_linter(void)
 			}
 #endif
 		}
-#endif /* !NANO_TINY */
 
 		if (lastone != curlint) {
 			/* Put the cursor at the reported position, but don't go beyond EOL
@@ -2937,6 +2933,8 @@ void do_linter(void)
 		} else
 			beep();
 	}
+
+	free(fullname);
 
 	for (curlint = lints; curlint != NULL;)
 		curlint = free_one_lint(curlint);
