@@ -2829,8 +2829,7 @@ void do_linter(void)
 				char *msg = nmalloc(1024 + strlen(curlint->filename));
 				int choice;
 
-				sprintf(msg, _("This message is for unopened file %s,"
-							" open it in a new buffer?"), curlint->filename);
+				sprintf(msg, _("Message for '%s'. Open this file? "), curlint->filename);
 				choice = ask_user(YESORNO, msg);
 				currmenu = MLINTER;
 				free(msg);
