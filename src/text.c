@@ -130,7 +130,7 @@ void do_indent(void)
 
 #ifdef ENABLE_COLOR
 	if (openfile->syntax && openfile->syntax->tabstring)
-		indentation = mallocstrcpy(indentation, openfile->syntax->tabstring);
+		indentation = reuse_with_copy(indentation, openfile->syntax->tabstring);
 	else
 #endif
 	/* Set the indentation to either a bunch of spaces or a single tab. */

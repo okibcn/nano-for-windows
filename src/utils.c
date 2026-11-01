@@ -302,8 +302,8 @@ void *nrealloc(void *section, size_t howmuch)
 }
 
 /* Return an appropriately reallocated dest string holding a copy of src.
- * Usage: "dest = mallocstrcpy(dest, src);". */
-char *mallocstrcpy(char *dest, const char *src)
+ * Usage: "dest = reuse_with_copy(dest, src);". */
+char *reuse_with_copy(char *dest, const char *src)
 {
 	size_t count = strlen(src) + 1;
 

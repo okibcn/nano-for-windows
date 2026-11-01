@@ -508,25 +508,25 @@ functionptrtype acquire_an_answer(int *actual, bool *listed,
 
 			/* When moving up from the bottom, remember the current answer. */
 			if ((*history_list)->next == NULL)
-				stored_string = mallocstrcpy(stored_string, answer);
+				stored_string = reuse_with_copy(stored_string, answer);
 
 			/* If there is an older item, move to it and copy its string. */
 			if ((*history_list)->prev) {
 				*history_list = (*history_list)->prev;
-				answer = mallocstrcpy(answer, (*history_list)->data);
+				answer = reuse_with_copy(answer, (*history_list)->data);
 				typing_x = strlen(answer);
 			}
 		} else if (function == get_newer_item && history_list) {
 			/* If there is a newer item, move to it and copy its string. */
 			if ((*history_list)->next) {
 				*history_list = (*history_list)->next;
-				answer = mallocstrcpy(answer, (*history_list)->data);
+				answer = reuse_with_copy(answer, (*history_list)->data);
 				typing_x = strlen(answer);
 			}
 
 			/* When at the bottom of the history list, restore the old answer. */
 			if ((*history_list)->next == NULL && stored_string && *answer == '\0') {
-				answer = mallocstrcpy(answer, stored_string);
+				answer = reuse_with_copy(answer, stored_string);
 				typing_x = strlen(answer);
 			}
 		} else
@@ -553,7 +553,7 @@ functionptrtype acquire_an_answer(int *actual, bool *listed,
 #ifndef NANO_TINY
 				/* When invoking a tool at the Execute prompt, stash an "answer". */
 				if (currmenu == MEXECUTE)
-					foretext = mallocstrcpy(foretext, answer);
+					foretext = reuse_with_copy(foretext, answer);
 #endif
 				function();
 				break;
@@ -602,7 +602,7 @@ int do_prompt(int menu, const char *provided, linestruct **history_list,
 	bottombars(menu);
 
 	if (answer != provided)
-		answer = mallocstrcpy(answer, provided);
+		answer = reuse_with_copy(answer, provided);
 
 #ifndef NANO_TINY
   redo_theprompt:

@@ -1321,7 +1321,7 @@ void pick_up_name(const char *kind, char *ptr, char **storage)
 		ptr++;
 	}
 
-	*storage = mallocstrcpy(*storage, ptr);
+	*storage = reuse_with_copy(*storage, ptr);
 }
 
 /* Handle the six syntax-only commands. */
@@ -1608,7 +1608,7 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 #endif
 #ifdef ENABLE_OPERATINGDIR
 		if (strcmp(option, "operatingdir") == 0)
-			operating_dir = mallocstrcpy(operating_dir, argument);
+			operating_dir = reuse_with_copy(operating_dir, argument);
 		else
 #endif
 #ifdef ENABLED_WRAPORJUSTIFY
@@ -1626,12 +1626,12 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 			else if (mbstrlen(argument) % 2 != 0)
 				jot_error(N_("Even number of characters required"));
 			else
-				matchbrackets = mallocstrcpy(matchbrackets, argument);
+				matchbrackets = reuse_with_copy(matchbrackets, argument);
 		} else if (strcmp(option, "whitespace") == 0) {
 			if (mbstrlen(argument) != 2 || breadth(argument) != 2)
 				jot_error(N_("Two single-column characters required"));
 			else {
-				whitespace = mallocstrcpy(whitespace, argument);
+				whitespace = reuse_with_copy(whitespace, argument);
 				whitelen[0] = char_length(whitespace);
 				whitelen[1] = char_length(whitespace + whitelen[0]);
 			}
@@ -1642,26 +1642,26 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 			if (has_blank_char(argument))
 				jot_error(N_("Non-blank characters required"));
 			else
-				punct = mallocstrcpy(punct, argument);
+				punct = reuse_with_copy(punct, argument);
 		} else if (strcmp(option, "brackets") == 0) {
 			if (has_blank_char(argument))
 				jot_error(N_("Non-blank characters required"));
 			else
-				brackets = mallocstrcpy(brackets, argument);
+				brackets = reuse_with_copy(brackets, argument);
 		} else if (strcmp(option, "quotestr") == 0)
-			quotestr = mallocstrcpy(quotestr, argument);
+			quotestr = reuse_with_copy(quotestr, argument);
 		else
 #endif
 #ifdef ENABLE_SPELLER
 		if (strcmp(option, "speller") == 0)
-			alt_speller = mallocstrcpy(alt_speller, argument);
+			alt_speller = reuse_with_copy(alt_speller, argument);
 		else
 #endif
 #ifndef NANO_TINY
 		if (strcmp(option, "backupdir") == 0)
-			backup_dir = mallocstrcpy(backup_dir, argument);
+			backup_dir = reuse_with_copy(backup_dir, argument);
 		else if (strcmp(option, "wordchars") == 0)
-			word_chars = mallocstrcpy(word_chars, argument);
+			word_chars = reuse_with_copy(word_chars, argument);
 		else if (strcmp(option, "guidestripe") == 0) {
 			if (!parse_num(argument, &stripe_column) || stripe_column <= 0) {
 				jot_error(N_("Guide column \"%s\" is invalid"), argument);

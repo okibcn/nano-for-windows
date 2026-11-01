@@ -462,7 +462,7 @@ bool open_buffer(const char *filename, bool new_one)
 
 	/* For a new buffer, store filename and put cursor at start of buffer. */
 	if (descriptor >= 0 && new_one) {
-		openfile->filename = mallocstrcpy(openfile->filename, filename);
+		openfile->filename = reuse_with_copy(openfile->filename, filename);
 		openfile->fullname = get_full_path(filename);
 		stat_with_alloc(filename, &openfile->statinfo);
 		openfile->current = openfile->filetop;
@@ -1142,7 +1142,7 @@ void insert_a_file_or(bool execute)
 #ifndef NANO_TINY
 	/* If something was typed at the Execute prompt without being run, restore it. */
 	if (execute && *foretext)
-		given = mallocstrcpy(given, foretext);
+		given = reuse_with_copy(given, foretext);
 #endif
 
 	while (TRUE) {
@@ -1176,7 +1176,7 @@ void insert_a_file_or(bool execute)
 					msg = _("File to insert [from %s]");
 		}
 
-		present_path = mallocstrcpy(present_path, "./");
+		present_path = reuse_with_copy(present_path, "./");
 
 		response = do_prompt(execute ? MEXECUTE : MINSERTFILE, given,
 							execute ? &execute_history : NULL,
@@ -1197,7 +1197,7 @@ void insert_a_file_or(bool execute)
 #if !defined(NANO_TINY) || defined(ENABLE_BROWSER) || defined(ENABLE_MULTIBUFFER)
 			functionptrtype function = func_from_key(response);
 #endif
-			given = mallocstrcpy(given, answer);
+			given = reuse_with_copy(given, answer);
 
 			if (ran_a_tool)
 				break;
@@ -1223,7 +1223,7 @@ void insert_a_file_or(bool execute)
 			}
 			if (function == flip_pipe) {
 				add_or_remove_pipe_symbol_from_answer();
-				given = mallocstrcpy(given, answer);
+				given = reuse_with_copy(given, answer);
 				continue;
 			}
 #endif
@@ -1915,7 +1915,7 @@ bool write_file(const char *filename, FILE *thefile, writing_type method, bool a
 		/* If the filename was changed, write a new lockfile when needed,
 		 * and check whether it means a different syntax gets used. */
 		if (strcmp(openfile->filename, filename) != 0) {
-			openfile->filename = mallocstrcpy(openfile->filename, filename);
+			openfile->filename = reuse_with_copy(openfile->filename, filename);
 			openfile->fullname = free_and_assign(openfile->fullname, get_full_path(filename));
 #ifndef NANO_TINY
 			if (openfile->lockfilename) {
@@ -2061,12 +2061,12 @@ int write_it_out(bool exiting, bool withprompt)
 #endif
 			msg = _("Write to File");
 
-		present_path = mallocstrcpy(present_path, "./");
+		present_path = reuse_with_copy(present_path, "./");
 
 		/* When we shouldn't prompt and have a filename, use that name.
 		 * Otherwise, ask for the filename (or for confirmation of it). */
 		if ((!withprompt || (ISSET(SAVE_ON_EXIT) && exiting)) && openfile->filename[0])
-			answer = mallocstrcpy(answer, openfile->filename);
+			answer = reuse_with_copy(answer, openfile->filename);
 		else
 			response = do_prompt(MWRITEFILE, given, NULL,
 						edit_refresh, "%s%s%s", msg,
@@ -2092,7 +2092,7 @@ int write_it_out(bool exiting, bool withprompt)
 			return 2;
 		}
 
-		given = mallocstrcpy(given, answer);
+		given = reuse_with_copy(given, answer);
 
 #ifdef ENABLE_BROWSER
 		if (function == to_files && !ISSET(RESTRICTED)) {
@@ -2290,7 +2290,7 @@ char *expand_leading_tilde(const char *path)
 		endpwent();
 
 		if (userdata)
-			home = mallocstrcpy(home, userdata->pw_dir);
+			home = reuse_with_copy(home, userdata->pw_dir);
 #else
 		home = copy_of("");
 #endif

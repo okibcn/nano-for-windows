@@ -118,7 +118,7 @@ void search_init(bool replacing, bool retain_answer)
 		if (response == 0 || response == -2) {
 			/* If an actual answer was typed, remember it. */
 			if (*answer) {
-				last_search = mallocstrcpy(last_search, answer);
+				last_search = reuse_with_copy(last_search, answer);
 #ifdef ENABLE_HISTORIES
 				update_history(&search_history, answer, PRUNE_DUPLICATE);
 #endif
@@ -369,7 +369,7 @@ void do_research(void)
 	/* If nothing was searched for yet during this run of nano, but
 	 * there is a search history, take the most recent item. */
 	if (*last_search == '\0' && searchbot->prev)
-		last_search = mallocstrcpy(last_search, searchbot->prev->data);
+		last_search = reuse_with_copy(last_search, searchbot->prev->data);
 #endif
 
 	if (*last_search == '\0') {

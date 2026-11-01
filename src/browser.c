@@ -217,7 +217,7 @@ void browser_refresh(void)
 			else
 				/* TRANSLATORS: Anything more than 7 cells gets clipped.
 				 * If necessary, you can leave out the parentheses. */
-				info = mallocstrcpy(info, _("(huge)"));
+				info = reuse_with_copy(info, _("(huge)"));
 		}
 
 		/* Make sure info takes up no more than infomaxlen columns. */
@@ -325,7 +325,7 @@ void search_filename(bool forwards)
 
 	/* If the user typed an answer, remember it. */
 	if (*answer) {
-		last_search = mallocstrcpy(last_search, answer);
+		last_search = reuse_with_copy(last_search, answer);
 #ifdef ENABLE_HISTORIES
 		update_history(&search_history, answer, PRUNE_DUPLICATE);
 #endif
@@ -342,7 +342,7 @@ void research_filename(bool forwards)
 #ifdef ENABLE_HISTORIES
 	/* If nothing was searched for yet, take the last item from history. */
 	if (*last_search == '\0' && searchbot->prev)
-		last_search = mallocstrcpy(last_search, searchbot->prev->data);
+		last_search = reuse_with_copy(last_search, searchbot->prev->data);
 #endif
 
 	if (*last_search == '\0')
@@ -410,8 +410,8 @@ char *browse(char *path)
 			napms(1200);
 			return NULL;
 		}
-		path = mallocstrcpy(path, present_path);
-		present_name = mallocstrcpy(present_name, filelist[selected]);
+		path = reuse_with_copy(path, present_path);
+		present_name = reuse_with_copy(present_name, filelist[selected]);
 	}
 
 	if (dir) {
@@ -436,7 +436,7 @@ char *browse(char *path)
 
 	old_selected = (size_t)-1;
 
-	present_path = mallocstrcpy(present_path, path);
+	present_path = reuse_with_copy(present_path, path);
 
 	titlebar(path);
 
@@ -577,7 +577,7 @@ char *browse(char *path)
 				/* TRANSLATORS: This refers to the confining effect of
 				 * the option --operatingdir, not of --restricted. */
 				statusline(ALERT, _("Can't go outside of %s"), operating_dir);
-				path = mallocstrcpy(path, present_path);
+				path = reuse_with_copy(path, present_path);
 				goto testresize;
 			}
 #endif
@@ -630,7 +630,7 @@ char *browse(char *path)
 				present_name = strip_last_component(filelist[selected]);
 
 			/* Try opening and reading the selected directory. */
-			path = mallocstrcpy(path, filelist[selected]);
+			path = reuse_with_copy(path, filelist[selected]);
 			goto read_directory_contents;
 #ifdef ENABLE_NANORC
 		} else if (function == (functionptrtype)implant) {
@@ -699,7 +699,7 @@ char *browse_in(const char *inpath)
 	/* If the resulting path isn't in the operating directory,
 	 * use the operating directory instead. */
 	if (operating_dir && outside_of_confinement(path, FALSE))
-		path = mallocstrcpy(path, operating_dir);
+		path = reuse_with_copy(path, operating_dir);
 #endif
 
 	return browse(path);

@@ -1889,7 +1889,7 @@ int main(int argc, char **argv)
 				SET(MAKE_BACKUP);
 				break;
 			case 'C':
-				backup_dir = mallocstrcpy(backup_dir, optarg);
+				backup_dir = reuse_with_copy(backup_dir, optarg);
 				break;
 #endif
 			case 'D':
@@ -1957,7 +1957,7 @@ int main(int argc, char **argv)
 #endif
 #ifdef ENABLE_JUSTIFY
 			case 'Q':
-				quotestr = mallocstrcpy(quotestr, optarg);
+				quotestr = reuse_with_copy(quotestr, optarg);
 				break;
 #endif
 			case 'R':
@@ -1986,12 +1986,12 @@ int main(int argc, char **argv)
 				SET(WORD_BOUNDS);
 				break;
 			case 'X':
-				word_chars = mallocstrcpy(word_chars, optarg);
+				word_chars = reuse_with_copy(word_chars, optarg);
 				break;
 #endif
 #ifdef ENABLE_COLOR
 			case 'Y':
-				syntaxstr = mallocstrcpy(syntaxstr, optarg);
+				syntaxstr = reuse_with_copy(syntaxstr, optarg);
 				break;
 #endif
 #ifndef NANO_TINY
@@ -2020,7 +2020,7 @@ int main(int argc, char **argv)
 #endif
 #ifdef ENABLE_NANORC
 			case 'f':
-				custom_nanorc = mallocstrcpy(custom_nanorc, optarg);
+				custom_nanorc = reuse_with_copy(custom_nanorc, optarg);
 				break;
 #endif
 #if defined(ENABLE_BROWSER) || defined(ENABLE_HELP)
@@ -2059,7 +2059,7 @@ int main(int argc, char **argv)
 #endif
 #ifdef ENABLE_OPERATINGDIR
 			case 'o':
-				operating_dir = mallocstrcpy(operating_dir, optarg);
+				operating_dir = reuse_with_copy(operating_dir, optarg);
 				break;
 #endif
 			case 'p':
@@ -2084,7 +2084,7 @@ int main(int argc, char **argv)
 #endif
 #ifdef ENABLE_SPELLER
 			case 's':
-				alt_speller = mallocstrcpy(alt_speller, optarg);
+				alt_speller = reuse_with_copy(alt_speller, optarg);
 				break;
 #endif
 			case 't':
