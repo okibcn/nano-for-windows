@@ -1916,8 +1916,7 @@ bool write_file(const char *filename, FILE *thefile, writing_type method, bool a
 		 * and check whether it means a different syntax gets used. */
 		if (strcmp(openfile->filename, filename) != 0) {
 			openfile->filename = mallocstrcpy(openfile->filename, filename);
-			free(openfile->fullname);
-			openfile->fullname = get_full_path(filename);
+			openfile->fullname = free_and_assign(openfile->fullname, get_full_path(filename));
 #ifndef NANO_TINY
 			if (openfile->lockfilename) {
 				delete_lockfile(openfile->lockfilename);
