@@ -308,7 +308,7 @@ char *reuse_with_copy(char *target, const char *source)
 	size_t count = strlen(source) + 1;
 
 	target = nrealloc(target, count);
-	strncpy(target, source, count);
+	memcpy(target, source, count);
 
 	return target;
 }
