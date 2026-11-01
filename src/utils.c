@@ -301,16 +301,16 @@ void *nrealloc(void *section, size_t howmuch)
 	return section;
 }
 
-/* Return an appropriately reallocated dest string holding a copy of src.
- * Usage: "dest = reuse_with_copy(dest, src);". */
-char *reuse_with_copy(char *dest, const char *src)
+/* Return the reallocated `target` string holding a copy of `source`.
+ * Use like this: target = reuse_with_copy(target, source). */
+char *reuse_with_copy(char *target, const char *source)
 {
-	size_t count = strlen(src) + 1;
+	size_t count = strlen(source) + 1;
 
-	dest = nrealloc(dest, count);
-	strncpy(dest, src, count);
+	target = nrealloc(target, count);
+	strncpy(target, source, count);
 
-	return dest;
+	return target;
 }
 
 /* Return an allocated copy of the first count characters
