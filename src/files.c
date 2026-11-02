@@ -2181,7 +2181,7 @@ int write_it_out(bool exiting, bool withprompt)
 				}
 
 				if (name_exists) {
-					char *question = _("File \"%s\" exists; OVERWRITE? ");
+					char *question = _("File '%s' exists; OVERWRITE? ");
 					char *name = crop_to_fit(answer, COLS - breadth(question) + 1);
 					char *message = nmalloc(strlen(question) + strlen(name) + 1);
 
