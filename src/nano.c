@@ -1578,7 +1578,6 @@ void process_a_keystroke(void)
 #ifndef NANO_TINY
 	linestruct *was_mark = openfile->mark;
 #endif
-	static bool give_a_hint = TRUE;
 	const keystruct *shortcut;
 	functionptrtype function;
 
@@ -1654,13 +1653,6 @@ void process_a_keystroke(void)
 		print_view_warning();
 		return;
 	}
-
-	if (input == '\b' && give_a_hint && openfile->current_x == 0 &&
-				openfile->current == openfile->filetop && !ISSET(NO_HELP)) {
-		statusbar(_("^F = Ctrl+F    M-F = Alt+F"));
-		give_a_hint = FALSE;
-	} else if (meta_key)
-		give_a_hint = FALSE;
 
 #ifdef ENABLE_NANORC
 	if (function == (functionptrtype)implant) {

@@ -138,6 +138,8 @@ void do_delete(void)
  * when mark is on and --zap is active, delete the marked region. */
 void do_backspace(void)
 {
+	static bool give_a_hint = TRUE;
+
 #ifndef NANO_TINY
 	if (openfile->mark && ISSET(LET_THEM_ZAP))
 		zap_text();
@@ -149,7 +151,10 @@ void do_backspace(void)
 	} else if (openfile->current != openfile->filetop) {
 		do_left();
 		expunge(BACK);
-	}
+	} else if (give_a_hint && !ISSET(NO_HELP))
+		statusbar(_("^F = Ctrl+F    M-F = Alt+F"));
+
+	give_a_hint = FALSE;
 }
 
 /* Return FALSE when a cut command would not actually cut anything: when
