@@ -1657,7 +1657,7 @@ void process_a_keystroke(void)
 
 	if (input == '\b' && give_a_hint && openfile->current_x == 0 &&
 				openfile->current == openfile->filetop && !ISSET(NO_HELP)) {
-		statusbar(_("^W = Ctrl+W    M-W = Alt+W"));
+		statusbar(_("^F = Ctrl+F    M-F = Alt+F"));
 		give_a_hint = FALSE;
 	} else if (meta_key)
 		give_a_hint = FALSE;

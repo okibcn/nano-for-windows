@@ -571,7 +571,7 @@ void do_help(void)
 	show_help();
 #else
 	if (currmenu & (MMAIN|MBROWSER))
-		statusbar(_("^W = Ctrl+W    M-W = Alt+W"));
+		statusbar(_("^F = Ctrl+F    M-F = Alt+F"));
 	else
 		beep();
 #endif
