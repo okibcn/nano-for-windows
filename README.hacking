@@ -12,9 +12,9 @@ To successfully compile GNU nano from git, you'll need the following:
 
     autoconf    (version >= 2.69)
     automake    (version >= 1.14)
-    autopoint   (version >= 0.20)
+    autopoint   (version >= 0.21)
     gcc         (version >= 5.0)
-    gettext     (version >= 0.20)
+    gettext     (version >= 0.21)
     git         (version >= 2.7.4)
     groff       (version >= 1.12)
     make        (any version)
