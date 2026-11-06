@@ -404,15 +404,15 @@ void window_init(void)
 
 	/* If the terminal is very flat, don't set up a title bar. */
 	if (LINES < 3) {
-		editwinrows = (ISSET(ZERO) ? LINES : 1);
+		editwinrows = ISSET(ZERO) ? LINES : 1;
 		/* Set up two subwindows.  If the terminal is just one line,
 		 * edit window and status-bar window will cover each other. */
 		midwin = newwin(editwinrows, COLS, 0, 0);
 		footwin = newwin(1, COLS, LINES - 1, 0);
 	} else {
-		int minimum = (ISSET(ZERO) ? 3 : ISSET(MINIBAR) ? 4 : 5);
-		int toprows = ((ISSET(EMPTY_LINE) && LINES > minimum) ? 2 : 1);
-		int bottomrows = ((ISSET(NO_HELP) || LINES < minimum) ? 1 : 3);
+		int minimum = ISSET(ZERO) ? 3 : ISSET(MINIBAR) ? 4 : 5;
+		int toprows = (ISSET(EMPTY_LINE) && LINES > minimum) ? 2 : 1;
+		int bottomrows = (ISSET(NO_HELP) || LINES < minimum) ? 1 : 3;
 
 		if (ISSET(MINIBAR) || ISSET(ZERO))
 			toprows = 0;

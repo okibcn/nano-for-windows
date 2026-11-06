@@ -736,7 +736,7 @@ int ask_user(bool withall, const char *question)
 		/* If the received code is a UTF-8 starter byte, get also the
 		 * continuation bytes and assemble them into one letter. */
 		if (0xC0 <= kbinput && kbinput <= 0xF7 && using_utf8) {
-			int extras = (kbinput / 16) % 4 + (kbinput <= 0xCF ? 1 : 0);
+			int extras = (kbinput / 16) % 4 + ((kbinput <= 0xCF) ? 1 : 0);
 
 			while (extras <= waiting_keycodes() && extras-- > 0)
 				letter[index++] = (unsigned char)get_kbinput(footwin, !withall);

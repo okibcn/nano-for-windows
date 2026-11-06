@@ -434,9 +434,9 @@ int get_input(WINDOW *frame)
 int arrow_from_ABCD(int letter)
 {
 	if (letter < 'C')
-		return (letter == 'A' ? KEY_UP : KEY_DOWN);
+		return (letter == 'A') ? KEY_UP : KEY_DOWN;
 	else
-		return (letter == 'D' ? KEY_LEFT : KEY_RIGHT);
+		return (letter == 'D') ? KEY_LEFT : KEY_RIGHT;
 }
 
 /* Translate a sequence that began with "Esc O" to its corresponding key code. */
@@ -1607,7 +1607,7 @@ int get_mouseinput(int *mouse_y, int *mouse_x)
 		/* Clicking in the "scrollbar" goes to the roughly corresponding line. */
 		if (in_middle && sidebar && event.x == (COLS - 1) && currmenu == MMAIN) {
 			wmouse_trafo(midwin, mouse_y, mouse_x, FALSE);
-			*mouse_y += (*mouse_y ? 1 : 0);
+			*mouse_y += (*mouse_y) ? 1 : 0;
 			goto_line_and_column(openfile->filebot->lineno * *mouse_y / editwinrows + 1,
 									openfile->placewewant + 1, TRUE);
 			refresh_needed = TRUE;
@@ -1930,7 +1930,7 @@ char *display_string(const char *text, size_t column, size_t span,
 			converted[index++] = *(text++);
 
 		/* If the codepoint is unassigned, assume a width of one. */
-		column += (charwidth < 0 ? 1 : charwidth);
+		column += (charwidth < 0) ? 1 : charwidth;
 #endif /* ENABLE_UTF8 */
 	}
 
@@ -2394,7 +2394,7 @@ void statusline(message_type importance, const char *msg, ...)
 	free(message);
 
 	/* When requested, wipe the status bar after just one keystroke. */
-	countdown = (ISSET(QUICK_BLANK) ? 1 : 20);
+	countdown = ISSET(QUICK_BLANK) ? 1 : 20;
 }
 
 /* Display a normal message on the status bar, quietly. */
@@ -3153,7 +3153,7 @@ size_t get_softwrap_breakpoint(const char *linedata, size_t leftedge,
 			last_blank_col = column;
 		}
 
-		breaking_col = (*text == '\t' ? rightside : column);
+		breaking_col = (*text == '\t') ? rightside : column;
 		text += advance_over(text, &column);
 	}
 

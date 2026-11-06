@@ -389,7 +389,7 @@ size_t step_left(const char *buf, size_t pos)
 	}
 #endif
 
-	return (pos == 0 ? 0 : pos - 1);
+	return (pos == 0) ? 0 : pos - 1;
 }
 
 /* Return the index in buf of the beginning of the multibyte character

@@ -515,7 +515,7 @@ void prepare_for_display(void)
 /* Show name of current buffer and its number of lines on the status bar. */
 void mention_name_and_linecount(void)
 {
-	size_t count = openfile->filebot->lineno - (openfile->filebot->data[0] == '\0' ? 1 : 0);
+	size_t count = openfile->filebot->lineno - ((openfile->filebot->data[0] == '\0') ? 1 : 0);
 
 #ifndef NANO_TINY
 	if (ISSET(MINIBAR)) {
@@ -2543,7 +2543,7 @@ char *input_tab(char *morsel, size_t *place, void (*refresh_func)(void), bool *l
 
 	/* If there is more than one possible completion, show a sorted list. */
 	if (num_matches > 1) {
-		int lastrow = editwinrows - 1 - (ISSET(ZERO) && LINES > 1 ? 1 : 0);
+		int lastrow = editwinrows - ((ISSET(ZERO) && LINES > 1) ? 2 : 1);
 		size_t longest_name = 0;
 		size_t nrows, ncols;
 		int row;

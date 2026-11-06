@@ -104,7 +104,7 @@ void read_the_list(const char *path, DIR *dir)
 	 * between columns. */
 	piles = (COLS + 2) / (gauge + 2);
 
-	usable_rows = editwinrows - (ISSET(ZERO) && LINES > 1 ? 1 : 0);
+	usable_rows = editwinrows - ((ISSET(ZERO) && LINES > 1) ? 1 : 0);
 }
 
 /* Reselect the given file or directory name, if it still exists. */

@@ -60,7 +60,7 @@ void set_interface_colorpairs(void)
 			else if (index == GUIDE_STRIPE)
 				interface_color_pair[index] = A_REVERSE;
 			else if (index == SPOTLIGHTED) {
-				init_pair(index + 1, COLOR_BLACK, COLOR_YELLOW + (COLORS > 15 ? 8 : 0));
+				init_pair(index + 1, COLOR_BLACK, COLOR_YELLOW + ((COLORS > 15) ? 8 : 0));
 				interface_color_pair[index] = COLOR_PAIR(index + 1);
 			} else if (index == MINI_INFOBAR || index == PROMPT_BAR)
 				interface_color_pair[index] = interface_color_pair[TITLE_BAR];

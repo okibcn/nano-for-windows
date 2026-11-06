@@ -433,7 +433,7 @@ void handle_comment_action(undostruct *u, bool undoing, bool add_comment)
 		linestruct *line = line_from_number(group->top_line);
 
 		while (line && line->lineno <= group->bottom_line) {
-			comment_line(undoing ^ add_comment ? COMMENT : UNCOMMENT, line, u->strdata);
+			comment_line((undoing ^ add_comment) ? COMMENT : UNCOMMENT, line, u->strdata);
 			line = line->next;
 		}
 
@@ -1722,7 +1722,7 @@ void justify_paragraph(linestruct **line, size_t count)
 		/* The quote+indent stuff that is copied from the sample line. */
 
 	/* The sample line is either the only line or the second line. */
-	sampleline = (count == 1 ? *line : (*line)->next);
+	sampleline = (count == 1) ? *line : (*line)->next;
 
 	/* Copy the leading part (quoting + indentation) of the sample line. */
 	quot_len = quote_length(sampleline->data);
@@ -1855,7 +1855,7 @@ void justify_text(bool whole_buffer)
 		openfile->current = endline;
 		openfile->current_x = end_x;
 
-		linecount = endline->lineno - startline->lineno + (end_x > 0 ? 1 : 0);
+		linecount = endline->lineno - startline->lineno + ((end_x > 0) ? 1 : 0);
 
 		/* Remember whether the end of the region was before the end-of-line. */
 		before_eol = (endline->data[end_x] != '\0');
@@ -2217,7 +2217,7 @@ void treat(char *tempfile_name, char *theprogram, bool spelling)
 #endif
 		replaced = replace_buffer(tempfile_name, CUT_TO_EOF,
 					/* TRANSLATORS: The next two go with Undid/Redid messages. */
-					(spelling ? N_("spelling correction") : N_("formatting")));
+					spelling ? N_("spelling correction") : N_("formatting"));
 
 	/* Go back to the old position. */
 	goto_line_posx(was_lineno, was_x);
