@@ -377,7 +377,8 @@ enum {
 	EMPTY_LINE,
 	INDICATOR,
 	STATEFLAGS,
-	MINIBAR
+	MINIBAR,
+	_FENCE_
 };
 
 /* Structure types. */

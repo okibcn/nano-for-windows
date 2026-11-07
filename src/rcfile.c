@@ -126,18 +126,19 @@ static const rcoption rcopts[] = {
 	{"zero", ZERO},
 #endif
 #ifdef ENABLE_COLOR
-	{"titlecolor", 0},
-	{"numbercolor", 0},
-	{"stripecolor", 0},
-	{"scrollercolor", 0},
-	{"selectedcolor", 0},
-	{"spotlightcolor", 0},
-	{"minicolor", 0},
-	{"promptcolor", 0},
-	{"statuscolor", 0},
-	{"errorcolor", 0},
-	{"keycolor", 0},
-	{"functioncolor", 0},
+	/* Use the `flag` part to store which interface element is meant. */
+	{"titlecolor", TITLE_BAR + _FENCE_},
+	{"numbercolor", LINE_NUMBER + _FENCE_},
+	{"stripecolor", GUIDE_STRIPE + _FENCE_},
+	{"scrollercolor", SCROLL_BAR + _FENCE_},
+	{"selectedcolor", SELECTED_TEXT + _FENCE_},
+	{"spotlightcolor", SPOTLIGHTED + _FENCE_},
+	{"minicolor", MINI_INFOBAR + _FENCE_},
+	{"promptcolor", PROMPT_BAR + _FENCE_},
+	{"statuscolor", STATUS_BAR + _FENCE_},
+	{"errorcolor", ERROR_MESSAGE + _FENCE_},
+	{"keycolor", KEY_COMBO + _FENCE_},
+	{"functioncolor", FUNCTION_TAG + _FENCE_},
 #endif
 	{NULL, 0}
 };
@@ -1548,7 +1549,7 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		}
 
 		/* If the option has a flag, set it or unset it, as requested. */
-		if (rcopts[i].flag) {
+		if (rcopts[i].flag && rcopts[i].flag < _FENCE_) {
 			if (set == 1)
 				SET(rcopts[i].flag);
 			else
@@ -1580,30 +1581,8 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		}
 #endif
 #ifdef ENABLE_COLOR
-		if (strcmp(option, "titlecolor") == 0)
-			set_interface_color(TITLE_BAR, argument);
-		else if (strcmp(option, "numbercolor") == 0)
-			set_interface_color(LINE_NUMBER, argument);
-		else if (strcmp(option, "stripecolor") == 0)
-			set_interface_color(GUIDE_STRIPE, argument);
-		else if (strcmp(option, "scrollercolor") == 0)
-			set_interface_color(SCROLL_BAR, argument);
-		else if (strcmp(option, "selectedcolor") == 0)
-			set_interface_color(SELECTED_TEXT, argument);
-		else if (strcmp(option, "spotlightcolor") == 0)
-			set_interface_color(SPOTLIGHTED, argument);
-		else if (strcmp(option, "minicolor") == 0)
-			set_interface_color(MINI_INFOBAR, argument);
-		else if (strcmp(option, "promptcolor") == 0)
-			set_interface_color(PROMPT_BAR, argument);
-		else if (strcmp(option, "statuscolor") == 0)
-			set_interface_color(STATUS_BAR, argument);
-		else if (strcmp(option, "errorcolor") == 0)
-			set_interface_color(ERROR_MESSAGE, argument);
-		else if (strcmp(option, "keycolor") == 0)
-			set_interface_color(KEY_COMBO, argument);
-		else if (strcmp(option, "functioncolor") == 0)
-			set_interface_color(FUNCTION_TAG, argument);
+		if (rcopts[i].flag)
+			set_interface_color(rcopts[i].flag - _FENCE_, argument);
 		else
 #endif
 #ifdef ENABLE_OPERATINGDIR
