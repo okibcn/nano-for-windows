@@ -1455,7 +1455,7 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		bool drop_open = FALSE;
 #endif
 		int set = 0;
-		int i;
+		int index;
 
 		lineno++;
 
@@ -1603,19 +1603,19 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		option = ptr;
 		ptr = parse_next_word(ptr);
 
-		i = find_index_of(option);
+		index = find_index_of(option);
 
-		if (i < 0) {
+		if (index < 0) {
 			jot_error(N_("Unknown option: %s"), option);
 			continue;
 		}
 
 		/* If the option has a flag, set it or unset it, as requested. */
-		if (rcopts[i].flag && rcopts[i].flag < _FENCE_) {
+		if (rcopts[index].flag && rcopts[index].flag < _FENCE_) {
 			if (set == 1)
-				SET(rcopts[i].flag);
+				SET(rcopts[index].flag);
 			else
-				UNSET(rcopts[i].flag);
+				UNSET(rcopts[index].flag);
 			continue;
 		}
 
@@ -1643,8 +1643,8 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		}
 #endif
 #ifdef ENABLE_COLOR
-		if (rcopts[i].flag)
-			set_interface_color(rcopts[i].flag - _FENCE_, argument);
+		if (rcopts[index].flag)
+			set_interface_color(rcopts[index].flag - _FENCE_, argument);
 		else
 #endif
 #ifdef ENABLE_OPERATINGDIR
