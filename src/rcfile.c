@@ -38,6 +38,7 @@
 #define HOME_RC_NAME  RCFILE_NAME
 #endif
 
+/* Array of option names, ordered alphabetically for binary search. */
 static const rcoption rcopts[] = {
 #ifndef NANO_TINY
 	{"afterends", AFTER_ENDS},
@@ -185,7 +186,6 @@ static const rcoption rcopts[] = {
 	{"zap", LET_THEM_ZAP},
 	{"zero", ZERO},
 #endif
-	{NULL, 0}
 };
 
 static size_t lineno = 0;
@@ -1419,6 +1419,27 @@ static void check_vitals_mapped(void)
 	}
 }
 
+/* Return the index of the given option name in the array of options. */
+int find_index_of(char *name)
+{
+	int left = 0;
+	int right = sizeof(rcopts) / sizeof(rcopts[0]) - 1;
+
+	while (left <= right) {
+		int middle = (left + right) / 2;
+		int value = strcmp(rcopts[middle].name, name);
+
+		if (value == 0)
+			return middle;
+		else if (value < 0)
+			left = middle + 1;
+		else
+			right = middle - 1;
+	}
+
+	return -1;
+}
+
 /* Parse the rcfile, once it has been opened successfully at rcstream,
  * and close it afterwards.  If just_syntax is TRUE, allow the file to
  * contain only color syntax commands. */
@@ -1434,7 +1455,7 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		bool drop_open = FALSE;
 #endif
 		int set = 0;
-		size_t i;
+		int i;
 
 		lineno++;
 
@@ -1582,13 +1603,9 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		option = ptr;
 		ptr = parse_next_word(ptr);
 
-		/* Find the just parsed option name among the existing names. */
-		for (i = 0; rcopts[i].name != NULL; i++) {
-			if (strcmp(option, rcopts[i].name) == 0)
-				break;
-		}
+		i = find_index_of(option);
 
-		if (rcopts[i].name == NULL) {
+		if (i < 0) {
 			jot_error(N_("Unknown option: %s"), option);
 			continue;
 		}
