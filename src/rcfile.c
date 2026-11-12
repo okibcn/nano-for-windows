@@ -39,7 +39,18 @@
 #endif
 
 static const rcoption rcopts[] = {
+#ifndef NANO_TINY
+	{"afterends", AFTER_ENDS},
+	{"allow_insecure_backup", INSECURE_BACKUP},
+	{"atblanks", AT_BLANKS},
+	{"autoindent", AUTOINDENT},
+	{"backup", MAKE_BACKUP},
+	{"backupdir", 0},
+#endif
 	{"boldtext", BOLD_TEXT},
+#ifndef NANO_TINY
+	{"bookstyle", BOOKSTYLE},
+#endif
 #ifdef ENABLE_JUSTIFY
 	{"brackets", 0},
 #endif
@@ -47,18 +58,53 @@ static const rcoption rcopts[] = {
 	{"breaklonglines", BREAK_LONG_LINES},
 #endif
 	{"casesensitive", CASE_SENSITIVE},
+#ifndef NANO_TINY
+	{"colonparsing", COLON_PARSING},
+#endif
 	{"constantshow", CONSTANT_SHOW},
+#ifndef NANO_TINY
+	{"cutfromcursor", CUT_FROM_CURSOR},
+	{"emptyline", EMPTY_LINE},
+#endif
+#ifdef ENABLE_COLOR
+	{"errorcolor", ERROR_MESSAGE + _FENCE_},
+#endif
 #ifdef ENABLED_WRAPORJUSTIFY
 	{"fill", 0},
+#endif
+#ifdef ENABLE_COLOR
+	{"functioncolor", FUNCTION_TAG + _FENCE_},
+#endif
+#ifndef NANO_TINY
+	{"guidestripe", 0},
 #endif
 #ifdef ENABLE_HISTORIES
 	{"historylog", HISTORYLOG},
 #endif
+#ifndef NANO_TINY
+	{"indicator", INDICATOR},
+	{"jumpyscrolling", JUMPY_SCROLLING},
+#endif
+#ifdef ENABLE_COLOR
+	{"keycolor", KEY_COMBO + _FENCE_},
+#endif
 #ifdef ENABLE_LINENUMBERS
 	{"linenumbers", LINE_NUMBERS},
 #endif
+#ifndef NANO_TINY
+	{"locking", LOCKING},
+#endif
 #ifdef HAVE_LIBMAGIC
 	{"magic", USE_MAGIC},
+#endif
+#ifndef NANO_TINY
+	{"matchbrackets", 0},
+#endif
+#ifndef NANO_TINY
+	{"minibar", MINIBAR},
+#endif
+#ifdef ENABLE_COLOR
+	{"minicolor", MINI_INFOBAR + _FENCE_},
 #endif
 #ifdef ENABLE_MOUSE
 	{"mouse", USE_MOUSE},
@@ -67,10 +113,16 @@ static const rcoption rcopts[] = {
 	{"multibuffer", NEW_BUFFER},  /* Deprecated; remove in 2031. */
 	{"newbuffer", NEW_BUFFER},
 #endif
+#ifndef NANO_TINY
+	{"noconvert", NO_CONVERT},
+#endif
 	{"nohelp", NO_HELP},
 	{"nonewlines", NO_NEWLINES},
 #ifdef ENABLE_WRAPPING
 	{"nowrap", NO_WRAP},  /* Deprecated; remove in 2027. */
+#endif
+#ifdef ENABLE_COLOR
+	{"numbercolor", LINE_NUMBER + _FENCE_},
 #endif
 #ifdef ENABLE_OPERATINGDIR
 	{"operatingdir", 0},
@@ -79,43 +131,51 @@ static const rcoption rcopts[] = {
 	{"positionlog", POSITIONLOG},
 #endif
 	{"preserve", PRESERVE},
+#ifdef ENABLE_COLOR
+	{"promptcolor", PROMPT_BAR + _FENCE_},
+#endif
 #ifdef ENABLE_JUSTIFY
 	{"punct", 0},
-	{"quotestr", 0},
 #endif
 	{"quickblank", QUICK_BLANK},
+#ifdef ENABLE_JUSTIFY
+	{"quotestr", 0},
+#endif
 	{"rawsequences", RAW_SEQUENCES},
 	{"rebinddelete", REBIND_DELETE},
 	{"regexp", USE_REGEXP},
 	{"saveonexit", SAVE_ON_EXIT},
-#ifdef ENABLE_SPELLER
-	{"speller", 0},
+#ifdef ENABLE_COLOR
+	{"scrollercolor", SCROLL_BAR + _FENCE_},
+	{"selectedcolor", SELECTED_TEXT + _FENCE_},
 #endif
 #ifndef NANO_TINY
-	{"afterends", AFTER_ENDS},
-	{"allow_insecure_backup", INSECURE_BACKUP},
-	{"atblanks", AT_BLANKS},
-	{"autoindent", AUTOINDENT},
-	{"backup", MAKE_BACKUP},
-	{"backupdir", 0},
-	{"bookstyle", BOOKSTYLE},
-	{"colonparsing", COLON_PARSING},
-	{"cutfromcursor", CUT_FROM_CURSOR},
-	{"emptyline", EMPTY_LINE},
-	{"guidestripe", 0},
-	{"indicator", INDICATOR},
-	{"jumpyscrolling", JUMPY_SCROLLING},
-	{"locking", LOCKING},
-	{"matchbrackets", 0},
-	{"minibar", MINIBAR},
-	{"noconvert", NO_CONVERT},
 	{"showcursor", SHOW_CURSOR},
 	{"smarthome", SMART_HOME},
 	{"softwrap", SOFTWRAP},
 	{"solosidescroll", SOLO_SIDESCROLL},
+#endif
+#ifdef ENABLE_SPELLER
+	{"speller", 0},
+#endif
+#ifdef ENABLE_COLOR
+	{"spotlightcolor", SPOTLIGHTED + _FENCE_},
+#endif
+#ifndef NANO_TINY
 	{"stateflags", STATEFLAGS},
+#endif
+#ifdef ENABLE_COLOR
+	{"statuscolor", STATUS_BAR + _FENCE_},
+	{"stripecolor", GUIDE_STRIPE + _FENCE_},
+#endif
+#ifndef NANO_TINY
 	{"tabsize", 0},
 	{"tabstospaces", TABS_TO_SPACES},
+#endif
+#ifdef ENABLE_COLOR
+	{"titlecolor", TITLE_BAR + _FENCE_},
+#endif
+#ifndef NANO_TINY
 	{"trimblanks", TRIM_BLANKS},
 	{"unix", MAKE_IT_UNIX},
 	{"whitespace", 0},
@@ -124,21 +184,6 @@ static const rcoption rcopts[] = {
 	{"wordchars", 0},
 	{"zap", LET_THEM_ZAP},
 	{"zero", ZERO},
-#endif
-#ifdef ENABLE_COLOR
-	/* Use the `flag` part to store which interface element is meant. */
-	{"titlecolor", TITLE_BAR + _FENCE_},
-	{"numbercolor", LINE_NUMBER + _FENCE_},
-	{"stripecolor", GUIDE_STRIPE + _FENCE_},
-	{"scrollercolor", SCROLL_BAR + _FENCE_},
-	{"selectedcolor", SELECTED_TEXT + _FENCE_},
-	{"spotlightcolor", SPOTLIGHTED + _FENCE_},
-	{"minicolor", MINI_INFOBAR + _FENCE_},
-	{"promptcolor", PROMPT_BAR + _FENCE_},
-	{"statuscolor", STATUS_BAR + _FENCE_},
-	{"errorcolor", ERROR_MESSAGE + _FENCE_},
-	{"keycolor", KEY_COMBO + _FENCE_},
-	{"functioncolor", FUNCTION_TAG + _FENCE_},
 #endif
 	{NULL, 0}
 };
