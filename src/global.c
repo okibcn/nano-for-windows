@@ -610,7 +610,7 @@ void make_classic_bindings(void)
 }
 
 /* Make the bindings that are different from the classic ones. */
-void make_modern_bindings(void)
+void make_modern_bindings(bool putathead)
 {
 #ifdef HAVE_TERM_H
 	/* If Backspace is not ^H, then ^H can be used for Help. */
@@ -619,6 +619,7 @@ void make_modern_bindings(void)
 #else
 	const char *help_key = "^N";
 #endif
+	keystruct *was_tail = tailsc;
 
 	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, help_key, 0, do_help);
 	add_to_sclist(MHELP, help_key, 0, do_exit);
@@ -643,6 +644,13 @@ void make_modern_bindings(void)
 #if defined(NANO_TINY) && defined(ENABLE_SPELLER)
 	add_to_sclist(MMAIN, "^E", 0, do_spell);
 #endif
+
+	/* When requested, place these bindings at the start of the list. */
+	if (putathead) {
+		tailsc->next = sclist;
+		sclist = was_tail->next;
+		was_tail->next = NULL;
+	}
 }
 
 /* These two tags are used elsewhere too, so they are global. */
@@ -1314,7 +1322,7 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^B", 0, do_search_backward);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^F", 0, do_search_forward);
 	if (ISSET(MODERN_BINDINGS))
-		make_modern_bindings();
+		make_modern_bindings(FALSE);
 	else
 		make_classic_bindings();
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);

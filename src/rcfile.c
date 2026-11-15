@@ -107,6 +107,7 @@ static const rcoption rcopts[] = {
 #ifdef ENABLE_COLOR
 	{"minicolor", MINI_INFOBAR + _FENCE_},
 #endif
+	{"modernbindings", MODERN_BINDINGS},
 #ifdef ENABLE_MOUSE
 	{"mouse", USE_MOUSE},
 #endif
@@ -1612,6 +1613,13 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 
 		/* If the option has a flag, set it or unset it, as requested. */
 		if (rcopts[index].flag && rcopts[index].flag < _FENCE_) {
+			if (rcopts[index].flag == MODERN_BINDINGS) {
+				if (set < 0) {
+					jot_error(N_("Cannot unset option '%s'"), "modernbindings");
+					continue;
+				} else if (!ISSET(MODERN_BINDINGS))
+					make_modern_bindings(TRUE);
+			}
 			if (set == 1)
 				SET(rcopts[index].flag);
 			else

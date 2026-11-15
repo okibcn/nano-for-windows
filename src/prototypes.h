@@ -335,6 +335,7 @@ functionptrtype func_from_key(const int keycode);
 #if defined(ENABLE_BROWSER) || defined(ENABLE_HELP)
 functionptrtype interpret(const int keycode);
 #endif
+void make_modern_bindings(bool putathead);
 int keycode_from_string(const char *keystring);
 void shortcut_init(void);
 const char *epithet_of_flag(int flag);
