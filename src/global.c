@@ -589,6 +589,8 @@ void make_classic_bindings(void)
 		add_to_sclist(MMAIN, "^S", 0, do_savefile);
 	add_to_sclist(MMAIN, "^O", 0, do_writeout);
 	add_to_sclist(MMAIN, "^R", 0, do_insertfile);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^B", 0, do_search_backward);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^F", 0, do_search_forward);
 	if (!ISSET(PRESERVE))
 		add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_search_backward);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^W", 0, do_search_forward);
@@ -627,6 +629,8 @@ void make_modern_bindings(bool putathead)
 	add_to_sclist(MMAIN, "^S", 0, do_savefile);
 	add_to_sclist(MMAIN, "^W", 0, do_writeout);
 	add_to_sclist(MMAIN, "^O", 0, do_insertfile);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^B", 0, do_search_backward);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^F", 0, do_search_forward);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^D", 0, do_findprevious);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^G", 0, do_findnext);
 	add_to_sclist(MMAIN, "^R", 0, do_replace);
@@ -1315,16 +1319,14 @@ void shortcut_init(void)
 #endif
 
 	/* Link key combos to functions in certain menus. */
-	add_to_sclist(MMOST|MBROWSER, "^M", '\r', do_enter);
-	add_to_sclist(MMOST|MBROWSER, "Enter", KEY_ENTER, do_enter);
-	add_to_sclist(MMOST, "^I", '\t', do_tab);
-	add_to_sclist(MMOST, "Tab", '\t', do_tab);
-	add_to_sclist(MMAIN|MBROWSER|MHELP, "^B", 0, do_search_backward);
-	add_to_sclist(MMAIN|MBROWSER|MHELP, "^F", 0, do_search_forward);
 	if (ISSET(MODERN_BINDINGS))
 		make_modern_bindings(FALSE);
 	else
 		make_classic_bindings();
+	add_to_sclist(MMOST|MBROWSER, "^M", '\r', do_enter);
+	add_to_sclist(MMOST|MBROWSER, "Enter", KEY_ENTER, do_enter);
+	add_to_sclist(MMOST, "^I", '\t', do_tab);
+	add_to_sclist(MMOST, "Tab", '\t', do_tab);
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);
 	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
 	add_to_sclist(MMOST, "Del", KEY_DC, do_delete);
