@@ -1647,11 +1647,6 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 			set_interface_color(rcopts[index].flag - _FENCE_, argument);
 		else
 #endif
-#ifdef ENABLE_OPERATINGDIR
-		if (strcmp(option, "operatingdir") == 0)
-			operating_dir = reuse_with_copy(operating_dir, argument);
-		else
-#endif
 #ifdef ENABLED_WRAPORJUSTIFY
 		if (strcmp(option, "fill") == 0) {
 			if (!parse_num(argument, &fill)) {
@@ -1660,50 +1655,13 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 			}
 		} else
 #endif
-#ifndef NANO_TINY
-		if (strcmp(option, "matchbrackets") == 0) {
-			if (has_blank_char(argument))
-				jot_error(N_("Non-blank characters required"));
-			else if (mbstrlen(argument) % 2 != 0)
-				jot_error(N_("Even number of characters required"));
-			else
-				matchbrackets = reuse_with_copy(matchbrackets, argument);
-		} else if (strcmp(option, "whitespace") == 0) {
-			if (mbstrlen(argument) != 2 || breadth(argument) != 2)
-				jot_error(N_("Two single-column characters required"));
-			else {
-				whitespace = reuse_with_copy(whitespace, argument);
-				whitelen[0] = char_length(whitespace);
-				whitelen[1] = char_length(whitespace + whitelen[0]);
-			}
-		} else
-#endif
-#ifdef ENABLE_JUSTIFY
-		if (strcmp(option, "punct") == 0) {
-			if (has_blank_char(argument))
-				jot_error(N_("Non-blank characters required"));
-			else
-				punct = reuse_with_copy(punct, argument);
-		} else if (strcmp(option, "brackets") == 0) {
-			if (has_blank_char(argument))
-				jot_error(N_("Non-blank characters required"));
-			else
-				brackets = reuse_with_copy(brackets, argument);
-		} else if (strcmp(option, "quotestr") == 0)
-			quotestr = reuse_with_copy(quotestr, argument);
-		else
-#endif
 #ifdef ENABLE_SPELLER
 		if (strcmp(option, "speller") == 0)
 			alt_speller = reuse_with_copy(alt_speller, argument);
 		else
 #endif
 #ifndef NANO_TINY
-		if (strcmp(option, "backupdir") == 0)
-			backup_dir = reuse_with_copy(backup_dir, argument);
-		else if (strcmp(option, "wordchars") == 0)
-			word_chars = reuse_with_copy(word_chars, argument);
-		else if (strcmp(option, "guidestripe") == 0) {
+		if (strcmp(option, "guidestripe") == 0) {
 			if (!parse_num(argument, &stripe_column) || stripe_column <= 0) {
 				jot_error(N_("Guide column \"%s\" is invalid"), argument);
 				stripe_column = 0;
@@ -1712,6 +1670,51 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 			if (!parse_num(argument, &tabsize) || tabsize <= 0) {
 				jot_error(N_("Requested tab size \"%s\" is invalid"), argument);
 				tabsize = -1;
+			}
+		} else if (strcmp(option, "matchbrackets") == 0) {
+			if (has_blank_char(argument))
+				jot_error(N_("Non-blank characters required"));
+			else if (mbstrlen(argument) % 2 != 0)
+				jot_error(N_("Even number of characters required"));
+			else
+				matchbrackets = reuse_with_copy(matchbrackets, argument);
+		} else if (strcmp(option, "wordchars") == 0)
+			word_chars = reuse_with_copy(word_chars, argument);
+		else
+#endif
+#ifdef ENABLE_JUSTIFY
+		if (strcmp(option, "brackets") == 0) {
+			if (has_blank_char(argument))
+				jot_error(N_("Non-blank characters required"));
+			else
+				brackets = reuse_with_copy(brackets, argument);
+		} else if (strcmp(option, "punct") == 0) {
+			if (has_blank_char(argument))
+				jot_error(N_("Non-blank characters required"));
+			else
+				punct = reuse_with_copy(punct, argument);
+		} else if (strcmp(option, "quotestr") == 0)
+			quotestr = reuse_with_copy(quotestr, argument);
+		else
+#endif
+#ifndef NANO_TINY
+		if (strcmp(option, "backupdir") == 0)
+			backup_dir = reuse_with_copy(backup_dir, argument);
+		else
+#endif
+#ifdef ENABLE_OPERATINGDIR
+		if (strcmp(option, "operatingdir") == 0)
+			operating_dir = reuse_with_copy(operating_dir, argument);
+		else
+#endif
+#ifndef NANO_TINY
+		if (strcmp(option, "whitespace") == 0) {
+			if (mbstrlen(argument) != 2 || breadth(argument) != 2)
+				jot_error(N_("Two single-column characters required"));
+			else {
+				whitespace = reuse_with_copy(whitespace, argument);
+				whitelen[0] = char_length(whitespace);
+				whitelen[1] = char_length(whitespace + whitelen[0]);
 			}
 		}
 #else
