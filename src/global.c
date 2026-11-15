@@ -580,6 +580,71 @@ void toggle_numbers(void)
 }
 #endif
 
+/* Make the bindings that are different from the modern ones. */
+void make_classic_bindings(void)
+{
+	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, "^G", 0, do_help);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^X", 0, do_exit);
+	if (!ISSET(PRESERVE))
+		add_to_sclist(MMAIN, "^S", 0, do_savefile);
+	add_to_sclist(MMAIN, "^O", 0, do_writeout);
+	add_to_sclist(MMAIN, "^R", 0, do_insertfile);
+	if (!ISSET(PRESERVE))
+		add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_search_backward);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^W", 0, do_search_forward);
+	add_to_sclist(MMOST, "^A", 0, do_home);
+	add_to_sclist(MMOST, "^E", 0, do_end);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^P", 0, do_up);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^N", 0, do_down);
+	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "^Y", 0, do_page_up);
+	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "^V", 0, do_page_down);
+	add_to_sclist(MMAIN, "^C", 0, report_cursor_position);
+	add_to_sclist(MMOST, "^H", '\b', do_backspace);
+	add_to_sclist(MMOST, "^D", 0, do_delete);
+#ifndef NANO_TINY
+	add_to_sclist(MMAIN, "^T", 0, do_execute);
+#endif
+#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
+	add_to_sclist(MMAIN, "^T", 0, do_spell);
+#endif
+}
+
+/* Make the bindings that are different from the classic ones. */
+void make_modern_bindings(void)
+{
+#ifdef HAVE_TERM_H
+	/* If Backspace is not ^H, then ^H can be used for Help. */
+	const char *bsp_string = tgetstr("kb", NULL);
+	const char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
+#else
+	const char *help_key = "^N";
+#endif
+
+	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, help_key, 0, do_help);
+	add_to_sclist(MHELP, help_key, 0, do_exit);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_exit);
+	add_to_sclist(MMAIN, "^S", 0, do_savefile);
+	add_to_sclist(MMAIN, "^W", 0, do_writeout);
+	add_to_sclist(MMAIN, "^O", 0, do_insertfile);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^D", 0, do_findprevious);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "^G", 0, do_findnext);
+	add_to_sclist(MMAIN, "^R", 0, do_replace);
+	add_to_sclist(MMAIN, "^T", 0, do_gotolinecolumn);
+	add_to_sclist(MMAIN, "^P", 0, report_cursor_position);
+#ifndef NANO_TINY
+	add_to_sclist(MMAIN, "^Z", 0, do_undo);
+	add_to_sclist(MMAIN, "^Y", 0, do_redo);
+	add_to_sclist(MMAIN, "^A", 0, do_mark);
+	add_to_sclist(MMAIN, "^E", 0, do_execute);
+#endif
+	add_to_sclist(MMAIN, "^X", 0, cut_text);
+	add_to_sclist(MMAIN, "^C", 0, copy_text);
+	add_to_sclist(MMAIN, "^V", 0, paste_text);
+#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
+	add_to_sclist(MMAIN, "^E", 0, do_spell);
+#endif
+}
+
 /* These two tags are used elsewhere too, so they are global. */
 /* TRANSLATORS: Try to keep the next two strings at most 10 characters. */
 const char *exit_tag = N_("Exit");
@@ -757,14 +822,6 @@ void shortcut_init(void)
 		N_("Invoke a program to format/arrange/manipulate the buffer");
 #endif
 #endif /* ENABLE_HELP */
-
-#ifdef HAVE_TERM_H
-	/* If Backspace is not ^H, then ^H can be used for Help. */
-	const char *bsp_string = tgetstr("kb", NULL);
-	const char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
-#else
-	const char *help_key = "^N";
-#endif
 
 #ifdef ENABLE_HELP
 #define WHENHELP(description)  description
@@ -1256,56 +1313,10 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "Tab", '\t', do_tab);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^B", 0, do_search_backward);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^F", 0, do_search_forward);
-	if (ISSET(MODERN_BINDINGS)) {
-		add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, help_key, 0, do_help);
-		add_to_sclist(MHELP, help_key, 0, do_exit);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_exit);
-		add_to_sclist(MMAIN, "^S", 0, do_savefile);
-		add_to_sclist(MMAIN, "^W", 0, do_writeout);
-		add_to_sclist(MMAIN, "^O", 0, do_insertfile);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^D", 0, do_findprevious);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^G", 0, do_findnext);
-		add_to_sclist(MMAIN, "^R", 0, do_replace);
-		add_to_sclist(MMAIN, "^T", 0, do_gotolinecolumn);
-		add_to_sclist(MMAIN, "^P", 0, report_cursor_position);
-#ifndef NANO_TINY
-		add_to_sclist(MMAIN, "^Z", 0, do_undo);
-		add_to_sclist(MMAIN, "^Y", 0, do_redo);
-		add_to_sclist(MMAIN, "^A", 0, do_mark);
-		add_to_sclist(MMAIN, "^E", 0, do_execute);
-#endif
-		add_to_sclist(MMAIN, "^X", 0, cut_text);
-		add_to_sclist(MMAIN, "^C", 0, copy_text);
-		add_to_sclist(MMAIN, "^V", 0, paste_text);
-#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
-		add_to_sclist(MMAIN, "^E", 0, do_spell);
-#endif
-	} else {
-		add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, "^G", 0, do_help);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^X", 0, do_exit);
-		if (!ISSET(PRESERVE))
-			add_to_sclist(MMAIN, "^S", 0, do_savefile);
-		add_to_sclist(MMAIN, "^O", 0, do_writeout);
-		add_to_sclist(MMAIN, "^R", 0, do_insertfile);
-		if (!ISSET(PRESERVE))
-			add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_search_backward);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^W", 0, do_search_forward);
-		add_to_sclist(MMOST, "^A", 0, do_home);
-		add_to_sclist(MMOST, "^E", 0, do_end);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^P", 0, do_up);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "^N", 0, do_down);
-		add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "^Y", 0, do_page_up);
-		add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "^V", 0, do_page_down);
-		add_to_sclist(MMAIN, "^C", 0, report_cursor_position);
-		add_to_sclist(MMOST, "^H", '\b', do_backspace);
-		add_to_sclist(MMOST, "^D", 0, do_delete);
-#ifndef NANO_TINY
-		add_to_sclist(MMAIN, "^T", 0, do_execute);
-#endif
-#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
-		add_to_sclist(MMAIN, "^T", 0, do_spell);
-#endif
-	}
+	if (ISSET(MODERN_BINDINGS))
+		make_modern_bindings();
+	else
+		make_classic_bindings();
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);
 	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
 	add_to_sclist(MMOST, "Del", KEY_DC, do_delete);
