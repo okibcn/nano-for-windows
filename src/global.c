@@ -297,6 +297,11 @@ keystruct *planted_shortcut = NULL;
 		/* The function that the above name resolves to, if any. */
 #endif
 
+keystruct *first_old_binding = NULL;
+		/* The first classic binding, retained to avoid leak complaints. */
+keystruct *last_old_binding = NULL;
+		/* The last classic binding, for bypassing them with modern ones. */
+
 bool spotlighted = FALSE;
 	/* Whether any text is spotlighted. */
 size_t light_from_col = 0;
@@ -584,6 +589,7 @@ void toggle_numbers(void)
 void make_classic_bindings(void)
 {
 	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, "^G", 0, do_help);
+	first_old_binding = tailsc;
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^X", 0, do_exit);
 	if (!ISSET(PRESERVE))
 		add_to_sclist(MMAIN, "^S", 0, do_savefile);
@@ -609,6 +615,7 @@ void make_classic_bindings(void)
 #if defined(NANO_TINY) && defined(ENABLE_SPELLER)
 	add_to_sclist(MMAIN, "^T", 0, do_spell);
 #endif
+	last_old_binding = tailsc;
 }
 
 /* Make the bindings that are different from the classic ones. */
@@ -649,9 +656,9 @@ void make_modern_bindings(bool putathead)
 	add_to_sclist(MMAIN, "^E", 0, do_spell);
 #endif
 
-	/* When requested, place these bindings at the start of the list. */
+	/* When requested, replace the classic bindings at the head of the list. */
 	if (putathead) {
-		tailsc->next = sclist;
+		tailsc->next = last_old_binding->next;
 		sclist = was_tail->next;
 		was_tail->next = NULL;
 	}
