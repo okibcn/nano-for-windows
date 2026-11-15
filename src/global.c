@@ -1272,10 +1272,14 @@ void shortcut_init(void)
 		add_to_sclist(MMAIN, "^Z", 0, do_undo);
 		add_to_sclist(MMAIN, "^Y", 0, do_redo);
 		add_to_sclist(MMAIN, "^A", 0, do_mark);
+		add_to_sclist(MMAIN, "^E", 0, do_execute);
 #endif
 		add_to_sclist(MMAIN, "^X", 0, cut_text);
 		add_to_sclist(MMAIN, "^C", 0, copy_text);
 		add_to_sclist(MMAIN, "^V", 0, paste_text);
+#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
+		add_to_sclist(MMAIN, "^E", 0, do_spell);
+#endif
 	} else {
 		add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, "^G", 0, do_help);
 		add_to_sclist(MMAIN|MBROWSER|MHELP, "^X", 0, do_exit);
@@ -1295,6 +1299,12 @@ void shortcut_init(void)
 		add_to_sclist(MMAIN, "^C", 0, report_cursor_position);
 		add_to_sclist(MMOST, "^H", '\b', do_backspace);
 		add_to_sclist(MMOST, "^D", 0, do_delete);
+#ifndef NANO_TINY
+		add_to_sclist(MMAIN, "^T", 0, do_execute);
+#endif
+#if defined(NANO_TINY) && defined(ENABLE_SPELLER)
+		add_to_sclist(MMAIN, "^T", 0, do_spell);
+#endif
 	}
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);
 	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
@@ -1307,14 +1317,10 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, "M-6", 0, copy_text);
 	add_to_sclist(MMAIN, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "^U", 0, paste_text);
-#ifdef ENABLE_SPELLER
-	add_to_sclist(MMAIN, ISSET(MODERN_BINDINGS) ? "^E" : "^T", 0, do_spell);
-#endif
 #else
 	add_to_sclist(MMOST, "M-6", 0, copy_text);
 	add_to_sclist(MMOST, "M-^", 0, copy_text);
 	add_to_sclist(MMOST, "^U", 0, paste_text);
-	add_to_sclist(MMAIN, ISSET(MODERN_BINDINGS) ? "^E" : "^T", 0, do_execute);
 #ifdef ENABLE_SPELLER
 	if (!ISSET(PRESERVE))
 		add_to_sclist(MEXECUTE, "^S", 0, do_spell);
