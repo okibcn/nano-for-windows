@@ -564,7 +564,7 @@ bool parse_num(const char *str, ssize_t *result);
 bool parse_line_column(const char *str, ssize_t *line, ssize_t *column);
 void recode_NUL_to_LF(char *string, size_t length);
 size_t recode_LF_to_NUL(char *string);
-#if !defined(ENABLE_TINY) || defined(ENABLE_TABCOMP) || defined(ENABLE_BROWSER)
+#if !defined(NANO_TINY) || defined(ENABLE_TABCOMP) || defined(ENABLE_BROWSER)
 void free_chararray(char **array, size_t len);
 #endif
 #ifdef ENABLE_SPELLER

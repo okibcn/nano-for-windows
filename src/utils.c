@@ -182,7 +182,7 @@ size_t recode_LF_to_NUL(char *string)
 	return (string - beginning);
 }
 
-#if !defined(ENABLE_TINY) || defined(ENABLE_TABCOMP) || defined(ENABLE_BROWSER)
+#if !defined(NANO_TINY) || defined(ENABLE_TABCOMP) || defined(ENABLE_BROWSER)
 /* Free the memory of the given array, which should contain len elements. */
 void free_chararray(char **array, size_t len)
 {
