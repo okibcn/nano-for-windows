@@ -193,6 +193,8 @@ static size_t lineno = 0;
 		/* The line number of the last encountered error. */
 static char *nanorc = NULL;
 		/* The path to the rcfile we're parsing. */
+static bool seen_bind_command = FALSE;
+		/* Whether a `bind` command was encountered. */
 #ifdef ENABLE_COLOR
 static bool opensyntax = FALSE;
 		/* Whether we're allowed to add to the last syntax.  When a file ends,
@@ -919,6 +921,8 @@ void parse_binding(char *ptr, bool dobind)
 		return;
 	}
 
+	seen_bind_command = TRUE;
+
 	/* Add the new shortcut at the start of the list. */
 	newsc->next = sclist;
 	sclist = newsc;
@@ -1614,6 +1618,8 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		/* If the option has a flag, set it or unset it, as requested. */
 		if (rcopts[index].flag && rcopts[index].flag < _FENCE_) {
 			if (rcopts[index].flag == MODERN_BINDINGS) {
+				if (seen_bind_command)
+					jot_error(N_("Set '%s' before any 'bind' command"), "modernbindings");
 				if (set < 0) {
 					if (first_old_binding)
 						sclist = first_old_binding;
