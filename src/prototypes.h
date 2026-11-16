@@ -197,6 +197,8 @@ extern char *commandname;
 extern keystruct *planted_shortcut;
 #endif
 
+extern keystruct *first_old_binding;
+
 extern bool spotlighted;
 extern size_t light_from_col;
 extern size_t light_to_col;

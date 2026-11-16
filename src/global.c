@@ -297,8 +297,10 @@ keystruct *planted_shortcut = NULL;
 		/* The function that the above name resolves to, if any. */
 #endif
 
+keystruct *first_new_binding = NULL;
+		/* The first modern binding, retained to avoid leak complaints. */
 keystruct *first_old_binding = NULL;
-		/* The first classic binding, retained to avoid leak complaints. */
+		/* The first classic binding, to enable doing 'unset modernbindings'. */
 keystruct *last_old_binding = NULL;
 		/* The last classic binding, for bypassing them with modern ones. */
 
@@ -631,6 +633,7 @@ void make_modern_bindings(bool putathead)
 	keystruct *was_tail = tailsc;
 
 	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, help_key, 0, do_help);
+	first_new_binding = tailsc;
 	add_to_sclist(MHELP, help_key, 0, do_exit);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_exit);
 	add_to_sclist(MMAIN, "^S", 0, do_savefile);

@@ -1615,8 +1615,10 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 		if (rcopts[index].flag && rcopts[index].flag < _FENCE_) {
 			if (rcopts[index].flag == MODERN_BINDINGS) {
 				if (set < 0) {
-					jot_error(N_("Cannot unset option '%s'"), "modernbindings");
-					continue;
+					if (first_old_binding)
+						sclist = first_old_binding;
+					else
+						continue;
 				} else if (!ISSET(MODERN_BINDINGS))
 					make_modern_bindings(TRUE);
 			}
