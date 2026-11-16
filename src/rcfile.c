@@ -1621,12 +1621,12 @@ void parse_rcfile(FILE *rcstream, bool just_syntax, bool intros_only)
 
 		/* An option that takes an argument cannot be unset. */
 		if (set == -1) {
-			jot_error(N_("Cannot unset option \"%s\""), option);
+			jot_error(N_("Cannot unset option '%s'"), option);
 			continue;
 		}
 
 		if (*ptr == '\0') {
-			jot_error(N_("Option \"%s\" requires an argument"), option);
+			jot_error(N_("Option '%s' requires an argument"), option);
 			continue;
 		}
 
