@@ -658,8 +658,9 @@ Show a summary of command-line options and exit.
 @item -i
 @itemx --autoindent
 Automatically indent a newly created line to the same number of tabs
-and/or spaces as the previous line (or as the next line if the previous
-line is the beginning of a paragraph).
+and/or spaces as the previous line --- or as the next line
+if that previous line starts a paragraph
+(when @option{-b}/@option{--breaklonglines}) is active).
 
 @item -j
 @itemx --jumpyscrolling
@@ -971,8 +972,8 @@ When soft line wrapping is enabled, make it wrap lines at blank characters
 
 @item set autoindent
 Automatically indent a newly created line to the same number of tabs
-and/or spaces as the previous line (or as the next line if the previous
-line is the beginning of a paragraph).
+and/or spaces as the previous line --- or as the next line if that
+previous line starts a paragraph (when @option{breaklonglines} is active).
 
 @item set backup
 When saving a file, back up the previous version of it, using the current
@@ -1938,8 +1939,8 @@ Toggles the smartness of the Home key.
 
 @item autoindent
 Toggles whether a newly created line will contain the same amount of leading
-whitespace as the preceding line --- or as the next line if the preceding line
-is the beginning of a paragraph.
+whitespace as the preceding line --- or as the next line if that preceding
+line starts a paragraph (when @option{breaklonglines} is active).
 
 @item cutfromcursor
 Toggles whether cutting text cuts the whole line or just from the current cursor

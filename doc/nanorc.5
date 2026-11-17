@@ -100,8 +100,8 @@ When soft line wrapping is enabled, make it wrap lines at blank characters
 .TP
 .B set autoindent
 Automatically indent a newly created line to the same number of tabs
-and/or spaces as the previous line (or as the next line if the previous
-line is the beginning of a paragraph).
+and/or spaces as the previous line (or as the next line if that previous
+line starts a paragraph \[em] when \fBbreaklonglines\fR is active).
 .TP
 .B set backup
 When saving a file, create a backup file by adding a tilde (\fB\[ti]\fR) to
@@ -1036,8 +1036,8 @@ Toggles the smartness of the Home key.
 .TP
 .B autoindent
 Toggles whether a newly created line will contain the same amount of leading
-whitespace as the preceding line \[em] or as the next line if the preceding line
-is the beginning of a paragraph.
+whitespace as the preceding line \[em] or as the next line if that preceding
+line starts a paragraph (when \fBbreaklonglines\fR is active).
 .TP
 .B cutfromcursor
 Toggles whether cutting text cuts the whole line or just from the current cursor
