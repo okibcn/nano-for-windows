@@ -848,7 +848,7 @@ Furthermore, @kbd{^A} sets the mark, @kbd{^B} searches backward,
 @kbd{^D} searches previous, @kbd{^R} makes replacements,
 @kbd{^P} shows the position, @kbd{^T} goes to a line,
 @kbd{^W} writes out a file, and @kbd{^E} executes a command.
-Note that this option overrides option @option{-p} (@option{--preserve}).
+Note that this overrides option @option{-p} (@option{--preserve}).
 
 @end table
 
@@ -1140,6 +1140,21 @@ The state flags are displayed only when @code{set stateflags} is used.
 Use this color combination for the mini bar.
 (When this option is not specified, the colors of the title bar are used.)
 @xref{@code{set keycolor}} for valid color names.
+
+@item set modernbindings
+Use key bindings similar to the ones that most modern programs use:
+@kbd{^X} cuts, @kbd{^C} copies, @kbd{^V} pastes,
+@kbd{^Z} undoes, @kbd{^Y} redoes,
+@kbd{^F} searches forward, @kbd{^G} searches next,
+@kbd{^S} saves, @kbd{^O} opens a file, @kbd{^Q} quits,
+and (when the terminal permits) @kbd{^H} shows help.
+Furthermore, @kbd{^A} sets the mark, @kbd{^B} searches backward,
+@kbd{^D} searches previous, @kbd{^R} makes replacements,
+@kbd{^P} shows the position, @kbd{^T} goes to a line,
+@kbd{^W} writes out a file, and @kbd{^E} executes a command.
+When used, this option must be put near the beginning of
+your @file{nanorc} file, before any @code{bind} command.
+(Note that this overrides option @option{preserve}.)
 
 @item set mouse
 Enable mouse support, so that mouse clicks can be used to place the

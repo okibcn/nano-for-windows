@@ -238,6 +238,21 @@ Use this color combination for the mini bar.
 (When this option is not specified, the colors of the title bar are used.)
 See \fBset \%titlecolor\fR for more details.
 .TP
+.B set modernbindings
+Use key bindings similar to the ones that most modern programs use:
+\fB^X\fR cuts, \fB^C\fR copies, \fB^V\fR pastes,
+\fB^Z\fR undoes, \fB^Y\fR redoes,
+\fB^F\fR searches forward, \fB^G\fR searches next,
+\fB^S\fR saves, \fB^O\fR opens a file, \fB^Q\fR quits,
+and (when the terminal permits) \fB^H\fR shows help.
+Furthermore, \fB^A\fR sets the mark, \fB^B\fR searches backward,
+\fB^D\fR searches previous, \fB^R\fR makes replacements,
+\fB^P\fR shows the position, \fB^T\fR goes to a line,
+\fB^W\fR writes out a file, and \fB^E\fR executes a command.
+When used, this option must be put near the beginning of
+your \fInanorc\fR file, before any \fBbind\fR command.
+(Note that this overrides option \fB\%preserve\fR.)
+.TP
 .B set mouse
 Enable mouse support.  This means: a click in the edit window places
 the cursor, two clicks at the same spot toggle the mark, a click in the
