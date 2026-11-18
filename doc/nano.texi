@@ -1161,7 +1161,7 @@ Enable mouse support, so that mouse clicks can be used to place the
 cursor, set the mark (with two clicks), or execute shortcuts.
 
 @item set newbuffer
-When reading in a file with @kbd{^R}, insert it into a new buffer by default.
+When reading in a file with @kbd{^R}, put it in a new buffer by default.
 (The old form of this option, @code{set multibuffer}, is deprecated.)
 
 @item set noconvert
