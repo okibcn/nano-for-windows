@@ -43,6 +43,11 @@ static const rcoption rcopts[] = {
 #ifndef NANO_TINY
 	{"afterends", AFTER_ENDS},
 	{"allow_insecure_backup", INSECURE_BACKUP},
+#endif
+#ifdef ENABLE_COLOR
+	{"arrowcolor", SIDE_ARROW + _FENCE_},
+#endif
+#ifndef NANO_TINY
 	{"atblanks", AT_BLANKS},
 	{"autoindent", AUTOINDENT},
 	{"backup", MAKE_BACKUP},

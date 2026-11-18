@@ -2833,14 +2833,14 @@ int update_line(linestruct *line, size_t index)
 	draw_row(row, converted, line, from_col);
 
 	if (from_col > 0 && *converted) {
-		wattron(midwin, hilite_attribute);
+		wattron(midwin, interface_color_pair[SIDE_ARROW]);
 		mvwaddch(midwin, row, margin, '<');
-		wattroff(midwin, hilite_attribute);
+		wattroff(midwin, interface_color_pair[SIDE_ARROW]);
 	}
 	if (has_more) {
-		wattron(midwin, hilite_attribute);
+		wattron(midwin, interface_color_pair[SIDE_ARROW]);
 		mvwaddch(midwin, row, COLS - 1 - sidebar, '>');
-		wattroff(midwin, hilite_attribute);
+		wattroff(midwin, interface_color_pair[SIDE_ARROW]);
 	}
 
 	if (spotlighted && line == openfile->current)
