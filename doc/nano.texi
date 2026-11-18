@@ -966,6 +966,11 @@ When backing up files, allow the backup to succeed even if its
 permissions can't be (re)set due to special OS considerations.
 You should NOT enable this option unless you are sure you need it.
 
+@item set arrowcolor [bold,][italic,]@var{fgcolor},@var{bgcolor}
+Use this color combination for the continuation markers @samp{<} and @samp{>}
+that are shown at the edge of the terminal when a line continues offscreen.
+@xref{@code{set keycolor}} for valid color names.
+
 @item set atblanks
 When soft line wrapping is enabled, make it wrap lines at blank characters
 (tabs and spaces) instead of always at the edge of the screen.
