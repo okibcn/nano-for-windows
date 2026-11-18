@@ -100,8 +100,6 @@ static const rcoption rcopts[] = {
 #endif
 #ifndef NANO_TINY
 	{"matchbrackets", 0},
-#endif
-#ifndef NANO_TINY
 	{"minibar", MINIBAR},
 #endif
 #ifdef ENABLE_COLOR
