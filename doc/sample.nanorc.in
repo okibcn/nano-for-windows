@@ -104,6 +104,10 @@
 ## percentage in the space of the status bar.
 # set minibar
 
+## Use key bindings that most modern programs use, like ^Q for Quit,
+## ^O for Open, ^X for Cut, ^C for Copy, ^V for Paste, and so on.
+# set modernbindings
+
 ## Enable mouse support, if available for your system.  When enabled,
 ## mouse clicks can be used to place the cursor, set the mark (with
 ## two clicks), and execute shortcuts.  The mouse will work in the
