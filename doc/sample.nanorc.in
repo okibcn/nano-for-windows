@@ -108,10 +108,8 @@
 ## ^O for Open, ^X for Cut, ^C for Copy, ^V for Paste, and so on.
 # set modernbindings
 
-## Enable mouse support, if available for your system.  When enabled,
-## mouse clicks can be used to place the cursor, set the mark (with
-## two clicks), and execute shortcuts.  The mouse will work in the
-## X Window System, and on the console when gpm is running.
+## Enable using the mouse to place the cursor (one click), set the mark
+## (two clicks), and execute shortcuts (by clicking in the help lines).
 # set mouse
 
 ## With ^R, insert a file into a separate buffer by default.
@@ -168,11 +166,8 @@
 ## braille display and people with poor vision.
 # set showcursor
 
-## Make the Home key smarter: when Home is pressed anywhere but at the
-## very beginning of non-whitespace characters on a line, the cursor
-## will jump to that beginning (either forwards or backwards).  If the
-## cursor is already at that position, it will jump to the true start
-## of the line (the left edge).
+## Make the Home key jump to the first non-blank character on a line,
+## but, when already there, then to column 1.
 # set smarthome
 
 ## Spread overlong lines over multiple screen lines.
@@ -201,9 +196,7 @@
 ## Save files always in Unix format (also when they were DOS).
 # set unix
 
-## The two single-column characters used to display the first characters
-## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
-## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
+## Two single-column characters used when displaying tabs and spaces.
 ## The default when in a UTF-8 locale:
 # set whitespace "»·"
 ## The default otherwise:
