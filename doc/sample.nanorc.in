@@ -194,9 +194,8 @@
 ## Treat punctuation characters as parts of words.
 # set wordbounds
 
-## The characters (besides alphanumeric ones) that should be considered
-## as parts of words.  This option does not have a default value.  When
-## set, it overrides option 'set wordbounds'.
+## Extra characters to be treated as parts of words.
+## (This option does not have a default value.)
 # set wordchars "<_>."
 
 ## Let an unmodified Backspace or Delete erase the marked region.
