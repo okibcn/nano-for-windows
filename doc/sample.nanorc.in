@@ -27,8 +27,7 @@
 # set atblanks
 
 ## Automatically indent a newly created line to the same number of
-## tabs and/or spaces as the preceding line -- or as the next line
-## if the preceding line is the beginning of a paragraph.
+## tabs and/or spaces as the preceding line.
 # set autoindent
 
 ## Back up files to the current filename plus a tilde.
@@ -44,8 +43,6 @@
 # set bookstyle
 
 ## The characters treated as closing brackets when justifying paragraphs.
-## This may not include any blank characters.  Only closing punctuation,
-## optionally followed by these closing brackets, can end sentences.
 # set brackets ""')>]}"
 
 ## Automatically hard-wrap the current line when it becomes overlong.
@@ -68,8 +65,7 @@
 # set emptyline
 
 ## Set the target width for automatic hard-wrapping and for justifying
-## paragraphs.  If the specified value is 0 or less, the wrapping point
-## will be the terminal's width minus this number.
+## paragraphs.  A negative value counts from the terminal's right edge.
 # set fill -8
 
 ## Draw a vertical stripe at the given column, to help judge text width.
@@ -95,13 +91,11 @@
 ## Fall back to slow libmagic to try and determine an applicable syntax.
 # set magic
 
-## The opening and closing brackets that are found by a matching-bracket
-## search.  This may not contain blank characters.  The opening brackets
-## must come before the closing ones, and they must be in the same order.
+## The opening and closing brackets that 'findbracket' recognizes.
 # set matchbrackets "(<[{)>]}"
 
 ## Suppress the title bar and show the filename plus a cursor-position
-## percentage in the space of the status bar.
+## percentage in the area of the status bar.
 # set minibar
 
 ## Use key bindings that most modern programs use, like ^Q for Quit,
@@ -124,10 +118,8 @@
 ## Don't automatically add a newline when a file does not end with one.
 # set nonewlines
 
-## Set operating directory.  nano will not read or write files outside
-## this directory and its subdirectories.  Also, the current directory
-## is changed to here, so any files are inserted from this dir.  A blank
-## string means the operating-directory feature is turned off.
+## Set the current directory and don't allow reading or writing outside
+## this directory and its subdirectories.
 # set operatingdir ""
 
 ## Remember the position of cursor and anchors for the next editing session.
@@ -137,15 +129,13 @@
 # set preserve
 
 ## The characters treated as closing punctuation when justifying paragraphs.
-## This may not contain blank characters.  Only these terminating characters,
-## optionally followed by closing brackets, can end sentences.
 # set punct "!.?"
 
 ## Make status-bar messages disappear after 1 keystroke instead of after 20.
 # set quickblank
 
 ## The regular expression that matches quoting characters in email
-## or line-comment introducers in source code.  The default is:
+## or line-comment introducers in source code.
 # set quotestr "^([ 	]*([!#%:;>|}]|//))+"
 
 ## Try to work around a mismatching terminfo terminal description.
@@ -154,8 +144,7 @@
 ## Fix Backspace/Delete confusion problem.
 # set rebinddelete
 
-## Do regular-expression searches by default.
-## Regular expressions are of the extended type (ERE).
+## Do regular-expression searches (of the ERE type) by default.
 # set regexp
 
 ## Save a changed buffer automatically on exit; don't prompt.
@@ -176,8 +165,8 @@
 ## Scroll only the current line sideways (instead of all lines).
 # set solosidescroll
 
-## Use this spelling checker instead of the internal one.  This option
-## does not have a default value.
+## Use this spelling checker instead of the internal one.
+## (This option does not have a default value.)
 # set speller "aspell -x -c"
 
 ## Use the end of the title bar for some state flags: I = auto-indenting,
@@ -202,8 +191,7 @@
 ## The default otherwise:
 # set whitespace ">."
 
-## Detect word boundaries differently by treating punctuation
-## characters as parts of words.
+## Treat punctuation characters as parts of words.
 # set wordbounds
 
 ## The characters (besides alphanumeric ones) that should be considered
@@ -211,8 +199,7 @@
 ## set, it overrides option 'set wordbounds'.
 # set wordchars "<_>."
 
-## Let an unmodified Backspace or Delete erase the marked region (instead
-## of a single character, and without affecting the cutbuffer).
+## Let an unmodified Backspace or Delete erase the marked region.
 # set zap
 
 ## Hide the bars plus help lines and use the whole terminal as edit area.
