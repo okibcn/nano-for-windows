@@ -587,6 +587,8 @@ void toggle_numbers(void)
 }
 #endif
 
+#define MENUS_WITH_OLDER_NEWER  MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE
+
 /* Make the bindings that are different from the modern ones. */
 void make_classic_bindings(void)
 {
@@ -616,6 +618,10 @@ void make_classic_bindings(void)
 #endif
 #if defined(NANO_TINY) && defined(ENABLE_SPELLER)
 	add_to_sclist(MMAIN, "^T", 0, do_spell);
+#endif
+#ifdef ENABLE_HISTORIES
+	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^P", 0, get_older_item);
+	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^N", 0, get_newer_item);
 #endif
 	last_old_binding = tailsc;
 }
@@ -657,6 +663,10 @@ void make_modern_bindings(bool putathead)
 	add_to_sclist(MMAIN, "^V", 0, paste_text);
 #if defined(NANO_TINY) && defined(ENABLE_SPELLER)
 	add_to_sclist(MMAIN, "^E", 0, do_spell);
+#endif
+#ifdef ENABLE_HISTORIES
+	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^P", 0, get_older_item);
+	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^N", 0, get_newer_item);
 #endif
 
 	/* When requested, replace the classic bindings at the head of the list. */
@@ -1559,17 +1569,15 @@ void shortcut_init(void)
 	/* Add this blind keystroke for long-time users. */
 	add_to_sclist(MWHEREIS|MGOTOLINE, "^T", 0, flip_goto);
 #ifdef ENABLE_HISTORIES
-	add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "^P", 0, get_older_item);
-	add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "^N", 0, get_newer_item);
 #ifdef ENABLE_UTF8
 	if (using_utf8) {
-		add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "\xE2\x96\xb4", KEY_UP, get_older_item);
-		add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "\xE2\x96\xbe", KEY_DOWN, get_newer_item);
+		add_to_sclist(MENUS_WITH_OLDER_NEWER, "\xE2\x96\xb4", KEY_UP, get_older_item);
+		add_to_sclist(MENUS_WITH_OLDER_NEWER, "\xE2\x96\xbe", KEY_DOWN, get_newer_item);
 	} else
 #endif
 	{
-		add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "Up", KEY_UP, get_older_item);
-		add_to_sclist(MWHEREIS|MREPLACE|MREPLACEWITH|MWHEREISFILE|MFINDINHELP|MEXECUTE, "Down", KEY_DOWN, get_newer_item);
+		add_to_sclist(MENUS_WITH_OLDER_NEWER, "Up", KEY_UP, get_older_item);
+		add_to_sclist(MENUS_WITH_OLDER_NEWER, "Down", KEY_DOWN, get_newer_item);
 	}
 #endif
 #ifdef ENABLE_JUSTIFY
