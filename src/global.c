@@ -632,15 +632,15 @@ void make_modern_bindings(bool putathead)
 #ifdef HAVE_TERM_H
 	/* If Backspace is not ^H, then ^H can be used for Help. */
 	const char *bsp_string = tgetstr("kb", NULL);
-	const char *help_key = (bsp_string && *bsp_string != 0x08) ? "^H" : "^N";
+	bool hokay = bsp_string && *bsp_string != 0x08;
 #else
-	const char *help_key = "^N";
+	bool hokay = FALSE;
 #endif
 	keystruct *was_tail = tailsc;
 
-	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, help_key, 0, do_help);
+	add_to_sclist((MMOST|MBROWSER) & ~MFINDINHELP, hokay ? "^H" : "^N", 0, do_help);
 	first_new_binding = tailsc;
-	add_to_sclist(MHELP, help_key, 0, do_exit);
+	add_to_sclist(MHELP, hokay ? "^H" : "^N", 0, do_exit);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "^Q", 0, do_exit);
 	add_to_sclist(MMAIN, "^S", 0, do_savefile);
 	add_to_sclist(MMAIN, "^W", 0, do_writeout);
@@ -666,7 +666,7 @@ void make_modern_bindings(bool putathead)
 #endif
 #ifdef ENABLE_HISTORIES
 	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^P", 0, get_older_item);
-	add_to_sclist(MENUS_WITH_OLDER_NEWER, "^N", 0, get_newer_item);
+	add_to_sclist(MENUS_WITH_OLDER_NEWER, hokay ? "^N" : "^G", 0, get_newer_item);
 #endif
 
 	/* When requested, replace the classic bindings at the head of the list. */
