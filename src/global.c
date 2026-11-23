@@ -1347,6 +1347,56 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "^I", '\t', do_tab);
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);
 	add_to_sclist(MMOST, "Del", KEY_DC, do_delete);
+#ifdef ENABLE_UTF8
+	if (using_utf8) {
+		add_to_sclist(MMOST|MBROWSER|MHELP, "\xE2\x97\x82", KEY_LEFT, do_left);
+		add_to_sclist(MMOST|MBROWSER|MHELP, "\xE2\x96\xb8", KEY_RIGHT, do_right);
+		add_to_sclist(MMAIN|MBROWSER|MHELP, "\xE2\x96\xb4", KEY_UP, do_up);
+		add_to_sclist(MMAIN|MBROWSER|MHELP, "\xE2\x96\xbe", KEY_DOWN, do_down);
+		add_to_sclist(MSOME, "^\xE2\x97\x82", CONTROL_LEFT, to_prev_word);
+		add_to_sclist(MSOME, "^\xE2\x96\xb8", CONTROL_RIGHT, to_next_word);
+#ifndef NANO_TINY
+		add_to_sclist(MMAIN|MHELP, "M-\xE2\x96\xb4", ALT_UP, do_scroll_up);
+		add_to_sclist(MMAIN|MHELP, "M-\xE2\x96\xbe", ALT_DOWN, do_scroll_down);
+#endif
+		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^\xE2\x96\xb4", CONTROL_UP, to_prev_block);
+		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^\xE2\x96\xbe", CONTROL_DOWN, to_next_block);
+#if defined(ENABLE_MULTIBUFFER) && !defined(NANO_TINY)
+		if (!on_a_vt) {
+			add_to_sclist(MMAIN, "M-\xE2\x97\x82", ALT_LEFT, switch_to_prev_buffer);
+			add_to_sclist(MMAIN, "M-\xE2\x96\xb8", ALT_RIGHT, switch_to_next_buffer);
+		}
+#endif
+	} else
+#endif
+	{
+		add_to_sclist(MMOST|MBROWSER|MHELP, "Left", KEY_LEFT, do_left);
+		add_to_sclist(MMOST|MBROWSER|MHELP, "Right", KEY_RIGHT, do_right);
+		add_to_sclist(MMAIN|MBROWSER|MHELP, "Up", KEY_UP, do_up);
+		add_to_sclist(MMAIN|MBROWSER|MHELP, "Down", KEY_DOWN, do_down);
+		add_to_sclist(MSOME, "^Left", CONTROL_LEFT, to_prev_word);
+		add_to_sclist(MSOME, "^Right", CONTROL_RIGHT, to_next_word);
+#ifndef NANO_TINY
+		add_to_sclist(MMAIN|MHELP, "M-Up", ALT_UP, do_scroll_up);
+		add_to_sclist(MMAIN|MHELP, "M-Down", ALT_DOWN, do_scroll_down);
+#endif
+		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^Up", CONTROL_UP, to_prev_block);
+		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^Down", CONTROL_DOWN, to_next_block);
+#if defined(ENABLE_MULTIBUFFER) && !defined(NANO_TINY)
+		if (!on_a_vt) {
+			add_to_sclist(MMAIN, "M-Left", ALT_LEFT, switch_to_prev_buffer);
+			add_to_sclist(MMAIN, "M-Right", ALT_RIGHT, switch_to_next_buffer);
+		}
+#endif
+	}
+	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgUp", KEY_PPAGE, do_page_up);
+	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgDn", KEY_NPAGE, do_page_down);
+	add_to_sclist(MMOST, "Home", KEY_HOME, do_home);
+	add_to_sclist(MMOST, "End", KEY_END, do_end);
+	add_to_sclist(MMAIN|MHELP, "M-\\", 0, to_first_line);
+	add_to_sclist(MMAIN|MHELP, "M-/", 0, to_last_line);
+	add_to_sclist(MMAIN|MHELP, "^Home", CONTROL_HOME, to_first_line);
+	add_to_sclist(MMAIN|MHELP, "^End", CONTROL_END, to_last_line);
 	add_to_sclist(MMAIN, "^\\", 0, do_replace);
 	add_to_sclist(MMAIN, "M-R", 0, do_replace);
 	add_to_sclist(MMOST, "^K", 0, cut_text);
@@ -1360,12 +1410,6 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn);
-	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgUp", KEY_PPAGE, do_page_up);
-	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgDn", KEY_NPAGE, do_page_down);
-	add_to_sclist(MMAIN|MHELP, "M-\\", 0, to_first_line);
-	add_to_sclist(MMAIN|MHELP, "^Home", CONTROL_HOME, to_first_line);
-	add_to_sclist(MMAIN|MHELP, "M-/", 0, to_last_line);
-	add_to_sclist(MMAIN|MHELP, "^End", CONTROL_END, to_last_line);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-B", 0, do_findprevious);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-F", 0, do_findnext);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-W", 0, do_findnext);
@@ -1409,52 +1453,8 @@ void shortcut_init(void)
 #endif
 	add_to_sclist(MMOST & ~MMAIN, "^B", 0, do_left);
 	add_to_sclist(MMOST & ~MMAIN, "^F", 0, do_right);
-#ifdef ENABLE_UTF8
-	if (using_utf8) {
-		add_to_sclist(MMOST|MBROWSER|MHELP, "\xE2\x97\x82", KEY_LEFT, do_left);
-		add_to_sclist(MMOST|MBROWSER|MHELP, "\xE2\x96\xb8", KEY_RIGHT, do_right);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "\xE2\x96\xb4", KEY_UP, do_up);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "\xE2\x96\xbe", KEY_DOWN, do_down);
-		add_to_sclist(MSOME, "^\xE2\x97\x82", CONTROL_LEFT, to_prev_word);
-		add_to_sclist(MSOME, "^\xE2\x96\xb8", CONTROL_RIGHT, to_next_word);
-#ifndef NANO_TINY
-		add_to_sclist(MMAIN|MHELP, "M-\xE2\x96\xb4", ALT_UP, do_scroll_up);
-		add_to_sclist(MMAIN|MHELP, "M-\xE2\x96\xbe", ALT_DOWN, do_scroll_down);
-#endif
-		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^\xE2\x96\xb4", CONTROL_UP, to_prev_block);
-		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^\xE2\x96\xbe", CONTROL_DOWN, to_next_block);
-#if defined(ENABLE_MULTIBUFFER) && !defined(NANO_TINY)
-		if (!on_a_vt) {
-			add_to_sclist(MMAIN, "M-\xE2\x97\x82", ALT_LEFT, switch_to_prev_buffer);
-			add_to_sclist(MMAIN, "M-\xE2\x96\xb8", ALT_RIGHT, switch_to_next_buffer);
-		}
-#endif
-	} else
-#endif
-	{
-		add_to_sclist(MMOST|MBROWSER|MHELP, "Left", KEY_LEFT, do_left);
-		add_to_sclist(MMOST|MBROWSER|MHELP, "Right", KEY_RIGHT, do_right);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "Up", KEY_UP, do_up);
-		add_to_sclist(MMAIN|MBROWSER|MHELP, "Down", KEY_DOWN, do_down);
-		add_to_sclist(MSOME, "^Left", CONTROL_LEFT, to_prev_word);
-		add_to_sclist(MSOME, "^Right", CONTROL_RIGHT, to_next_word);
-#ifndef NANO_TINY
-		add_to_sclist(MMAIN|MHELP, "M-Up", ALT_UP, do_scroll_up);
-		add_to_sclist(MMAIN|MHELP, "M-Down", ALT_DOWN, do_scroll_down);
-#endif
-		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^Up", CONTROL_UP, to_prev_block);
-		add_to_sclist(MMAIN|MBROWSER|MLINTER, "^Down", CONTROL_DOWN, to_next_block);
-#if defined(ENABLE_MULTIBUFFER) && !defined(NANO_TINY)
-		if (!on_a_vt) {
-			add_to_sclist(MMAIN, "M-Left", ALT_LEFT, switch_to_prev_buffer);
-			add_to_sclist(MMAIN, "M-Right", ALT_RIGHT, switch_to_next_buffer);
-		}
-#endif
-	}
 	add_to_sclist(MMOST, "M-Space", 0, to_prev_word);
 	add_to_sclist(MMOST, "^Space", 0, to_next_word);
-	add_to_sclist(MMOST, "Home", KEY_HOME, do_home);
-	add_to_sclist(MMOST, "End", KEY_END, do_end);
 	add_to_sclist(MMAIN, "M-7", 0, to_prev_block);
 	add_to_sclist(MMAIN, "M-8", 0, to_next_block);
 #ifdef ENABLE_JUSTIFY
@@ -1575,6 +1575,7 @@ void shortcut_init(void)
 	add_to_sclist(MBROWSER, "^_", 0, goto_dir);
 #endif
 #if defined(ENABLE_BROWSER) || defined(ENABLE_HELP)
+	add_to_sclist(MBROWSER|MHELP, "^C", 0, do_exit);
 	add_to_sclist(MBROWSER|MHELP, "Bsp", KEY_BACKSPACE, do_page_up);
 	add_to_sclist(MBROWSER|MHELP, "Sh-Del", SHIFT_DELETE, do_page_up);
 	add_to_sclist(MBROWSER|MHELP, "Space", 0x20, do_page_down);
@@ -1601,7 +1602,6 @@ void shortcut_init(void)
 #endif
 	}
 #endif
-	add_to_sclist(MBROWSER|MHELP, "^C", 0, do_exit);
 #if defined(ENABLE_SPELLER) && !defined(NANO_TINY)
 	if (!ISSET(PRESERVE))
 		add_to_sclist(MEXECUTE, "^S", 0, do_spell);
