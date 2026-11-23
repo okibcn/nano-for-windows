@@ -1356,20 +1356,6 @@ void shortcut_init(void)
 #else
 	add_to_sclist(MMOST, "M-6", 0, copy_text);
 	add_to_sclist(MMOST, "^U", 0, paste_text);
-#ifdef ENABLE_SPELLER
-	if (!ISSET(PRESERVE))
-		add_to_sclist(MEXECUTE, "^S", 0, do_spell);
-	add_to_sclist(MEXECUTE, "^T", 0, do_spell);
-#endif
-#endif
-#ifdef ENABLE_JUSTIFY
-	add_to_sclist(MMAIN, "^J", '\n', do_justify);
-#endif
-#ifdef ENABLE_LINTER
-	add_to_sclist(MEXECUTE, "^Y", 0, do_linter);
-#endif
-#ifdef ENABLE_FORMATTER
-	add_to_sclist(MEXECUTE, "^O", 0, do_formatter);
 #endif
 	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
@@ -1500,6 +1486,7 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, "M-H", 0, do_help);
 #endif
 #ifdef ENABLE_JUSTIFY
+	add_to_sclist(MMAIN, "^J", '\n', do_justify);
 	add_to_sclist(MMAIN, "M-J", 0, do_full_justify);
 	add_to_sclist(MEXECUTE, "^J", 0, do_full_justify);
 #endif
@@ -1615,6 +1602,17 @@ void shortcut_init(void)
 	}
 #endif
 	add_to_sclist(MBROWSER|MHELP, "^C", 0, do_exit);
+#if defined(ENABLE_SPELLER) && !defined(NANO_TINY)
+	if (!ISSET(PRESERVE))
+		add_to_sclist(MEXECUTE, "^S", 0, do_spell);
+	add_to_sclist(MEXECUTE, "^T", 0, do_spell);
+#endif
+#ifdef ENABLE_LINTER
+	add_to_sclist(MEXECUTE, "^Y", 0, do_linter);
+#endif
+#ifdef ENABLE_FORMATTER
+	add_to_sclist(MEXECUTE, "^O", 0, do_formatter);
+#endif
 #ifdef ENABLE_BROWSER
 	/* Only when not in restricted mode, allow entering the file browser. */
 	if (!ISSET(RESTRICTED))
