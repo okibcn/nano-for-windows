@@ -1344,23 +1344,17 @@ void shortcut_init(void)
 	else
 		make_classic_bindings();
 	add_to_sclist(MMOST|MBROWSER, "^M", '\r', do_enter);
-	add_to_sclist(MMOST|MBROWSER, "Enter", KEY_ENTER, do_enter);
 	add_to_sclist(MMOST, "^I", '\t', do_tab);
-	add_to_sclist(MMOST, "Tab", '\t', do_tab);
 	add_to_sclist(MMOST, "Bsp", KEY_BACKSPACE, do_backspace);
-	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
 	add_to_sclist(MMOST, "Del", KEY_DC, do_delete);
-	add_to_sclist(MMAIN, "Ins", KEY_IC, do_insertfile);
 	add_to_sclist(MMAIN, "^\\", 0, do_replace);
 	add_to_sclist(MMAIN, "M-R", 0, do_replace);
 	add_to_sclist(MMOST, "^K", 0, cut_text);
 #ifdef NANO_TINY
 	add_to_sclist(MMAIN, "M-6", 0, copy_text);
-	add_to_sclist(MMAIN, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "^U", 0, paste_text);
 #else
 	add_to_sclist(MMOST, "M-6", 0, copy_text);
-	add_to_sclist(MMOST, "M-^", 0, copy_text);
 	add_to_sclist(MMOST, "^U", 0, paste_text);
 #ifdef ENABLE_SPELLER
 	if (!ISSET(PRESERVE))
@@ -1382,9 +1376,6 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgUp", KEY_PPAGE, do_page_up);
 	add_to_sclist(MMAIN|MBROWSER|MHELP|MLINTER, "PgDn", KEY_NPAGE, do_page_down);
-	add_to_sclist(MBROWSER|MHELP, "Bsp", KEY_BACKSPACE, do_page_up);
-	add_to_sclist(MBROWSER|MHELP, "Sh-Del", SHIFT_DELETE, do_page_up);
-	add_to_sclist(MBROWSER|MHELP, "Space", 0x20, do_page_down);
 	add_to_sclist(MMAIN|MHELP, "M-\\", 0, to_first_line);
 	add_to_sclist(MMAIN|MHELP, "^Home", CONTROL_HOME, to_first_line);
 	add_to_sclist(MMAIN|MHELP, "M-/", 0, to_last_line);
@@ -1498,12 +1489,14 @@ void shortcut_init(void)
 #endif
 	add_to_sclist(MMOST, "M-V", 0, do_verbatim_input);
 #ifndef NANO_TINY
+	add_to_sclist(MMOST, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "M-T", 0, cut_till_eof);
 	add_to_sclist(MEXECUTE, "^V", 0, cut_till_eof);
 	add_to_sclist(MEXECUTE, "^Z", 0, do_suspend);
 	add_to_sclist(MMAIN, "^Z", 0, suggest_ctrlT_ctrlZ);
 	add_to_sclist(MMAIN, "M-D", 0, count_lines_words_and_characters);
 #else
+	add_to_sclist(MMAIN, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "M-H", 0, do_help);
 #endif
 #ifdef ENABLE_JUSTIFY
@@ -1519,6 +1512,10 @@ void shortcut_init(void)
 #else
 	add_to_sclist(MMOST|MBROWSER|MHELP|MYESNO, "^L", 0, full_refresh);
 #endif
+	add_to_sclist(MMOST|MBROWSER, "Enter", KEY_ENTER, do_enter);
+	add_to_sclist(MMOST, "Tab", '\t', do_tab);
+	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
+	add_to_sclist(MMAIN, "Ins", KEY_IC, do_insertfile);
 
 #ifndef NANO_TINY
 	/* Grouplet of four "Interface" toggles. */
@@ -1589,6 +1586,11 @@ void shortcut_init(void)
 	add_to_sclist(MBROWSER, SLASH_OR_DASH, 0, goto_dir);
 	add_to_sclist(MBROWSER, "M-G", 0, goto_dir);
 	add_to_sclist(MBROWSER, "^_", 0, goto_dir);
+#endif
+#if defined(ENABLE_BROWSER) || defined(ENABLE_HELP)
+	add_to_sclist(MBROWSER|MHELP, "Bsp", KEY_BACKSPACE, do_page_up);
+	add_to_sclist(MBROWSER|MHELP, "Sh-Del", SHIFT_DELETE, do_page_up);
+	add_to_sclist(MBROWSER|MHELP, "Space", 0x20, do_page_down);
 #endif
 	if (!ISSET(PRESERVE))
 		add_to_sclist(MWRITEFILE, "^Q", 0, discard_buffer);
