@@ -1413,14 +1413,7 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-W", 0, do_findnext);
 	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
-#ifdef NANO_TINY
-#ifdef ENABLE_LINENUMBERS
-	add_to_sclist(MMAIN, "M-N", 0, toggle_numbers);
-#else
-	add_to_sclist(MMAIN, "M-N", 0, to_next_word);
-#endif
-	add_to_sclist(MMAIN, "M-D", 0, to_prev_word);
-#else
+#ifndef NANO_TINY
 	add_to_sclist(MMAIN, "M-]", 0, do_find_bracket);
 	add_to_sclist(MMAIN, "M-A", 0, do_mark);
 	add_to_sclist(MMAIN, "^6", 0, do_mark);
@@ -1477,6 +1470,12 @@ void shortcut_init(void)
 #else
 	add_to_sclist(MMAIN, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "M-H", 0, do_help);
+#ifdef ENABLE_LINENUMBERS
+	add_to_sclist(MMAIN, "M-N", 0, toggle_numbers);
+#else
+	add_to_sclist(MMAIN, "M-N", 0, to_next_word);
+#endif
+	add_to_sclist(MMAIN, "M-D", 0, to_prev_word);
 #endif
 #ifdef ENABLE_JUSTIFY
 	add_to_sclist(MMAIN, "M-(", 0, to_para_begin);
