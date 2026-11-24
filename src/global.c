@@ -863,7 +863,7 @@ void shortcut_init(void)
 
 	/* Start populating the different menus with functions. */
 #ifdef ENABLE_HELP
-	add_to_funcs(do_help, (MMOST | MBROWSER) & ~MFINDINHELP,
+	add_to_funcs(do_help, (MMOST|MBROWSER) & ~MFINDINHELP,
 			/* TRANSLATORS: Try to keep the next thirteen strings at most 10 characters. */
 			N_("Help"), WHENHELP(help_gist), TOGETHER);
 #endif
@@ -1414,28 +1414,25 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
 #ifndef NANO_TINY
-	add_to_sclist(MMAIN, "M-]", 0, do_find_bracket);
-	add_to_sclist(MMAIN, "M-A", 0, do_mark);
-	add_to_sclist(MMAIN, "^6", 0, do_mark);
-	add_to_sclist(MMAIN, "^^", 0, do_mark);
-	add_to_sclist(MMAIN, "M-}", 0, do_indent);
-	add_to_sclist(MMAIN, "M-{", 0, do_unindent);
-	add_to_sclist(MMAIN, "Sh-Tab", SHIFT_TAB, do_unindent);
-	add_to_sclist(MMAIN, "M-:", 0, record_macro);
-	add_to_sclist(MMAIN, "M-;", 0, run_macro);
 	add_to_sclist(MMAIN, "M-U", 0, do_undo);
 	add_to_sclist(MMAIN, "M-E", 0, do_redo);
-	add_to_sclist(MMAIN, "M-Bsp", CONTROL_SHIFT_DELETE, chop_previous_word);
-	add_to_sclist(MMAIN, "Sh-^Del", CONTROL_SHIFT_DELETE, chop_previous_word);
-	add_to_sclist(MMAIN, "^Del", CONTROL_DELETE, chop_next_word);
-	add_to_sclist(MMAIN, "M-Del", ALT_DELETE, zap_text);
+	add_to_sclist(MMAIN, "M-A", 0, do_mark);
+	add_to_sclist(MMAIN, "^6", 0, do_mark);
+	add_to_sclist(MMAIN, "M-<", 0, do_scroll_left);
+	add_to_sclist(MMAIN, "M->", 0, do_scroll_right);
+	add_to_sclist(MMAIN, "^L", 0, do_center);
 	add_to_sclist(MMAIN, "M-Ins", ALT_INSERT, put_or_lift_anchor);
-	add_to_sclist(MMAIN, "M-Home", ALT_HOME, to_top_row);
-	add_to_sclist(MMAIN, "M-End", ALT_END, to_bottom_row);
 	add_to_sclist(MMAIN, "M-PgUp", ALT_PAGEUP, to_prev_anchor);
 	add_to_sclist(MMAIN, "M-PgDn", ALT_PAGEDOWN, to_next_anchor);
 	add_to_sclist(MMAIN, "M-\"", 0, put_or_lift_anchor);
 	add_to_sclist(MMAIN, "M-'", 0, to_next_anchor);
+	add_to_sclist(MMAIN, "M-]", 0, do_find_bracket);
+	add_to_sclist(MMAIN, "M-:", 0, record_macro);
+	add_to_sclist(MMAIN, "M-;", 0, run_macro);
+#endif
+#ifdef ENABLE_MULTIBUFFER
+	add_to_sclist(MMAIN, "M-,", 0, switch_to_prev_buffer);
+	add_to_sclist(MMAIN, "M-.", 0, switch_to_next_buffer);
 #endif
 #ifdef ENABLE_WORDCOMPLETION
 	add_to_sclist(MMAIN, "^]", 0, complete_a_word);
@@ -1445,28 +1442,12 @@ void shortcut_init(void)
 #endif
 	add_to_sclist(MMOST & ~MMAIN, "^B", 0, do_left);
 	add_to_sclist(MMOST & ~MMAIN, "^F", 0, do_right);
-	add_to_sclist(MMOST, "M-Space", 0, to_prev_word);
-	add_to_sclist(MMOST, "^Space", 0, to_next_word);
-	add_to_sclist(MMAIN, "M-7", 0, to_prev_block);
-	add_to_sclist(MMAIN, "M-8", 0, to_next_block);
-#if !defined(NANO_TINY) || defined(ENABLE_HELP)
-	add_to_sclist(MMAIN|MHELP, "M--", 0, do_scroll_up);
-	add_to_sclist(MMAIN|MHELP, "M-_", 0, do_scroll_up);
-	add_to_sclist(MMAIN|MHELP, "M-+", 0, do_scroll_down);
-	add_to_sclist(MMAIN|MHELP, "M-=", 0, do_scroll_down);
-#endif
-#ifdef ENABLE_MULTIBUFFER
-	add_to_sclist(MMAIN, "M-,", 0, switch_to_prev_buffer);
-	add_to_sclist(MMAIN, "M-.", 0, switch_to_next_buffer);
-#endif
+	add_to_sclist(((MMOST & ~MMAIN) | MYESNO), "^C", 0, do_cancel);
 	add_to_sclist(MMOST, "M-V", 0, do_verbatim_input);
 #ifndef NANO_TINY
-	add_to_sclist(MMOST, "M-^", 0, copy_text);
-	add_to_sclist(MMAIN, "M-T", 0, cut_till_eof);
-	add_to_sclist(MEXECUTE, "^V", 0, cut_till_eof);
-	add_to_sclist(MEXECUTE, "^Z", 0, do_suspend);
-	add_to_sclist(MMAIN, "^Z", 0, suggest_ctrlT_ctrlZ);
 	add_to_sclist(MMAIN, "M-D", 0, count_lines_words_and_characters);
+	add_to_sclist(MMAIN, "^^", 0, do_mark);
+	add_to_sclist(MMOST, "M-^", 0, copy_text);
 #else
 	add_to_sclist(MMAIN, "M-^", 0, copy_text);
 	add_to_sclist(MMAIN, "M-H", 0, do_help);
@@ -1487,9 +1468,17 @@ void shortcut_init(void)
 	add_to_sclist(MEXECUTE, "^J", 0, do_full_justify);
 #endif
 #ifndef NANO_TINY
-	add_to_sclist(MMAIN, "M-<", 0, do_scroll_left);
-	add_to_sclist(MMAIN, "M->", 0, do_scroll_right);
-	add_to_sclist(MMAIN, "^L", 0, do_center);
+	add_to_sclist(MMAIN, "M-}", 0, do_indent);
+	add_to_sclist(MMAIN, "M-{", 0, do_unindent);
+	add_to_sclist(MMAIN, "Sh-Tab", SHIFT_TAB, do_unindent);
+	add_to_sclist(MMAIN, "M-Bsp", CONTROL_SHIFT_DELETE, chop_previous_word);
+	add_to_sclist(MMAIN, "Sh-^Del", CONTROL_SHIFT_DELETE, chop_previous_word);
+	add_to_sclist(MMAIN, "^Del", CONTROL_DELETE, chop_next_word);
+	add_to_sclist(MMAIN, "M-Del", ALT_DELETE, zap_text);
+	add_to_sclist(MMAIN, "M-T", 0, cut_till_eof);
+	add_to_sclist(MMAIN, "^Z", 0, suggest_ctrlT_ctrlZ);
+	add_to_sclist(MMAIN, "M-Home", ALT_HOME, to_top_row);
+	add_to_sclist(MMAIN, "M-End", ALT_END, to_bottom_row);
 	add_to_sclist(MMAIN, "M-%", 0, do_cycle);
 	add_to_sclist((MMOST|MBROWSER|MHELP|MYESNO)&~MMAIN, "^L", 0, full_refresh);
 #else
@@ -1500,6 +1489,16 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
 	add_to_sclist(MMAIN, "Ins", KEY_IC, do_insertfile);
 	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn);
+	add_to_sclist(MMOST, "M-Space", 0, to_prev_word);
+	add_to_sclist(MMOST, "^Space", 0, to_next_word);
+	add_to_sclist(MMAIN, "M-7", 0, to_prev_block);
+	add_to_sclist(MMAIN, "M-8", 0, to_next_block);
+#if !defined(NANO_TINY) || defined(ENABLE_HELP)
+	add_to_sclist(MMAIN|MHELP, "M--", 0, do_scroll_up);
+	add_to_sclist(MMAIN|MHELP, "M-+", 0, do_scroll_down);
+	add_to_sclist(MMAIN|MHELP, "M-_", 0, do_scroll_up);
+	add_to_sclist(MMAIN|MHELP, "M-=", 0, do_scroll_down);
+#endif
 
 #ifndef NANO_TINY
 	/* Grouplet of four "Interface" toggles. */
@@ -1530,8 +1529,6 @@ void shortcut_init(void)
 	add_toggle("M-M", USE_MOUSE);
 #endif
 #endif /* !NANO_TINY */
-
-	add_to_sclist(((MMOST & ~MMAIN) | MYESNO), "^C", 0, do_cancel);
 
 	add_to_sclist(MWHEREIS|MREPLACE, "M-C", 0, case_sens_void);
 	add_to_sclist(MWHEREIS|MREPLACE, "M-R", 0, regexp_void);
@@ -1609,6 +1606,10 @@ void shortcut_init(void)
 #endif
 #ifdef ENABLE_FORMATTER
 	add_to_sclist(MEXECUTE, "^O", 0, do_formatter);
+#endif
+#ifndef NANO_TINY
+	add_to_sclist(MEXECUTE, "^V", 0, cut_till_eof);
+	add_to_sclist(MEXECUTE, "^Z", 0, do_suspend);
 #endif
 #ifdef ENABLE_BROWSER
 	/* Only when not in restricted mode, allow entering the file browser. */
