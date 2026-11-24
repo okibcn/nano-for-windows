@@ -1407,13 +1407,12 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "M-6", 0, copy_text);
 	add_to_sclist(MMOST, "^U", 0, paste_text);
 #endif
-	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
-	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
-	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-B", 0, do_findprevious);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-F", 0, do_findnext);
-	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-W", 0, do_findnext);
 	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-Q", 0, do_findprevious);
+	add_to_sclist(MMAIN|MBROWSER|MHELP, "M-W", 0, do_findnext);
+	add_to_sclist(MMAIN, SLASH_OR_DASH, 0, do_gotolinecolumn);
+	add_to_sclist(MMAIN, "M-G", 0, do_gotolinecolumn);
 #ifdef NANO_TINY
 #ifdef ENABLE_LINENUMBERS
 	add_to_sclist(MMAIN, "M-N", 0, toggle_numbers);
@@ -1457,12 +1456,6 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "^Space", 0, to_next_word);
 	add_to_sclist(MMAIN, "M-7", 0, to_prev_block);
 	add_to_sclist(MMAIN, "M-8", 0, to_next_block);
-#ifdef ENABLE_JUSTIFY
-	add_to_sclist(MMAIN, "M-(", 0, to_para_begin);
-	add_to_sclist(MMAIN, "M-9", 0, to_para_begin);
-	add_to_sclist(MMAIN, "M-)", 0, to_para_end);
-	add_to_sclist(MMAIN, "M-0", 0, to_para_end);
-#endif
 #if !defined(NANO_TINY) || defined(ENABLE_HELP)
 	add_to_sclist(MMAIN|MHELP, "M--", 0, do_scroll_up);
 	add_to_sclist(MMAIN|MHELP, "M-_", 0, do_scroll_up);
@@ -1486,6 +1479,10 @@ void shortcut_init(void)
 	add_to_sclist(MMAIN, "M-H", 0, do_help);
 #endif
 #ifdef ENABLE_JUSTIFY
+	add_to_sclist(MMAIN, "M-(", 0, to_para_begin);
+	add_to_sclist(MMAIN, "M-)", 0, to_para_end);
+	add_to_sclist(MMAIN, "M-9", 0, to_para_begin);
+	add_to_sclist(MMAIN, "M-0", 0, to_para_end);
 	add_to_sclist(MMAIN, "^J", '\n', do_justify);
 	add_to_sclist(MMAIN, "M-J", 0, do_full_justify);
 	add_to_sclist(MEXECUTE, "^J", 0, do_full_justify);
@@ -1503,6 +1500,7 @@ void shortcut_init(void)
 	add_to_sclist(MMOST, "Tab", '\t', do_tab);
 	add_to_sclist(MMOST, "Sh-Del", SHIFT_DELETE, do_backspace);
 	add_to_sclist(MMAIN, "Ins", KEY_IC, do_insertfile);
+	add_to_sclist(MMAIN, "^_", 0, do_gotolinecolumn);
 
 #ifndef NANO_TINY
 	/* Grouplet of four "Interface" toggles. */
